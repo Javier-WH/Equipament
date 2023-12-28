@@ -17,6 +17,7 @@ public class CButton extends JButton {
 
 	public CButton(String text) {
 		super("   " + text + "   ");
+		setFocusPainted(false);
 		setBorder(null);
 		setContentAreaFilled(false);
 		setBackground(Constants.getSurfaceColor());

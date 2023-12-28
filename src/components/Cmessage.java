@@ -11,6 +11,7 @@ import java.awt.Dimension;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import java.awt.Font;
+import java.awt.Toolkit;
 
 
 public class Cmessage extends JDialog {
@@ -23,14 +24,15 @@ public class Cmessage extends JDialog {
 	/**
 	 * @wbp.parser.constructor
 	 */
-	public Cmessage( String okText, String cancelText, ActionListener okActionListener) {
+	public Cmessage( String okText, String cancelText, String messageText, ActionListener okActionListener) {
 
-		this(okText, cancelText, okActionListener, null);
+
+		this(okText, cancelText, messageText, okActionListener, null);
 	}
 
-	public Cmessage( String okText, String cancelText, ActionListener okActionListener, ActionListener cancelActionListener) {
+	public Cmessage( String okText, String cancelText, String messageText, ActionListener okActionListener, ActionListener cancelActionListener) {
 		super();
-
+		setIconImage(Toolkit.getDefaultToolkit().getImage(Cmessage.class.getResource("/assets/icon.gif")));
 		this.okActionListener = okActionListener;
 		this.cancelActionListener = cancelActionListener;
 		contentPanel.setBackground(Constants.getSurfaceColor());
@@ -46,7 +48,7 @@ public class Cmessage extends JDialog {
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(new BorderLayout(0, 0));
 		{
-			JLabel lblMessaje = new JLabel("¿Desea slir del sistema?");
+			JLabel lblMessaje = new JLabel(messageText);
 			lblMessaje.setVerticalAlignment(SwingConstants.TOP);
 			lblMessaje.setForeground(Constants.getMainColor());
 			lblMessaje.setFont(new Font("Tahoma", Font.BOLD, 15));

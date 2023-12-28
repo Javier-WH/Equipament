@@ -19,6 +19,8 @@ import net.miginfocom.swing.MigLayout;
 import javax.swing.SwingConstants;
 import java.awt.Font;
 import java.awt.Toolkit;
+import javax.swing.border.MatteBorder;
+import java.awt.Color;
 
 
 public class MainWindow extends JFrame {
@@ -27,6 +29,7 @@ public class MainWindow extends JFrame {
 	private JPanel contentPane;
 
 	public MainWindow() {
+		//setExtendedState(JFrame.MAXIMIZED_BOTH);
 		setIconImage(Toolkit.getDefaultToolkit().getImage(MainWindow.class.getResource("/assets/icon.gif")));
 		setTitle("Mantenimiento de Equipos");
 		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
@@ -63,6 +66,8 @@ public class MainWindow extends JFrame {
 		contentPane.add(centerScrollPane, BorderLayout.CENTER);
 
 		JPanel alertPanel = new JPanel();
+		alertPanel.setBorder(new MatteBorder(0, 1, 0, 0, Constants.getDecoratorColor()));
+		
 		alertPanel.setBackground(Constants.getSurfaceColor());
 		centerScrollPane.setViewportView(alertPanel);
 		alertPanel.setLayout(new BoxLayout(alertPanel, BoxLayout.X_AXIS));
@@ -73,7 +78,7 @@ public class MainWindow extends JFrame {
 		contentPane.add(lblStatusBar, BorderLayout.SOUTH);
 		menuPanel.setLayout(new MigLayout("", "[100px]", "[40][40]"));
 
-		addWindowListener(new Exit(this));
+		addWindowListener(new Exit());
 
 		JButton btnRegistro = new CButton("Registro");
 		menuPanel.add(btnRegistro, "cell 0 0,grow");
@@ -92,6 +97,6 @@ public class MainWindow extends JFrame {
 
 		JButton btnSalir = new CButton("Salir");
 		menuPanel.add(btnSalir, "cell 0 5,grow");
-		btnSalir.addActionListener(new Exit(this));
+		btnSalir.addActionListener(new Exit());
 	}
 }

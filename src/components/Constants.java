@@ -10,11 +10,16 @@ public class Constants {
 	private static Color textColor = Color.WHITE;
 	private static Color secondaryColor = Color.CYAN;
 	private static Color actionColor = Color.BLACK; 
+	private static Color decoratorColor = Color.GRAY; 
 	private static Font mainFont =  new Font("Arial", Font.BOLD, 12);
 	
 	
 	
 	
+	
+	public static Color getDecoratorColor() {
+		return decoratorColor;
+	}
 	public static Color getActionColor() {
 		return actionColor;
 	}

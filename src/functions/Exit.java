@@ -4,8 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import javax.swing.JFrame;
-import javax.swing.JOptionPane;
+
 
 import components.Cmessage;
 
@@ -13,10 +12,10 @@ import components.Cmessage;
 
 public class Exit extends WindowAdapter implements ActionListener {
 	
-	private JFrame parent;
+
 	
-	public Exit(JFrame parent) {
-		this.parent = parent;
+	public Exit() {
+
 	}
 	
 	@Override
@@ -32,7 +31,7 @@ public class Exit extends WindowAdapter implements ActionListener {
 	}
 	
 	private void exitSystem() {
-	    Cmessage message = new Cmessage("Salir", "Cancelar", new ExitListener());
+	    Cmessage message = new Cmessage("Salir", "Cancelar", "¿Desea salir del sistema?", new ExitListener());
 	    message.setVisible(true);
 	}
 	
