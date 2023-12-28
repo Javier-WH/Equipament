@@ -21,6 +21,8 @@ import java.awt.Font;
 import java.awt.Toolkit;
 import javax.swing.border.MatteBorder;
 import java.awt.Color;
+import java.awt.Component;
+import javax.swing.Box;
 
 
 public class MainWindow extends JFrame {
@@ -33,7 +35,7 @@ public class MainWindow extends JFrame {
 		setIconImage(Toolkit.getDefaultToolkit().getImage(MainWindow.class.getResource("/assets/icon.gif")));
 		setTitle("Mantenimiento de Equipos");
 		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-		setBounds(100, 100, 664, 449);
+		setBounds(100, 100, 678, 503);
 		setLocationRelativeTo(null);
 		contentPane = new JPanel();
 		contentPane.setBackground(Constants.getSurfaceColor());
@@ -76,7 +78,7 @@ public class MainWindow extends JFrame {
 		lblStatusBar.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblStatusBar.setForeground(Constants.getMainColor());
 		contentPane.add(lblStatusBar, BorderLayout.SOUTH);
-		menuPanel.setLayout(new MigLayout("", "[100px]", "[40][40]"));
+		menuPanel.setLayout(new MigLayout("", "[100px]", "[40][40][40][40][40][grow][40][40]"));
 
 		addWindowListener(new Exit());
 
@@ -94,9 +96,11 @@ public class MainWindow extends JFrame {
 
 		JButton btnHistorial = new CButton("Historial");
 		menuPanel.add(btnHistorial, "cell 0 4,grow");
+		JButton btnInfo = new CButton("Información");
+		menuPanel.add(btnInfo, "cell 0 6,grow");
 
 		JButton btnSalir = new CButton("Salir");
-		menuPanel.add(btnSalir, "cell 0 5,grow");
+		menuPanel.add(btnSalir, "cell 0 7,grow");
 		btnSalir.addActionListener(new Exit());
 	}
 }
