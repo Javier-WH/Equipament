@@ -7,6 +7,8 @@ import java.awt.event.WindowEvent;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
+import components.Cmessage;
+
 
 
 public class Exit extends WindowAdapter implements ActionListener {
@@ -30,14 +32,19 @@ public class Exit extends WindowAdapter implements ActionListener {
 	}
 	
 	private void exitSystem() {
-	    int option = JOptionPane.showOptionDialog(parent, "Desea Salir", "Confirmación", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, new String[] { "Salir", "Cancelar" }, "Aceptar");
-	    
-	    if(option == JOptionPane.YES_OPTION) {
-	    	System.exit(0);	    	
-	    }
+	    Cmessage message = new Cmessage("Salir", "Cancelar", new ExitListener());
+	    message.setVisible(true);
 	}
 	
-	
 
+	class ExitListener implements ActionListener{
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			System.exit(0);
+			
+		}
+		
+	}
 	
 }

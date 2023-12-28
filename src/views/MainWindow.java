@@ -3,11 +3,9 @@ package views;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-
 import components.CButton;
 import components.Constants;
 import functions.Exit;
-
 import javax.swing.BoxLayout;
 import java.awt.BorderLayout;
 import javax.swing.JButton;
@@ -15,19 +13,13 @@ import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
 import java.awt.Cursor;
 import javax.swing.JLabel;
-
 import java.awt.ComponentOrientation;
 import java.awt.Dimension;
-
 import net.miginfocom.swing.MigLayout;
 import javax.swing.SwingConstants;
 import java.awt.Font;
 import java.awt.Toolkit;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
+
 
 public class MainWindow extends JFrame {
 
@@ -35,7 +27,7 @@ public class MainWindow extends JFrame {
 	private JPanel contentPane;
 
 	public MainWindow() {
-		setIconImage(Toolkit.getDefaultToolkit().getImage(MainWindow.class.getResource("/assets/icon.jpg")));
+		setIconImage(Toolkit.getDefaultToolkit().getImage(MainWindow.class.getResource("/assets/icon.gif")));
 		setTitle("Mantenimiento de Equipos");
 		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		setBounds(100, 100, 664, 449);
