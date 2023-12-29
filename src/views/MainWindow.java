@@ -20,9 +20,7 @@ import javax.swing.SwingConstants;
 import java.awt.Font;
 import java.awt.Toolkit;
 import javax.swing.border.MatteBorder;
-import java.awt.Color;
-import java.awt.Component;
-import javax.swing.Box;
+
 
 
 public class MainWindow extends JFrame {
