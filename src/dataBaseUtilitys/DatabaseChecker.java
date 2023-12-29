@@ -6,8 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import dataBaseModels.DataBaseModel;
-import dataBaseModels.PruebaDB;
-import dataBaseModels.PruebaDB2;
+import dataBaseModels.PruebaDB3;
+import dataBaseModels.PruebaDB4;
 import dbConection.*;
 
 public class DatabaseChecker {
@@ -17,9 +17,9 @@ public class DatabaseChecker {
 	
 	public DatabaseChecker () throws ClassNotFoundException, SQLException {
 		connection = SQLiteConnection.getConnection();
-		TableList.add(new PruebaDB());
-		TableList.add(new PruebaDB2());
-
+		TableList.add(new PruebaDB3());
+		TableList.add(new PruebaDB4());
+	
 	}
 	
 	public boolean checkDatabaseList () throws SQLException {

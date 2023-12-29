@@ -19,7 +19,6 @@ public class SQLiteConnection {
 	}
 
 	private static void startConection() throws ClassNotFoundException, SQLException {
-		System.out.println(homeFolder);
 			
 		Class.forName("org.sqlite.JDBC");
 		String dbUrl = "jdbc:sqlite:"+homeFolder+"/dataBase.db";
