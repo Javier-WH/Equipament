@@ -132,7 +132,7 @@ public abstract class AbstractDataBaseModel implements DataBaseModel {
 
 	}
 
-	public boolean executeStatement(String query) {
+	protected boolean executeStatement(String query) {
 		Statement statement;
 		try {
 			statement = connection.createStatement();

@@ -5,11 +5,12 @@ import java.awt.Font;
 
 public class Constants {
 
-	private static Color mainColor = Color.BLUE;
-	private static Color surfaceColor = Color.WHITE;
+	private static Color mainColor = Color.WHITE;
+	private static Color surfaceColor = new Color(44, 62, 80);
+	private static Color surfaceColorB = new Color(86, 101, 115);
 	private static Color textColor = Color.WHITE;
 	private static Color secondaryColor = Color.CYAN;
-	private static Color actionColor = Color.BLACK; 
+	private static Color actionColor = new Color(23, 32, 42); 
 	private static Color decoratorColor = Color.GRAY; 
 	private static Font mainFont =  new Font("Arial", Font.BOLD, 12);
 	
@@ -17,6 +18,9 @@ public class Constants {
 	
 	
 	
+	public static Color getSurfaceColorB() {
+		return surfaceColorB;
+	}
 	public static Color getDecoratorColor() {
 		return decoratorColor;
 	}

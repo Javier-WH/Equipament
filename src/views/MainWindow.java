@@ -17,10 +17,11 @@ import java.awt.ComponentOrientation;
 import java.awt.Dimension;
 import net.miginfocom.swing.MigLayout;
 import javax.swing.SwingConstants;
-import java.awt.Font;
+import java.awt.Image;
 import java.awt.Toolkit;
 import javax.swing.border.MatteBorder;
-
+import javax.swing.ImageIcon;
+import java.awt.Font;
 
 
 public class MainWindow extends JFrame {
@@ -29,17 +30,18 @@ public class MainWindow extends JFrame {
 	private JPanel contentPane;
 
 	public MainWindow() {
-		//setExtendedState(JFrame.MAXIMIZED_BOTH);
-		setIconImage(Toolkit.getDefaultToolkit().getImage(MainWindow.class.getResource("/assets/icon.gif")));
+		// setExtendedState(JFrame.MAXIMIZED_BOTH);
+		setIconImage(Toolkit.getDefaultToolkit().getImage(MainWindow.class.getResource("/assets/logoA.jpg")));
 		setTitle("Mantenimiento de Equipos");
 		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		setBounds(100, 100, 678, 503);
 		setLocationRelativeTo(null);
+		addWindowListener(new Exit());
 		contentPane = new JPanel();
 		contentPane.setBackground(Constants.getSurfaceColor());
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		contentPane.setLayout(new BorderLayout(5, 10));
+		contentPane.setLayout(new BorderLayout(5, 0));
 
 		JScrollPane leftScrollPane = new JScrollPane();
 		leftScrollPane.setBorder(null);
@@ -47,19 +49,13 @@ public class MainWindow extends JFrame {
 		contentPane.add(leftScrollPane, BorderLayout.WEST);
 
 		JPanel menuPanel = new JPanel();
+		menuPanel.setPreferredSize(new Dimension(190, 320));
 		menuPanel.setBackground(Constants.getSurfaceColor());
-		menuPanel.setMinimumSize(new Dimension(500, 10));
+		menuPanel.setMinimumSize(new Dimension(500, 200));
 		menuPanel.setMaximumSize(new Dimension(500, 32767));
 		menuPanel.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
 		menuPanel.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
 		leftScrollPane.setViewportView(menuPanel);
-
-		JLabel lblTitle = new JLabel("Mantenimiento de Equipos");
-		lblTitle.setPreferredSize(new Dimension(125, 50));
-		lblTitle.setForeground(Constants.getMainColor());
-		lblTitle.setFont(new Font("Tahoma", Font.BOLD, 17));
-		lblTitle.setHorizontalAlignment(SwingConstants.CENTER);
-		contentPane.add(lblTitle, BorderLayout.NORTH);
 
 		JScrollPane centerScrollPane = new JScrollPane();
 		centerScrollPane.setBorder(null);
@@ -67,18 +63,49 @@ public class MainWindow extends JFrame {
 
 		JPanel alertPanel = new JPanel();
 		alertPanel.setBorder(new MatteBorder(0, 1, 0, 0, Constants.getDecoratorColor()));
-		
-		alertPanel.setBackground(Constants.getSurfaceColor());
+		alertPanel.setBackground(Constants.getSurfaceColorB());
 		centerScrollPane.setViewportView(alertPanel);
 		alertPanel.setLayout(new BoxLayout(alertPanel, BoxLayout.X_AXIS));
 
-		JLabel lblStatusBar = new JLabel("No hay alertas");
+		JLabel lblStatusBar = new JLabel("Actualizado el 24 diciembre del 2023 a las 3:14pm");
 		lblStatusBar.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblStatusBar.setForeground(Constants.getMainColor());
+		lblStatusBar.setForeground(Constants.getTextColor());
 		contentPane.add(lblStatusBar, BorderLayout.SOUTH);
 		menuPanel.setLayout(new MigLayout("", "[100px]", "[40][40][40][40][40][grow][40][40]"));
 
-		addWindowListener(new Exit());
+		JPanel northPanel = new JPanel();
+		northPanel.setBackground(Constants.getSurfaceColor());
+		northPanel.setPreferredSize(new Dimension(20, 100));
+		contentPane.add(northPanel, BorderLayout.NORTH);
+		northPanel.setLayout(new BorderLayout(5, 0));
+
+		JLabel lblLogo = new JLabel("");
+		lblLogo.setBorder(new EmptyBorder(0, 30, 0, 30));
+		lblLogo.setAlignmentX(60.0f);
+		lblLogo.setSize(190, 100);
+		ImageIcon icon = new ImageIcon(MainWindow.class.getResource("/assets/logoB.png"));
+		Image image = icon.getImage();
+		Image scaledImage = image.getScaledInstance(lblLogo.getWidth() - 60, lblLogo.getHeight(), Image.SCALE_SMOOTH);
+		ImageIcon scaledIcon = new ImageIcon(scaledImage);
+		lblLogo.setIcon(scaledIcon);
+		northPanel.add(lblLogo, BorderLayout.WEST);
+
+		JPanel titlePanel = new JPanel();
+		titlePanel.setBackground(Constants.getSurfaceColor());
+		northPanel.add(titlePanel, BorderLayout.CENTER);
+		titlePanel.setLayout(new BorderLayout(0, 0));
+
+		JLabel lblTitle = new JLabel("    Mantenimiento de Equipos");
+		lblTitle.setFont(new Font("Tahoma", Font.BOLD, 18));
+		lblTitle.setForeground(Constants.getTextColor());
+		lblTitle.setHorizontalAlignment(SwingConstants.LEFT);
+		lblTitle.setHorizontalTextPosition(SwingConstants.CENTER);
+		titlePanel.add(lblTitle, BorderLayout.CENTER);
+
+		JLabel lblAlerts = new JLabel("No hay alertas");
+		lblAlerts.setForeground(Constants.getTextColor());
+		lblAlerts.setHorizontalAlignment(SwingConstants.RIGHT);
+		titlePanel.add(lblAlerts, BorderLayout.SOUTH);
 
 		JButton btnRegistro = new CButton("Registro");
 		menuPanel.add(btnRegistro, "cell 0 0,grow");

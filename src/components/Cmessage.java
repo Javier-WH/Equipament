@@ -32,7 +32,7 @@ public class Cmessage extends JDialog {
 
 	public Cmessage( String okText, String cancelText, String messageText, ActionListener okActionListener, ActionListener cancelActionListener) {
 		super();
-		setIconImage(Toolkit.getDefaultToolkit().getImage(Cmessage.class.getResource("/assets/icon.gif")));
+		setIconImage(Toolkit.getDefaultToolkit().getImage(Cmessage.class.getResource("/assets/logoA.jpg")));
 		this.okActionListener = okActionListener;
 		this.cancelActionListener = cancelActionListener;
 		contentPanel.setBackground(Constants.getSurfaceColor());
@@ -41,7 +41,7 @@ public class Cmessage extends JDialog {
 		setResizable(false);
 		setModal(true);
 		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-		setSize(416, 148);
+		setSize(416, 168);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setPreferredSize(new Dimension(400, 60));
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -49,7 +49,6 @@ public class Cmessage extends JDialog {
 		contentPanel.setLayout(new BorderLayout(0, 0));
 		{
 			JLabel lblMessaje = new JLabel(messageText);
-			lblMessaje.setVerticalAlignment(SwingConstants.TOP);
 			lblMessaje.setForeground(Constants.getMainColor());
 			lblMessaje.setFont(new Font("Tahoma", Font.BOLD, 15));
 			lblMessaje.setHorizontalAlignment(SwingConstants.CENTER);
