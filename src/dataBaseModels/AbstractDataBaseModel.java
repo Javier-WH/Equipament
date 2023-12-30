@@ -10,100 +10,129 @@ import java.util.Map.Entry;
 
 public abstract class AbstractDataBaseModel implements DataBaseModel {
 
-    protected String dataTableName;
-    protected Connection connection = null;
-    
-    protected AbstractDataBaseModel(String dataTableName) throws ClassNotFoundException, SQLException {
-    	connection = dbConection.SQLiteConnection.getConnection();
-    	this.dataTableName = dataTableName;
-    }
-    
-    
-    @Override
-    public boolean dropTable() {
-        StringBuilder queryBuilder = new StringBuilder("DROP TABLE IF EXISTS ").append(dataTableName).append(";");
-        String query = queryBuilder.toString();
-        return executeStatement(query);
-    }
+	protected String dataTableName;
+	protected Connection connection = null;
 
-    @Override
-    public String getTableName() {
-        return dataTableName;
-    }
+	protected AbstractDataBaseModel(String dataTableName) throws ClassNotFoundException, SQLException {
+		connection = dbConection.SQLiteConnection.getConnection();
+		this.dataTableName = dataTableName;
+	}
 
-    @Override
-    public ResultSet findRecords() throws SQLException {
-        StringBuilder queryBuilder = new StringBuilder("SELECT * FROM ").append(dataTableName).append(";");
-        String query = queryBuilder.toString();
-        Statement statement = connection.createStatement();
-        return statement.executeQuery(query);
-    }
+	@Override
+	public boolean dropTable() {
+		StringBuilder queryBuilder = new StringBuilder("DROP TABLE IF EXISTS ").append(dataTableName).append(";");
+		String query = queryBuilder.toString();
+		return executeStatement(query);
+	}
 
-    @Override
-    public ResultSet findRecord(HashMap<String, String> criteria) throws SQLException {
-        StringBuilder queryBuilder = new StringBuilder("SELECT * FROM ").append(dataTableName).append(" WHERE ");
-        ArrayList<String> conditions = new ArrayList<>();
+	@Override
+	public String getTableName() {
+		return dataTableName;
+	}
 
-        for (Entry<String, String> entry : criteria.entrySet()) {
-            String column = entry.getKey();
-            String value = entry.getValue();
-            String condition = column + " = '" + value + "'";
-            conditions.add(condition);
-        }
+	@Override
+	public ResultSet findRecords() throws SQLException {
+		StringBuilder queryBuilder = new StringBuilder("SELECT * FROM ").append(dataTableName).append(";");
+		String query = queryBuilder.toString();
+		Statement statement = connection.createStatement();
+		return statement.executeQuery(query);
+	}
 
-        queryBuilder.append(String.join(" AND ", conditions)).append(";");
-        String query = queryBuilder.toString();
+	@Override
+	public ResultSet findRecord(HashMap<String, String> criteria) throws SQLException {
+		StringBuilder queryBuilder = new StringBuilder("SELECT * FROM ").append(dataTableName).append(" WHERE ");
+		ArrayList<String> conditions = new ArrayList<>();
 
-        Statement statement = connection.createStatement();
-        return statement.executeQuery(query);
-    }
+		for (Entry<String, String> entry : criteria.entrySet()) {
+			String column = entry.getKey();
+			String value = entry.getValue();
+			String condition = column + " = '" + value + "'";
+			conditions.add(condition);
+		}
 
-    @Override
-    public boolean updateRecord(HashMap<String, String> criteria) throws SQLException {
-        StringBuilder queryBuilder = new StringBuilder("UPDATE ").append(dataTableName).append(" SET ");
-        ArrayList<String> updates = new ArrayList<>();
+		queryBuilder.append(String.join(" AND ", conditions)).append(";");
+		String query = queryBuilder.toString();
+	
+		Statement statement = connection.createStatement();
+		return statement.executeQuery(query);
+	
+	}
 
-        for (Entry<String, String> entry : criteria.entrySet()) {
-            String column = entry.getKey();
-            String value = entry.getValue();
-            String update = column + " = '" + value + "'";
-            updates.add(update);
-        }
+	@Override
+	public boolean updateRecord(HashMap<String, String> criteria) throws SQLException {
+		StringBuilder queryBuilder = new StringBuilder("UPDATE ").append(dataTableName).append(" SET ");
+		ArrayList<String> updates = new ArrayList<>();
 
-        queryBuilder.append(String.join(", ", updates)).append(" WHERE id = ").append(criteria.get("id")).append(";");
+		for (Entry<String, String> entry : criteria.entrySet()) {
+			String column = entry.getKey();
+			String value = entry.getValue();
 
-        String query = queryBuilder.toString();
+			if (column.equals("id")) {
+				continue;
+			}
 
-        Statement statement = connection.createStatement();
-        int rowsUpdated = statement.executeUpdate(query);
-        return rowsUpdated > 0;
-    }
+			String update = column + " = '" + value + "'";
+			updates.add(update);
+		}
 
-    @Override
-    public boolean deleteRecord(HashMap<String, String> criteria) throws SQLException {
-        StringBuilder queryBuilder = new StringBuilder("DELETE FROM ").append(dataTableName).append(" WHERE id = ")
-                .append(criteria.get("id")).append(";");
+		queryBuilder.append(String.join(", ", updates)).append(" WHERE id = ").append(criteria.get("id")).append(";");
 
-        String query = queryBuilder.toString();
+		String query = queryBuilder.toString();
+	
+		Statement statement = connection.createStatement();
+		int rowsUpdated = statement.executeUpdate(query);
+		return rowsUpdated > 0;
+	
+	}
 
-        Statement statement = connection.createStatement();
-        int rowsDeleted = statement.executeUpdate(query);
-        return rowsDeleted > 0;
-    }
+	@Override
+	public boolean deleteRecord(HashMap<String, String> criteria) throws SQLException {
+		StringBuilder queryBuilder = new StringBuilder("DELETE FROM ").append(dataTableName).append(" WHERE ");
+		ArrayList<String> conditions = new ArrayList<>();
 
-    @Override
-    public boolean createRecord(HashMap<String, String> data) throws SQLException {
-        StringBuilder queryBuilder = new StringBuilder("INSERT INTO ").append(dataTableName)
-                .append(" (nombre) VALUES ('").append(data.get("nombre")).append("');");
+		for (Entry<String, String> entry : criteria.entrySet()) {
+			String column = entry.getKey();
+			String value = entry.getValue();
+			String condition = column + " = '" + value + "'";
+			conditions.add(condition);
+		}
 
-        String query = queryBuilder.toString();
+		queryBuilder.append(String.join(" AND ", conditions)).append(";");
+		String query = queryBuilder.toString();
+	
+		Statement statement = connection.createStatement();
+		int rowsDeleted = statement.executeUpdate(query);
+		return rowsDeleted > 0;
 
-        Statement statement = connection.createStatement();
-        int rowsInserted = statement.executeUpdate(query);
-        return rowsInserted > 0;
-    }
+	}
 
-    public boolean executeStatement(String query) {
+	@Override
+	public boolean createRecord(HashMap<String, String> data) throws SQLException {
+		StringBuilder queryBuilder = new StringBuilder("INSERT INTO ").append(dataTableName).append(" (");
+
+		ArrayList<String> columns = new ArrayList<>();
+		ArrayList<String> values = new ArrayList<>();
+
+		for (Entry<String, String> entry : data.entrySet()) {
+			String column = entry.getKey();
+			String value = entry.getValue();
+			columns.add(column);
+			values.add(value);
+		}
+
+		queryBuilder.append(String.join(" , ", columns)).append(") VALUES ('");
+		queryBuilder.append(String.join("' , '", values)).append("');");
+
+		String query = queryBuilder.toString();
+		
+
+		Statement statement = connection.createStatement();
+		int rowsInserted = statement.executeUpdate(query);
+		return rowsInserted > 0;
+
+	}
+
+	public boolean executeStatement(String query) {
 		Statement statement;
 		try {
 			statement = connection.createStatement();
