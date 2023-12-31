@@ -3,9 +3,12 @@ package views;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import components.Alarm;
 import components.CButton;
 import components.Constants;
 import functions.Exit;
+
+import javax.swing.Box;
 import javax.swing.BoxLayout;
 import java.awt.BorderLayout;
 import javax.swing.JButton;
@@ -19,21 +22,31 @@ import net.miginfocom.swing.MigLayout;
 import javax.swing.SwingConstants;
 import java.awt.Image;
 import java.awt.Toolkit;
-import javax.swing.border.MatteBorder;
+import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import java.awt.Font;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class MainWindow extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
+	private static JPanel alertPanel = new JPanel();
+	private static JLabel lblAlerts = null;
+	private static ArrayList<Alarm> alarmList = null;
 
 	public MainWindow() {
 		// setExtendedState(JFrame.MAXIMIZED_BOTH);
+		alarmList = new ArrayList<Alarm>();
+		alertPanel.setMinimumSize(new Dimension(1000, 1000));
+		alertPanel.setAutoscrolls(true);
+		alertPanel.setBackground(Constants.getSurfaceColor());
+		alertPanel.setLayout(new BoxLayout(alertPanel, BoxLayout.Y_AXIS));
 		setIconImage(Toolkit.getDefaultToolkit().getImage(MainWindow.class.getResource("/assets/logoF.png")));
 		setTitle("Mantenimiento de Equipos");
 		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-		setBounds(100, 100, 678, 503);
+		setBounds(100, 100, 885, 503);
 		setLocationRelativeTo(null);
 		addWindowListener(new Exit());
 		contentPane = new JPanel();
@@ -55,16 +68,6 @@ public class MainWindow extends JFrame {
 		menuPanel.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
 		menuPanel.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
 		leftScrollPane.setViewportView(menuPanel);
-
-		JScrollPane centerScrollPane = new JScrollPane();
-		centerScrollPane.setBorder(null);
-		contentPane.add(centerScrollPane, BorderLayout.CENTER);
-
-		JPanel alertPanel = new JPanel();
-		alertPanel.setBorder(new MatteBorder(0, 1, 0, 0, Constants.getDecoratorColor()));
-		alertPanel.setBackground(Constants.getSurfaceColorB());
-		centerScrollPane.setViewportView(alertPanel);
-		alertPanel.setLayout(new BoxLayout(alertPanel, BoxLayout.X_AXIS));
 
 		JLabel lblStatusBar = new JLabel("Actualizado el 24 diciembre del 2023 a las 3:14pm");
 		lblStatusBar.setHorizontalAlignment(SwingConstants.RIGHT);
@@ -101,15 +104,27 @@ public class MainWindow extends JFrame {
 		lblTitle.setHorizontalTextPosition(SwingConstants.CENTER);
 		titlePanel.add(lblTitle, BorderLayout.CENTER);
 
-		JLabel lblAlerts = new JLabel("No hay alertas");
+		lblAlerts = new JLabel("");
 		lblAlerts.setForeground(Constants.getTextColor());
 		lblAlerts.setHorizontalAlignment(SwingConstants.RIGHT);
 		titlePanel.add(lblAlerts, BorderLayout.SOUTH);
-
+		updateAlertsMessage();
+		
+		
 		JButton btnRegistro = new CButton("Registro");
+		btnRegistro.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				addAlert(new Alarm());
+			}
+		});
 		menuPanel.add(btnRegistro, "cell 0 0,grow");
 
 		JButton btnRutinas = new CButton("Rutinas de mantenimiento");
+		btnRutinas.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				removeAlert(0);
+			}
+		});
 		menuPanel.add(btnRutinas, "cell 0 1,grow");
 
 		JButton btnStock = new CButton("Stock de repuestos");
@@ -125,6 +140,63 @@ public class MainWindow extends JFrame {
 
 		JButton btnSalir = new CButton("Salir");
 		menuPanel.add(btnSalir, "cell 0 7,grow");
+
+		JScrollPane centralScrollpane = new JScrollPane();
+		centralScrollpane.setBorder(null);
+		centralScrollpane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+		centralScrollpane.setBackground(Constants.getSurfaceColor());
+		contentPane.add(centralScrollpane, BorderLayout.CENTER);
+		centralScrollpane.setViewportView(alertPanel);
+
 		btnSalir.addActionListener(new Exit());
+	}
+
+	private static void refreshAlertPanel() {
+
+		alertPanel.removeAll();
+		alertPanel.setSize(alertPanel.getSize().width, 1);
+
+		for (int i = 0; i < alarmList.size(); i++) {
+			Alarm alarm = alarmList.get(i);
+			alarm.setAlarmIndex(i);
+			alertPanel.add(alarm);
+			alertPanel.add(Box.createVerticalStrut(3));
+			setAlertPanelSize(alarm.getSize().height, i);
+		
+
+		}
+		updateAlertsMessage();
+		alertPanel.revalidate();
+		alertPanel.repaint();
+
+	}
+
+	private static void updateAlertsMessage(){
+		int alertsCuantity = alarmList.size();
+		if(alertsCuantity == 0) {
+			lblAlerts.setText("No hay alertas");
+			return;
+		}
+		
+		lblAlerts.setText("Se encontraron " + alertsCuantity + " alertas pendientes");
+		
+	}
+	
+	private static void setAlertPanelSize(double alarmHeight, int index) {
+		alertPanel.setSize(alertPanel.getSize().width, (int) (alarmHeight * index));
+
+	}
+
+	public static void addAlert(Alarm alarm) {
+		alarmList.add(alarm);
+		refreshAlertPanel();
+	}
+
+	public static void removeAlert(int index) {
+		if(alarmList.size() == 0) {
+			return;
+		}
+		alarmList.remove(index);
+		refreshAlertPanel();
 	}
 }
