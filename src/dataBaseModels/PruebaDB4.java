@@ -6,7 +6,7 @@ public class PruebaDB4 extends AbstractDataBaseModel {
 
 	public PruebaDB4() throws ClassNotFoundException, SQLException {
 		super("Prueba4");
-	
+
 	}
 
 	@Override
@@ -16,7 +16,5 @@ public class PruebaDB4 extends AbstractDataBaseModel {
 		String query = queryBuilder.toString();
 		return executeStatement(query);
 	}
-
-
 
 }

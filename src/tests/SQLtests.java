@@ -37,7 +37,7 @@ public class SQLtests {
 			e.printStackTrace();
 		}
 	}
-	
+
 	@Test
 	public void UpdateRecord() {
 		try {
@@ -52,8 +52,7 @@ public class SQLtests {
 			e.printStackTrace();
 		}
 	}
-	
-	
+
 	@Test
 	public void FindRecord() {
 		try {
@@ -62,8 +61,8 @@ public class SQLtests {
 			params.put("nombre", "Guillermo");
 			params.put("id", "2");
 			ResultSet rs = prueba.findRecord(params);
-			
-			while(rs.next()) {
+
+			while (rs.next()) {
 				System.out.println(rs.getString("nombre"));
 			}
 
@@ -72,14 +71,14 @@ public class SQLtests {
 			e.printStackTrace();
 		}
 	}
-	
+
 	@Test
 	public void FindRecords() {
 		try {
 			PruebaDB3 prueba = new PruebaDB3();
 			ResultSet rs = prueba.findRecords();
-			
-			while(rs.next()) {
+
+			while (rs.next()) {
 				System.out.println(rs.getString("nombre"));
 			}
 

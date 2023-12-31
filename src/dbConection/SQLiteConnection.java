@@ -1,27 +1,24 @@
 package dbConection;
 
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-
 import systemsUtilitys.*;
-
 
 public class SQLiteConnection {
 
 	private static Connection connection;
 	private static String homeFolder = CrearteHomeFolder.createFolderInDocuments("DataBases");
-	
+
 	private SQLiteConnection() {
 		connection = null;
 	}
 
 	private static void startConection() throws ClassNotFoundException, SQLException {
-			
+
 		Class.forName("org.sqlite.JDBC");
-		String dbUrl = "jdbc:sqlite:"+homeFolder+"/dataBase.db";
+		String dbUrl = "jdbc:sqlite:" + homeFolder + "/dataBase.db";
 		connection = DriverManager.getConnection(dbUrl);
 		System.out.println("Conexión exitosa a la base de datos SQLite.");
 	}

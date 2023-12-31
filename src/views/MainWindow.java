@@ -23,7 +23,6 @@ import javax.swing.border.MatteBorder;
 import javax.swing.ImageIcon;
 import java.awt.Font;
 
-
 public class MainWindow extends JFrame {
 
 	private static final long serialVersionUID = 1L;
@@ -31,7 +30,7 @@ public class MainWindow extends JFrame {
 
 	public MainWindow() {
 		// setExtendedState(JFrame.MAXIMIZED_BOTH);
-		setIconImage(Toolkit.getDefaultToolkit().getImage(MainWindow.class.getResource("/assets/logoA.jpg")));
+		setIconImage(Toolkit.getDefaultToolkit().getImage(MainWindow.class.getResource("/assets/logoF.png")));
 		setTitle("Mantenimiento de Equipos");
 		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		setBounds(100, 100, 678, 503);

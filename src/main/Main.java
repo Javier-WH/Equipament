@@ -15,7 +15,7 @@ public class Main {
 			if (isComplete) {
 				MainWindow mainWindow = new MainWindow();
 				mainWindow.setVisible(true);
-			}else {
+			} else {
 				JOptionPane.showMessageDialog(null, "Las bases de datos no estan completas");
 				System.exit(2);
 			}

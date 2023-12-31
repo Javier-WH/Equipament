@@ -52,10 +52,10 @@ public abstract class AbstractDataBaseModel implements DataBaseModel {
 
 		queryBuilder.append(String.join(" AND ", conditions)).append(";");
 		String query = queryBuilder.toString();
-	
+
 		Statement statement = connection.createStatement();
 		return statement.executeQuery(query);
-	
+
 	}
 
 	@Override
@@ -78,11 +78,11 @@ public abstract class AbstractDataBaseModel implements DataBaseModel {
 		queryBuilder.append(String.join(", ", updates)).append(" WHERE id = ").append(criteria.get("id")).append(";");
 
 		String query = queryBuilder.toString();
-	
+
 		Statement statement = connection.createStatement();
 		int rowsUpdated = statement.executeUpdate(query);
 		return rowsUpdated > 0;
-	
+
 	}
 
 	@Override
@@ -99,7 +99,7 @@ public abstract class AbstractDataBaseModel implements DataBaseModel {
 
 		queryBuilder.append(String.join(" AND ", conditions)).append(";");
 		String query = queryBuilder.toString();
-	
+
 		Statement statement = connection.createStatement();
 		int rowsDeleted = statement.executeUpdate(query);
 		return rowsDeleted > 0;
@@ -124,7 +124,6 @@ public abstract class AbstractDataBaseModel implements DataBaseModel {
 		queryBuilder.append(String.join("' , '", values)).append("');");
 
 		String query = queryBuilder.toString();
-		
 
 		Statement statement = connection.createStatement();
 		int rowsInserted = statement.executeUpdate(query);

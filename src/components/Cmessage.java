@@ -13,7 +13,6 @@ import javax.swing.SwingConstants;
 import java.awt.Font;
 import java.awt.Toolkit;
 
-
 public class Cmessage extends JDialog {
 
 	private static final long serialVersionUID = 1L;
@@ -21,18 +20,18 @@ public class Cmessage extends JDialog {
 	private ActionListener okActionListener;
 	private ActionListener cancelActionListener;
 
-	/**
-	 * @wbp.parser.constructor
-	 */
-	public Cmessage( String okText, String cancelText, String messageText, ActionListener okActionListener) {
-
+	public Cmessage(String okText, String cancelText, String messageText, ActionListener okActionListener) {
 
 		this(okText, cancelText, messageText, okActionListener, null);
 	}
 
-	public Cmessage( String okText, String cancelText, String messageText, ActionListener okActionListener, ActionListener cancelActionListener) {
+	/**
+	 * @wbp.parser.constructor
+	 */
+	public Cmessage(String okText, String cancelText, String messageText, ActionListener okActionListener,
+			ActionListener cancelActionListener) {
 		super();
-		setIconImage(Toolkit.getDefaultToolkit().getImage(Cmessage.class.getResource("/assets/logoA.jpg")));
+		setIconImage(Toolkit.getDefaultToolkit().getImage(Cmessage.class.getResource("/assets/logoF.png")));
 		this.okActionListener = okActionListener;
 		this.cancelActionListener = cancelActionListener;
 		contentPanel.setBackground(Constants.getSurfaceColor());

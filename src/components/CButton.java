@@ -24,8 +24,7 @@ public class CButton extends JButton {
 		setForeground(Constants.getMainColor());
 		setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		setFont(Constants.getMainFont());
-		
-		
+
 		addMouseListener(new MouseListener() {
 
 			@Override
@@ -43,7 +42,7 @@ public class CButton extends JButton {
 			@Override
 			public void mouseReleased(MouseEvent e) {
 				if (isOver) {
-			
+
 					setBackground(Constants.getMainColor());
 					setForeground(Constants.getSurfaceColor());
 				} else {

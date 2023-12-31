@@ -16,7 +16,8 @@ public class CrearteHomeFolder {
 			if (created) {
 				return folderPath;
 			} else {
-				JOptionPane.showMessageDialog(null, "No se puede encontrar la base de datos", "Error", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(null, "No se puede encontrar la base de datos", "Error",
+						JOptionPane.ERROR_MESSAGE);
 				System.exit(1);
 				return null;
 			}
