@@ -10,7 +10,7 @@ import java.awt.Cursor;
 import javax.swing.UIManager;
 import java.awt.Dimension;
 
-public class Alarm extends JPanel {
+public class Alarm extends JPanel implements AlarmSchema {
 
 	private static final long serialVersionUID = 1L;
 
@@ -22,8 +22,6 @@ public class Alarm extends JPanel {
 		setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		setBackground(new Color(255, 0, 0));
 		setLayout(null);
-
-		
 
 		JLabel lblLogo = new JLabel();
 		lblLogo.setPreferredSize(new Dimension(322, 147));
@@ -63,6 +61,7 @@ public class Alarm extends JPanel {
 
 	public void setAlarmIndex(int alarmIndex) {
 		this.alarmIndex = alarmIndex;
+
 	}
 
 }

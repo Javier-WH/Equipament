@@ -4,10 +4,10 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import components.Alarm;
+import components.AlarmSchema;
 import components.CButton;
 import components.Constants;
 import functions.Exit;
-
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import java.awt.BorderLayout;
@@ -27,6 +27,9 @@ import javax.swing.ImageIcon;
 import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.border.MatteBorder;
+import java.awt.Color;
+
 
 public class MainWindow extends JFrame {
 
@@ -34,26 +37,29 @@ public class MainWindow extends JFrame {
 	private JPanel contentPane;
 	private static JPanel alertPanel = new JPanel();
 	private static JLabel lblAlerts = null;
-	private static ArrayList<Alarm> alarmList = null;
+	private static ArrayList<AlarmSchema> alarmList = null;
 
 	public MainWindow() {
 		// setExtendedState(JFrame.MAXIMIZED_BOTH);
-		alarmList = new ArrayList<Alarm>();
-		alertPanel.setMinimumSize(new Dimension(1000, 1000));
-		alertPanel.setAutoscrolls(true);
-		alertPanel.setBackground(Constants.getSurfaceColor());
-		alertPanel.setLayout(new BoxLayout(alertPanel, BoxLayout.Y_AXIS));
+		alarmList = new ArrayList<AlarmSchema>();
 		setIconImage(Toolkit.getDefaultToolkit().getImage(MainWindow.class.getResource("/assets/logoF.png")));
 		setTitle("Mantenimiento de Equipos");
 		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		setBounds(100, 100, 885, 503);
 		setLocationRelativeTo(null);
 		addWindowListener(new Exit());
+		
 		contentPane = new JPanel();
 		contentPane.setBackground(Constants.getSurfaceColor());
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(contentPane);
 		contentPane.setLayout(new BorderLayout(5, 0));
+		setContentPane(contentPane);
+		
+		alertPanel.setBorder(new MatteBorder(0, 2, 0, 0, (Color) new Color(86, 101, 115)));
+		alertPanel.setMinimumSize(new Dimension(1000, 1000));
+		alertPanel.setAutoscrolls(true);
+		alertPanel.setBackground(Constants.getSurfaceColor());
+		alertPanel.setLayout(new BoxLayout(alertPanel, BoxLayout.Y_AXIS));
 
 		JScrollPane leftScrollPane = new JScrollPane();
 		leftScrollPane.setBorder(null);
@@ -109,8 +115,7 @@ public class MainWindow extends JFrame {
 		lblAlerts.setHorizontalAlignment(SwingConstants.RIGHT);
 		titlePanel.add(lblAlerts, BorderLayout.SOUTH);
 		updateAlertsMessage();
-		
-		
+
 		JButton btnRegistro = new CButton("Registro");
 		btnRegistro.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -157,12 +162,12 @@ public class MainWindow extends JFrame {
 		alertPanel.setSize(alertPanel.getSize().width, 1);
 
 		for (int i = 0; i < alarmList.size(); i++) {
-			Alarm alarm = alarmList.get(i);
+			AlarmSchema alarm =  alarmList.get(i);
 			alarm.setAlarmIndex(i);
-			alertPanel.add(alarm);
+			JPanel panelAlarm = (JPanel) alarm; 
+			alertPanel.add(panelAlarm);
 			alertPanel.add(Box.createVerticalStrut(3));
-			setAlertPanelSize(alarm.getSize().height, i);
-		
+			setAlertPanelSize(panelAlarm.getSize().height, i);
 
 		}
 		updateAlertsMessage();
@@ -171,17 +176,17 @@ public class MainWindow extends JFrame {
 
 	}
 
-	private static void updateAlertsMessage(){
+	private static void updateAlertsMessage() {
 		int alertsCuantity = alarmList.size();
-		if(alertsCuantity == 0) {
+		if (alertsCuantity == 0) {
 			lblAlerts.setText("No hay alertas");
 			return;
 		}
-		
+
 		lblAlerts.setText("Se encontraron " + alertsCuantity + " alertas pendientes");
-		
+
 	}
-	
+
 	private static void setAlertPanelSize(double alarmHeight, int index) {
 		alertPanel.setSize(alertPanel.getSize().width, (int) (alarmHeight * index));
 
@@ -193,7 +198,7 @@ public class MainWindow extends JFrame {
 	}
 
 	public static void removeAlert(int index) {
-		if(alarmList.size() == 0) {
+		if (alarmList.size() == 0) {
 			return;
 		}
 		alarmList.remove(index);
