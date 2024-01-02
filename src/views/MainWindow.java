@@ -7,6 +7,7 @@ import components.Alarm;
 import components.AlarmSchema;
 import components.CButton;
 import components.Constants;
+import dataBaseModels.DateTest;
 import functions.Exit;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -19,16 +20,21 @@ import javax.swing.JLabel;
 import java.awt.ComponentOrientation;
 import java.awt.Dimension;
 import net.miginfocom.swing.MigLayout;
+import systemsUtilitys.DateHandler;
+
 import javax.swing.SwingConstants;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.util.ArrayList;
+import java.util.HashMap;
 import javax.swing.ImageIcon;
 import java.awt.Font;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 import javax.swing.border.MatteBorder;
 import java.awt.Color;
+import java.time.LocalDate;
 
 
 public class MainWindow extends JFrame {
@@ -48,13 +54,13 @@ public class MainWindow extends JFrame {
 		setBounds(100, 100, 885, 503);
 		setLocationRelativeTo(null);
 		addWindowListener(new Exit());
-		
+
 		contentPane = new JPanel();
 		contentPane.setBackground(Constants.getSurfaceColor());
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(5, 0));
 		setContentPane(contentPane);
-		
+
 		alertPanel.setBorder(new MatteBorder(0, 2, 0, 0, (Color) new Color(86, 101, 115)));
 		alertPanel.setMinimumSize(new Dimension(1000, 1000));
 		alertPanel.setAutoscrolls(true);
@@ -133,6 +139,22 @@ public class MainWindow extends JFrame {
 		menuPanel.add(btnRutinas, "cell 0 1,grow");
 
 		JButton btnStock = new CButton("Stock de repuestos");
+		btnStock.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					HashMap<String, String> data = new HashMap<>();
+					data.put("fecha",  DateHandler.dateToString(LocalDate.now()));
+					DateTest dt = new DateTest();
+					dt.createRecord(data);
+				} catch (ClassNotFoundException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+		});
 		menuPanel.add(btnStock, "cell 0 2,grow");
 
 		JButton btnNuevo = new CButton("Nuevo mantenimiento");
@@ -162,9 +184,9 @@ public class MainWindow extends JFrame {
 		alertPanel.setSize(alertPanel.getSize().width, 1);
 
 		for (int i = 0; i < alarmList.size(); i++) {
-			AlarmSchema alarm =  alarmList.get(i);
+			AlarmSchema alarm = alarmList.get(i);
 			alarm.setAlarmIndex(i);
-			JPanel panelAlarm = (JPanel) alarm; 
+			JPanel panelAlarm = (JPanel) alarm;
 			alertPanel.add(panelAlarm);
 			alertPanel.add(Box.createVerticalStrut(3));
 			setAlertPanelSize(panelAlarm.getSize().height, i);

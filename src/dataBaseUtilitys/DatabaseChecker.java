@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import dataBaseModels.DataBaseModel;
+import dataBaseModels.DateTest;
 import dataBaseModels.PruebaDB3;
 import dataBaseModels.PruebaDB4;
 import dbConection.*;
@@ -19,6 +20,8 @@ public class DatabaseChecker {
 		connection = SQLiteConnection.getConnection();
 		TableList.add(new PruebaDB3());
 		TableList.add(new PruebaDB4());
+		TableList.add(new DateTest());
+		
 
 	}
 
