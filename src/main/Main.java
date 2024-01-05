@@ -2,7 +2,8 @@ package main;
 
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
-import dataBaseUtilitys.DatabaseChecker;
+
+import utilitys.DatabaseChecker;
 import views.MainWindow;
 
 public class Main {

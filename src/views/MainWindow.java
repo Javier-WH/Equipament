@@ -7,7 +7,6 @@ import components.Alarm;
 import components.AlarmSchema;
 import components.CButton;
 import components.Constants;
-import dataBaseModels.DateTest;
 import functions.Exit;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -20,21 +19,17 @@ import javax.swing.JLabel;
 import java.awt.ComponentOrientation;
 import java.awt.Dimension;
 import net.miginfocom.swing.MigLayout;
-import systemsUtilitys.DateHandler;
-
 import javax.swing.SwingConstants;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.util.ArrayList;
-import java.util.HashMap;
 import javax.swing.ImageIcon;
 import java.awt.Font;
 import java.awt.event.ActionListener;
-import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 import javax.swing.border.MatteBorder;
 import java.awt.Color;
-import java.time.LocalDate;
+
 
 
 public class MainWindow extends JFrame {
@@ -123,9 +118,11 @@ public class MainWindow extends JFrame {
 		updateAlertsMessage();
 
 		JButton btnRegistro = new CButton("Registro");
+		btnRegistro.setText("Equipo");
 		btnRegistro.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				addAlert(new Alarm());
+				EquipamentsFrame EF = new EquipamentsFrame(contentPane);
+				EF.setVisible(true);
 			}
 		});
 		menuPanel.add(btnRegistro, "cell 0 0,grow");
@@ -133,7 +130,7 @@ public class MainWindow extends JFrame {
 		JButton btnRutinas = new CButton("Rutinas de mantenimiento");
 		btnRutinas.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				removeAlert(0);
+
 			}
 		});
 		menuPanel.add(btnRutinas, "cell 0 1,grow");
@@ -141,18 +138,7 @@ public class MainWindow extends JFrame {
 		JButton btnStock = new CButton("Stock de repuestos");
 		btnStock.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				try {
-					HashMap<String, String> data = new HashMap<>();
-					data.put("fecha",  DateHandler.dateToString(LocalDate.now()));
-					DateTest dt = new DateTest();
-					dt.createRecord(data);
-				} catch (ClassNotFoundException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				} catch (SQLException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
+
 			}
 		});
 		menuPanel.add(btnStock, "cell 0 2,grow");
@@ -176,6 +162,8 @@ public class MainWindow extends JFrame {
 		centralScrollpane.setViewportView(alertPanel);
 
 		btnSalir.addActionListener(new Exit());
+
+	
 	}
 
 	private static void refreshAlertPanel() {
@@ -226,4 +214,5 @@ public class MainWindow extends JFrame {
 		alarmList.remove(index);
 		refreshAlertPanel();
 	}
+
 }
