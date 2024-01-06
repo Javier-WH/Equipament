@@ -103,18 +103,40 @@ public class MainWindow extends JFrame {
 		titlePanel.setBackground(Constants.getSurfaceColor());
 		northPanel.add(titlePanel, BorderLayout.CENTER);
 		titlePanel.setLayout(new BorderLayout(0, 0));
-
-		JLabel lblTitle = new JLabel("    Mantenimiento de Equipos");
-		lblTitle.setFont(new Font("Tahoma", Font.BOLD, 18));
-		lblTitle.setForeground(Constants.getTextColor());
-		lblTitle.setHorizontalAlignment(SwingConstants.LEFT);
-		lblTitle.setHorizontalTextPosition(SwingConstants.CENTER);
-		titlePanel.add(lblTitle, BorderLayout.CENTER);
-
-		lblAlerts = new JLabel("");
-		lblAlerts.setForeground(Constants.getTextColor());
-		lblAlerts.setHorizontalAlignment(SwingConstants.RIGHT);
-		titlePanel.add(lblAlerts, BorderLayout.SOUTH);
+		
+				lblAlerts = new JLabel("");
+				lblAlerts.setForeground(Constants.getTextColor());
+				lblAlerts.setHorizontalAlignment(SwingConstants.RIGHT);
+				titlePanel.add(lblAlerts, BorderLayout.SOUTH);
+				
+				JPanel panel = new JPanel();
+				panel.setOpaque(false);
+				titlePanel.add(panel, BorderLayout.CENTER);
+						panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+						
+						JLabel lblSistemaDeAlertas = new JLabel("Sistema de alertas");
+						lblSistemaDeAlertas.setVerticalAlignment(SwingConstants.TOP);
+						lblSistemaDeAlertas.setHorizontalTextPosition(SwingConstants.CENTER);
+						lblSistemaDeAlertas.setHorizontalAlignment(SwingConstants.LEFT);
+						lblSistemaDeAlertas.setForeground(Color.WHITE);
+						lblSistemaDeAlertas.setFont(new Font("Californian FB", Font.BOLD, 15));
+						panel.add(lblSistemaDeAlertas);
+						
+						JLabel lblTurbocompresorMarcaSolar = new JLabel("Turbocompresor Marca Solar  ");
+						panel.add(lblTurbocompresorMarcaSolar);
+						lblTurbocompresorMarcaSolar.setVerticalAlignment(SwingConstants.BOTTOM);
+						lblTurbocompresorMarcaSolar.setHorizontalTextPosition(SwingConstants.CENTER);
+						lblTurbocompresorMarcaSolar.setHorizontalAlignment(SwingConstants.LEFT);
+						lblTurbocompresorMarcaSolar.setForeground(Color.WHITE);
+						lblTurbocompresorMarcaSolar.setFont(new Font("Californian FB", Font.BOLD, 30));
+				
+						JLabel lblTitle = new JLabel("Modelo Centauro 40  ");
+						panel.add(lblTitle);
+						lblTitle.setVerticalAlignment(SwingConstants.TOP);
+						lblTitle.setFont(new Font("Californian FB", Font.BOLD, 19));
+						lblTitle.setForeground(Constants.getTextColor());
+						lblTitle.setHorizontalAlignment(SwingConstants.LEFT);
+						lblTitle.setHorizontalTextPosition(SwingConstants.CENTER);
 		updateAlertsMessage();
 
 		JButton btnRegistro = new CButton("Registro");
