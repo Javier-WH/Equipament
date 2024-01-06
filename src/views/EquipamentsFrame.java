@@ -27,6 +27,8 @@ import java.awt.Component;
 import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.layout.ColumnSpec;
 import com.jgoodies.forms.layout.RowSpec;
+import com.jgoodies.forms.layout.FormSpecs;
+
 
 
 
@@ -38,8 +40,7 @@ public class EquipamentsFrame extends FrameModel {
 
 	public EquipamentsFrame(JPanel parent) {
 		super(parent, "Equipos");
-		setPreferredSize(new Dimension(2000, 600));
-		setType(Type.POPUP);
+		setModalExclusionType(ModalExclusionType.APPLICATION_EXCLUDE);
 		UIManager.put("TabbedPane.selected", Constants.getMainColor());
 		tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		tabbedPane.setBorder(null);
@@ -179,18 +180,47 @@ public class EquipamentsFrame extends FrameModel {
 		panel_2.add(lblNewLabel_5);
 		lblNewLabel_5.setForeground(Constants.getTextColor());
 		
+		JScrollPane scrollPane_2 = new JScrollPane();
+		scrollPane_2.setMaximumSize(new Dimension(32767, 500));
+		scrollPane_2.setBorder(null);
+		workingParamsPanel.add(scrollPane_2, BorderLayout.CENTER);
+		
 		JPanel panel_3 = new JPanel();
-		workingParamsPanel.add(panel_3, BorderLayout.CENTER);
+		panel_3.setMinimumSize(new Dimension(10, 500));
+		panel_3.setMaximumSize(new Dimension(500, 500));
+		panel_3.setAlignmentX(Component.LEFT_ALIGNMENT);
+		scrollPane_2.setViewportView(panel_3);
 		panel_3.setLayout(new FormLayout(new ColumnSpec[] {
 				ColumnSpec.decode("10dlu"),
-				ColumnSpec.decode("46px:grow"),
+				FormSpecs.PREF_COLSPEC,
 				ColumnSpec.decode("75px:grow"),
 				ColumnSpec.decode("46px:grow"),
 				ColumnSpec.decode("75px:grow"),
 				ColumnSpec.decode("10px"),},
 			new RowSpec[] {
-				RowSpec.decode("48px"),
-				RowSpec.decode("14px"),}));
+				RowSpec.decode("20dlu"),
+				RowSpec.decode("15dlu"),
+				RowSpec.decode("15dlu"),
+				RowSpec.decode("15dlu"),
+				RowSpec.decode("15dlu"),
+				RowSpec.decode("15dlu"),
+				RowSpec.decode("30dlu"),
+				RowSpec.decode("15dlu"),
+				RowSpec.decode("15dlu"),
+				RowSpec.decode("15dlu"),
+				RowSpec.decode("15dlu"),
+				RowSpec.decode("15dlu"),
+				RowSpec.decode("15dlu"),
+				RowSpec.decode("15dlu"),
+				RowSpec.decode("15dlu"),
+				RowSpec.decode("15dlu"),
+				RowSpec.decode("15dlu"),
+				RowSpec.decode("15dlu"),
+				RowSpec.decode("15dlu"),
+				RowSpec.decode("15dlu"),
+				RowSpec.decode("15dlu"),
+				RowSpec.decode("15dlu"),
+				RowSpec.decode("15dlu"),}));
 		
 		JLabel lblNewLabel_10 = new JLabel("");
 		lblNewLabel_10.setOpaque(true);
@@ -198,28 +228,28 @@ public class EquipamentsFrame extends FrameModel {
 		lblNewLabel_10.setBackground(Constants.getSurfaceColor());
 		
 		JLabel lblNewLabel_6 = new JLabel("Descripción");
-		lblNewLabel_6.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		lblNewLabel_6.setFont(new Font("Tahoma", Font.BOLD, 13));
 		lblNewLabel_6.setOpaque(true);
 		lblNewLabel_6.setBackground(Constants.getSurfaceColor());
 		lblNewLabel_6.setForeground(Constants.getTextColor());
 		panel_3.add(lblNewLabel_6, "2, 1, fill, fill");
 		
 		JLabel lblNewLabel_7 = new JLabel("Alarma");
-		lblNewLabel_7.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		lblNewLabel_7.setFont(new Font("Tahoma", Font.BOLD, 13));
 		lblNewLabel_7.setOpaque(true);
 		lblNewLabel_7.setBackground(Constants.getSurfaceColor());
 		lblNewLabel_7.setForeground(Constants.getTextColor());
 		panel_3.add(lblNewLabel_7, "3, 1, fill, fill");
 		
 		JLabel lblNewLabel_8 = new JLabel("Parada");
-		lblNewLabel_8.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		lblNewLabel_8.setFont(new Font("Tahoma", Font.BOLD, 13));
 		lblNewLabel_8.setOpaque(true);
 		lblNewLabel_8.setBackground(Constants.getSurfaceColor());
 		lblNewLabel_8.setForeground(Constants.getTextColor());
 		panel_3.add(lblNewLabel_8, "4, 1, fill, fill");
 		
 		JLabel lblNewLabel_9 = new JLabel("Rangos Normales de operación ");
-		lblNewLabel_9.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		lblNewLabel_9.setFont(new Font("Tahoma", Font.BOLD, 13));
 		lblNewLabel_9.setOpaque(true);
 		lblNewLabel_9.setBackground(Constants.getSurfaceColor());
 		lblNewLabel_9.setForeground(Constants.getTextColor());
@@ -230,8 +260,788 @@ public class EquipamentsFrame extends FrameModel {
 		lblNewLabel_10_1.setBackground(Constants.getSurfaceColor());
 		panel_3.add(lblNewLabel_10_1, "6, 1, fill, fill");
 		
+		JLabel lblNewLabel_15 = new JLabel("");
+		lblNewLabel_15.setForeground(Constants.getSurfaceColor());
+		lblNewLabel_15.setBorder(new MatteBorder(0, 1, 1, 0, Constants.getSurfaceColor()));
+		panel_3.add(lblNewLabel_15, "1, 2, fill, fill");
+		
 		JLabel lblNewLabel_11 = new JLabel("Temperatura en la entrada de aire en la turbina");
+		lblNewLabel_11.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel_11.setForeground(Constants.getSurfaceColor());
+		lblNewLabel_11.setBorder(new MatteBorder(0, 0, 1, 1, Constants.getSurfaceColor()));
 		panel_3.add(lblNewLabel_11, "2, 2, fill, fill");
+		
+		JLabel lblNewLabel_12 = new JLabel("120°F(Baja)");
+		lblNewLabel_12.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel_12.setForeground(Constants.getSurfaceColor());
+		lblNewLabel_12.setBorder(new MatteBorder(0, 0, 1, 1, Constants.getSurfaceColor()));
+		panel_3.add(lblNewLabel_12, "3, 2, fill, fill");
+		
+		JLabel lblNewLabel_13 = new JLabel("No Aplica");
+		lblNewLabel_13.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel_13.setForeground(Constants.getSurfaceColor());
+		lblNewLabel_13.setBorder(new MatteBorder(0, 0, 1, 1, Constants.getSurfaceColor()));
+		panel_3.add(lblNewLabel_13, "4, 2, fill, fill");
+		
+		JLabel lblNewLabel_14 = new JLabel("75°F a 85°F");
+		lblNewLabel_14.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel_14.setForeground(Constants.getSurfaceColor());
+		lblNewLabel_14.setBorder(new MatteBorder(0, 0, 1, 0, Constants.getSurfaceColor()));
+		panel_3.add(lblNewLabel_14, "5, 2, fill, fill");
+		
+		JLabel lblNewLabel_16 = new JLabel("");
+		lblNewLabel_16.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel_16.setForeground(Constants.getSurfaceColor());
+		lblNewLabel_16.setBorder(new MatteBorder(0, 0, 1, 1, Constants.getSurfaceColor()));
+		panel_3.add(lblNewLabel_16, "6, 2, fill, fill");
+		
+		JLabel lblNewLabel_15_1 = new JLabel("");
+		lblNewLabel_15_1.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel_15_1.setForeground(Constants.getSurfaceColor());
+		lblNewLabel_15_1.setBorder(new MatteBorder(0, 1, 1, 0, Constants.getSurfaceColor()));
+		panel_3.add(lblNewLabel_15_1, "1, 3, fill, fill");
+		
+		JLabel lblNewLabel_12_1 = new JLabel("Temperatura en la descarga de compresor");
+		lblNewLabel_12_1.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel_12_1.setForeground(Constants.getSurfaceColor());
+		lblNewLabel_12_1.setBorder(new MatteBorder(0, 0, 1, 1, Constants.getSurfaceColor()));
+		panel_3.add(lblNewLabel_12_1, "2, 3, fill, fill");
+		
+		JLabel lblNewLabel_17 = new JLabel("215°F (Baja)");
+		lblNewLabel_17.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel_17.setForeground(Constants.getSurfaceColor());
+		lblNewLabel_17.setBorder(new MatteBorder(0, 0, 1, 1, Constants.getSurfaceColor()));
+		panel_3.add(lblNewLabel_17, "3, 3, fill, fill");
+		
+		JLabel lblNewLabel_13_1 = new JLabel("220°F(Alta)");
+		lblNewLabel_13_1.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel_13_1.setForeground(Constants.getSurfaceColor());
+		lblNewLabel_13_1.setBorder(new MatteBorder(0, 0, 1, 1, Constants.getSurfaceColor()));
+		panel_3.add(lblNewLabel_13_1, "4, 3, fill, fill");
+		
+		JLabel lblNewLabel_14_1 = new JLabel("115°F a 125°F");
+		lblNewLabel_14_1.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel_14_1.setForeground(Constants.getSurfaceColor());
+		lblNewLabel_14_1.setBorder(new MatteBorder(0, 0, 1, 0, Constants.getSurfaceColor()));
+		panel_3.add(lblNewLabel_14_1, "5, 3, fill, fill");
+		
+		JLabel lblNewLabel_16_1 = new JLabel("");
+		lblNewLabel_16_1.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel_16_1.setForeground(Constants.getSurfaceColor());
+		lblNewLabel_16_1.setBorder(new MatteBorder(0, 0, 1, 1, Constants.getSurfaceColor()));
+		panel_3.add(lblNewLabel_16_1, "6, 3, fill, fill");
+		
+		JLabel lblNewLabel_15_2 = new JLabel("");
+		lblNewLabel_15_2.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel_15_2.setForeground(Constants.getSurfaceColor());
+		lblNewLabel_15_2.setBorder(new MatteBorder(0, 1, 1, 0, Constants.getSurfaceColor()));
+		panel_3.add(lblNewLabel_15_2, "1, 4, fill, fill");
+		
+		JLabel lblNewLabel_12_2 = new JLabel("Temperatura de aceite de lubricante en cabezal ");
+		lblNewLabel_12_2.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel_12_2.setForeground(Constants.getSurfaceColor());
+		lblNewLabel_12_2.setBorder(new MatteBorder(0, 0, 1, 1, Constants.getSurfaceColor()));
+		panel_3.add(lblNewLabel_12_2, "2, 4, fill, fill");
+		
+		JLabel lblNewLabel_18 = new JLabel("170°F ");
+		lblNewLabel_18.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel_18.setForeground(Constants.getSurfaceColor());
+		lblNewLabel_18.setBorder(new MatteBorder(0, 0, 1, 1, Constants.getSurfaceColor()));
+		panel_3.add(lblNewLabel_18, "3, 4, fill, fill");
+		
+		JLabel lblNewLabel_13_2 = new JLabel("180°F(Alta)");
+		lblNewLabel_13_2.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel_13_2.setForeground(Constants.getSurfaceColor());
+		lblNewLabel_13_2.setBorder(new MatteBorder(0, 0, 1, 1, Constants.getSurfaceColor()));
+		panel_3.add(lblNewLabel_13_2, "4, 4");
+		
+		JLabel lblNewLabel_14_2 = new JLabel("130°F a 150° F");
+		lblNewLabel_14_2.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel_14_2.setForeground(Constants.getSurfaceColor());
+		lblNewLabel_14_2.setBorder(new MatteBorder(0, 0, 1, 0, Constants.getSurfaceColor()));
+		panel_3.add(lblNewLabel_14_2, "5, 4, fill, fill");
+		
+		JLabel lblNewLabel_16_2 = new JLabel("");
+		lblNewLabel_16_2.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel_16_2.setForeground(Constants.getSurfaceColor());
+		lblNewLabel_16_2.setBorder(new MatteBorder(0, 0, 1, 1, Constants.getSurfaceColor()));
+		panel_3.add(lblNewLabel_16_2, "6, 4, fill, fill");
+		
+		JLabel lblNewLabel_15_3 = new JLabel("");
+		lblNewLabel_15_3.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel_15_3.setForeground(Constants.getSurfaceColor());
+		lblNewLabel_15_3.setBorder(new MatteBorder(0, 1, 1, 0, Constants.getSurfaceColor()));
+		panel_3.add(lblNewLabel_15_3, "1, 5, fill, fill");
+		
+		JLabel lblNewLabel_12_3 = new JLabel("Temperatura de aceite de lubricante a la salida de los enfriadores");
+		lblNewLabel_12_3.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel_12_3.setForeground(Constants.getSurfaceColor());
+		lblNewLabel_12_3.setBorder(new MatteBorder(0, 0, 1, 1, Constants.getSurfaceColor()));
+		panel_3.add(lblNewLabel_12_3, "2, 5, fill, fill");
+		
+		JLabel lblNewLabel_18_1 = new JLabel("160°F ");
+		lblNewLabel_18_1.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel_18_1.setForeground(Constants.getSurfaceColor());
+		lblNewLabel_18_1.setBorder(new MatteBorder(0, 0, 1, 1, Constants.getSurfaceColor()));
+		panel_3.add(lblNewLabel_18_1, "3, 5, fill, fill");
+		
+		JLabel lblNewLabel_13_3 = new JLabel("No Aplica");
+		lblNewLabel_13_3.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel_13_3.setForeground(Constants.getSurfaceColor());
+		lblNewLabel_13_3.setBorder(new MatteBorder(0, 0, 1, 1, Constants.getSurfaceColor()));
+		panel_3.add(lblNewLabel_13_3, "4, 5, fill, fill");
+		
+		JLabel lblNewLabel_14_3 = new JLabel("95°F a 110°F");
+		lblNewLabel_14_3.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel_14_3.setForeground(Constants.getSurfaceColor());
+		lblNewLabel_14_3.setBorder(new MatteBorder(0, 0, 1, 0, Constants.getSurfaceColor()));
+		panel_3.add(lblNewLabel_14_3, "5, 5, fill, fill");
+		
+		JLabel lblNewLabel_16_3 = new JLabel("");
+		lblNewLabel_16_3.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel_16_3.setForeground(Constants.getSurfaceColor());
+		lblNewLabel_16_3.setBorder(new MatteBorder(0, 0, 1, 1, Constants.getSurfaceColor()));
+		panel_3.add(lblNewLabel_16_3, "6, 5, fill, fill");
+		
+		JLabel lblNewLabel_15_4 = new JLabel("");
+		lblNewLabel_15_4.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel_15_4.setForeground(Constants.getSurfaceColor());
+		lblNewLabel_15_4.setBorder(new MatteBorder(0, 1, 1, 0, Constants.getSurfaceColor()));
+		panel_3.add(lblNewLabel_15_4, "1, 6, fill, fill");
+		
+		JLabel lblNewLabel_12_4 = new JLabel("Presión de succión del compresor  ");
+		lblNewLabel_12_4.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel_12_4.setForeground(Constants.getSurfaceColor());
+		lblNewLabel_12_4.setBorder(new MatteBorder(0, 0, 1, 1, Constants.getSurfaceColor()));
+		panel_3.add(lblNewLabel_12_4, "2, 6, fill, fill");
+		
+		JLabel lblNewLabel_18_2 = new JLabel("420 PSI ");
+		lblNewLabel_18_2.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel_18_2.setForeground(Constants.getSurfaceColor());
+		lblNewLabel_18_2.setBorder(new MatteBorder(0, 0, 1, 1, Constants.getSurfaceColor()));
+		panel_3.add(lblNewLabel_18_2, "3, 6, fill, fill");
+		
+		JLabel lblNewLabel_13_4 = new JLabel("400 PSI(Baja)");
+		lblNewLabel_13_4.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel_13_4.setForeground(Constants.getSurfaceColor());
+		lblNewLabel_13_4.setBorder(new MatteBorder(0, 0, 1, 1, Constants.getSurfaceColor()));
+		panel_3.add(lblNewLabel_13_4, "4, 6, default, fill");
+		
+		JLabel lblNewLabel_14_4 = new JLabel("480 PSI a 600 PSI");
+		lblNewLabel_14_4.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel_14_4.setForeground(Constants.getSurfaceColor());
+		lblNewLabel_14_4.setBorder(new MatteBorder(0, 0, 1, 0, Constants.getSurfaceColor()));
+		panel_3.add(lblNewLabel_14_4, "5, 6, default, fill");
+		
+		JLabel lblNewLabel_16_4 = new JLabel("");
+		lblNewLabel_16_4.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel_16_4.setForeground(Constants.getSurfaceColor());
+		lblNewLabel_16_4.setBorder(new MatteBorder(0, 0, 1, 1, Constants.getSurfaceColor()));
+		panel_3.add(lblNewLabel_16_4, "6, 6, fill, fill");
+		
+		JLabel lblNewLabel_15_5 = new JLabel("");
+		lblNewLabel_15_5.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel_15_5.setForeground(Constants.getSurfaceColor());
+		lblNewLabel_15_5.setBorder(new MatteBorder(0, 1, 1, 0, Constants.getSurfaceColor()));
+		panel_3.add(lblNewLabel_15_5, "1, 7, fill, fill");
+		
+		JLabel lblNewLabel_12_5 = new JLabel("Presión de descarga del compresor");
+		lblNewLabel_12_5.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel_12_5.setForeground(Constants.getSurfaceColor());
+		lblNewLabel_12_5.setBorder(new MatteBorder(0, 0, 1, 1, Constants.getSurfaceColor()));
+		panel_3.add(lblNewLabel_12_5, "2, 7, default, fill");
+		
+		JLabel lblNewLabel_18_3 = new JLabel("980 PSI (Alta)");
+		lblNewLabel_18_3.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel_18_3.setForeground(Constants.getSurfaceColor());
+		lblNewLabel_18_3.setBorder(new MatteBorder(0, 0, 1, 1, Constants.getSurfaceColor()));
+		panel_3.add(lblNewLabel_18_3, "3, 7, default, fill");
+		
+		JLabel lblNewLabel_13_5 = new JLabel("990 PSI(Alta)");
+		lblNewLabel_13_5.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel_13_5.setForeground(Constants.getSurfaceColor());
+		lblNewLabel_13_5.setBorder(new MatteBorder(0, 0, 1, 1, Constants.getSurfaceColor()));
+		panel_3.add(lblNewLabel_13_5, "4, 7, fill, fill");
+		
+		JPanel panel_4 = new JPanel();
+		panel_4.setBorder(new MatteBorder(0, 0, 1, 0, (Color) new Color(64, 64, 64)));
+		panel_3.add(panel_4, "5, 7");
+		panel_4.setLayout(new FormLayout(new ColumnSpec[] {
+				ColumnSpec.decode("default:grow"),
+				ColumnSpec.decode("default:grow"),},
+			new RowSpec[] {
+				RowSpec.decode("15dlu:grow"),
+				RowSpec.decode("15dlu:grow"),}));
+		
+		JLabel lblNewLabel_20 = new JLabel("Cámara de alta");
+		lblNewLabel_20.setFont(new Font("Tahoma", Font.PLAIN, 11));
+		lblNewLabel_20.setForeground(Constants.getSurfaceColor());
+		lblNewLabel_20.setBorder(new MatteBorder(0, 0, 1, 1, (Color) new Color(0, 0, 0)));
+		panel_4.add(lblNewLabel_20, "1, 1, fill, fill");
+		
+		JLabel lblNewLabel_21 = new JLabel("Cámara de baja");
+		lblNewLabel_21.setFont(new Font("Tahoma", Font.PLAIN, 11));
+		lblNewLabel_21.setForeground(Constants.getSurfaceColor());
+		lblNewLabel_21.setBorder(new MatteBorder(0, 0, 1, 0, Constants.getSurfaceColor()));
+		panel_4.add(lblNewLabel_21, "2, 1, fill, fill");
+		
+		JLabel lblNewLabel_19 = new JLabel("650PSI a 800 PSI");
+		lblNewLabel_19.setFont(new Font("Tahoma", Font.PLAIN, 11));
+		lblNewLabel_19.setForeground(Constants.getSurfaceColor());
+		lblNewLabel_19.setBorder(new MatteBorder(0, 0, 0, 1, Constants.getSurfaceColor()));
+		panel_4.add(lblNewLabel_19, "1, 2, fill, fill");
+		
+		JLabel lblNewLabel_19_1 = new JLabel("650PSI a 720PSI");
+		lblNewLabel_19_1.setFont(new Font("Tahoma", Font.PLAIN, 11));
+		lblNewLabel_19_1.setForeground(Constants.getSurfaceColor());
+		panel_4.add(lblNewLabel_19_1, "2, 2, default, fill");
+		
+		JLabel lblNewLabel_16_5 = new JLabel("");
+		lblNewLabel_16_5.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel_16_5.setForeground(Constants.getSurfaceColor());
+		lblNewLabel_16_5.setBorder(new MatteBorder(0, 0, 1, 1, Constants.getSurfaceColor()));
+		panel_3.add(lblNewLabel_16_5, "6, 7, fill, fill");
+		
+		JLabel lblNewLabel_15_6 = new JLabel("");
+		lblNewLabel_15_6.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel_15_6.setForeground(Constants.getSurfaceColor());
+		lblNewLabel_15_6.setBorder(new MatteBorder(0, 1, 1, 0, Constants.getSurfaceColor()));
+		panel_3.add(lblNewLabel_15_6, "1, 8, fill, fill");
+		
+		JLabel lblNewLabel_12_6 = new JLabel("Presión de aceite lubricante");
+		lblNewLabel_12_6.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel_12_6.setForeground(Constants.getSurfaceColor());
+		lblNewLabel_12_6.setBorder(new MatteBorder(0, 0, 1, 1, Constants.getSurfaceColor()));
+		panel_3.add(lblNewLabel_12_6, "2, 8, default, fill");
+		
+		JLabel lblNewLabel_18_4 = new JLabel("41 PSI ");
+		lblNewLabel_18_4.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel_18_4.setForeground(Constants.getSurfaceColor());
+		lblNewLabel_18_4.setBorder(new MatteBorder(0, 0, 1, 1, Constants.getSurfaceColor()));
+		panel_3.add(lblNewLabel_18_4, "3, 8, default, fill");
+		
+		JLabel lblNewLabel_13_6 = new JLabel("25 PSI (Baja)");
+		lblNewLabel_13_6.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel_13_6.setForeground(Constants.getSurfaceColor());
+		lblNewLabel_13_6.setBorder(new MatteBorder(0, 0, 1, 1, Constants.getSurfaceColor()));
+		panel_3.add(lblNewLabel_13_6, "4, 8, default, fill");
+		
+		JLabel lblNewLabel_14_6 = new JLabel("50 PSI a 60PSI");
+		lblNewLabel_14_6.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel_14_6.setForeground(Constants.getSurfaceColor());
+		lblNewLabel_14_6.setBorder(new MatteBorder(0, 0, 1, 0, Constants.getSurfaceColor()));
+		panel_3.add(lblNewLabel_14_6, "5, 8, default, fill");
+		
+		JLabel lblNewLabel_16_6 = new JLabel("");
+		lblNewLabel_16_6.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel_16_6.setForeground(Constants.getSurfaceColor());
+		lblNewLabel_16_6.setBorder(new MatteBorder(0, 0, 1, 1, Constants.getSurfaceColor()));
+		panel_3.add(lblNewLabel_16_6, "6, 8, fill, fill");
+		
+		JLabel lblNewLabel_15_7 = new JLabel("");
+		lblNewLabel_15_7.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel_15_7.setForeground(Constants.getSurfaceColor());
+		lblNewLabel_15_7.setBorder(new MatteBorder(0, 1, 1, 0, Constants.getSurfaceColor()));
+		panel_3.add(lblNewLabel_15_7, "1, 9, fill, fill");
+		
+		JLabel lblNewLabel_12_6_1 = new JLabel("Presión de gas combustible ");
+		lblNewLabel_12_6_1.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel_12_6_1.setForeground(Constants.getSurfaceColor());
+		lblNewLabel_12_6_1.setBorder(new MatteBorder(0, 0, 1, 1, Constants.getSurfaceColor()));
+		panel_3.add(lblNewLabel_12_6_1, "2, 9, default, fill");
+		
+		JLabel lblNewLabel_18_5 = new JLabel("200 PSI(Alta)");
+		lblNewLabel_18_5.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel_18_5.setForeground(Constants.getSurfaceColor());
+		lblNewLabel_18_5.setBorder(new MatteBorder(0, 0, 1, 1, Constants.getSurfaceColor()));
+		panel_3.add(lblNewLabel_18_5, "3, 9, default, fill");
+		
+		JLabel lblNewLabel_13_7 = new JLabel("205 PSI (Alta)");
+		lblNewLabel_13_7.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel_13_7.setForeground(Constants.getSurfaceColor());
+		lblNewLabel_13_7.setBorder(new MatteBorder(0, 0, 1, 1, Constants.getSurfaceColor()));
+		panel_3.add(lblNewLabel_13_7, "4, 9, default, fill");
+		
+		JLabel lblNewLabel_14_7 = new JLabel("175 PSI a 185 PSI");
+		lblNewLabel_14_7.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel_14_7.setForeground(Constants.getSurfaceColor());
+		lblNewLabel_14_7.setBorder(new MatteBorder(0, 0, 1, 0, Constants.getSurfaceColor()));
+		panel_3.add(lblNewLabel_14_7, "5, 9, default, fill");
+		
+		JLabel lblNewLabel_16_7 = new JLabel("");
+		lblNewLabel_16_7.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel_16_7.setForeground(Constants.getSurfaceColor());
+		lblNewLabel_16_7.setBorder(new MatteBorder(0, 0, 1, 1, Constants.getSurfaceColor()));
+		panel_3.add(lblNewLabel_16_7, "6, 9, fill, fill");
+		
+		JLabel lblNewLabel_15_8 = new JLabel("");
+		lblNewLabel_15_8.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel_15_8.setForeground(Constants.getSurfaceColor());
+		lblNewLabel_15_8.setBorder(new MatteBorder(0, 1, 1, 0, Constants.getSurfaceColor()));
+		panel_3.add(lblNewLabel_15_8, "1, 10, fill, fill");
+		
+		JLabel lblNewLabel_12_6_2 = new JLabel("Presión de gas combustible ");
+		lblNewLabel_12_6_2.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel_12_6_2.setForeground(Constants.getSurfaceColor());
+		lblNewLabel_12_6_2.setBorder(new MatteBorder(0, 0, 1, 1, Constants.getSurfaceColor()));
+		panel_3.add(lblNewLabel_12_6_2, "2, 10, default, fill");
+		
+		JLabel lblNewLabel_18_6 = new JLabel("160PSI (Baja)");
+		lblNewLabel_18_6.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel_18_6.setForeground(Constants.getSurfaceColor());
+		lblNewLabel_18_6.setBorder(new MatteBorder(0, 0, 1, 1, Constants.getSurfaceColor()));
+		panel_3.add(lblNewLabel_18_6, "3, 10, default, fill");
+		
+		JLabel lblNewLabel_13_8 = new JLabel("155 PSI (Baja)");
+		lblNewLabel_13_8.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel_13_8.setForeground(Constants.getSurfaceColor());
+		lblNewLabel_13_8.setBorder(new MatteBorder(0, 0, 1, 1, Constants.getSurfaceColor()));
+		panel_3.add(lblNewLabel_13_8, "4, 10, default, fill");
+		
+		JLabel lblNewLabel_14_8 = new JLabel("175 PSI a 185 PSI");
+		lblNewLabel_14_8.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel_14_8.setForeground(Constants.getSurfaceColor());
+		lblNewLabel_14_8.setBorder(new MatteBorder(0, 0, 1, 0, Constants.getSurfaceColor()));
+		panel_3.add(lblNewLabel_14_8, "5, 10, fill, fill");
+		
+		JLabel lblNewLabel_16_8 = new JLabel("");
+		lblNewLabel_16_8.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel_16_8.setForeground(Constants.getSurfaceColor());
+		lblNewLabel_16_8.setBorder(new MatteBorder(0, 0, 1, 1, Constants.getSurfaceColor()));
+		panel_3.add(lblNewLabel_16_8, "6, 10, fill, fill");
+		
+		JLabel lblNewLabel_15_9 = new JLabel("");
+		lblNewLabel_15_9.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel_15_9.setForeground(Constants.getSurfaceColor());
+		lblNewLabel_15_9.setBorder(new MatteBorder(0, 1, 1, 0, Constants.getSurfaceColor()));
+		panel_3.add(lblNewLabel_15_9, "1, 11, fill, fill");
+		
+		JLabel lblNewLabel_12_6_3 = new JLabel("Presión diferencial de gas Buffer");
+		lblNewLabel_12_6_3.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel_12_6_3.setForeground(Constants.getSurfaceColor());
+		lblNewLabel_12_6_3.setBorder(new MatteBorder(0, 0, 1, 1, Constants.getSurfaceColor()));
+		panel_3.add(lblNewLabel_12_6_3, "2, 11, default, fill");
+		
+		JLabel lblNewLabel_18_7 = new JLabel("7 PSID (Baja)");
+		lblNewLabel_18_7.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel_18_7.setForeground(Constants.getSurfaceColor());
+		lblNewLabel_18_7.setBorder(new MatteBorder(0, 0, 1, 1, Constants.getSurfaceColor()));
+		panel_3.add(lblNewLabel_18_7, "3, 11, default, fill");
+		
+		JLabel lblNewLabel_13_9 = new JLabel("4 PSID (Baja)");
+		lblNewLabel_13_9.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel_13_9.setForeground(Constants.getSurfaceColor());
+		lblNewLabel_13_9.setBorder(new MatteBorder(0, 0, 1, 1, Constants.getSurfaceColor()));
+		panel_3.add(lblNewLabel_13_9, "4, 11, default, fill");
+		
+		JLabel lblNewLabel_14_9 = new JLabel("15 PSID a 25 PSID");
+		lblNewLabel_14_9.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel_14_9.setForeground(Constants.getSurfaceColor());
+		lblNewLabel_14_9.setBorder(new MatteBorder(0, 0, 1, 0, Constants.getSurfaceColor()));
+		panel_3.add(lblNewLabel_14_9, "5, 11, default, fill");
+		
+		JLabel lblNewLabel_16_9 = new JLabel("");
+		lblNewLabel_16_9.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel_16_9.setForeground(Constants.getSurfaceColor());
+		lblNewLabel_16_9.setBorder(new MatteBorder(0, 0, 1, 1, Constants.getSurfaceColor()));
+		panel_3.add(lblNewLabel_16_9, "6, 11, fill, fill");
+		
+		JLabel lblNewLabel_15_10 = new JLabel("");
+		lblNewLabel_15_10.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel_15_10.setForeground(Constants.getSurfaceColor());
+		lblNewLabel_15_10.setBorder(new MatteBorder(0, 1, 1, 0, Constants.getSurfaceColor()));
+		panel_3.add(lblNewLabel_15_10, "1, 12, fill, fill");
+		
+		JLabel lblNewLabel_12_6_4 = new JLabel("Presión diferencial de aceite sellos");
+		lblNewLabel_12_6_4.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel_12_6_4.setForeground(Constants.getSurfaceColor());
+		lblNewLabel_12_6_4.setBorder(new MatteBorder(0, 0, 1, 1, Constants.getSurfaceColor()));
+		panel_3.add(lblNewLabel_12_6_4, "2, 12, default, fill");
+		
+		JLabel lblNewLabel_18_8 = new JLabel("7  PSID (Baja)");
+		lblNewLabel_18_8.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel_18_8.setForeground(Constants.getSurfaceColor());
+		lblNewLabel_18_8.setBorder(new MatteBorder(0, 0, 1, 1, Constants.getSurfaceColor()));
+		panel_3.add(lblNewLabel_18_8, "3, 12, default, fill");
+		
+		JLabel lblNewLabel_13_10 = new JLabel("8  Pulgadas. H2O (Alta)");
+		lblNewLabel_13_10.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel_13_10.setForeground(Constants.getSurfaceColor());
+		lblNewLabel_13_10.setBorder(new MatteBorder(0, 0, 1, 1, Constants.getSurfaceColor()));
+		panel_3.add(lblNewLabel_13_10, "4, 12, default, fill");
+		
+		JLabel lblNewLabel_14_10 = new JLabel("0  Pulgadas. H2O a  3 Pulgadas. H2O");
+		lblNewLabel_14_10.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel_14_10.setForeground(Constants.getSurfaceColor());
+		lblNewLabel_14_10.setBorder(new MatteBorder(0, 0, 1, 0, Constants.getSurfaceColor()));
+		panel_3.add(lblNewLabel_14_10, "5, 12, default, fill");
+		
+		JLabel lblNewLabel_16_10 = new JLabel("");
+		lblNewLabel_16_10.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel_16_10.setForeground(Constants.getSurfaceColor());
+		lblNewLabel_16_10.setBorder(new MatteBorder(0, 0, 1, 1, Constants.getSurfaceColor()));
+		panel_3.add(lblNewLabel_16_10, "6, 12, fill, fill");
+		
+		JLabel lblNewLabel_15_11 = new JLabel("");
+		lblNewLabel_15_11.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel_15_11.setForeground(Constants.getSurfaceColor());
+		lblNewLabel_15_11.setBorder(new MatteBorder(0, 1, 1, 0, Constants.getSurfaceColor()));
+		panel_3.add(lblNewLabel_15_11, "1, 13, fill, fill");
+		
+		JLabel lblNewLabel_12_6_5 = new JLabel("Presión diferencial en el filtro aceite-sello");
+		lblNewLabel_12_6_5.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel_12_6_5.setForeground(Constants.getSurfaceColor());
+		lblNewLabel_12_6_5.setBorder(new MatteBorder(0, 0, 1, 1, Constants.getSurfaceColor()));
+		panel_3.add(lblNewLabel_12_6_5, "2, 13, default, fill");
+		
+		JLabel lblNewLabel_18_9 = new JLabel("50 PSID (Alta)");
+		lblNewLabel_18_9.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel_18_9.setForeground(Constants.getSurfaceColor());
+		lblNewLabel_18_9.setBorder(new MatteBorder(0, 0, 1, 1, Constants.getSurfaceColor()));
+		panel_3.add(lblNewLabel_18_9, "3, 13, default, fill");
+		
+		JLabel lblNewLabel_13_11 = new JLabel("No Aplica ");
+		lblNewLabel_13_11.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel_13_11.setForeground(Constants.getSurfaceColor());
+		lblNewLabel_13_11.setBorder(new MatteBorder(0, 0, 1, 1, Constants.getSurfaceColor()));
+		panel_3.add(lblNewLabel_13_11, "4, 13, default, fill");
+		
+		JLabel lblNewLabel_14_11 = new JLabel("0 PSID a 15 PSID");
+		lblNewLabel_14_11.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel_14_11.setForeground(Constants.getSurfaceColor());
+		lblNewLabel_14_11.setBorder(new MatteBorder(0, 0, 1, 0, Constants.getSurfaceColor()));
+		panel_3.add(lblNewLabel_14_11, "5, 13, default, fill");
+		
+		JLabel lblNewLabel_16_10_1 = new JLabel("");
+		lblNewLabel_16_10_1.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel_16_10_1.setForeground(Constants.getSurfaceColor());
+		lblNewLabel_16_10_1.setBorder(new MatteBorder(0, 0, 1, 1, Constants.getSurfaceColor()));
+		panel_3.add(lblNewLabel_16_10_1, "6, 13, fill, fill");
+		
+		JLabel lblNewLabel_15_12 = new JLabel("");
+		lblNewLabel_15_12.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel_15_12.setForeground(Constants.getSurfaceColor());
+		lblNewLabel_15_12.setBorder(new MatteBorder(0, 1, 1, 0, Constants.getSurfaceColor()));
+		panel_3.add(lblNewLabel_15_12, "1, 14, fill, fill");
+		
+		JLabel lblNewLabel_12_6_6 = new JLabel("Presión diferencial en el filtro de aceite lubricante");
+		lblNewLabel_12_6_6.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel_12_6_6.setForeground(Constants.getSurfaceColor());
+		lblNewLabel_12_6_6.setBorder(new MatteBorder(0, 0, 1, 1, Constants.getSurfaceColor()));
+		panel_3.add(lblNewLabel_12_6_6, "2, 14, default, fill");
+		
+		JLabel lblNewLabel_18_10 = new JLabel("30 PSID (Alta)");
+		lblNewLabel_18_10.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel_18_10.setForeground(Constants.getSurfaceColor());
+		lblNewLabel_18_10.setBorder(new MatteBorder(0, 0, 1, 1, Constants.getSurfaceColor()));
+		panel_3.add(lblNewLabel_18_10, "3, 14, default, fill");
+		
+		JLabel lblNewLabel_13_12 = new JLabel("No Aplica");
+		lblNewLabel_13_12.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel_13_12.setForeground(Constants.getSurfaceColor());
+		lblNewLabel_13_12.setBorder(new MatteBorder(0, 0, 1, 1, Constants.getSurfaceColor()));
+		panel_3.add(lblNewLabel_13_12, "4, 14, default, fill");
+		
+		JLabel lblNewLabel_14_12 = new JLabel("0 PSID a 15 PSID");
+		lblNewLabel_14_12.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel_14_12.setForeground(Constants.getSurfaceColor());
+		lblNewLabel_14_12.setBorder(new MatteBorder(0, 0, 1, 0, Constants.getSurfaceColor()));
+		panel_3.add(lblNewLabel_14_12, "5, 14, default, fill");
+		
+		JLabel lblNewLabel_16_10_2 = new JLabel("");
+		lblNewLabel_16_10_2.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel_16_10_2.setForeground(Constants.getSurfaceColor());
+		lblNewLabel_16_10_2.setBorder(new MatteBorder(0, 0, 1, 1, Constants.getSurfaceColor()));
+		panel_3.add(lblNewLabel_16_10_2, "6, 14, fill, fill");
+		
+		JLabel lblNewLabel_15_13 = new JLabel("");
+		lblNewLabel_15_13.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel_15_13.setForeground(Constants.getSurfaceColor());
+		lblNewLabel_15_13.setBorder(new MatteBorder(0, 1, 1, 0, Constants.getSurfaceColor()));
+		panel_3.add(lblNewLabel_15_13, "1, 15, fill, fill");
+		
+		JLabel lblNewLabel_12_6_7 = new JLabel("Velocidad del productor de gas");
+		lblNewLabel_12_6_7.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel_12_6_7.setForeground(Constants.getSurfaceColor());
+		lblNewLabel_12_6_7.setBorder(new MatteBorder(0, 0, 1, 1, Constants.getSurfaceColor()));
+		panel_3.add(lblNewLabel_12_6_7, "2, 15, default, fill");
+		
+		JLabel lblNewLabel_18_11 = new JLabel("No Aplica");
+		lblNewLabel_18_11.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel_18_11.setForeground(Constants.getSurfaceColor());
+		lblNewLabel_18_11.setBorder(new MatteBorder(0, 0, 1, 1, Constants.getSurfaceColor()));
+		panel_3.add(lblNewLabel_18_11, "3, 15, default, fill");
+		
+		JLabel lblNewLabel_13_13 = new JLabel("102,50% (Alta)");
+		lblNewLabel_13_13.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel_13_13.setForeground(Constants.getSurfaceColor());
+		lblNewLabel_13_13.setBorder(new MatteBorder(0, 0, 1, 1, Constants.getSurfaceColor()));
+		panel_3.add(lblNewLabel_13_13, "4, 15, default, fill");
+		
+		JLabel lblNewLabel_14_13 = new JLabel(" 91% a 100%");
+		lblNewLabel_14_13.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel_14_13.setForeground(Constants.getSurfaceColor());
+		lblNewLabel_14_13.setBorder(new MatteBorder(0, 0, 1, 0, Constants.getSurfaceColor()));
+		panel_3.add(lblNewLabel_14_13, "5, 15, default, fill");
+		
+		JLabel lblNewLabel_16_10_3 = new JLabel("");
+		lblNewLabel_16_10_3.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel_16_10_3.setForeground(Constants.getSurfaceColor());
+		lblNewLabel_16_10_3.setBorder(new MatteBorder(0, 0, 1, 1, Constants.getSurfaceColor()));
+		panel_3.add(lblNewLabel_16_10_3, "6, 15, fill, fill");
+		
+		JLabel lblNewLabel_15_14 = new JLabel("");
+		lblNewLabel_15_14.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel_15_14.setForeground(Constants.getSurfaceColor());
+		lblNewLabel_15_14.setBorder(new MatteBorder(0, 1, 1, 0, Constants.getSurfaceColor()));
+		panel_3.add(lblNewLabel_15_14, "1, 16, fill, fill");
+		
+		JLabel lblNewLabel_12_6_8 = new JLabel("Velocidad turbina de potencia");
+		lblNewLabel_12_6_8.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel_12_6_8.setForeground(Constants.getSurfaceColor());
+		lblNewLabel_12_6_8.setBorder(new MatteBorder(0, 0, 1, 1, Constants.getSurfaceColor()));
+		panel_3.add(lblNewLabel_12_6_8, "2, 16, default, fill");
+		
+		JLabel lblNewLabel_18_12 = new JLabel("No Aplica");
+		lblNewLabel_18_12.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel_18_12.setForeground(Constants.getSurfaceColor());
+		lblNewLabel_18_12.setBorder(new MatteBorder(0, 0, 1, 1, Constants.getSurfaceColor()));
+		panel_3.add(lblNewLabel_18_12, "3, 16, default, fill");
+		
+		JLabel lblNewLabel_13_14 = new JLabel("106.00% (Alta)");
+		lblNewLabel_13_14.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel_13_14.setForeground(Constants.getSurfaceColor());
+		lblNewLabel_13_14.setBorder(new MatteBorder(0, 0, 1, 1, Constants.getSurfaceColor()));
+		panel_3.add(lblNewLabel_13_14, "4, 16, default, fill");
+		
+		JLabel lblNewLabel_14_14 = new JLabel("70% a 80%");
+		lblNewLabel_14_14.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel_14_14.setForeground(Constants.getSurfaceColor());
+		lblNewLabel_14_14.setBorder(new MatteBorder(0, 0, 1, 0, Constants.getSurfaceColor()));
+		panel_3.add(lblNewLabel_14_14, "5, 16, default, fill");
+		
+		JLabel lblNewLabel_16_10_4 = new JLabel("");
+		lblNewLabel_16_10_4.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel_16_10_4.setForeground(Constants.getSurfaceColor());
+		lblNewLabel_16_10_4.setBorder(new MatteBorder(0, 0, 1, 1, Constants.getSurfaceColor()));
+		panel_3.add(lblNewLabel_16_10_4, "6, 16, fill, fill");
+		
+		JLabel lblNewLabel_15_15 = new JLabel("");
+		lblNewLabel_15_15.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel_15_15.setForeground(Constants.getSurfaceColor());
+		lblNewLabel_15_15.setBorder(new MatteBorder(0, 1, 1, 0, Constants.getSurfaceColor()));
+		panel_3.add(lblNewLabel_15_15, "1, 17, fill, fill");
+		
+		JLabel lblNewLabel_12_6_9 = new JLabel("Vibración en la caja de accesorio ");
+		lblNewLabel_12_6_9.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel_12_6_9.setForeground(Constants.getSurfaceColor());
+		lblNewLabel_12_6_9.setBorder(new MatteBorder(0, 0, 1, 1, Constants.getSurfaceColor()));
+		panel_3.add(lblNewLabel_12_6_9, "2, 17, default, fill");
+		
+		JLabel lblNewLabel_18_13 = new JLabel("10 GRMS (Baja)");
+		lblNewLabel_18_13.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel_18_13.setForeground(Constants.getSurfaceColor());
+		lblNewLabel_18_13.setBorder(new MatteBorder(0, 0, 1, 1, Constants.getSurfaceColor()));
+		panel_3.add(lblNewLabel_18_13, "3, 17, default, fill");
+		
+		JLabel lblNewLabel_13_15 = new JLabel("15 GRMS (Alta)");
+		lblNewLabel_13_15.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel_13_15.setForeground(Constants.getSurfaceColor());
+		lblNewLabel_13_15.setBorder(new MatteBorder(0, 0, 1, 1, Constants.getSurfaceColor()));
+		panel_3.add(lblNewLabel_13_15, "4, 17, default, fill");
+		
+		JLabel lblNewLabel_14_15 = new JLabel("1  GRMS a 2.5  GRMS");
+		lblNewLabel_14_15.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel_14_15.setForeground(Constants.getSurfaceColor());
+		lblNewLabel_14_15.setBorder(new MatteBorder(0, 0, 1, 0, Constants.getSurfaceColor()));
+		panel_3.add(lblNewLabel_14_15, "5, 17, default, fill");
+		
+		JLabel lblNewLabel_16_10_5 = new JLabel("");
+		lblNewLabel_16_10_5.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel_16_10_5.setForeground(Constants.getSurfaceColor());
+		lblNewLabel_16_10_5.setBorder(new MatteBorder(0, 0, 1, 1, Constants.getSurfaceColor()));
+		panel_3.add(lblNewLabel_16_10_5, "6, 17, fill, fill");
+		
+		JLabel lblNewLabel_15_16 = new JLabel("");
+		lblNewLabel_15_16.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel_15_16.setForeground(Constants.getSurfaceColor());
+		lblNewLabel_15_16.setBorder(new MatteBorder(0, 1, 1, 0, Constants.getSurfaceColor()));
+		panel_3.add(lblNewLabel_15_16, "1, 18, fill, fill");
+		
+		JLabel lblNewLabel_12_6_10 = new JLabel("Vibración del productor de gas");
+		lblNewLabel_12_6_10.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel_12_6_10.setForeground(Constants.getSurfaceColor());
+		lblNewLabel_12_6_10.setBorder(new MatteBorder(0, 0, 1, 1, Constants.getSurfaceColor()));
+		panel_3.add(lblNewLabel_12_6_10, "2, 18, default, fill");
+		
+		JLabel lblNewLabel_18_14 = new JLabel("0.35 IN/RMS (Alta)");
+		lblNewLabel_18_14.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel_18_14.setForeground(Constants.getSurfaceColor());
+		lblNewLabel_18_14.setBorder(new MatteBorder(0, 0, 1, 1, Constants.getSurfaceColor()));
+		panel_3.add(lblNewLabel_18_14, "3, 18, default, fill");
+		
+		JLabel lblNewLabel_13_16 = new JLabel("0.50 IN/ RMS");
+		lblNewLabel_13_16.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel_13_16.setForeground(Constants.getSurfaceColor());
+		lblNewLabel_13_16.setBorder(new MatteBorder(0, 0, 1, 1, Constants.getSurfaceColor()));
+		panel_3.add(lblNewLabel_13_16, "4, 18, default, fill");
+		
+		JLabel lblNewLabel_14_16 = new JLabel("0 IN/RMS a 0.1  IN/RMS");
+		lblNewLabel_14_16.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel_14_16.setForeground(Constants.getSurfaceColor());
+		lblNewLabel_14_16.setBorder(new MatteBorder(0, 0, 1, 0, Constants.getSurfaceColor()));
+		panel_3.add(lblNewLabel_14_16, "5, 18, default, fill");
+		
+		JLabel lblNewLabel_16_10_6 = new JLabel("");
+		lblNewLabel_16_10_6.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel_16_10_6.setForeground(Constants.getSurfaceColor());
+		lblNewLabel_16_10_6.setBorder(new MatteBorder(0, 0, 1, 1, Constants.getSurfaceColor()));
+		panel_3.add(lblNewLabel_16_10_6, "6, 18, fill, fill");
+		
+		JLabel lblNewLabel_15_17 = new JLabel("");
+		lblNewLabel_15_17.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel_15_17.setForeground(Constants.getSurfaceColor());
+		lblNewLabel_15_17.setBorder(new MatteBorder(0, 1, 1, 0, Constants.getSurfaceColor()));
+		panel_3.add(lblNewLabel_15_17, "1, 19, fill, fill");
+		
+		JLabel lblNewLabel_12_6_11 = new JLabel("Vibración en la turbina de potencia");
+		lblNewLabel_12_6_11.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel_12_6_11.setForeground(Constants.getSurfaceColor());
+		lblNewLabel_12_6_11.setBorder(new MatteBorder(0, 0, 1, 1, Constants.getSurfaceColor()));
+		panel_3.add(lblNewLabel_12_6_11, "2, 19, default, fill");
+		
+		JLabel lblNewLabel_18_15 = new JLabel("0.50 IN/RMS");
+		lblNewLabel_18_15.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel_18_15.setForeground(Constants.getSurfaceColor());
+		lblNewLabel_18_15.setBorder(new MatteBorder(0, 0, 1, 1, Constants.getSurfaceColor()));
+		panel_3.add(lblNewLabel_18_15, "3, 19, default, fill");
+		
+		JLabel lblNewLabel_13_17 = new JLabel("0.80  IN/RMS");
+		lblNewLabel_13_17.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel_13_17.setForeground(Constants.getSurfaceColor());
+		lblNewLabel_13_17.setBorder(new MatteBorder(0, 0, 1, 1, Constants.getSurfaceColor()));
+		panel_3.add(lblNewLabel_13_17, "4, 19, default, fill");
+		
+		JLabel lblNewLabel_14_17 = new JLabel("0  IN/RMS  0.1 IN/RMS");
+		lblNewLabel_14_17.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel_14_17.setForeground(Constants.getSurfaceColor());
+		lblNewLabel_14_17.setBorder(new MatteBorder(0, 0, 1, 0, Constants.getSurfaceColor()));
+		panel_3.add(lblNewLabel_14_17, "5, 19, default, fill");
+		
+		JLabel lblNewLabel_16_10_7 = new JLabel("");
+		lblNewLabel_16_10_7.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel_16_10_7.setForeground(Constants.getSurfaceColor());
+		lblNewLabel_16_10_7.setBorder(new MatteBorder(0, 0, 1, 1, Constants.getSurfaceColor()));
+		panel_3.add(lblNewLabel_16_10_7, "6, 19, fill, fill");
+		
+		JLabel lblNewLabel_15_18 = new JLabel("");
+		lblNewLabel_15_18.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel_15_18.setForeground(Constants.getSurfaceColor());
+		lblNewLabel_15_18.setBorder(new MatteBorder(0, 1, 1, 0, Constants.getSurfaceColor()));
+		panel_3.add(lblNewLabel_15_18, "1, 20, default, fill");
+		
+		JLabel lblNewLabel_12_6_12 = new JLabel("Vibración en la succión del comprensor ");
+		lblNewLabel_12_6_12.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel_12_6_12.setForeground(Constants.getSurfaceColor());
+		lblNewLabel_12_6_12.setBorder(new MatteBorder(0, 0, 1, 1, Constants.getSurfaceColor()));
+		panel_3.add(lblNewLabel_12_6_12, "2, 20, default, fill");
+		
+		JLabel lblNewLabel_18_16 = new JLabel("2.00 IN/RMS  (Alta)");
+		lblNewLabel_18_16.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel_18_16.setForeground(Constants.getSurfaceColor());
+		lblNewLabel_18_16.setBorder(new MatteBorder(0, 0, 1, 1, Constants.getSurfaceColor()));
+		panel_3.add(lblNewLabel_18_16, "3, 20, default, fill");
+		
+		JLabel lblNewLabel_13_18 = new JLabel("2.50  IN/RMS(Alta)");
+		lblNewLabel_13_18.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel_13_18.setForeground(Constants.getSurfaceColor());
+		lblNewLabel_13_18.setBorder(new MatteBorder(0, 0, 1, 1, Constants.getSurfaceColor()));
+		panel_3.add(lblNewLabel_13_18, "4, 20, default, fill");
+		
+		JLabel lblNewLabel_14_18 = new JLabel("0  IN/RMS a 0.7  IN/RMS");
+		lblNewLabel_14_18.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel_14_18.setForeground(Constants.getSurfaceColor());
+		lblNewLabel_14_18.setBorder(new MatteBorder(0, 0, 1, 0, Constants.getSurfaceColor()));
+		panel_3.add(lblNewLabel_14_18, "5, 20, default, fill");
+		
+		JLabel lblNewLabel_16_10_8 = new JLabel("");
+		lblNewLabel_16_10_8.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel_16_10_8.setForeground(Constants.getSurfaceColor());
+		lblNewLabel_16_10_8.setBorder(new MatteBorder(0, 0, 1, 1, Constants.getSurfaceColor()));
+		panel_3.add(lblNewLabel_16_10_8, "6, 20, fill, fill");
+		
+		JLabel lblNewLabel_15_19 = new JLabel("");
+		lblNewLabel_15_19.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel_15_19.setForeground(Constants.getSurfaceColor());
+		lblNewLabel_15_19.setBorder(new MatteBorder(0, 1, 1, 0, Constants.getSurfaceColor()));
+		panel_3.add(lblNewLabel_15_19, "1, 21, fill, fill");
+		
+		JLabel lblNewLabel_12_6_13 = new JLabel("Vibración en la descarga del compresor");
+		lblNewLabel_12_6_13.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel_12_6_13.setForeground(Constants.getSurfaceColor());
+		lblNewLabel_12_6_13.setBorder(new MatteBorder(0, 0, 1, 1, Constants.getSurfaceColor()));
+		panel_3.add(lblNewLabel_12_6_13, "2, 21, default, fill");
+		
+		JLabel lblNewLabel_18_17 = new JLabel("2.00  IN/RMS  (Alta)");
+		lblNewLabel_18_17.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel_18_17.setForeground(Constants.getSurfaceColor());
+		lblNewLabel_18_17.setBorder(new MatteBorder(0, 0, 1, 1, Constants.getSurfaceColor()));
+		panel_3.add(lblNewLabel_18_17, "3, 21, default, fill");
+		
+		JLabel lblNewLabel_13_19 = new JLabel("2.50  IN/RMS (Alta)");
+		lblNewLabel_13_19.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel_13_19.setForeground(Constants.getSurfaceColor());
+		lblNewLabel_13_19.setBorder(new MatteBorder(0, 0, 1, 1, Constants.getSurfaceColor()));
+		panel_3.add(lblNewLabel_13_19, "4, 21, default, fill");
+		
+		JLabel lblNewLabel_14_19 = new JLabel("0  IN/RMS a 0.7  IN/RMS");
+		lblNewLabel_14_19.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel_14_19.setForeground(Constants.getSurfaceColor());
+		lblNewLabel_14_19.setBorder(new MatteBorder(0, 0, 1, 0, Constants.getSurfaceColor()));
+		panel_3.add(lblNewLabel_14_19, "5, 21, default, fill");
+		
+		JLabel lblNewLabel_16_10_9 = new JLabel("");
+		lblNewLabel_16_10_9.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel_16_10_9.setForeground(Constants.getSurfaceColor());
+		lblNewLabel_16_10_9.setBorder(new MatteBorder(0, 0, 1, 1, Constants.getSurfaceColor()));
+		panel_3.add(lblNewLabel_16_10_9, "6, 21, fill, fill");
+		
+		JLabel lblNewLabel_15_20 = new JLabel("");
+		lblNewLabel_15_20.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel_15_20.setForeground(Constants.getSurfaceColor());
+		lblNewLabel_15_20.setBorder(new MatteBorder(0, 1, 1, 0, Constants.getSurfaceColor()));
+		panel_3.add(lblNewLabel_15_20, "1, 22, fill, fill");
+		
+		JLabel lblNewLabel_12_6_14 = new JLabel("Volume de gas comprimido");
+		lblNewLabel_12_6_14.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel_12_6_14.setForeground(Constants.getSurfaceColor());
+		lblNewLabel_12_6_14.setBorder(new MatteBorder(0, 0, 1, 1, Constants.getSurfaceColor()));
+		panel_3.add(lblNewLabel_12_6_14, "2, 22, default, fill");
+		
+		JLabel lblNewLabel_18_18 = new JLabel("No Aplica");
+		lblNewLabel_18_18.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel_18_18.setForeground(Constants.getSurfaceColor());
+		lblNewLabel_18_18.setBorder(new MatteBorder(0, 0, 1, 1, Constants.getSurfaceColor()));
+		panel_3.add(lblNewLabel_18_18, "3, 22, default, fill");
+		
+		JLabel lblNewLabel_13_20 = new JLabel("No Aplica");
+		lblNewLabel_13_20.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel_13_20.setForeground(Constants.getSurfaceColor());
+		lblNewLabel_13_20.setBorder(new MatteBorder(0, 0, 1, 1, Constants.getSurfaceColor()));
+		panel_3.add(lblNewLabel_13_20, "4, 22, default, fill");
+		
+		JLabel lblNewLabel_14_20 = new JLabel("140MMPCED ");
+		lblNewLabel_14_20.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel_14_20.setForeground(Constants.getSurfaceColor());
+		lblNewLabel_14_20.setBorder(new MatteBorder(0, 0, 1, 0, Constants.getSurfaceColor()));
+		panel_3.add(lblNewLabel_14_20, "5, 22, default, fill");
+		
+		JLabel lblNewLabel_16_10_10 = new JLabel("");
+		lblNewLabel_16_10_10.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel_16_10_10.setForeground(Constants.getSurfaceColor());
+		lblNewLabel_16_10_10.setBorder(new MatteBorder(0, 0, 1, 1, Constants.getSurfaceColor()));
+		panel_3.add(lblNewLabel_16_10_10, "6, 22, fill, fill");
+		
 		
 	}
 }

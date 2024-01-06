@@ -24,6 +24,7 @@ public class FrameModel extends JDialog {
 		setAlwaysOnTop(true);
 		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 655, 484);
+		setSize(1000, 600);
 		setLocationRelativeTo(parent);
 		setTitle(title);
 		getContentPane().setLayout(new BorderLayout());
