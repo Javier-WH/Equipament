@@ -89,7 +89,7 @@ public class CompresorAxial extends JPanel {
 		lblNewLabel_6_2.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		panel_1.add(lblNewLabel_6_2);
 
-		JLabel lblNewLabel_9 = new JLabel("CSS 3000");
+		JLabel lblNewLabel_9 = new JLabel("T-4500");
 		lblNewLabel_9.setBorder(new MatteBorder(1, 1, 1, 1, Constants.getSurfaceColor()));
 		lblNewLabel_9.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_9.setOpaque(true);

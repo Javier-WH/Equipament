@@ -3,14 +3,12 @@ package views;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 import javax.swing.UIManager;
-
 import components.Constants;
 import panels.CompresorAxial;
 import panels.CompresorDeProceso;
 import panels.ProductorDeGas;
 import panels.TurbinaYpotencia;
 import panels.TurboCompresoraN1;
-
 import java.awt.BorderLayout;
 import javax.swing.JLabel;
 import javax.swing.event.ChangeListener;
@@ -23,11 +21,14 @@ import java.awt.Dimension;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.MatteBorder;
 import java.awt.Color;
-
 import javax.swing.Box;
 import javax.swing.BoxLayout;
-import java.awt.Window.Type;
-import java.awt.Dialog.ModalityType;
+import java.awt.Component;
+import com.jgoodies.forms.layout.FormLayout;
+import com.jgoodies.forms.layout.ColumnSpec;
+import com.jgoodies.forms.layout.RowSpec;
+
+
 
 
 public class EquipamentsFrame extends FrameModel {
@@ -125,9 +126,112 @@ public class EquipamentsFrame extends FrameModel {
 		panel.add(Box.createVerticalStrut(20));
 		panel.add(new CompresorDeProceso());
 		tabbedPane.addTab("Parámetros de funcionamiento", null, workingParamsPanel, null);
-
-		JLabel lblNewLabel_2 = new JLabel("Parametros");
-		workingParamsPanel.add(lblNewLabel_2);
+		workingParamsPanel.setLayout(new BorderLayout(0, 0));
+		
+		JPanel panel_1 = new JPanel();
+		workingParamsPanel.add(panel_1, BorderLayout.NORTH);
+		panel_1.setLayout(new BoxLayout(panel_1, BoxLayout.PAGE_AXIS));
+		panel_1.setBackground(Constants.getSurfaceColor());
+		
+		JLabel lblNewLabel_1 = new JLabel("Parámetros Normales");
+		lblNewLabel_1.setAlignmentY(Component.TOP_ALIGNMENT);
+		lblNewLabel_1.setAlignmentX(Component.CENTER_ALIGNMENT);
+		panel_1.add(lblNewLabel_1);
+		lblNewLabel_1.setForeground(Constants.getTextColor());
+		
+		JPanel panel_2 = new JPanel();
+		panel_2.setBackground(Constants.getSurfaceColor());
+		panel_2.setForeground(Constants.getTextColor());
+		panel_1.add(panel_2);
+		
+		JLabel lblNewLabel_2 = new JLabel("Nombre del equiupo:");
+		lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 11));
+		panel_2.add(lblNewLabel_2);
+		lblNewLabel_2.setForeground(Constants.getTextColor());
+		
+		JLabel lblNewLabel_4 = new JLabel("Turbina De Gas N°1");
+		panel_2.add(lblNewLabel_4);
+		lblNewLabel_4.setForeground(Constants.getTextColor());
+		
+		Component horizontalStrut = Box.createHorizontalStrut(30);
+		panel_2.add(horizontalStrut);
+		
+		JLabel lblNewLabel_2_1 = new JLabel("Marca:");
+		lblNewLabel_2_1.setFont(new Font("Tahoma", Font.BOLD, 11));
+		panel_2.add(lblNewLabel_2_1);
+		lblNewLabel_2_1.setForeground(Constants.getTextColor());
+		
+		
+		JLabel lblNewLabel_4_1 = new JLabel("Solar");
+		panel_2.add(lblNewLabel_4_1);
+		lblNewLabel_4_1.setForeground(Constants.getTextColor());
+		
+		Component horizontalStrut_1 = Box.createHorizontalStrut(30);
+		panel_2.add(horizontalStrut_1);
+		
+		JLabel lblNewLabel_2_1_1 = new JLabel("Modelo:");
+		lblNewLabel_2_1_1.setFont(new Font("Tahoma", Font.BOLD, 11));
+		panel_2.add(lblNewLabel_2_1_1);
+		lblNewLabel_2_1_1.setForeground(Constants.getTextColor());
+		
+		
+		JLabel lblNewLabel_5 = new JLabel("Centauro 40");
+		panel_2.add(lblNewLabel_5);
+		lblNewLabel_5.setForeground(Constants.getTextColor());
+		
+		JPanel panel_3 = new JPanel();
+		workingParamsPanel.add(panel_3, BorderLayout.CENTER);
+		panel_3.setLayout(new FormLayout(new ColumnSpec[] {
+				ColumnSpec.decode("10dlu"),
+				ColumnSpec.decode("46px:grow"),
+				ColumnSpec.decode("75px:grow"),
+				ColumnSpec.decode("46px:grow"),
+				ColumnSpec.decode("75px:grow"),
+				ColumnSpec.decode("10px"),},
+			new RowSpec[] {
+				RowSpec.decode("48px"),
+				RowSpec.decode("14px"),}));
+		
+		JLabel lblNewLabel_10 = new JLabel("");
+		lblNewLabel_10.setOpaque(true);
+		panel_3.add(lblNewLabel_10, "1, 1, fill, fill");
+		lblNewLabel_10.setBackground(Constants.getSurfaceColor());
+		
+		JLabel lblNewLabel_6 = new JLabel("Descripción");
+		lblNewLabel_6.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		lblNewLabel_6.setOpaque(true);
+		lblNewLabel_6.setBackground(Constants.getSurfaceColor());
+		lblNewLabel_6.setForeground(Constants.getTextColor());
+		panel_3.add(lblNewLabel_6, "2, 1, fill, fill");
+		
+		JLabel lblNewLabel_7 = new JLabel("Alarma");
+		lblNewLabel_7.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		lblNewLabel_7.setOpaque(true);
+		lblNewLabel_7.setBackground(Constants.getSurfaceColor());
+		lblNewLabel_7.setForeground(Constants.getTextColor());
+		panel_3.add(lblNewLabel_7, "3, 1, fill, fill");
+		
+		JLabel lblNewLabel_8 = new JLabel("Parada");
+		lblNewLabel_8.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		lblNewLabel_8.setOpaque(true);
+		lblNewLabel_8.setBackground(Constants.getSurfaceColor());
+		lblNewLabel_8.setForeground(Constants.getTextColor());
+		panel_3.add(lblNewLabel_8, "4, 1, fill, fill");
+		
+		JLabel lblNewLabel_9 = new JLabel("Rangos Normales de operación ");
+		lblNewLabel_9.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		lblNewLabel_9.setOpaque(true);
+		lblNewLabel_9.setBackground(Constants.getSurfaceColor());
+		lblNewLabel_9.setForeground(Constants.getTextColor());
+		panel_3.add(lblNewLabel_9, "5, 1, fill, fill");
+		
+		JLabel lblNewLabel_10_1 = new JLabel("");
+		lblNewLabel_10_1.setOpaque(true);
+		lblNewLabel_10_1.setBackground(Constants.getSurfaceColor());
+		panel_3.add(lblNewLabel_10_1, "6, 1, fill, fill");
+		
+		JLabel lblNewLabel_11 = new JLabel("Temperatura en la entrada de aire en la turbina");
+		panel_3.add(lblNewLabel_11, "2, 2, fill, fill");
 		
 	}
 }
