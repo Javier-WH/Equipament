@@ -152,7 +152,8 @@ public class MainWindow extends JFrame {
 		JButton btnRutinas = new CButton("Rutinas de mantenimiento");
 		btnRutinas.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-
+				SelectionMantenanceFrame SMF = new SelectionMantenanceFrame(contentPane, "Rutinas de mantenimiento");
+				SMF.setVisible(true);
 			}
 		});
 		menuPanel.add(btnRutinas, "cell 0 1,grow");

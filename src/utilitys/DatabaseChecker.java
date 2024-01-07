@@ -6,9 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import dataBaseModels.DataBaseModel;
-import dataBaseModels.DateTest;
-import dataBaseModels.PruebaDB3;
-import dataBaseModels.PruebaDB4;
+//import dataBaseModels.DateTest;
+import dataBaseModels.MaintenanceRoutines;
 import dbConection.*;
 
 public class DatabaseChecker {
@@ -18,15 +17,12 @@ public class DatabaseChecker {
 
 	public DatabaseChecker() throws ClassNotFoundException, SQLException {
 		connection = SQLiteConnection.getConnection();
-		TableList.add(new PruebaDB3());
-		TableList.add(new PruebaDB4());
-		TableList.add(new DateTest());
-		
-
+		//TableList.add(new DateTest());
+		TableList.add(new MaintenanceRoutines());
 	}
 
 	public boolean checkDatabaseList() throws SQLException {
-
+	
 		ArrayList<String> currentTableList = new ArrayList<String>();
 
 		DatabaseMetaData metaData = connection.getMetaData();
@@ -41,6 +37,8 @@ public class DatabaseChecker {
 			if (!currentTableList.contains(name)) {
 				if (table.createTable()) {
 					System.out.println("la tabla " + name + " se ha creado");
+				}else {
+					System.out.println("error al crear la tabla");
 				}
 			}
 		}
