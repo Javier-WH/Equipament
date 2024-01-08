@@ -13,6 +13,13 @@ public class Constants {
 	private static Color actionColor = new Color(23, 32, 42);
 	private static Color decoratorColor = Color.GRAY;
 	private static Font mainFont = new Font("Arial", Font.BOLD, 12);
+	private static Font tableFont = new Font("Arial", Font.PLAIN, 12);
+
+	
+	
+	public static Font getTableFont() {
+		return tableFont;
+	}
 
 	public static Color getSurfaceColorB() {
 		return surfaceColorB;

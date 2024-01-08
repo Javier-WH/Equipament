@@ -8,20 +8,18 @@ import javax.swing.JLabel;
 import java.awt.Component;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableModel;
-
 import components.Constants;
 import dataBaseModels.MaintenanceRoutines;
 import functions.Translate;
-
 import java.awt.Dimension;
 import java.awt.Font;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashMap;
-
 import javax.swing.Box;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+
 
 public class PreventiveMantenancePlan extends FrameModel {
 	private static final long serialVersionUID = 1L;
@@ -48,6 +46,7 @@ public class PreventiveMantenancePlan extends FrameModel {
 		tabbedPane.addTab("Turbocompresor", null, TurbocompresorPanel, null);
 
 		TurbocompresorTable = new JTable();
+		setTableStyles(TurbocompresorTable);
 		TurbocompresorPanel.setViewportView(TurbocompresorTable);
 		TurbocompresorTable.setModel(getTableData("Turbocompresor"));
 
@@ -55,6 +54,7 @@ public class PreventiveMantenancePlan extends FrameModel {
 		tabbedPane.addTab("Turbina", null, TurbinaPanel, null);
 
 		TurbinaTable = new JTable();
+		setTableStyles(TurbinaTable);
 		TurbinaPanel.setViewportView(TurbinaTable);
 		TurbinaTable.setModel(getTableData("Turbina"));
 
@@ -62,6 +62,7 @@ public class PreventiveMantenancePlan extends FrameModel {
 		tabbedPane.addTab("Sensores", null, SensoresPanel, null);
 
 		SensoresTable = new JTable();
+		setTableStyles(SensoresTable);
 		SensoresPanel.setViewportView(SensoresTable);
 		SensoresTable.setModel(getTableData("Sensores"));
 
@@ -69,6 +70,7 @@ public class PreventiveMantenancePlan extends FrameModel {
 		tabbedPane.addTab("Sistema de admisión de aire", null, SistemaAdmisiónAirePanel, null);
 
 		SistemaAdmisiónAireTable = new JTable();
+		setTableStyles(SistemaAdmisiónAireTable);
 		SistemaAdmisiónAirePanel.setViewportView(SistemaAdmisiónAireTable);
 		SistemaAdmisiónAireTable.setModel(getTableData("Sistema de admisión de aire"));
 
@@ -76,6 +78,7 @@ public class PreventiveMantenancePlan extends FrameModel {
 		tabbedPane.addTab("Sistema de combustible", null, SistemaCombustiblePanel, null);
 
 		SistemaCombustibleTable = new JTable();
+		setTableStyles(SistemaCombustibleTable);
 		SistemaCombustiblePanel.setViewportView(SistemaCombustibleTable);
 		SistemaCombustibleTable.setModel(getTableData("Sistema de combustible"));
 
@@ -83,6 +86,7 @@ public class PreventiveMantenancePlan extends FrameModel {
 		tabbedPane.addTab("Sistema de aceite de lubricación", null, SistemaAceiteLubricacionPanel, null);
 
 		SistemaAceiteLubricacionTable = new JTable();
+		setTableStyles(SistemaAceiteLubricacionTable);
 		SistemaAceiteLubricacionPanel.setViewportView(SistemaAceiteLubricacionTable);
 		SistemaAceiteLubricacionTable.setModel(getTableData("Sistema de aceite de lubricación"));
 
@@ -90,6 +94,7 @@ public class PreventiveMantenancePlan extends FrameModel {
 		tabbedPane.addTab("Enfriador de aceite", null, EnfriadorAceitePanel, null);
 
 		EnfriadorAceiteTable = new JTable();
+		setTableStyles(EnfriadorAceiteTable);
 		EnfriadorAceitePanel.setViewportView(EnfriadorAceiteTable);
 		EnfriadorAceiteTable.setModel(getTableData("Enfriador de aceite"));
 
@@ -97,6 +102,7 @@ public class PreventiveMantenancePlan extends FrameModel {
 		tabbedPane.addTab("Consola de Control", null, ConsolaControlPanel, null);
 
 		ConsolaControlTable = new JTable();
+		setTableStyles(ConsolaControlTable);
 		ConsolaControlPanel.setViewportView(ConsolaControlTable);
 		ConsolaControlTable.setModel(getTableData("Consola de Control"));
 
@@ -104,6 +110,7 @@ public class PreventiveMantenancePlan extends FrameModel {
 		tabbedPane.addTab("Baterías", null, BateriasPanel, null);
 
 		BateriasTable = new JTable();
+		setTableStyles(BateriasTable);
 		BateriasPanel.setViewportView(BateriasTable);
 		BateriasTable.setModel(getTableData("Baterías"));
 
@@ -111,6 +118,7 @@ public class PreventiveMantenancePlan extends FrameModel {
 		tabbedPane.addTab("Cargador de Baterías", null, CargadorBateriasPanel, null);
 
 		CargadorBateriasTable = new JTable();
+		setTableStyles(CargadorBateriasTable);
 		CargadorBateriasPanel.setViewportView(CargadorBateriasTable);
 		CargadorBateriasTable.setModel(getTableData("Cargador de Baterías"));
 
@@ -118,6 +126,7 @@ public class PreventiveMantenancePlan extends FrameModel {
 		tabbedPane.addTab("Sistema de detección de fuego y gas", null, SistemaDeteccionFuegoGasPanel, null);
 
 		SistemaDeteccionFuegoGasTable = new JTable();
+		setTableStyles(SistemaDeteccionFuegoGasTable);
 		SistemaDeteccionFuegoGasPanel.setViewportView(SistemaDeteccionFuegoGasTable);
 		SistemaDeteccionFuegoGasTable.setModel(getTableData("Sistema de detección de fuego y gas"));
 
@@ -125,6 +134,7 @@ public class PreventiveMantenancePlan extends FrameModel {
 		tabbedPane.addTab("Equipo accionado Compresor de gas C304 Solar", null, EquipoCompresorC304SolarPanel, null);
 
 		EquipoCompresorC304SolarTable = new JTable();
+		setTableStyles(EquipoCompresorC304SolarTable);
 		EquipoCompresorC304SolarPanel.setViewportView(EquipoCompresorC304SolarTable);
 		EquipoCompresorC304SolarTable.setModel(getTableData("Equipo accionado Compresor de gas C304 Solar"));
 
@@ -185,6 +195,14 @@ public class PreventiveMantenancePlan extends FrameModel {
 		panel.add(lblCentauro);
 	}
 
+	private void setTableStyles(JTable table) {
+		//table.setGridColor(Constants.getSurfaceColor());
+		table.setRowHeight(30);
+		table.setEnabled(false);
+		table.setFont(Constants.getTableFont());
+		table.setForeground(Constants.getSurfaceColor());
+	}
+
 	private DefaultTableModel getTableData(String secction) {
 		DefaultTableModel model = new DefaultTableModel();
 		HashMap<String, String> params = new HashMap<>();
@@ -202,7 +220,6 @@ public class PreventiveMantenancePlan extends FrameModel {
 			model.addColumn("Personal");
 			model.addColumn("N° Al Año");
 			model.addColumn("Fecha");
-
 
 			while (TCData.next()) {
 
