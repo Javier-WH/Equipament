@@ -6,8 +6,13 @@ import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 import java.awt.Font;
 import java.awt.Image;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.awt.Cursor;
 import javax.swing.UIManager;
+
+import views.MainWindow;
+
 import java.awt.Dimension;
 
 public class Alarm extends JPanel implements AlarmSchema {
@@ -15,13 +20,24 @@ public class Alarm extends JPanel implements AlarmSchema {
 	private static final long serialVersionUID = 1L;
 
 	private int alarmIndex;
+	private int alarmID;
 
-	public Alarm() {
+	public Alarm(String Section, String Activity, String LastUpdate, String Level, String type) {
 		setMaximumSize(new Dimension(32767, 100));
 		setPreferredSize(new Dimension(800, 100));
 		setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		setBackground(new Color(255, 0, 0));
 		setLayout(null);
+		
+		if(type.equals("P")) {
+			setBackground(Constants.getPreventiveAlertColor());			
+		}else if(type.equals("C")) {
+			setBackground(Constants.getCorrectiveAlertColor());	
+		}else if(type.equals("PC")) {
+			setBackground(Constants.getPuestaAceroAlertColor());	
+		}else {
+			setBackground(Color.RED);	
+		}
+		
 
 		JLabel lblLogo = new JLabel();
 		lblLogo.setPreferredSize(new Dimension(322, 147));
@@ -32,26 +48,55 @@ public class Alarm extends JPanel implements AlarmSchema {
 		lblLogo.setIcon(scaledIcon);
 
 		add(lblLogo);
-		JLabel lblAlertTitle = new JLabel("Alerta Mantenimiento");
-		lblAlertTitle.setFont(new Font("Tahoma", Font.BOLD, 21));
-		lblAlertTitle.setForeground(Color.WHITE);
-		lblAlertTitle.setBackground(new Color(240, 240, 240));
-		lblAlertTitle.setBounds(256, 3, 458, 26);
-		add(lblAlertTitle);
+		JLabel lblSecction = new JLabel(Section);
+		lblSecction.setFont(new Font("Tahoma", Font.BOLD, 21));
+		lblSecction.setForeground(Color.WHITE);
+		lblSecction.setBackground(new Color(240, 240, 240));
+		lblSecction.setBounds(265, 0, 458, 26);
+		add(lblSecction);
 
-		JLabel lblEquipName = new JLabel("Equipo de seguridad");
-		lblEquipName.setForeground(Color.WHITE);
-		lblEquipName.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lblEquipName.setBackground(UIManager.getColor("Button.background"));
-		lblEquipName.setBounds(264, 34, 491, 26);
-		add(lblEquipName);
+		JLabel lblActivity = new JLabel(Activity);
+		lblActivity.setForeground(Color.WHITE);
+		lblActivity.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblActivity.setBackground(UIManager.getColor("Button.background"));
+		lblActivity.setBounds(265, 50, 491, 26);
+		add(lblActivity);
 
-		JLabel lblLastUpdate = new JLabel("Ultimo mantenimiento el 14-02-2024");
+		JLabel lblLastUpdate = new JLabel(LastUpdate);
 		lblLastUpdate.setForeground(Color.WHITE);
 		lblLastUpdate.setFont(new Font("Tahoma", Font.BOLD, 14));
 		lblLastUpdate.setBackground(UIManager.getColor("Button.background"));
-		lblLastUpdate.setBounds(256, 63, 491, 26);
+		lblLastUpdate.setBounds(431, 70, 150, 26);
 		add(lblLastUpdate);
+		
+		JLabel lblUltimoMantenimiento = new JLabel("Ultimo mantenimiento:");
+		lblUltimoMantenimiento.setForeground(Color.WHITE);
+		lblUltimoMantenimiento.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblUltimoMantenimiento.setBackground(UIManager.getColor("Button.background"));
+		lblUltimoMantenimiento.setBounds(265, 70, 183, 26);
+		add(lblUltimoMantenimiento);
+		
+		JLabel lblsdsds = new JLabel("Nivel:");
+		lblsdsds.setForeground(Color.WHITE);
+		lblsdsds.setFont(new Font("Tahoma", Font.BOLD, 18));
+		lblsdsds.setBackground(UIManager.getColor("Button.background"));
+		lblsdsds.setBounds(265, 27, 61, 26);
+		add(lblsdsds);
+		
+		JLabel lblNivel = new JLabel(Level);
+		lblNivel.setForeground(Color.WHITE);
+		lblNivel.setFont(new Font("Tahoma", Font.BOLD, 18));
+		lblNivel.setBackground(UIManager.getColor("Button.background"));
+		lblNivel.setBounds(325, 27, 54, 26);
+		add(lblNivel);
+		
+		addMouseListener(new MouseAdapter() {
+			@Override
+		    public void mouseClicked(MouseEvent e) {
+				System.out.println(alarmID);
+				//MainWindow.removeAlert(alarmIndex);
+			}
+		});
 
 	}
 
@@ -63,5 +108,9 @@ public class Alarm extends JPanel implements AlarmSchema {
 		this.alarmIndex = alarmIndex;
 
 	}
+	
+	public void setAlarmID(int alarmID) {
+		this.alarmID = alarmID;
 
+	}
 }

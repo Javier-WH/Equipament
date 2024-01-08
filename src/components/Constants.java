@@ -14,9 +14,25 @@ public class Constants {
 	private static Color decoratorColor = Color.GRAY;
 	private static Font mainFont = new Font("Arial", Font.BOLD, 12);
 	private static Font tableFont = new Font("Arial", Font.PLAIN, 12);
+	private static Color preventiveAlertColor = new Color(9, 54, 219);
+	private static Color correctiveAlertColor = new Color(194, 125, 6);
+	private static Color puestaAceroAlertColor = new Color(96, 181, 103);
+	
+	
+	
+	
+	public static Color getPuestaAceroAlertColor() {
+		return puestaAceroAlertColor;
+	}
 
-	
-	
+	public static Color getCorrectiveAlertColor() {
+		return correctiveAlertColor;
+	}
+
+	public static Color getPreventiveAlertColor() {
+		return preventiveAlertColor;
+	}
+
 	public static Font getTableFont() {
 		return tableFont;
 	}

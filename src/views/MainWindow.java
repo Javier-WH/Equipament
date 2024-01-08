@@ -3,7 +3,6 @@ package views;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import components.Alarm;
 import components.AlarmSchema;
 import components.CButton;
 import components.Constants;
@@ -138,7 +137,7 @@ public class MainWindow extends JFrame {
 						lblTitle.setHorizontalAlignment(SwingConstants.LEFT);
 						lblTitle.setHorizontalTextPosition(SwingConstants.CENTER);
 		updateAlertsMessage();
-
+ 
 		JButton btnRegistro = new CButton("Registro");
 		btnRegistro.setText("Equipo");
 		btnRegistro.addActionListener(new ActionListener() {
@@ -225,7 +224,7 @@ public class MainWindow extends JFrame {
 
 	}
 
-	public static void addAlert(Alarm alarm) {
+	public static void addAlert(AlarmSchema alarm) {
 		alarmList.add(alarm);
 		refreshAlertPanel();
 	}
@@ -237,5 +236,11 @@ public class MainWindow extends JFrame {
 		alarmList.remove(index);
 		refreshAlertPanel();
 	}
+	
+	public static void resetAlarms() {
+		alarmList = new ArrayList<>();
+		refreshAlertPanel();
+	}
+	
 
 }
