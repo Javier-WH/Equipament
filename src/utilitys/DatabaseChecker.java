@@ -14,10 +14,11 @@ public class DatabaseChecker {
 
 	private Connection connection = null;
 	private ArrayList<DataBaseModel> TableList = new ArrayList<DataBaseModel>();
+	private DataChecker dataChecker = null;
 
 	public DatabaseChecker() throws ClassNotFoundException, SQLException {
+		dataChecker = new DataChecker();
 		connection = SQLiteConnection.getConnection();
-		//TableList.add(new DateTest());
 		TableList.add(new MaintenanceRoutines());
 	}
 
@@ -37,6 +38,7 @@ public class DatabaseChecker {
 			if (!currentTableList.contains(name)) {
 				if (table.createTable()) {
 					System.out.println("la tabla " + name + " se ha creado");
+					dataChecker.checkData(name);
 				}else {
 					System.out.println("error al crear la tabla");
 				}

@@ -14,15 +14,19 @@ import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import javax.swing.border.MatteBorder;
 
+import javax.swing.border.MatteBorder;
 
 public class SelectionMantenanceFrame extends FrameModel {
 	private static final long serialVersionUID = 1L;
-
+	private JLabel lblLeft = null;
+	private JLabel lblRight = null;
+	private JLabel lblRunning = null;
+	private JPanel panel = null;
+	
 	public SelectionMantenanceFrame(JPanel parent, String title) {
 		super(parent, title);
-
+		panel = (JPanel) this.getContentPane();
 		int imageWidth = (this.getSize().width) / 5;
 		int imageHeight = imageWidth;
 
@@ -38,7 +42,7 @@ public class SelectionMantenanceFrame extends FrameModel {
 		panel.setAlignmentY(Component.BOTTOM_ALIGNMENT);
 		panel.setAlignmentX(Component.RIGHT_ALIGNMENT);
 
-		JLabel lblLeft = new JLabel("");
+		lblLeft = new JLabel("");
 		lblLeft.setOpaque(true);
 		lblLeft.setBackground(Constants.getSurfaceColor());
 		lblLeft.setBorder(new MatteBorder(1, 1, 1, 1, (Color) Constants.getSurfaceColor()));
@@ -47,10 +51,12 @@ public class SelectionMantenanceFrame extends FrameModel {
 		lblLeft.setSize(imageWidth, imageHeight);
 		ImageIcon iconLeft = new ImageIcon(SelectionMantenanceFrame.class.getResource("/assets/preventiveIcon.png"));
 		Image imageLeft = iconLeft.getImage();
-		Image scaledImageLeft = imageLeft.getScaledInstance(lblLeft.getWidth(), lblLeft.getHeight(),Image.SCALE_SMOOTH);
+		Image scaledImageLeft = imageLeft.getScaledInstance(lblLeft.getWidth(), lblLeft.getHeight(),
+				Image.SCALE_SMOOTH);
 		ImageIcon scaledIconLeft = new ImageIcon(scaledImageLeft);
 		lblLeft.setIcon(scaledIconLeft);
-		panel.setLayout(new MigLayout("", "[grow,fill][fill][fill][fill][grow,fill]", "[grow,fill][][19px][fill][grow,fill]"));
+		panel.setLayout(
+				new MigLayout("", "[grow,fill][fill][fill][fill][grow,fill]", "[grow,fill][][19px][fill][grow,fill]"));
 		lblLeft.addMouseListener(mouseOver);
 
 		JLabel lblNewLabel = new JLabel("Selecciona el tiipo de manteniemito");
@@ -59,7 +65,7 @@ public class SelectionMantenanceFrame extends FrameModel {
 		panel.add(lblNewLabel, "cell 2 0,growx,aligny center");
 		panel.add(lblLeft, "cell 1 2,grow");
 
-		JLabel lblRight = new JLabel("");
+		lblRight = new JLabel("");
 		lblRight.setOpaque(true);
 		lblRight.setBackground(Constants.getSurfaceColor());
 		lblRight.setBorder(new MatteBorder(1, 1, 1, 1, (Color) Constants.getSurfaceColor()));
@@ -74,7 +80,7 @@ public class SelectionMantenanceFrame extends FrameModel {
 		lblRight.addMouseListener(mouseOver);
 		panel.add(lblRight, "cell 3 2,grow");
 
-		JLabel lblRunning = new JLabel("");
+		lblRunning = new JLabel("");
 		lblRunning.setOpaque(true);
 		lblRunning.setBackground(Constants.getSurfaceColor());
 		lblRunning.setBorder(new MatteBorder(1, 1, 1, 1, (Color) Constants.getSurfaceColor()));
@@ -109,10 +115,24 @@ public class SelectionMantenanceFrame extends FrameModel {
 		lblTextRight.setFont(new Font("Tahoma", Font.BOLD, 14));
 		panel.add(lblTextRight, "cell 3 3,grow");
 
-
 	}
 
 	MouseAdapter mouseOver = new MouseAdapter() {
+		@Override
+		public void mouseClicked(MouseEvent e) {
+			Object source = e.getSource();
+
+			if (source.equals(lblLeft)) {
+				PreventiveMantenancePlan PMP = new PreventiveMantenancePlan(panel, "Plan de Mantenimiento Preventivo");
+				PMP.setVisible(true);
+			} else if (source.equals(lblRight)) {
+				System.out.println("lblRight");
+			}else if (source.equals(lblRunning)) {
+				System.out.println("lblRunning");
+			}
+
+		}
+
 		@Override
 		public void mouseEntered(MouseEvent e) {
 			Object source = e.getSource();
