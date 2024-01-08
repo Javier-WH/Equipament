@@ -13,8 +13,8 @@ public class DefaultPreventiveDataFiller extends AbstractDataFiller {
 	public DefaultPreventiveDataFiller() throws ClassNotFoundException, SQLException {
 		super(new MaintenanceRoutines());
 	}
-	
-	
+	 
+	 
 	public void fillData() throws SQLException {
 		LocalDate localDate = LocalDate.now();
 		String date = DateHandler.dateToString(localDate);
@@ -878,7 +878,7 @@ public class DefaultPreventiveDataFiller extends AbstractDataFiller {
 			params.put("lastUpdate", date);
 			table.createRecord(params);
 			
-			System.out.println("Se han creado los datos por defecto de la tabla " + table.getTableName());
+			System.out.println("Se han creado los datos preventivos por defecto de la tabla " + table.getTableName());
 
 		
 	}

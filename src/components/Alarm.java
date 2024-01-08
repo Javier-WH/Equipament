@@ -11,7 +11,6 @@ import java.awt.event.MouseEvent;
 import java.awt.Cursor;
 import javax.swing.UIManager;
 
-import views.MainWindow;
 
 import java.awt.Dimension;
 
@@ -52,7 +51,7 @@ public class Alarm extends JPanel implements AlarmSchema {
 		lblSecction.setFont(new Font("Tahoma", Font.BOLD, 21));
 		lblSecction.setForeground(Color.WHITE);
 		lblSecction.setBackground(new Color(240, 240, 240));
-		lblSecction.setBounds(265, 0, 458, 26);
+		lblSecction.setBounds(265, 0, 535, 26);
 		add(lblSecction);
 
 		JLabel lblActivity = new JLabel(Activity);
@@ -66,7 +65,7 @@ public class Alarm extends JPanel implements AlarmSchema {
 		lblLastUpdate.setForeground(Color.WHITE);
 		lblLastUpdate.setFont(new Font("Tahoma", Font.BOLD, 14));
 		lblLastUpdate.setBackground(UIManager.getColor("Button.background"));
-		lblLastUpdate.setBounds(431, 70, 150, 26);
+		lblLastUpdate.setBounds(431, 70, 296, 26);
 		add(lblLastUpdate);
 		
 		JLabel lblUltimoMantenimiento = new JLabel("Ultimo mantenimiento:");
@@ -87,7 +86,7 @@ public class Alarm extends JPanel implements AlarmSchema {
 		lblNivel.setForeground(Color.WHITE);
 		lblNivel.setFont(new Font("Tahoma", Font.BOLD, 18));
 		lblNivel.setBackground(UIManager.getColor("Button.background"));
-		lblNivel.setBounds(325, 27, 54, 26);
+		lblNivel.setBounds(325, 27, 465, 26);
 		add(lblNivel);
 		
 		addMouseListener(new MouseAdapter() {

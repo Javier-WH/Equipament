@@ -2,7 +2,10 @@ package utilitys;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+
+import dataFillers.DefaultCorrectiveDataFiller;
 import dataFillers.DefaultPreventiveDataFiller;
+import dataFillers.DefaultPuestaCeroDataFiller;
 import dataFillers.IDataFiller;
 
 public class DataChecker {
@@ -14,8 +17,11 @@ public class DataChecker {
 
 		datafiller = new ArrayList<>();
 		datafiller.add(new DefaultPreventiveDataFiller());
+		datafiller.add(new DefaultCorrectiveDataFiller());
+		datafiller.add(new DefaultPuestaCeroDataFiller());
 
 	}
+
 
 	public boolean checkData(String dataBaseName) throws SQLException {
 
@@ -30,5 +36,5 @@ public class DataChecker {
 		}
 		return true;
 	}
-
+ 
 }

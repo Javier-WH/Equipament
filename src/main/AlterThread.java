@@ -27,7 +27,7 @@ public class AlterThread implements Runnable {
 			while (rutinesList.next()) {
 				String stringDate = rutinesList.getString("lastUpdate");
 				LocalDate lastUpdate = DateHandler.stringToDate(stringDate);
-				LocalDate currentDate = LocalDate.now();
+				LocalDate currentDate = LocalDate.now(); 
 
 				if (lastUpdate.isBefore(currentDate) || lastUpdate.isEqual(currentDate)) {
 					long daysBetween = DateHandler.daysBetween(currentDate, lastUpdate);
