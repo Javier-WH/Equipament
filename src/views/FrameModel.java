@@ -17,9 +17,15 @@ public class FrameModel extends JDialog {
 	private static final long serialVersionUID = 1L;
 	private final JPanel contentPanel = new JPanel();
 	CButton okButton = new CButton("Aceptar");
-	protected boolean showAceeptButton = false;
+	protected boolean showAceeptButton = true;
 	
 	public FrameModel(JPanel parent, String title) {
+		this(parent, title, false);
+		
+	}
+	
+	public FrameModel(JPanel parent, String title, boolean showAceeptButton) {
+		this.showAceeptButton = showAceeptButton;
 		getContentPane().setBackground(Constants.getSurfaceColor());
 		setIconImage(Toolkit.getDefaultToolkit().getImage(FrameModel.class.getResource("/assets/logoF.png")));
 		setModal(true);

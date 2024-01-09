@@ -10,6 +10,9 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.Cursor;
 import javax.swing.UIManager;
+
+import mantenanceForm.MantenanceForm;
+
 import java.awt.Dimension;
 
 
@@ -92,8 +95,11 @@ public class Alarm extends JPanel implements AlarmSchema {
 		addMouseListener(new MouseAdapter() {
 			@Override
 		    public void mouseClicked(MouseEvent e) {
-				System.out.println(alarmID);
+				//System.out.println(alarmID);
 				//MainWindow.removeAlert(alarmIndex);
+				MantenanceForm MF = new MantenanceForm(alarmID, alarmIndex);
+				MF.setVisible(true);
+				
 			}
 		});
 
