@@ -277,7 +277,7 @@ public class DefaultCorrectiveDataFiller extends AbstractDataFiller {
 //////////////////////////////Sistema aceite sello/////////////////////////////////////////////////////
 		
 		params = new HashMap<>();
-		params.put("secction", "Sistema de control eléctrico");
+		params.put("secction", "Sistema aceite sello");
 		params.put("activity", "Limpieza de válvula de control de presión diferencial entre el gas sello y gas de succión");
 		params.put("frequency", "30");
 		params.put("level", "3");
@@ -290,7 +290,7 @@ public class DefaultCorrectiveDataFiller extends AbstractDataFiller {
 		table.createRecord(params);
 		
 		params = new HashMap<>();
-		params.put("secction", "Sistema de control eléctrico");
+		params.put("secction", "Sistema aceite sello");
 		params.put("activity", "Limpieza de la línea aceite sello");
 		params.put("frequency", "90");
 		params.put("level", "3");
@@ -303,7 +303,7 @@ public class DefaultCorrectiveDataFiller extends AbstractDataFiller {
 		table.createRecord(params);
 		
 		params = new HashMap<>();
-		params.put("secction", "Sistema de control eléctrico");
+		params.put("secction", "Sistema aceite sello");
 		params.put("activity", "Cambio de sello de las conexiones de entrada y salida de las mangueras");
 		params.put("frequency", "360");
 		params.put("level", "4");
@@ -316,7 +316,7 @@ public class DefaultCorrectiveDataFiller extends AbstractDataFiller {
 		table.createRecord(params);
 		
 		params = new HashMap<>();
-		params.put("secction", "Sistema de control eléctrico");
+		params.put("secction", "Sistema aceite sello");
 		params.put("activity", "Cambio de trampa aceite sello");
 		params.put("frequency", "1095");
 		params.put("level", "4");
@@ -329,7 +329,7 @@ public class DefaultCorrectiveDataFiller extends AbstractDataFiller {
 		table.createRecord(params);
 		
 		params = new HashMap<>();
-		params.put("secction", "Sistema de control eléctrico");
+		params.put("secction", "Sistema aceite sello");
 		params.put("activity", "Cambio de mangueras de suministro de aceite sello.");
 		params.put("frequency", "1825");
 		params.put("level", "4");
@@ -342,7 +342,7 @@ public class DefaultCorrectiveDataFiller extends AbstractDataFiller {
 		table.createRecord(params);
 		
 		params = new HashMap<>();
-		params.put("secction", "Sistema de control eléctrico");
+		params.put("secction", "Sistema aceite sello");
 		params.put("activity", "Cambio de engranajes de bomba(juego de reparación completo N/P 800787GR91)");
 		params.put("frequency", "1825");
 		params.put("level", "4");
@@ -350,7 +350,7 @@ public class DefaultCorrectiveDataFiller extends AbstractDataFiller {
 		params.put("personal", "2");
 		params.put("total", "-");
 		params.put("piece", "800787GR91");
-		params.put("type", "C");
+		params.put("type", "C"); 
 		params.put("lastUpdate", date);
 		table.createRecord(params);
 		

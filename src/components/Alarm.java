@@ -10,9 +10,8 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.Cursor;
 import javax.swing.UIManager;
-
-
 import java.awt.Dimension;
+
 
 public class Alarm extends JPanel implements AlarmSchema {
 
@@ -22,6 +21,7 @@ public class Alarm extends JPanel implements AlarmSchema {
 	private int alarmID;
 
 	public Alarm(String Section, String Activity, String LastUpdate, String Level, String type) {
+		setBorder(null);
 		setMaximumSize(new Dimension(32767, 100));
 		setPreferredSize(new Dimension(800, 100));
 		setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));

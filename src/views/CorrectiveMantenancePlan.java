@@ -17,7 +17,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
 
-public class PreventiveMantenancePlan extends FrameModel {
+public class CorrectiveMantenancePlan extends FrameModel {
 	private static final long serialVersionUID = 1L;
 	private JTable TurbocompresorTable;
 	private JTable TurbinaTable;
@@ -30,109 +30,102 @@ public class PreventiveMantenancePlan extends FrameModel {
 	private JTable BateriasTable;
 	private JTable CargadorBateriasTable;
 	private JTable SistemaDeteccionFuegoGasTable;
-	private JTable EquipoCompresorC304SolarTable;
 
-	public PreventiveMantenancePlan(JPanel parent, String title) {
+	public CorrectiveMantenancePlan(JPanel parent, String title) {
 		super(parent, title);
 
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		getContentPane().add(tabbedPane, BorderLayout.CENTER);
 
 		JScrollPane TurbocompresorPanel = new JScrollPane();
-		tabbedPane.addTab("Turbocompresor", null, TurbocompresorPanel, null);
+		tabbedPane.addTab("Sistema de arranque", null, TurbocompresorPanel, null);
 
 		TurbocompresorTable = new JTable();
 		TableStyles.setTableStyles(TurbocompresorTable);
 		TurbocompresorPanel.setViewportView(TurbocompresorTable);
-		TurbocompresorTable.setModel( TableData.getMaintenanceTableData("Turbocompresor", "P"));
+		TurbocompresorTable.setModel( TableData.getMaintenanceTableData("Sistema de arranque", "C"));
 
 		JScrollPane TurbinaPanel = new JScrollPane();
-		tabbedPane.addTab("Turbina", null, TurbinaPanel, null);
+		tabbedPane.addTab("Compresor Axial", null, TurbinaPanel, null);
 
 		TurbinaTable = new JTable();
 		TableStyles.setTableStyles(TurbinaTable);
 		TurbinaPanel.setViewportView(TurbinaTable);
-		TurbinaTable.setModel(TableData.getMaintenanceTableData("Turbina", "P"));
+		TurbinaTable.setModel(TableData.getMaintenanceTableData("Compresor Axial", "C"));
 
 		JScrollPane SensoresPanel = new JScrollPane();
-		tabbedPane.addTab("Sensores", null, SensoresPanel, null);
+		tabbedPane.addTab("Sistema de gas combustible", null, SensoresPanel, null);
 
 		SensoresTable = new JTable();
 		TableStyles.setTableStyles(SensoresTable);
 		SensoresPanel.setViewportView(SensoresTable);
-		SensoresTable.setModel(TableData.getMaintenanceTableData("Sensores", "P"));
-
+		SensoresTable.setModel(TableData.getMaintenanceTableData("Sistema de gas combustible", "C"));
+ 
 		JScrollPane SistemaAdmisiónAirePanel = new JScrollPane();
-		tabbedPane.addTab("Sistema de admisión de aire", null, SistemaAdmisiónAirePanel, null);
+		tabbedPane.addTab("Sistema de control eléctrico", null, SistemaAdmisiónAirePanel, null);
 
 		SistemaAdmisiónAireTable = new JTable();
 		TableStyles.setTableStyles(SistemaAdmisiónAireTable);
 		SistemaAdmisiónAirePanel.setViewportView(SistemaAdmisiónAireTable);
-		SistemaAdmisiónAireTable.setModel(TableData.getMaintenanceTableData("Sistema de admisión de aire", "P"));
+		SistemaAdmisiónAireTable.setModel(TableData.getMaintenanceTableData("Sistema de control eléctrico", "C"));
 
 		JScrollPane SistemaCombustiblePanel = new JScrollPane();
-		tabbedPane.addTab("Sistema de combustible", null, SistemaCombustiblePanel, null);
+		tabbedPane.addTab("Sistema aceite sello", null, SistemaCombustiblePanel, null);
 
 		SistemaCombustibleTable = new JTable();
 		TableStyles.setTableStyles(SistemaCombustibleTable);
 		SistemaCombustiblePanel.setViewportView(SistemaCombustibleTable);
-		SistemaCombustibleTable.setModel(TableData.getMaintenanceTableData("Sistema de combustible", "P"));
+		SistemaCombustibleTable.setModel(TableData.getMaintenanceTableData("Sistema aceite sello", "C"));
 
 		JScrollPane SistemaAceiteLubricacionPanel = new JScrollPane();
-		tabbedPane.addTab("Sistema de aceite de lubricación", null, SistemaAceiteLubricacionPanel, null);
+		tabbedPane.addTab("Cabina", null, SistemaAceiteLubricacionPanel, null);
 
 		SistemaAceiteLubricacionTable = new JTable();
 		TableStyles.setTableStyles(SistemaAceiteLubricacionTable);
 		SistemaAceiteLubricacionPanel.setViewportView(SistemaAceiteLubricacionTable);
-		SistemaAceiteLubricacionTable.setModel(TableData.getMaintenanceTableData("Sistema de aceite de lubricación", "P"));
+		SistemaAceiteLubricacionTable.setModel(TableData.getMaintenanceTableData("Cabina", "C"));
 
 		JScrollPane EnfriadorAceitePanel = new JScrollPane();
-		tabbedPane.addTab("Enfriador de aceite", null, EnfriadorAceitePanel, null);
+		tabbedPane.addTab("Sistema de lubricación", null, EnfriadorAceitePanel, null);
 
 		EnfriadorAceiteTable = new JTable();
 		TableStyles.setTableStyles(EnfriadorAceiteTable);
 		EnfriadorAceitePanel.setViewportView(EnfriadorAceiteTable);
-		EnfriadorAceiteTable.setModel(TableData.getMaintenanceTableData("Enfriador de aceite", "P"));
+		EnfriadorAceiteTable.setModel(TableData.getMaintenanceTableData("Sistema de lubricación", "C"));
 
 		JScrollPane ConsolaControlPanel = new JScrollPane();
-		tabbedPane.addTab("Consola de Control", null, ConsolaControlPanel, null);
+		tabbedPane.addTab("Compresor de Gas Natural: Conjunto final del compresor", null, ConsolaControlPanel, null);
 
 		ConsolaControlTable = new JTable();
 		TableStyles.setTableStyles(ConsolaControlTable);
 		ConsolaControlPanel.setViewportView(ConsolaControlTable);
-		ConsolaControlTable.setModel(TableData.getMaintenanceTableData("Consola de Control", "P"));
+		ConsolaControlTable.setModel(TableData.getMaintenanceTableData("Compresor de Gas Natural: Conjunto final del compresor", "C"));
 
 		JScrollPane BateriasPanel = new JScrollPane();
-		tabbedPane.addTab("Baterías", null, BateriasPanel, null);
+		tabbedPane.addTab("Compresor de Gas Natural: Conjunto de rotor de compresor", null, BateriasPanel, null);
 
 		BateriasTable = new JTable();
 		TableStyles.setTableStyles(BateriasTable);
 		BateriasPanel.setViewportView(BateriasTable);
-		BateriasTable.setModel(TableData.getMaintenanceTableData("Baterías", "P"));
+		BateriasTable.setModel(TableData.getMaintenanceTableData("Compresor de Gas Natural: Conjunto de rotor de compresor", "C"));
 
 		JScrollPane CargadorBateriasPanel = new JScrollPane();
-		tabbedPane.addTab("Cargador de Baterías", null, CargadorBateriasPanel, null);
+		tabbedPane.addTab("Compresor de Gas Natural: Conjunto de sello y de cojinete extremo de succión", null, CargadorBateriasPanel, null);
 
 		CargadorBateriasTable = new JTable();
 		TableStyles.setTableStyles(CargadorBateriasTable);
 		CargadorBateriasPanel.setViewportView(CargadorBateriasTable);
-		CargadorBateriasTable.setModel(TableData.getMaintenanceTableData("Cargador de Baterías", "P"));
+		CargadorBateriasTable.setModel(TableData.getMaintenanceTableData("Compresor de Gas Natural: Conjunto de sello y de cojinete extremo de succión", "C"));
 
 		JScrollPane SistemaDeteccionFuegoGasPanel = new JScrollPane();
-		tabbedPane.addTab("Sistema de detección de fuego y gas", null, SistemaDeteccionFuegoGasPanel, null);
+		tabbedPane.addTab("Compresor de Gas Natural: Conjunto de Cojinete y sello de descarga", null, SistemaDeteccionFuegoGasPanel, null);
 
 		SistemaDeteccionFuegoGasTable = new JTable();
 		TableStyles.setTableStyles(SistemaDeteccionFuegoGasTable);
 		SistemaDeteccionFuegoGasPanel.setViewportView(SistemaDeteccionFuegoGasTable);
-		SistemaDeteccionFuegoGasTable.setModel(TableData.getMaintenanceTableData("Sistema de detección de fuego y gas", "P"));
+		SistemaDeteccionFuegoGasTable.setModel(TableData.getMaintenanceTableData("Compresor de Gas Natural: Conjunto de Cojinete y sello de descarga", "C"));
 
-		JScrollPane EquipoCompresorC304SolarPanel = new JScrollPane();
-		tabbedPane.addTab("Equipo accionado Compresor de gas C304 Solar", null, EquipoCompresorC304SolarPanel, null);
 
-		EquipoCompresorC304SolarTable = new JTable();
-		TableStyles.setTableStyles(EquipoCompresorC304SolarTable);
-		EquipoCompresorC304SolarPanel.setViewportView(EquipoCompresorC304SolarTable);
-		EquipoCompresorC304SolarTable.setModel(TableData.getMaintenanceTableData("Equipo accionado Compresor de gas C304 Solar", "P"));
 
 		JPanel menuPanel = new JPanel();
 		menuPanel.setBackground(Constants.getSurfaceColor());
@@ -140,7 +133,7 @@ public class PreventiveMantenancePlan extends FrameModel {
 		getContentPane().add(menuPanel, BorderLayout.NORTH);
 		menuPanel.setLayout(new BoxLayout(menuPanel, BoxLayout.PAGE_AXIS));
 
-		JLabel lblTitle = new JLabel("PLAN DE MANTENIMIENTO PREVENTIVO");
+		JLabel lblTitle = new JLabel("PLAN DE MANTENIMIENTO CORRECTIVO");
 		lblTitle.setFont(new Font("Tahoma", Font.BOLD, 14));
 		lblTitle.setForeground(Constants.getTextColor());
 		lblTitle.setMaximumSize(new Dimension(30000, 30000));

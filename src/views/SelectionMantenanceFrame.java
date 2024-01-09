@@ -126,9 +126,11 @@ public class SelectionMantenanceFrame extends FrameModel {
 				PreventiveMantenancePlan PMP = new PreventiveMantenancePlan(panel, "Plan de Mantenimiento Preventivo");
 				PMP.setVisible(true);
 			} else if (source.equals(lblRight)) {
-				System.out.println("lblRight");
+				CorrectiveMantenancePlan CMP = new CorrectiveMantenancePlan(panel, "Plan de Mantenimiento Correctivo");
+				CMP.setVisible(true);
 			}else if (source.equals(lblRunning)) {
-				System.out.println("lblRunning");
+				PuestaCeroMantenancePlan PCMP = new PuestaCeroMantenancePlan(panel, "PLAN DE MANTENIMIENTO CORRECTIVO EQUIPO PUESTA A CERO");
+				PCMP.setVisible(true);
 			}
 
 		}

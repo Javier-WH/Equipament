@@ -30,9 +30,10 @@ public class AlterThread implements Runnable {
 				LocalDate currentDate = LocalDate.now(); 
 
 				if (lastUpdate.isBefore(currentDate) || lastUpdate.isEqual(currentDate)) {
-					long daysBetween = DateHandler.daysBetween(currentDate, lastUpdate);
+					long daysBetween = DateHandler.daysBetween(lastUpdate, currentDate);
 					long frecuency = Long.parseLong(rutinesList.getString("frequency"));
-					if (daysBetween <= frecuency) {
+				
+					if (daysBetween >= frecuency) {
 						int id = Integer.parseInt(rutinesList.getString("id"));
 						String secction = rutinesList.getString("secction");
 						String activity = rutinesList.getString("activity");

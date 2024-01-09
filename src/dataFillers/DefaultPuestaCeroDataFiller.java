@@ -19,7 +19,7 @@ public class DefaultPuestaCeroDataFiller extends AbstractDataFiller {
 		LocalDate localDate = LocalDate.now();
 		String date = DateHandler.dateToString(localDate);
 		HashMap<String, String> params = new HashMap<>();
-				
+			
 //////////////////////////////Sistema de admisión de aire/////////////////////////////////////////////////////
 			params.put("secction", "Sistema de admisión de aire");
 			params.put("activity","Limpieza de compuertas y caseta de filtros");
@@ -185,7 +185,7 @@ public class DefaultPuestaCeroDataFiller extends AbstractDataFiller {
 			
 //////////////////////////////Cabina/////////////////////////////////////////////////////
 			
-			params.put("secction", "Sistema aceite sello");
+			params.put("secction", "Cabina");
 			params.put("activity","Aplicación de pintura anti corrosiva a las partes de la cabina que lo requiera");
 			params.put("frequency", "365");
 			params.put("level", "4");
@@ -197,7 +197,7 @@ public class DefaultPuestaCeroDataFiller extends AbstractDataFiller {
 			params.put("lastUpdate", date);
 			table.createRecord(params);
 			
-			params.put("secction", "Sistema aceite sello");
+			params.put("secction", "Cabina");
 			params.put("activity","Cambio de detectores de fuego");
 			params.put("frequency", "1825");
 			params.put("level", "4");
@@ -209,7 +209,7 @@ public class DefaultPuestaCeroDataFiller extends AbstractDataFiller {
 			params.put("lastUpdate", date);
 			table.createRecord(params);
 			
-			params.put("secction", "Sistema aceite sello");
+			params.put("secction", "Cabina");
 			params.put("activity","Cambio de gomas de hermeticidad de las puertas por deterioro (sueltas/agrietamiento)");
 			params.put("frequency", "1825");
 			params.put("level", "4");
