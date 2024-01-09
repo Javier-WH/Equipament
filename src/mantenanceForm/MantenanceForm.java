@@ -11,23 +11,38 @@ import javax.swing.SwingConstants;
 import javax.swing.JTextField;
 import javax.swing.Box;
 import java.awt.Font;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.awt.Color;
 import javax.swing.JTextPane;
 import javax.swing.border.MatteBorder;
 import javax.swing.border.EmptyBorder;
 import net.miginfocom.swing.MigLayout;
 import javax.swing.border.TitledBorder;
+
+import dataBaseModels.MaintenanceRoutines;
+
 import javax.swing.JScrollPane;
+import javax.swing.ScrollPaneConstants;
 
 public class MantenanceForm extends FrameModel {
 	private static final long serialVersionUID = 1L;
 	private JTextField txtInspector;
 	private JTextField textField;
-	
+	private static JPanel activitiesPanel = new JPanel();
+	private ArrayList<ActivityPanel> activityList = new ArrayList<>();
+	private int alarmID;
+	private int alarmIndex;
+	private JLabel lblSecction ;
 	
 	
 	public MantenanceForm(int alarmID, int alarmIndex) {
 		super(null, "Formulario de Manteniniento", true);
+		
+		this.alarmID = alarmID;
+		this.alarmIndex = alarmIndex;
 		
 		JPanel panel = new JPanel();
 		panel.setBorder(new EmptyBorder(0, 10, 10, 10));
@@ -89,15 +104,15 @@ public class MantenanceForm extends FrameModel {
 		lblNewLabel_3.setAlignmentY(Component.TOP_ALIGNMENT);
 		westPanel.add(lblNewLabel_3);
 		
-		JLabel lblNewLabel_3_1 = new JLabel("<html><center>Sistema de arranque</center></html>");
-		lblNewLabel_3_1.setPreferredSize(new Dimension(400, 100));
-		lblNewLabel_3_1.setMinimumSize(new Dimension(29, 100));
-		lblNewLabel_3_1.setMaximumSize(new Dimension(30000, 30000));
-		lblNewLabel_3_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_3_1.setFont(new Font("Tahoma", Font.BOLD, 16));
-		lblNewLabel_3_1.setBorder(new MatteBorder(0, 1, 1, 1, (Color) Color.DARK_GRAY));
-		lblNewLabel_3_1.setAlignmentY(0.0f);
-		westPanel.add(lblNewLabel_3_1);
+		lblSecction = new JLabel("<html><center>Sistema de arranque</center></html>");
+		lblSecction.setPreferredSize(new Dimension(400, 100));
+		lblSecction.setMinimumSize(new Dimension(29, 100));
+		lblSecction.setMaximumSize(new Dimension(30000, 30000));
+		lblSecction.setHorizontalAlignment(SwingConstants.CENTER);
+		lblSecction.setFont(new Font("Tahoma", Font.BOLD, 16));
+		lblSecction.setBorder(new MatteBorder(0, 1, 1, 1, (Color) Color.DARK_GRAY));
+		lblSecction.setAlignmentY(0.0f);
+		westPanel.add(lblSecction);
 		
 		JPanel centerPanel = new JPanel();
 		centerPanel.setBorder(null);
@@ -148,22 +163,22 @@ public class MantenanceForm extends FrameModel {
 		panel_1.add(lblNewLabel_4, "flowx,cell 2 0,grow");
 		
 		JScrollPane scrollPane_1 = new JScrollPane();
+		scrollPane_1.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		scrollPane_1.setBorder(null);
 		centerPanel.add(scrollPane_1);
-		
-		JPanel activitiesPanel = new JPanel();
+		////////////////////////////////////////////////////////////////
 		activitiesPanel.setPreferredSize(new Dimension(10, 1000));
 		activitiesPanel.setLayout(new BoxLayout(activitiesPanel, BoxLayout.Y_AXIS));
-		activitiesPanel.add(new ActivityPanel());
-		activitiesPanel.add(new ActivityPanel());
-		activitiesPanel.add(new ActivityPanel());
-		activitiesPanel.add(new ActivityPanel());
-		activitiesPanel.add(new ActivityPanel());
-		activitiesPanel.add(new ActivityPanel());
-		activitiesPanel.add(new ActivityPanel());
-		activitiesPanel.add(new ActivityPanel());
-		activitiesPanel.add(new ActivityPanel());
-		activitiesPanel.add(new ActivityPanel());
+//		activitiesPanel.add(new ActivityPanel(1, "Perros"));
+//		activitiesPanel.add(new ActivityPanel(2, "Gatos"));
+//		activitiesPanel.add(new ActivityPanel(3, "Loros"));
+//		activitiesPanel.add(new ActivityPanel(4, "Burros"));
+//		activitiesPanel.add(new ActivityPanel(5, "Caballos"));
+//		activitiesPanel.add(new ActivityPanel(6, "Monos"));
+//		activitiesPanel.add(new ActivityPanel(7, "Leones"));
+//		activitiesPanel.add(new ActivityPanel(8, "Burros"));
+//		activitiesPanel.add(new ActivityPanel(9, "Ballenas"));
+//		activitiesPanel.add(new ActivityPanel(10, "lobos"));
 		scrollPane_1.setViewportView(activitiesPanel);
 		
 		JPanel southPanel = new JPanel();
@@ -204,9 +219,64 @@ public class MantenanceForm extends FrameModel {
 		JTextPane textPane = new JTextPane();
 		scrollPane.setViewportView(textPane);
 	
-		
+		fillActivityList();
+		fillActivitiesPanel();
 	}
 
+	
+	
+	private void fillActivityList() {
+		activityList = new ArrayList<>();
+		//parametros para obtener los datos de la fila
+		HashMap<String, String> params = new HashMap<>();
+		params.put("id", String.valueOf(alarmID));
+		
+		try {
+			//obtener los datos de la fila
+			MaintenanceRoutines routinesTable = new MaintenanceRoutines();
+			ResultSet activityRow = routinesTable.findRecord(params);
+			
+			String secction = null;
+			
+			if(activityRow.next()) {
+				secction = activityRow.getString("secction");
+			}
+			
+			if(secction == null) {
+				throw new Exception("No existe el activity");
+			}
+			
+			//nombre de la etiqueta seccion
+			lblSecction.setText("<html><center>"+secction+"</center></html>");
+			
+			//buscar todos los activitys de esa seccion
+			params = new HashMap<>();
+			params.put("secction", secction);
+			ResultSet activities = routinesTable.findRecord(params);
+			
+			while(activities.next()) {
+				int id = Integer.parseInt(activities.getString("id"));
+				String activity = activities.getString("activity");
+				activityList.add(new ActivityPanel(id, activity));
+			}
+			
+			
+			
+		} catch (ClassNotFoundException | SQLException e) {
+			e.printStackTrace();
+		}catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		
+	}
+	
+	private void fillActivitiesPanel() {
+		activitiesPanel.removeAll();
+		for(ActivityPanel activity : activityList) {
+			activitiesPanel.add(activity);
+		}
+	}
+	
 	
 
 		
