@@ -3,7 +3,6 @@ package mantenanceForm;
 import javax.swing.JPanel;
 import net.miginfocom.swing.MigLayout;
 import utilitys.DateHandler;
-
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -22,9 +21,9 @@ import javax.swing.JRadioButton;
 import javax.swing.ButtonGroup;
 import java.awt.Font;
 import javax.swing.JLabel;
-import javax.swing.Box;
 import javax.swing.SwingConstants;
 import javax.swing.ImageIcon;
+import javax.swing.SpringLayout;
 
 
 
@@ -58,12 +57,15 @@ public class ActivityPanel extends JPanel {
 		panel.setAlignmentX(Component.LEFT_ALIGNMENT);
 		panel.setBorder(new MatteBorder(0, 0, 0, 1, (Color) new Color(64, 64, 64)));
 		add(panel, "cell 0 0,grow");
-		panel.setLayout(new BoxLayout(panel, BoxLayout.X_AXIS));
-		
-		Component horizontalStrut = Box.createHorizontalStrut(10);
-		panel.add(horizontalStrut);
+		SpringLayout sl_panel = new SpringLayout();
+		panel.setLayout(sl_panel);
 		
 		JLabel lblActivity = new JLabel(this.activity);
+		lblActivity.setToolTipText(this.activity);
+		sl_panel.putConstraint(SpringLayout.NORTH, lblActivity, 0, SpringLayout.NORTH, panel);
+		sl_panel.putConstraint(SpringLayout.WEST, lblActivity, 0, SpringLayout.WEST, panel);
+		sl_panel.putConstraint(SpringLayout.SOUTH, lblActivity, 49, SpringLayout.NORTH, panel);
+		sl_panel.putConstraint(SpringLayout.EAST, lblActivity, 468, SpringLayout.WEST, panel);
 		lblActivity.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		lblActivity.setMaximumSize(new Dimension(30000, 30000));
 		panel.add(lblActivity);

@@ -34,15 +34,15 @@ public class MantenanceForm extends FrameModel {
 	private static JPanel activitiesPanel = new JPanel();
 	private ArrayList<ActivityPanel> activityList = new ArrayList<>();
 	private int alarmID;
-	private int alarmIndex;
+	//private int alarmIndex;
 	private JLabel lblSecction ;
-	
+	private JLabel lblTitle;
 	
 	public MantenanceForm(int alarmID, int alarmIndex) {
 		super(null, "Formulario de Manteniniento", true);
 		
 		this.alarmID = alarmID;
-		this.alarmIndex = alarmIndex;
+		//this.alarmIndex = alarmIndex;
 		
 		JPanel panel = new JPanel();
 		panel.setBorder(new EmptyBorder(0, 10, 10, 10));
@@ -80,10 +80,10 @@ public class MantenanceForm extends FrameModel {
 		Component horizontalStrut = Box.createHorizontalStrut(30);
 		inspectorPanel.add(horizontalStrut);
 		
-		JLabel lblNewLabel_2 = new JLabel("Check List de Mantenimiento Correctivo");
-		lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 18));
-		lblNewLabel_2.setAlignmentX(Component.CENTER_ALIGNMENT);
-		northPanel.add(lblNewLabel_2);
+		lblTitle = new JLabel("");
+		lblTitle.setFont(new Font("Tahoma", Font.BOLD, 18));
+		lblTitle.setAlignmentX(Component.CENTER_ALIGNMENT);
+		northPanel.add(lblTitle);
 		
 		Component verticalStrut = Box.createVerticalStrut(10);
 		northPanel.add(verticalStrut);
@@ -169,16 +169,6 @@ public class MantenanceForm extends FrameModel {
 		////////////////////////////////////////////////////////////////
 		activitiesPanel.setPreferredSize(new Dimension(10, 1000));
 		activitiesPanel.setLayout(new BoxLayout(activitiesPanel, BoxLayout.Y_AXIS));
-//		activitiesPanel.add(new ActivityPanel(1, "Perros"));
-//		activitiesPanel.add(new ActivityPanel(2, "Gatos"));
-//		activitiesPanel.add(new ActivityPanel(3, "Loros"));
-//		activitiesPanel.add(new ActivityPanel(4, "Burros"));
-//		activitiesPanel.add(new ActivityPanel(5, "Caballos"));
-//		activitiesPanel.add(new ActivityPanel(6, "Monos"));
-//		activitiesPanel.add(new ActivityPanel(7, "Leones"));
-//		activitiesPanel.add(new ActivityPanel(8, "Burros"));
-//		activitiesPanel.add(new ActivityPanel(9, "Ballenas"));
-//		activitiesPanel.add(new ActivityPanel(10, "lobos"));
 		scrollPane_1.setViewportView(activitiesPanel);
 		
 		JPanel southPanel = new JPanel();
@@ -237,14 +227,20 @@ public class MantenanceForm extends FrameModel {
 			ResultSet activityRow = routinesTable.findRecord(params);
 			
 			String secction = null;
+			String type = null;
 			
 			if(activityRow.next()) {
 				secction = activityRow.getString("secction");
+				type = activityRow.getString("type");
 			}
 			
-			if(secction == null) {
+			if(secction == null || type == null) {
 				throw new Exception("No existe el activity");
 			}
+			
+			
+			//cambia el titulo dependiendo el tipo de alerta
+			lblTitle.setText("Check List de Mantenimiento " + (type.equals("P") ? "Preventivo" : type.equals("C") ? "Correctivo" : "Correctivo Puesta a Cero" ));
 			
 			//nombre de la etiqueta seccion
 			lblSecction.setText("<html><center>"+secction+"</center></html>");
@@ -252,6 +248,7 @@ public class MantenanceForm extends FrameModel {
 			//buscar todos los activitys de esa seccion
 			params = new HashMap<>();
 			params.put("secction", secction);
+			params.put("type", type);
 			ResultSet activities = routinesTable.findRecord(params);
 			
 			while(activities.next()) {
