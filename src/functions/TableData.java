@@ -42,14 +42,17 @@ public class TableData {
 				String personal = TCData.getString("personal");
 				String total = TCData.getString("total");
 				String lastUpdate = TCData.getString("lastUpdate");
+				String piece =  TCData.getString("piece");
 				
-				String piece = type.equals("C") || type.equals("PC") ? TCData.getString("piece") : null;
-
-				model.addRow(new Object[] { activity, frequency, level, time, personal, total, piece == null? null: piece,    lastUpdate });
+				
+				if(type.equals("C") || type.equals("PC")) {
+					model.addRow(new Object[] { activity, frequency, level, time, personal, total, piece, lastUpdate });
+				}else {
+					model.addRow(new Object[] { activity, frequency, level, time, personal, total, lastUpdate });
+				}
 			}
 
 		} catch (ClassNotFoundException | SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 

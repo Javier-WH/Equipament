@@ -98,6 +98,7 @@ public class MaintenanceTypeSelector extends JFrame {
 						public void actionPerformed(ActionEvent e) {
 							try {
 								new MantenanceForm(Integer.parseInt(id)).setVisible(true);
+								dispose();
 							} catch (NumberFormatException | ClassNotFoundException | SQLException e1) {
 								e1.printStackTrace();
 							}
