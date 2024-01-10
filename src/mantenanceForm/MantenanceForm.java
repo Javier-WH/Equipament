@@ -24,6 +24,7 @@ import javax.swing.border.EmptyBorder;
 import net.miginfocom.swing.MigLayout;
 import javax.swing.border.TitledBorder;
 
+import components.Constants;
 import dataBaseModels.MaintenanceRoutines;
 import main.AlterThread;
 
@@ -44,6 +45,7 @@ public class MantenanceForm extends FrameModel {
 
 	public MantenanceForm(int alarmID, int alarmIndex) throws ClassNotFoundException, SQLException {
 		super(null, "Formulario de Manteniniento", true);
+		getContentPane().setBackground(Constants.getSurfaceColor());
 
 		this.alarmID = alarmID;
 		// this.alarmIndex = alarmIndex;
@@ -51,15 +53,18 @@ public class MantenanceForm extends FrameModel {
 		MR = new MaintenanceRoutines();
 
 		JPanel panel = new JPanel();
+		panel.setBackground(Constants.getSurfaceColor());
 		panel.setBorder(new EmptyBorder(0, 10, 10, 10));
 		getContentPane().add(panel, BorderLayout.CENTER);
 		panel.setLayout(new BorderLayout(0, 0));
 
 		JPanel northPanel = new JPanel();
+		northPanel.setBackground(Constants.getSurfaceColor());
 		panel.add(northPanel, BorderLayout.NORTH);
 		northPanel.setLayout(new BoxLayout(northPanel, BoxLayout.Y_AXIS));
 
 		JLabel lblNewLabel = new JLabel("Unidad N°1 Turbocompresora Solar Centauro 40");
+		lblNewLabel.setForeground(Constants.getTextColor());
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 18));
 		lblNewLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
@@ -67,6 +72,7 @@ public class MantenanceForm extends FrameModel {
 		northPanel.add(lblNewLabel);
 
 		JPanel inspectorPanel = new JPanel();
+		inspectorPanel.setBackground(Constants.getSurfaceColor());
 		northPanel.add(inspectorPanel);
 		inspectorPanel.setLayout(new BoxLayout(inspectorPanel, BoxLayout.X_AXIS));
 
@@ -74,6 +80,7 @@ public class MantenanceForm extends FrameModel {
 		inspectorPanel.add(horizontalStrut_1);
 
 		JLabel lblNewLabel_1 = new JLabel("Encargado de la Inspección: ");
+		lblNewLabel_1.setForeground(Constants.getTextColor());
 		inspectorPanel.add(lblNewLabel_1);
 
 		Component horizontalStrut_3 = Box.createHorizontalStrut(20);
@@ -87,6 +94,7 @@ public class MantenanceForm extends FrameModel {
 		inspectorPanel.add(horizontalStrut);
 
 		lblTitle = new JLabel("");
+		lblTitle.setForeground(Constants.getTextColor());
 		lblTitle.setFont(new Font("Tahoma", Font.BOLD, 18));
 		lblTitle.setAlignmentX(Component.CENTER_ALIGNMENT);
 		northPanel.add(lblTitle);
@@ -95,28 +103,31 @@ public class MantenanceForm extends FrameModel {
 		northPanel.add(verticalStrut);
 
 		JPanel westPanel = new JPanel();
+		westPanel.setBackground(Constants.getSurfaceColor());
 		westPanel.setBorder(null);
 		westPanel.setPreferredSize(new Dimension(120, 10));
 		panel.add(westPanel, BorderLayout.WEST);
 		westPanel.setLayout(new BoxLayout(westPanel, BoxLayout.PAGE_AXIS));
 
 		JLabel lblNewLabel_3 = new JLabel(" Parte");
+		lblNewLabel_3.setForeground(Constants.getTextColor());
 		lblNewLabel_3.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_3.setMaximumSize(new Dimension(30000, 50));
 		lblNewLabel_3.setMinimumSize(new Dimension(29, 100));
-		lblNewLabel_3.setBorder(new MatteBorder(1, 1, 1, 1, (Color) Color.DARK_GRAY));
+		lblNewLabel_3.setBorder(new MatteBorder(1, 1, 1, 1, Constants.getTextColor()));
 		lblNewLabel_3.setPreferredSize(new Dimension(400, 100));
 		lblNewLabel_3.setFont(new Font("Tahoma", Font.BOLD, 16));
 		lblNewLabel_3.setAlignmentY(Component.TOP_ALIGNMENT);
 		westPanel.add(lblNewLabel_3);
 
 		lblSecction = new JLabel("<html><center>Sistema de arranque</center></html>");
+		lblSecction.setForeground(Constants.getTextColor());
 		lblSecction.setPreferredSize(new Dimension(400, 100));
 		lblSecction.setMinimumSize(new Dimension(29, 100));
 		lblSecction.setMaximumSize(new Dimension(30000, 30000));
 		lblSecction.setHorizontalAlignment(SwingConstants.CENTER);
-		lblSecction.setFont(new Font("Tahoma", Font.BOLD, 16));
-		lblSecction.setBorder(new MatteBorder(0, 1, 1, 1, (Color) Color.DARK_GRAY));
+		lblSecction.setFont(new Font("Tahoma", Font.BOLD, 13));
+		lblSecction.setBorder(new MatteBorder(0, 1, 1, 1,Constants.getTextColor()));
 		lblSecction.setAlignmentY(0.0f);
 		westPanel.add(lblSecction);
 
@@ -126,6 +137,7 @@ public class MantenanceForm extends FrameModel {
 		centerPanel.setLayout(new BoxLayout(centerPanel, BoxLayout.PAGE_AXIS));
 
 		JPanel panel_1 = new JPanel();
+		panel_1.setBackground(Constants.getSurfaceColor());
 		panel_1.setFont(new Font("Tahoma", Font.BOLD, 16));
 		panel_1.setMaximumSize(new Dimension(32767, 100));
 		panel_1.setPreferredSize(new Dimension(10, 100));
@@ -135,37 +147,43 @@ public class MantenanceForm extends FrameModel {
 				"[grow,fill][160px:160px:160px,fill][140px:140px:140px,fill]", "[100px:100px:100px,center]"));
 
 		JLabel lblNewLabel_5 = new JLabel("Descripción");
-		lblNewLabel_5.setBorder(new MatteBorder(1, 0, 1, 0, (Color) new Color(64, 64, 64)));
+		lblNewLabel_5.setForeground(Constants.getTextColor());
+		lblNewLabel_5.setBorder(new MatteBorder(1, 0, 1, 0, Constants.getTextColor()));
 		lblNewLabel_5.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_5.setFont(new Font("Tahoma", Font.BOLD, 16));
 		panel_1.add(lblNewLabel_5, "cell 0 0,grow");
 
 		JPanel panel_2 = new JPanel();
-		panel_2.setBorder(new MatteBorder(1, 0, 1, 1, (Color) Color.DARK_GRAY));
+		panel_2.setBackground(Constants.getSurfaceColor());
+		panel_2.setBorder(new MatteBorder(1, 0, 1, 1,Constants.getTextColor()));
 		panel_1.add(panel_2, "cell 1 0,grow");
 		panel_2.setLayout(new MigLayout("insets 0, gap 0", "[80px:80px:80px,fill][80px:80px:80px,fill]",
 				"[grow,fill][grow,fill]"));
 
 		JLabel lblNewLabel_8 = new JLabel("Realizado");
-		lblNewLabel_8.setBorder(new MatteBorder(0, 1, 1, 0, (Color) new Color(64, 64, 64)));
+		lblNewLabel_8.setForeground(Constants.getTextColor());
+		lblNewLabel_8.setBorder(new MatteBorder(0, 1, 1, 0, Constants.getTextColor()));
 		lblNewLabel_8.setFont(new Font("Tahoma", Font.BOLD, 13));
 		lblNewLabel_8.setHorizontalAlignment(SwingConstants.CENTER);
 		panel_2.add(lblNewLabel_8, "cell 0 0,span 2");
 
 		JLabel lblNewLabel_6 = new JLabel("SI");
-		lblNewLabel_6.setBorder(new MatteBorder(0, 1, 0, 0, (Color) new Color(64, 64, 64)));
+		lblNewLabel_6.setForeground(Constants.getTextColor());
+		lblNewLabel_6.setBorder(new MatteBorder(0, 1, 0, 0, Constants.getTextColor()));
 		lblNewLabel_6.setFont(new Font("Tahoma", Font.BOLD, 16));
 		lblNewLabel_6.setHorizontalAlignment(SwingConstants.CENTER);
 		panel_2.add(lblNewLabel_6, "cell 0 1,grow");
 
 		JLabel lblNewLabel_7 = new JLabel("NO");
+		lblNewLabel_7.setForeground(Constants.getTextColor());
 		lblNewLabel_7.setBorder(new MatteBorder(0, 1, 0, 0, (Color) new Color(0, 0, 0)));
 		lblNewLabel_7.setFont(new Font("Tahoma", Font.BOLD, 16));
 		lblNewLabel_7.setHorizontalAlignment(SwingConstants.CENTER);
 		panel_2.add(lblNewLabel_7, "cell 1 1,grow");
 
 		JLabel lblNewLabel_4 = new JLabel("Fecha");
-		lblNewLabel_4.setBorder(new MatteBorder(1, 0, 1, 1, (Color) Color.DARK_GRAY));
+		lblNewLabel_4.setForeground(Constants.getTextColor());
+		lblNewLabel_4.setBorder(new MatteBorder(1, 0, 1, 1,Constants.getTextColor()));
 		lblNewLabel_4.setFont(new Font("Tahoma", Font.BOLD, 16));
 		lblNewLabel_4.setHorizontalAlignment(SwingConstants.CENTER);
 		panel_1.add(lblNewLabel_4, "flowx,cell 2 0,grow");
@@ -175,15 +193,17 @@ public class MantenanceForm extends FrameModel {
 		scrollPane_1.setBorder(null);
 		centerPanel.add(scrollPane_1);
 		////////////////////////////////////////////////////////////////
-		activitiesPanel.setPreferredSize(new Dimension(10, 1000));
+		activitiesPanel.setPreferredSize(new Dimension(10, 50));
 		activitiesPanel.setLayout(new BoxLayout(activitiesPanel, BoxLayout.Y_AXIS));
 		scrollPane_1.setViewportView(activitiesPanel);
 
 		JPanel southPanel = new JPanel();
+		southPanel.setBackground(Constants.getSurfaceColor());
 		panel.add(southPanel, BorderLayout.SOUTH);
 		southPanel.setLayout(new BoxLayout(southPanel, BoxLayout.Y_AXIS));
 
 		JPanel panel_3 = new JPanel();
+		panel_3.setBackground(Constants.getSurfaceColor());
 		panel_3.setBorder(new EmptyBorder(5, 0, 0, 0));
 		southPanel.add(panel_3);
 		panel_3.setLayout(new BoxLayout(panel_3, BoxLayout.X_AXIS));
@@ -192,6 +212,7 @@ public class MantenanceForm extends FrameModel {
 		panel_3.add(horizontalStrut_1_1);
 
 		JLabel lblNewLabel_9 = new JLabel("Técnico u operario encargado del mantenimiento:");
+		lblNewLabel_9.setForeground(Constants.getTextColor());
 		lblNewLabel_9.setAlignmentX(Component.CENTER_ALIGNMENT);
 		panel_3.add(lblNewLabel_9);
 
@@ -210,8 +231,8 @@ public class MantenanceForm extends FrameModel {
 		southPanel.add(verticalStrut_1);
 
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBorder(new TitledBorder(new EmptyBorder(0, 25, 0, 25), "Observaciones:", TitledBorder.LEADING,
-				TitledBorder.TOP, null, new Color(0, 0, 0)));
+		scrollPane.setBackground(Constants.getSurfaceColor());
+		scrollPane.setBorder(new TitledBorder(new EmptyBorder(0, 25, 0, 25), "Observaciones:", TitledBorder.LEADING, TitledBorder.TOP, null, Constants.getTextColor()));
 		scrollPane.setPreferredSize(new Dimension(2, 60));
 		southPanel.add(scrollPane);
 
@@ -307,6 +328,8 @@ public class MantenanceForm extends FrameModel {
 
 	private void fillActivitiesPanel() {
 		activitiesPanel.removeAll();
+		Dimension size = new Dimension(50, (activityList.size() * 50));
+		activitiesPanel.setPreferredSize(size);
 		for (ActivityPanel activity : activityList) {
 			activitiesPanel.add(activity);
 		}
