@@ -39,17 +39,18 @@ public class MantenanceForm extends FrameModel {
 	private static JPanel activitiesPanel = new JPanel();
 	private ArrayList<ActivityPanel> activityList = new ArrayList<>();
 	private int alarmID;
-	// private int alarmIndex;
 	private JLabel lblSecction;
 	private JLabel lblTitle;
 	private MaintenanceRoutines MR = null;
 
-	public MantenanceForm(int alarmID, int alarmIndex) throws ClassNotFoundException, SQLException {
+	
+	
+	public MantenanceForm(int alarmID) throws ClassNotFoundException, SQLException {
 		super(null, "Formulario de Manteniniento", true);
 		getContentPane().setBackground(Constants.getSurfaceColor());
 
 		this.alarmID = alarmID;
-		// this.alarmIndex = alarmIndex;
+	
 
 		MR = new MaintenanceRoutines();
 

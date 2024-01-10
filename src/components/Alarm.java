@@ -98,7 +98,7 @@ public class Alarm extends JPanel implements AlarmSchema {
 		    public void mouseClicked(MouseEvent e) {
 		
 				try {
-					MantenanceForm MF = new MantenanceForm(alarmID, alarmIndex);
+					MantenanceForm MF = new MantenanceForm(alarmID);
 					MF.setVisible(true);
 				} catch (ClassNotFoundException | SQLException e1) {
 					e1.printStackTrace();

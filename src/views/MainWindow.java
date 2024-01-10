@@ -6,6 +6,7 @@ import javax.swing.border.EmptyBorder;
 import components.AlarmSchema;
 import components.CButton;
 import components.Constants;
+import components.MaintenanceTypeSelector;
 import functions.Exit;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -23,7 +24,6 @@ import java.awt.Image;
 import java.awt.Toolkit;
 import java.util.ArrayList;
 import java.util.Calendar;
-
 import javax.swing.ImageIcon;
 import java.awt.Font;
 import java.awt.event.ActionListener;
@@ -31,6 +31,12 @@ import java.text.SimpleDateFormat;
 import java.awt.event.ActionEvent;
 import javax.swing.border.MatteBorder;
 import java.awt.Color;
+import javax.swing.JPopupMenu;
+import java.awt.Component;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+
+
 
 public class MainWindow extends JFrame {
 
@@ -158,15 +164,70 @@ public class MainWindow extends JFrame {
 		});
 		menuPanel.add(btnRutinas, "cell 0 1,grow");
 
-		JButton btnStock = new CButton("Stock de repuestos");
-		btnStock.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-
-			}
-		});
-
+	
+/////////////
+		JPopupMenu popupMenu = new JPopupMenu();
+		popupMenu.setBorder(new MatteBorder(1, 1, 1, 1, (Color) Color.WHITE));
+		popupMenu.setBackground(Constants.getSurfaceColor());
+		
+		
+/////////////////
+		
 		CButton btnNuevo = new CButton("Nuevo mantenimiento");
 		menuPanel.add(btnNuevo, "cell 0 2,grow");
+		
+		addPopup(btnNuevo, popupMenu);
+		
+		JPanel popupPanel = new JPanel();
+		popupPanel.setBorder(new EmptyBorder(10, 10, 10, 10));
+		popupPanel.setBackground(Constants.getSurfaceColor());
+		popupMenu.add(popupPanel);
+		popupPanel.setLayout(new BoxLayout(popupPanel, BoxLayout.Y_AXIS));
+		
+		CButton btnPreventivo = new CButton("Mantenimiento Preventivo");
+		btnPreventivo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				new MaintenanceTypeSelector("P").setVisible(true);
+			}
+		});
+		btnPreventivo.setPreferredSize(new Dimension(165, 40));
+		btnPreventivo.setMinimumSize(new Dimension(165, 50));
+		btnPreventivo.setMaximumSize(new Dimension(30000, 100));
+		btnPreventivo.setAlignmentX(Component.CENTER_ALIGNMENT);
+		popupPanel.add(btnPreventivo);
+		
+		Component verticalStrut = Box.createVerticalStrut(10);
+		popupPanel.add(verticalStrut);
+		
+		CButton btnCorrectivo = new CButton("Manteniviento Correctivo");
+		btnCorrectivo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				new MaintenanceTypeSelector("C").setVisible(true);
+			}
+		});
+		btnCorrectivo.setPreferredSize(new Dimension(159, 40));
+		btnCorrectivo.setMaximumSize(new Dimension(30000, 23));
+		btnCorrectivo.setAlignmentX(Component.CENTER_ALIGNMENT);
+		popupPanel.add(btnCorrectivo);
+		
+		Component verticalStrut_1 = Box.createVerticalStrut(10);
+		popupPanel.add(verticalStrut_1);
+		
+		CButton btnParametrosFunc = new CButton("Medicion de parametros de funcionamiento");
+		btnParametrosFunc.setPreferredSize(new Dimension(264, 40));
+		btnParametrosFunc.setMaximumSize(new Dimension(3000, 23));
+		btnParametrosFunc.setAlignmentX(Component.CENTER_ALIGNMENT);
+		popupPanel.add(btnParametrosFunc);
+		btnNuevo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int x = btnNuevo.getX() + btnNuevo.getWidth();
+		        int y = 5;
+
+		        popupMenu.show(btnNuevo, x, y);
+			}
+		});
+		
+		JButton btnStock = new CButton("Stock de repuestos");
 		menuPanel.add(btnStock, "cell 0 3,grow");
 
 		JButton btnHistorial = new CButton("Historial");
@@ -251,7 +312,25 @@ public class MainWindow extends JFrame {
 		SimpleDateFormat timeFormat = new SimpleDateFormat("hh:mm a");
 		String time = timeFormat.format(calendar.getTime());
 
-		lblStatusBar.setText("Actualizado el "+ date + " a las " + time);
+		lblStatusBar.setText("Actualizado el " + date + " a las " + time);
 	}
 
+
+	private static void addPopup(Component component, final JPopupMenu popup) {
+		component.addMouseListener(new MouseAdapter() {
+			public void mousePressed(MouseEvent e) {
+				if (e.isPopupTrigger()) {
+					showMenu(e);
+				}
+			}
+			public void mouseReleased(MouseEvent e) {
+				if (e.isPopupTrigger()) {
+					showMenu(e);
+				}
+			}
+			private void showMenu(MouseEvent e) {
+				popup.show(e.getComponent(), e.getX(), e.getY());
+			}
+		});
+	}
 }
