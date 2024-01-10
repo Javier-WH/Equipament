@@ -75,8 +75,15 @@ public abstract class AbstractDataBaseModel implements DataBaseModel {
 			updates.add(update);
 		}
 
-		queryBuilder.append(String.join(", ", updates)).append(" WHERE id = ").append(criteria.get("id")).append(";");
+		//queryBuilder.append(String.join(", ", updates)).append(" WHERE id = ").append(criteria.get("id")).append(";");
 
+		queryBuilder.append(String.join(", ", updates));
+		
+		if(criteria.containsKey("id")) {
+			
+			queryBuilder.append(" WHERE id = ").append(criteria.get("id")).append(";");
+		}
+		
 		String query = queryBuilder.toString();
 
 		Statement statement = connection.createStatement();

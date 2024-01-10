@@ -5,12 +5,16 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 import javax.swing.JOptionPane;
+
+import dev.DevTools;
 import utilitys.DatabaseChecker;
 
 import views.MainWindow;
 
 public class Main {
-
+	
+	private static boolean isDevModeOn = false;
+	
 	public static void main(String[] args) {
 
 		try {
@@ -24,6 +28,12 @@ public class Main {
 				ScheduledExecutorService executorService = Executors.newSingleThreadScheduledExecutor();
 				AlterThread alertWatcher = new AlterThread();
 				executorService.scheduleAtFixedRate(alertWatcher, 0, 1, TimeUnit.MINUTES);
+				
+				
+				if(isDevModeOn) {
+					DevTools dev = new DevTools();
+					dev.setVisible(true);
+				}
 				
 			} else {
 				JOptionPane.showMessageDialog(null, "Las bases de datos no estan completas");

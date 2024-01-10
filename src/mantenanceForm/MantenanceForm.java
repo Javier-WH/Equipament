@@ -277,8 +277,7 @@ public class MantenanceForm extends FrameModel {
 				return;
 			}
 			
-			
-			
+
 			//aqui se hace el update
 			for (ActivityPanel activity : activityList) {
 				boolean isDone = activity.isDone();
