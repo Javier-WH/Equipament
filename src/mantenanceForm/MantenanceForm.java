@@ -23,7 +23,7 @@ import javax.swing.border.MatteBorder;
 import javax.swing.border.EmptyBorder;
 import net.miginfocom.swing.MigLayout;
 import javax.swing.border.TitledBorder;
-
+import components.Cmessage;
 import components.Constants;
 import dataBaseModels.MaintenanceRoutines;
 import main.AlterThread;
@@ -34,7 +34,8 @@ import javax.swing.ScrollPaneConstants;
 public class MantenanceForm extends FrameModel {
 	private static final long serialVersionUID = 1L;
 	private JTextField txtInspector;
-	private JTextField textField;
+	private JTextField txtTencician;
+	JTextPane txtObservastions;
 	private static JPanel activitiesPanel = new JPanel();
 	private ArrayList<ActivityPanel> activityList = new ArrayList<>();
 	private int alarmID;
@@ -219,10 +220,10 @@ public class MantenanceForm extends FrameModel {
 		Component horizontalStrut_2 = Box.createHorizontalStrut(20);
 		panel_3.add(horizontalStrut_2);
 
-		textField = new JTextField();
-		textField.setPreferredSize(new Dimension(30000, 20));
-		panel_3.add(textField);
-		textField.setColumns(10);
+		txtTencician = new JTextField();
+		txtTencician.setPreferredSize(new Dimension(30000, 20));
+		panel_3.add(txtTencician);
+		txtTencician.setColumns(10);
 
 		Component horizontalStrut_1_2 = Box.createHorizontalStrut(30);
 		panel_3.add(horizontalStrut_1_2);
@@ -236,8 +237,8 @@ public class MantenanceForm extends FrameModel {
 		scrollPane.setPreferredSize(new Dimension(2, 60));
 		southPanel.add(scrollPane);
 
-		JTextPane textPane = new JTextPane();
-		scrollPane.setViewportView(textPane);
+		txtObservastions = new JTextPane();
+		scrollPane.setViewportView(txtObservastions);
 
 /////////////////////////////////////////////////////////////////////////////////////
 
@@ -249,13 +250,38 @@ public class MantenanceForm extends FrameModel {
 	}
 
 	ActionListener aceptAction = new ActionListener() {
-
 		@Override
 		public void actionPerformed(ActionEvent e) {
-
+			
+			boolean someOneDone = false; 
+			
+			for (ActivityPanel activity : activityList) {
+				someOneDone = activity.isDone();	
+				if(someOneDone) {
+					break;
+				}
+			}
+			
+			if(!someOneDone) {
+				new Cmessage("Aceptar", null, "No hay cambios que actualizar", null).setVisible(true);
+				return;
+			}
+			
+			if(txtInspector.getText().isEmpty()) {
+				new Cmessage("Aceptar", null, "No ha suministrado un encargado de la inspección", null).setVisible(true);
+				return;
+			}
+			
+			if(txtTencician.getText().isEmpty()) {
+				new Cmessage("Aceptar", null, "No ha suministrado un técnico u operario", null).setVisible(true);
+				return;
+			}
+			
+			
+			
+			//aqui se hace el update
 			for (ActivityPanel activity : activityList) {
 				boolean isDone = activity.isDone();
-
 				if (isDone) {
 					String id = activity.getId();
 					String lastUpdate = activity.getDate();
@@ -273,6 +299,8 @@ public class MantenanceForm extends FrameModel {
 					}
 				}
 			}
+			
+			
 		}
 	};
 

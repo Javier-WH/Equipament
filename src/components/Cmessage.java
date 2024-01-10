@@ -31,6 +31,7 @@ public class Cmessage extends JDialog {
 	public Cmessage(String okText, String cancelText, String messageText, ActionListener okActionListener,
 			ActionListener cancelActionListener) {
 		super();
+		setAlwaysOnTop(true);
 		setIconImage(Toolkit.getDefaultToolkit().getImage(Cmessage.class.getResource("/assets/logoF.png")));
 		this.okActionListener = okActionListener;
 		this.cancelActionListener = cancelActionListener;
@@ -64,30 +65,31 @@ public class Cmessage extends JDialog {
 				okButton.setMaximumSize(new Dimension(80, 23));
 				okButton.setPreferredSize(new Dimension(100, 40));
 				okButton.setActionCommand("OK");
-				okButton.addActionListener(this.okActionListener);
+				okButton.addActionListener(this.okActionListener == null ? listerDispose : this.okActionListener);
 				buttonPane.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 				buttonPane.add(okButton);
 				getRootPane().setDefaultButton(okButton);
 			}
 
-			CButton cancelButton = new CButton(cancelText);
-			cancelButton.setPreferredSize(new Dimension(100, 40));
-			cancelButton.setActionCommand("Cancel");
-
-			if (this.cancelActionListener != null) {
-				cancelButton.addActionListener(this.cancelActionListener);
-			} else {
-				cancelButton.addActionListener(new ActionListener() {
-					@Override
-					public void actionPerformed(ActionEvent e) {
-						dispose();
-					}
-				});
+			if (cancelText != null) {
+				CButton cancelButton = new CButton(cancelText);
+				cancelButton.setPreferredSize(new Dimension(100, 40));
+				cancelButton.setActionCommand("Cancel");
+				cancelButton.addActionListener(
+						this.cancelActionListener == null ? listerDispose : this.cancelActionListener);
+				buttonPane.add(cancelButton);
 			}
-
-			buttonPane.add(cancelButton);
 		}
 		pack(); // Ajusta el tamaño de la ventana según su contenido
 		setLocationRelativeTo(null);
 	}
+
+	ActionListener listerDispose = new ActionListener() {
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			dispose();
+
+		}
+	};
 }
