@@ -10,7 +10,7 @@ import views.MainWindow;
 
 public class AlterThread implements Runnable {
 
-	MaintenanceRoutines rutines = null;
+	private static MaintenanceRoutines rutines = null;
 
 	public AlterThread() throws ClassNotFoundException, SQLException {
 		rutines = new MaintenanceRoutines();
@@ -20,6 +20,12 @@ public class AlterThread implements Runnable {
 	@Override
 	public void run() {
 
+		refreshAlarms();
+
+	}
+	
+	public static void refreshAlarms() {
+		
 		try {
 			MainWindow.resetAlarms();
 			ResultSet rutinesList = rutines.findRecords();
@@ -47,11 +53,11 @@ public class AlterThread implements Runnable {
 					}
 				}
 			}
+			MainWindow.upDateStatusBar();
 		} catch (SQLException e) {
-
 			e.printStackTrace();
 		}
-
+		
 	}
 
 }

@@ -22,14 +22,15 @@ import javax.swing.SwingConstants;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.util.ArrayList;
+import java.util.Calendar;
+
 import javax.swing.ImageIcon;
 import java.awt.Font;
 import java.awt.event.ActionListener;
+import java.text.SimpleDateFormat;
 import java.awt.event.ActionEvent;
 import javax.swing.border.MatteBorder;
 import java.awt.Color;
-
-
 
 public class MainWindow extends JFrame {
 
@@ -38,6 +39,7 @@ public class MainWindow extends JFrame {
 	private static JPanel alertPanel = new JPanel();
 	private static JLabel lblAlerts = null;
 	private static ArrayList<AlarmSchema> alarmList = null;
+	private static JLabel lblStatusBar = new JLabel("");
 
 	public MainWindow() {
 		// setExtendedState(JFrame.MAXIMIZED_BOTH);
@@ -75,7 +77,6 @@ public class MainWindow extends JFrame {
 		menuPanel.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
 		leftScrollPane.setViewportView(menuPanel);
 
-		JLabel lblStatusBar = new JLabel("Actualizado el 24 diciembre del 2023 a las 3:14pm");
 		lblStatusBar.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblStatusBar.setForeground(Constants.getTextColor());
 		contentPane.add(lblStatusBar, BorderLayout.SOUTH);
@@ -102,42 +103,42 @@ public class MainWindow extends JFrame {
 		titlePanel.setBackground(Constants.getSurfaceColor());
 		northPanel.add(titlePanel, BorderLayout.CENTER);
 		titlePanel.setLayout(new BorderLayout(0, 0));
-		
-				lblAlerts = new JLabel("");
-				lblAlerts.setForeground(Constants.getTextColor());
-				lblAlerts.setHorizontalAlignment(SwingConstants.RIGHT);
-				titlePanel.add(lblAlerts, BorderLayout.SOUTH);
-				
-				JPanel panel = new JPanel();
-				panel.setOpaque(false);
-				titlePanel.add(panel, BorderLayout.CENTER);
-						panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
-						
-						JLabel lblSistemaDeAlertas = new JLabel("Sistema de alertas");
-						lblSistemaDeAlertas.setVerticalAlignment(SwingConstants.TOP);
-						lblSistemaDeAlertas.setHorizontalTextPosition(SwingConstants.CENTER);
-						lblSistemaDeAlertas.setHorizontalAlignment(SwingConstants.LEFT);
-						lblSistemaDeAlertas.setForeground(Color.WHITE);
-						lblSistemaDeAlertas.setFont(new Font("Californian FB", Font.BOLD, 15));
-						panel.add(lblSistemaDeAlertas);
-						
-						JLabel lblTurbocompresorMarcaSolar = new JLabel("Turbocompresor Marca Solar  ");
-						panel.add(lblTurbocompresorMarcaSolar);
-						lblTurbocompresorMarcaSolar.setVerticalAlignment(SwingConstants.BOTTOM);
-						lblTurbocompresorMarcaSolar.setHorizontalTextPosition(SwingConstants.CENTER);
-						lblTurbocompresorMarcaSolar.setHorizontalAlignment(SwingConstants.LEFT);
-						lblTurbocompresorMarcaSolar.setForeground(Color.WHITE);
-						lblTurbocompresorMarcaSolar.setFont(new Font("Californian FB", Font.BOLD, 30));
-				
-						JLabel lblTitle = new JLabel("Modelo Centauro 40  ");
-						panel.add(lblTitle);
-						lblTitle.setVerticalAlignment(SwingConstants.TOP);
-						lblTitle.setFont(new Font("Californian FB", Font.BOLD, 19));
-						lblTitle.setForeground(Constants.getTextColor());
-						lblTitle.setHorizontalAlignment(SwingConstants.LEFT);
-						lblTitle.setHorizontalTextPosition(SwingConstants.CENTER);
+
+		lblAlerts = new JLabel("");
+		lblAlerts.setForeground(Constants.getTextColor());
+		lblAlerts.setHorizontalAlignment(SwingConstants.RIGHT);
+		titlePanel.add(lblAlerts, BorderLayout.SOUTH);
+
+		JPanel panel = new JPanel();
+		panel.setOpaque(false);
+		titlePanel.add(panel, BorderLayout.CENTER);
+		panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+
+		JLabel lblSistemaDeAlertas = new JLabel("Sistema de alertas");
+		lblSistemaDeAlertas.setVerticalAlignment(SwingConstants.TOP);
+		lblSistemaDeAlertas.setHorizontalTextPosition(SwingConstants.CENTER);
+		lblSistemaDeAlertas.setHorizontalAlignment(SwingConstants.LEFT);
+		lblSistemaDeAlertas.setForeground(Color.WHITE);
+		lblSistemaDeAlertas.setFont(new Font("Californian FB", Font.BOLD, 15));
+		panel.add(lblSistemaDeAlertas);
+
+		JLabel lblTurbocompresorMarcaSolar = new JLabel("Turbocompresor Marca Solar  ");
+		panel.add(lblTurbocompresorMarcaSolar);
+		lblTurbocompresorMarcaSolar.setVerticalAlignment(SwingConstants.BOTTOM);
+		lblTurbocompresorMarcaSolar.setHorizontalTextPosition(SwingConstants.CENTER);
+		lblTurbocompresorMarcaSolar.setHorizontalAlignment(SwingConstants.LEFT);
+		lblTurbocompresorMarcaSolar.setForeground(Color.WHITE);
+		lblTurbocompresorMarcaSolar.setFont(new Font("Californian FB", Font.BOLD, 30));
+
+		JLabel lblTitle = new JLabel("Modelo Centauro 40  ");
+		panel.add(lblTitle);
+		lblTitle.setVerticalAlignment(SwingConstants.TOP);
+		lblTitle.setFont(new Font("Californian FB", Font.BOLD, 19));
+		lblTitle.setForeground(Constants.getTextColor());
+		lblTitle.setHorizontalAlignment(SwingConstants.LEFT);
+		lblTitle.setHorizontalTextPosition(SwingConstants.CENTER);
 		updateAlertsMessage();
- 
+
 		JButton btnRegistro = new CButton("Registro");
 		btnRegistro.setText("Equipo");
 		btnRegistro.addActionListener(new ActionListener() {
@@ -163,10 +164,10 @@ public class MainWindow extends JFrame {
 
 			}
 		});
-		menuPanel.add(btnStock, "cell 0 2,grow");
 
-		JButton btnNuevo = new CButton("Nuevo mantenimiento");
-		menuPanel.add(btnNuevo, "cell 0 3,grow");
+		CButton btnNuevo = new CButton("Nuevo mantenimiento");
+		menuPanel.add(btnNuevo, "cell 0 2,grow");
+		menuPanel.add(btnStock, "cell 0 3,grow");
 
 		JButton btnHistorial = new CButton("Historial");
 		menuPanel.add(btnHistorial, "cell 0 4,grow");
@@ -185,7 +186,6 @@ public class MainWindow extends JFrame {
 
 		btnSalir.addActionListener(new Exit());
 
-	
 	}
 
 	private static void refreshAlertPanel() {
@@ -236,11 +236,22 @@ public class MainWindow extends JFrame {
 		alarmList.remove(index);
 		refreshAlertPanel();
 	}
-	
+
 	public static void resetAlarms() {
 		alarmList = new ArrayList<>();
 		refreshAlertPanel();
 	}
-	
+
+	public static void upDateStatusBar() {
+		Calendar calendar = Calendar.getInstance();
+
+		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+		String date = dateFormat.format(calendar.getTime());
+
+		SimpleDateFormat timeFormat = new SimpleDateFormat("hh:mm a");
+		String time = timeFormat.format(calendar.getTime());
+
+		lblStatusBar.setText("Actualizado el "+ date + " a las " + time);
+	}
 
 }

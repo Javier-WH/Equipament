@@ -8,6 +8,7 @@ import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.sql.SQLException;
 import java.awt.Cursor;
 import javax.swing.UIManager;
 
@@ -95,10 +96,13 @@ public class Alarm extends JPanel implements AlarmSchema {
 		addMouseListener(new MouseAdapter() {
 			@Override
 		    public void mouseClicked(MouseEvent e) {
-				//System.out.println(alarmID);
-				//MainWindow.removeAlert(alarmIndex);
-				MantenanceForm MF = new MantenanceForm(alarmID, alarmIndex);
-				MF.setVisible(true);
+		
+				try {
+					MantenanceForm MF = new MantenanceForm(alarmID, alarmIndex);
+					MF.setVisible(true);
+				} catch (ClassNotFoundException | SQLException e1) {
+					e1.printStackTrace();
+				}
 				
 			}
 		});

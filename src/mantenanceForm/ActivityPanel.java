@@ -144,8 +144,8 @@ public class ActivityPanel extends JPanel {
 	}
 	
 	
-	public int getId() {
-		return alarmID;
+	public String getId() {
+		return String.valueOf(alarmID);
 	}
 	
 	public boolean isDone() {
