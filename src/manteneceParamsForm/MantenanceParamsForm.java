@@ -311,6 +311,7 @@ public class MantenanceParamsForm extends FrameModel {
 					params = new HashMap<>();
 					params.put("reportID", reportID);
 					params.put("descriptionID", descriptionID);
+					
 					if(!data1.isEmpty()) {
 						params.put("data1", data.get("data1"));						
 					}
@@ -332,7 +333,10 @@ public class MantenanceParamsForm extends FrameModel {
 					if(!data7.isEmpty()) {
 						params.put("data7", data.get("data7"));						
 					}
-					new ParamMesuresData().createRecord(params);
+					
+					if(params.size() > 2) {
+						new ParamMesuresData().createRecord(params);				
+					}
 					
 				}
 				
