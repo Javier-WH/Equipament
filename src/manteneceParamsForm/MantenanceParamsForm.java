@@ -7,22 +7,19 @@ import javax.swing.BoxLayout;
 import javax.swing.JLabel;
 import java.awt.Component;
 import java.awt.Dimension;
-
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 import javax.swing.Box;
 import net.miginfocom.swing.MigLayout;
+import styles.DateChooserStyles;
 import utilitys.DateHandler;
-
 import com.toedter.calendar.JDateChooser;
-
 import components.Cmessage;
 import components.Constants;
 import dataBaseModels.ParamMesuresData;
 import dataBaseModels.ParamMesuresDates;
 import dataBaseModels.ParamMesuresDescriptions;
 import dataBaseModels.ParamMesuresOperators;
-
 import javax.swing.SwingConstants;
 import javax.swing.border.MatteBorder;
 import java.awt.Color;
@@ -36,6 +33,7 @@ import java.sql.SQLException;
 import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.UUID;
 
 
@@ -119,7 +117,7 @@ public class MantenanceParamsForm extends FrameModel {
 		descriptionPanel.setBackground(Constants.getSurfaceColor());
 		descriptionPanel.setAlignmentX(Component.LEFT_ALIGNMENT);
 		titlePanel.add(descriptionPanel);
-		descriptionPanel.setLayout(new MigLayout("insets 0, gap 0", "[300px:n,grow,fill][100px:100px:100px][100px:100px:100px][100px:100px:100px][100px:100px:100px][100px:100px:100px][100px:100px:100px][100px:100px:100px][17px:17px:17px]", "[grow]"));
+		descriptionPanel.setLayout(new MigLayout("insets 0, gap 0", "[400px:n,grow,fill][100px:100px:100px][100px:100px:100px][100px:100px:100px][100px:100px:100px][100px:100px:100px][100px:100px:100px][100px:100px:100px][17px:17px:17px]", "[grow]"));
 		
 		JLabel lblNewLabel_3 = new JLabel("DESCRIPCIÓN");
 		lblNewLabel_3.setForeground(Constants.getTextColor());
@@ -128,32 +126,89 @@ public class MantenanceParamsForm extends FrameModel {
 		descriptionPanel.add(lblNewLabel_3, "cell 0 0,grow");
 		
 		date1 = new JDateChooser();
+		date1.setLocale(new Locale("es"));
+		date1.setOpaque(false);
 		date1.setBorder(new MatteBorder(0, 1, 0, 0, Constants.getTextColor()));
 		descriptionPanel.add(date1, "cell 1 0,grow");
+		DateChooserStyles.setStyle(date1);
+		
+	
+		JLabel lblNewLabel_4 = new JLabel("Fecha");
+		lblNewLabel_4.setForeground(Constants.getTextColor());
+		lblNewLabel_4.setHorizontalAlignment(SwingConstants.CENTER);
+		date1.add(lblNewLabel_4, BorderLayout.NORTH);
 		
 		date2 = new JDateChooser();
+		date2.setLocale(new Locale("es"));
+		date2.setOpaque(false);
 		date2.setBorder(new MatteBorder(0, 1, 0, 0, Constants.getTextColor()));
 		descriptionPanel.add(date2, "cell 2 0,grow");
+		DateChooserStyles.setStyle(date2);
+		
+		JLabel lblNewLabel_4_1 = new JLabel("Fecha");
+		lblNewLabel_4_1.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_4_1.setForeground(Color.WHITE);
+		date2.add(lblNewLabel_4_1, BorderLayout.NORTH);
 		
 		date3 = new JDateChooser();
+		date3.setLocale(new Locale("es"));
+		date3.setOpaque(false);
 		date3.setBorder(new MatteBorder(0, 1, 0, 0, Constants.getTextColor()));
 		descriptionPanel.add(date3, "cell 3 0,grow");
+		DateChooserStyles.setStyle(date3);
+		
+		JLabel lblNewLabel_4_1_1 = new JLabel("Fecha");
+		lblNewLabel_4_1_1.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_4_1_1.setForeground(Color.WHITE);
+		date3.add(lblNewLabel_4_1_1, BorderLayout.NORTH);
 		
 		date4 = new JDateChooser();
+		date4.setLocale(new Locale("es"));
+		date4.setOpaque(false);
 		date4.setBorder(new MatteBorder(0, 1, 0, 0, Constants.getTextColor()));
 		descriptionPanel.add(date4, "cell 4 0,grow");
+		DateChooserStyles.setStyle(date4);
+		
+		JLabel lblNewLabel_4_1_2 = new JLabel("Fecha");
+		lblNewLabel_4_1_2.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_4_1_2.setForeground(Color.WHITE);
+		date4.add(lblNewLabel_4_1_2, BorderLayout.NORTH);
 		
 		date5 = new JDateChooser();
+		date5.setLocale(new Locale("es"));
+		date5.setOpaque(false);
 		date5.setBorder(new MatteBorder(0, 1, 0, 0, Constants.getTextColor()));
 		descriptionPanel.add(date5, "cell 5 0,grow");
+		DateChooserStyles.setStyle(date5);
+		
+		JLabel lblNewLabel_4_1_3 = new JLabel("Fecha");
+		lblNewLabel_4_1_3.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_4_1_3.setForeground(Color.WHITE);
+		date5.add(lblNewLabel_4_1_3, BorderLayout.NORTH);
 		
 		date6 = new JDateChooser();
+		date6.setLocale(new Locale("es"));
+		date6.setOpaque(false);
 		date6.setBorder(new MatteBorder(0, 1, 0, 0, Constants.getTextColor()));
 		descriptionPanel.add(date6, "cell 6 0,grow");
+		DateChooserStyles.setStyle(date6);
+		
+		JLabel lblNewLabel_4_1_4 = new JLabel("Fecha");
+		lblNewLabel_4_1_4.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_4_1_4.setForeground(Color.WHITE);
+		date6.add(lblNewLabel_4_1_4, BorderLayout.NORTH);
 		
 		date7 = new JDateChooser();
+		date7.setLocale(new Locale("es"));
+		date7.setOpaque(false);
 		date7.setBorder(new MatteBorder(0, 1, 0, 1, (Color) new Color(255, 255, 255)));
 		descriptionPanel.add(date7, "cell 7 0,grow");
+		DateChooserStyles.setStyle(date7);
+		
+		JLabel lblNewLabel_4_1_5 = new JLabel("Fecha");
+		lblNewLabel_4_1_5.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_4_1_5.setForeground(Color.WHITE);
+		date7.add(lblNewLabel_4_1_5, BorderLayout.NORTH);
 		
 		JPanel panel_2 = new JPanel();
 		panel_2.setOpaque(false);
@@ -334,6 +389,7 @@ public class MantenanceParamsForm extends FrameModel {
 						params.put("data7", data.get("data7"));						
 					}
 					
+					//esto es para que no se guarden datos vacios
 					if(params.size() > 2) {
 						new ParamMesuresData().createRecord(params);				
 					}

@@ -2,6 +2,7 @@ package mantenanceForm;
 
 import javax.swing.JPanel;
 import net.miginfocom.swing.MigLayout;
+import styles.DateChooserStyles;
 import utilitys.DateHandler;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
@@ -114,6 +115,7 @@ public class ActivityPanel extends JPanel {
 		dateChooser.getCalendarButton().setBorder(null);
 		dateChooser.getCalendarButton().setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		dateChooser.setLocale(new Locale("es"));
+		DateChooserStyles.setStyle2(dateChooser);
 		panel_3.add(dateChooser);
 		
 		radioButonsEvents();

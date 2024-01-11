@@ -33,9 +33,7 @@ public class Parameter extends JPanel {
 		setPreferredSize(new Dimension(1075, 50));
 		setMinimumSize(new Dimension(500, 50));
 		setMaximumSize(new Dimension(32767, 50));
-		setLayout(new MigLayout("insets 0, gap 0",
-				"[300px:n,grow,fill][100px:100px:100px,grow][100px:100px:100px,grow][100px:100px:100px,grow][100px:100px:100px,grow][100px:100px:100px,grow][100px:100px:100px,grow][100px:100px:100px,grow]",
-				"[grow,fill]"));
+		setLayout(new MigLayout("insets 0, gap 0", "[400px:n,grow,fill][100px:100px:100px,grow][100px:100px:100px,grow][100px:100px:100px,grow][100px:100px:100px,grow][100px:100px:100px,grow][100px:100px:100px,grow][100px:100px:100px,grow]", "[grow,fill]"));
 
 		Component horizontalStrut_14 = Box.createHorizontalStrut(5);
 		add(horizontalStrut_14, "flowx,cell 0 0");
@@ -43,7 +41,7 @@ public class Parameter extends JPanel {
 		lblParameter = new JLabel(description);
 		lblParameter.setForeground(Constants.getTextColor());
 		lblParameter.setBorder(new MatteBorder(0, 0, 0, 1, Constants.getTextColor()));
-		add(lblParameter, "cell 0 0,alignx leading,aligny center");
+		add(lblParameter, "cell 0 0,growx,aligny center");
 
 		JPanel panel = new JPanel();
 		panel.setOpaque(false);
