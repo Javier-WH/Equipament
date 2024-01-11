@@ -3,13 +3,11 @@ package manteneceParamsForm;
 import javax.swing.JPanel;
 import java.awt.Dimension;
 import java.util.HashMap;
-
 import net.miginfocom.swing.MigLayout;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.border.MatteBorder;
 import components.Constants;
-import java.awt.Color;
 import javax.swing.SwingConstants;
 import java.awt.BorderLayout;
 import java.awt.Component;

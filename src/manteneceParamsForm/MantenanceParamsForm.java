@@ -12,10 +12,15 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 import javax.swing.Box;
 import net.miginfocom.swing.MigLayout;
+import utilitys.DateHandler;
+
 import com.toedter.calendar.JDateChooser;
 
 import components.Constants;
+import dataBaseModels.ParamMesuresData;
+import dataBaseModels.ParamMesuresDates;
 import dataBaseModels.ParamMesuresDescriptions;
+import dataBaseModels.ParamMesuresOperators;
 
 import javax.swing.SwingConstants;
 import javax.swing.border.MatteBorder;
@@ -23,9 +28,14 @@ import java.awt.Color;
 import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.ZoneId;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.UUID;
 
 
 public class MantenanceParamsForm extends FrameModel {
@@ -172,6 +182,8 @@ public class MantenanceParamsForm extends FrameModel {
 			e.printStackTrace();
 		}
 	
+		onAcept(saveData);
+	
 	}
 
 	
@@ -191,6 +203,74 @@ public class MantenanceParamsForm extends FrameModel {
 		return list;
 		
 	}
+	
+	ActionListener saveData = new ActionListener() {
+		
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			//obtengo los datos
+			String reportID = UUID.randomUUID().toString();
+			String operator = txtOperator.getText();
+			String inspector = txtInspector.getText();
+			String date_1 = DateHandler.dateToString(date1.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
+			String date_2 = DateHandler.dateToString(date2.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
+			String date_3 = DateHandler.dateToString(date3.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
+			String date_4 = DateHandler.dateToString(date4.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
+			String date_5 = DateHandler.dateToString(date5.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
+			String date_6 = DateHandler.dateToString(date6.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
+			String date_7 = DateHandler.dateToString(date7.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
+			HashMap<String, String> params = null;
+			
+			try {
+				
+				//guardar operador e inspector
+				params = new HashMap<>();
+				params.put("reportID", reportID);
+				params.put("operator", operator);
+				params.put("inspector", inspector);
+				new ParamMesuresOperators().createRecord(params);
+				
+				//guardar las fechas
+				params = new HashMap<>();
+				params.put("reportID", reportID);
+				params.put("date1", date_1);
+				params.put("date2", date_2);
+				params.put("date3", date_3);
+				params.put("date4", date_4);
+				params.put("date5", date_5);
+				params.put("date6", date_6);
+				params.put("date7", date_7);
+				new ParamMesuresDates().createRecord(params);
+				
+				//guaardando la data
+				for (Parameter parameter : list) {
+					String descriptionID = parameter.getId();
+					HashMap<String, String> data = parameter.getData();
+					params = new HashMap<>();
+					params.put("reportID", reportID);
+					params.put("descriptionID", descriptionID);
+					params.put("data1", data.get("data1"));
+					params.put("data2", data.get("data2"));
+					params.put("data3", data.get("data3"));
+					params.put("data4", data.get("data4"));
+					params.put("data5", data.get("data5"));
+					params.put("data6", data.get("data6"));
+					params.put("data7", data.get("data7"));
+					new ParamMesuresData().createRecord(params);
+					
+				}
+				
+				
+			
+			} catch (ClassNotFoundException | SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		
+			
+			
+		}
+	};
 	
 	
 }
