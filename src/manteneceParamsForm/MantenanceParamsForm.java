@@ -30,6 +30,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -330,10 +331,12 @@ public class MantenanceParamsForm extends FrameModel {
 			try {
 				
 				//guardar operador e inspector
+				String createdAT = DateHandler.dateToString(LocalDate.now());
 				params = new HashMap<>();
 				params.put("reportID", reportID);
 				params.put("operator", operator);
 				params.put("inspector", inspector);
+				params.put("createdAT", createdAT);
 				new ParamMesuresOperators().createRecord(params);
 				
 				//guardar las fechas
