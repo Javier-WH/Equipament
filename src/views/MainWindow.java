@@ -8,6 +8,8 @@ import components.CButton;
 import components.Constants;
 import components.MaintenanceTypeSelector;
 import functions.Exit;
+import manteneceParamsForm.MantenanceParamsForm;
+
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import java.awt.BorderLayout;
@@ -214,6 +216,11 @@ public class MainWindow extends JFrame {
 		popupPanel.add(verticalStrut_1);
 		
 		CButton btnParametrosFunc = new CButton("Medicion de parametros de funcionamiento");
+		btnParametrosFunc.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				new MantenanceParamsForm().setVisible(true);
+			}
+		});
 		btnParametrosFunc.setPreferredSize(new Dimension(264, 40));
 		btnParametrosFunc.setMaximumSize(new Dimension(3000, 23));
 		btnParametrosFunc.setAlignmentX(Component.CENTER_ALIGNMENT);

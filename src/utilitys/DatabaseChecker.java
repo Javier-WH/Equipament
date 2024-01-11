@@ -8,6 +8,10 @@ import java.util.ArrayList;
 import dataBaseModels.DataBaseModel;
 //import dataBaseModels.DateTest;
 import dataBaseModels.MaintenanceRoutines;
+import dataBaseModels.ParamMesuresData;
+import dataBaseModels.ParamMesuresDates;
+import dataBaseModels.ParamMesuresDescriptions;
+import dataBaseModels.ParamMesuresOperators;
 import dbConection.*;
 
 public class DatabaseChecker {
@@ -20,6 +24,10 @@ public class DatabaseChecker {
 		dataChecker = new DataChecker();
 		connection = SQLiteConnection.getConnection();
 		TableList.add(new MaintenanceRoutines());
+		TableList.add(new ParamMesuresDescriptions());
+		TableList.add(new ParamMesuresDates());
+		TableList.add(new ParamMesuresData());
+		TableList.add(new ParamMesuresOperators());
 	}
 
 	public boolean checkDatabaseList() throws SQLException {
@@ -35,6 +43,7 @@ public class DatabaseChecker {
 
 		for (DataBaseModel table : TableList) {
 			String name = table.getTableName();
+	
 			if (!currentTableList.contains(name)) {
 				if (table.createTable()) {
 					System.out.println("la tabla " + name + " se ha creado");

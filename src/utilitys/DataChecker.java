@@ -7,6 +7,7 @@ import dataFillers.DefaultCorrectiveDataFiller;
 import dataFillers.DefaultPreventiveDataFiller;
 import dataFillers.DefaultPuestaCeroDataFiller;
 import dataFillers.IDataFiller;
+import dataFillers.ParamMesuresDescriptionDataFiller;
 
 public class DataChecker {
 
@@ -19,6 +20,7 @@ public class DataChecker {
 		datafiller.add(new DefaultPreventiveDataFiller());
 		datafiller.add(new DefaultCorrectiveDataFiller());
 		datafiller.add(new DefaultPuestaCeroDataFiller());
+		datafiller.add(new ParamMesuresDescriptionDataFiller());
 
 	}
 
@@ -29,10 +31,7 @@ public class DataChecker {
 			String fillerName = filler.getName();
 			if (fillerName.equals(dataBaseName)) {
 				filler.fillData();
-			} else {
-				System.err.println("ERROR, tabla "+ dataBaseName +" no encontrada");
-				return false;
-			}
+			} 
 		}
 		return true;
 	}
