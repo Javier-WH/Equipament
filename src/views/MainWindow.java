@@ -238,6 +238,7 @@ public class MainWindow extends JFrame {
 		menuPanel.add(btnStock, "cell 0 3,grow");
 
 		JButton btnHistorial = new CButton("Historial");
+		btnHistorial.setText("Reportes");
 		menuPanel.add(btnHistorial, "cell 0 4,grow");
 		JButton btnInfo = new CButton("Información");
 		menuPanel.add(btnInfo, "cell 0 6,grow");
