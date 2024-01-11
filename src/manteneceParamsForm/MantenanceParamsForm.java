@@ -16,6 +16,7 @@ import utilitys.DateHandler;
 
 import com.toedter.calendar.JDateChooser;
 
+import components.Cmessage;
 import components.Constants;
 import dataBaseModels.ParamMesuresData;
 import dataBaseModels.ParamMesuresDates;
@@ -208,17 +209,67 @@ public class MantenanceParamsForm extends FrameModel {
 		
 		@Override
 		public void actionPerformed(ActionEvent e) {
+		
+			//las fechas no pueden ser todas null
+
+			if(date1.getDate() == null &&
+					date2.getDate() == null &&
+					date3.getDate() == null &&
+					date4.getDate() == null &&
+					date5.getDate() == null &&
+					date6.getDate() == null &&
+					date7.getDate() == null ) {
+				
+				new Cmessage("Aceptar", null, "No ha suministrado ninguna fecha", null).setVisible(true);
+				return;
+				
+			}
+			
+			
+			//todos los datas no puden estar vacios
+			boolean isData = false;
+			for (Parameter parameter : list) {
+				HashMap<String, String> data = parameter.getData();
+				for (String key : data.keySet()) {
+				    String value = data.get(key);
+		
+				    if (value.length() > 0) {
+				    	isData = true;
+				        break;
+				    }
+				}
+			}
+			
+			if(!isData) {
+				new Cmessage("Aceptar", null, "No ha suministrado ningun dato", null).setVisible(true);
+				return;
+			}
+			
+			
 			//obtengo los datos
 			String reportID = UUID.randomUUID().toString();
 			String operator = txtOperator.getText();
 			String inspector = txtInspector.getText();
-			String date_1 = DateHandler.dateToString(date1.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
-			String date_2 = DateHandler.dateToString(date2.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
-			String date_3 = DateHandler.dateToString(date3.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
-			String date_4 = DateHandler.dateToString(date4.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
-			String date_5 = DateHandler.dateToString(date5.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
-			String date_6 = DateHandler.dateToString(date6.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
-			String date_7 = DateHandler.dateToString(date7.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
+			
+			
+			if(operator.isEmpty()) {
+				new Cmessage("Aceptar", null, "No ha suministrado un Operador", null).setVisible(true);
+				return;
+			}
+			
+			if(inspector.isEmpty()) {
+				new Cmessage("Aceptar", null, "No ha suministrado un Jefe de Mantenimiento", null).setVisible(true);
+				return;
+			}
+			
+			
+			String date_1 =  date1.getDate() == null ? null : DateHandler.dateToString(date1.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
+			String date_2 =  date2.getDate() == null ? null : DateHandler.dateToString(date2.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
+			String date_3 =  date3.getDate() == null ? null : DateHandler.dateToString(date3.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
+			String date_4 =  date4.getDate() == null ? null : DateHandler.dateToString(date4.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
+			String date_5 =  date5.getDate() == null ? null : DateHandler.dateToString(date5.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
+			String date_6 =  date6.getDate() == null ? null : DateHandler.dateToString(date6.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
+			String date_7 =  date7.getDate() == null ? null : DateHandler.dateToString(date7.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
 			HashMap<String, String> params = null;
 			
 			try {
@@ -242,25 +293,50 @@ public class MantenanceParamsForm extends FrameModel {
 				params.put("date7", date_7);
 				new ParamMesuresDates().createRecord(params);
 				
+		
+				
 				//guaardando la data
 				for (Parameter parameter : list) {
 					String descriptionID = parameter.getId();
 					HashMap<String, String> data = parameter.getData();
+					String data1 = data.get("data1");
+					String data2 = data.get("data2");
+					String data3 = data.get("data3");
+					String data4 = data.get("data4");
+					String data5 = data.get("data5");
+					String data6 = data.get("data6");
+					String data7 = data.get("data7");
+					
+					
 					params = new HashMap<>();
 					params.put("reportID", reportID);
 					params.put("descriptionID", descriptionID);
-					params.put("data1", data.get("data1"));
-					params.put("data2", data.get("data2"));
-					params.put("data3", data.get("data3"));
-					params.put("data4", data.get("data4"));
-					params.put("data5", data.get("data5"));
-					params.put("data6", data.get("data6"));
-					params.put("data7", data.get("data7"));
+					if(!data1.isEmpty()) {
+						params.put("data1", data.get("data1"));						
+					}
+					if(!data2.isEmpty()) {
+						params.put("data2", data.get("data2"));						
+					}
+					if(!data3.isEmpty()) {
+						params.put("data3", data.get("data3"));						
+					}
+					if(!data4.isEmpty()) {
+						params.put("data4", data.get("data4"));						
+					}
+					if(!data5.isEmpty()) {
+						params.put("data5", data.get("data5"));						
+					}
+					if(!data6.isEmpty()) {
+						params.put("data6", data.get("data6"));						
+					}
+					if(!data7.isEmpty()) {
+						params.put("data7", data.get("data7"));						
+					}
 					new ParamMesuresData().createRecord(params);
 					
 				}
 				
-				
+				dispose();
 			
 			} catch (ClassNotFoundException | SQLException e1) {
 				// TODO Auto-generated catch block

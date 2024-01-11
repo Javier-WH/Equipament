@@ -11,7 +11,7 @@ public class ParamMesuresData extends AbstractDataBaseModel{
 	@Override
 	public boolean createTable() throws SQLException {
 		StringBuilder queryBuilder = new StringBuilder("CREATE TABLE ").append(dataTableName)
-				.append(" ('descriptionID' INTEGER, reportID TEXT NOT NULL, 'data1' TEXT NOT NULL, 'data2' TEXT NOT NULL, 'data3' TEXT NOT NULL, 'data4' TEXT NOT NULL, 'data5' TEXT NOT NULL, 'data6' TEXT NOT NULL, 'data7' TEXT NOT NULL);");
+				.append(" ('descriptionID' INTEGER, reportID TEXT NOT NULL, 'data1' TEXT, 'data2' TEXT, 'data3' TEXT , 'data4' TEXT, 'data5' TEXT, 'data6' TEXT, 'data7' TEXT);");
 		String query = queryBuilder.toString();
 		return executeStatement(query);
 	
