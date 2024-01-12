@@ -6,14 +6,9 @@ import javax.swing.JLabel;
 import java.awt.Dimension;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-
 import javax.swing.SpringLayout;
 import javax.swing.border.MatteBorder;
-
 import components.Constants;
-
-import java.awt.Color;
 import java.awt.Cursor;
 
 public class MesurePanel extends JPanel {

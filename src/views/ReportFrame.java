@@ -15,14 +15,14 @@ import javax.swing.ScrollPaneConstants;
 import net.miginfocom.swing.MigLayout;
 import reportPanels.MesurePanel;
 import javax.swing.SwingConstants;
-import javax.swing.border.MatteBorder;
-import java.awt.Color;
+
 
 
 
 public class ReportFrame extends FrameModel {
 	private static final long serialVersionUID = 1L;
 	private JPanel reportPanel;
+	private JComboBox<String> comboType;
 
 	public ReportFrame(JPanel parent) {
 		super(parent, "Reportes");
@@ -53,7 +53,7 @@ public class ReportFrame extends FrameModel {
 		Component verticalStrut = Box.createVerticalStrut(20);
 		panel_1.add(verticalStrut);
 		
-		JComboBox<String> comboType = new JComboBox<String>();
+		comboType = new JComboBox<String>();
 		comboType.setMaximumSize(new Dimension(300, 32767));
 		comboType.addItem("Medición de parámetros de funcionamiento");
 		comboType.addItem("Mantenimiento Preventivo");
@@ -84,7 +84,7 @@ public class ReportFrame extends FrameModel {
 		panel_2.add(panel_3, BorderLayout.NORTH);
 		panel_3.setLayout(new MigLayout("insets 0, gap 0", "[150px:n,grow 300,fill][grow,fill][grow,fill][grow,fill][17px:17px:17px]", "[]"));
 		
-		JLabel lblNewLabel_1 = new JLabel("Tipo");
+		JLabel lblNewLabel_1 = new JLabel("Descripción");
 		lblNewLabel_1.setBorder(null);
 		lblNewLabel_1.setForeground(Constants.getTextColor());
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 12));
