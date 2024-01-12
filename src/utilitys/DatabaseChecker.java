@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import dataBaseModels.DataBaseModel;
+import dataBaseModels.MaintenanceRegister;
 //import dataBaseModels.DateTest;
 import dataBaseModels.MaintenanceRoutines;
 import dataBaseModels.ParamMesuresData;
@@ -28,6 +29,7 @@ public class DatabaseChecker {
 		TableList.add(new ParamMesuresDates());
 		TableList.add(new ParamMesuresData());
 		TableList.add(new ParamMesuresOperators());
+		TableList.add(new MaintenanceRegister());
 	}
 
 	public boolean checkDatabaseList() throws SQLException {
