@@ -2,6 +2,7 @@ package reportPanels;
 
 import javax.swing.JPanel;
 import net.miginfocom.swing.MigLayout;
+import printViews.PrintWindow;
 import javax.swing.JLabel;
 import java.awt.Dimension;
 import java.awt.event.MouseAdapter;
@@ -13,9 +14,14 @@ import java.awt.Cursor;
 
 public class MesurePanel extends JPanel {
 
+
+	
 	private static final long serialVersionUID = 1L;
 
-	public MesurePanel() {
+	public MesurePanel(String reportID, String type,  String operator, String inspector, String createdAT) {
+		
+	
+		
 		setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		setBackground(Constants.getSurfaceColor());
 		setMinimumSize(new Dimension(10, 50));
@@ -30,7 +36,7 @@ public class MesurePanel extends JPanel {
 		SpringLayout sl_typePanel = new SpringLayout();
 		typePanel.setLayout(sl_typePanel);
 		
-		JLabel lblType = new JLabel("Un elefante se balanceaba sobre la tela de una arana, como ve[ia que resist[ia fue a llamar a otro elefante");
+		JLabel lblType = new JLabel(type);
 		lblType.setForeground(Constants.getTextColor());
 		sl_typePanel.putConstraint(SpringLayout.NORTH, lblType, 5, SpringLayout.NORTH, typePanel);
 		sl_typePanel.putConstraint(SpringLayout.WEST, lblType, 5, SpringLayout.WEST, typePanel);
@@ -46,7 +52,7 @@ public class MesurePanel extends JPanel {
 		SpringLayout sl_operatorPanel = new SpringLayout();
 		operatorPanel.setLayout(sl_operatorPanel);
 		
-		JLabel lblOperator = new JLabel("Simon Bolivar");
+		JLabel lblOperator = new JLabel(operator);
 		lblOperator.setForeground(Constants.getTextColor());
 		lblOperator.setBorder(null);
 		sl_operatorPanel.putConstraint(SpringLayout.NORTH, lblOperator, 0, SpringLayout.NORTH, operatorPanel);
@@ -63,7 +69,7 @@ public class MesurePanel extends JPanel {
 		SpringLayout sl_inspectorPanel = new SpringLayout();
 		inspectorPanel.setLayout(sl_inspectorPanel);
 		
-		JLabel lblInspector = new JLabel("Simon Bolivar");
+		JLabel lblInspector = new JLabel(inspector);
 		lblInspector.setForeground(Constants.getTextColor());
 		sl_inspectorPanel.putConstraint(SpringLayout.NORTH, lblInspector, 0, SpringLayout.NORTH, inspectorPanel);
 		sl_inspectorPanel.putConstraint(SpringLayout.WEST, lblInspector, 10, SpringLayout.WEST, inspectorPanel);
@@ -80,7 +86,7 @@ public class MesurePanel extends JPanel {
 		SpringLayout sl_datePanel = new SpringLayout();
 		datePanel.setLayout(sl_datePanel);
 		
-		JLabel lblDate = new JLabel("Simon Bolivar");
+		JLabel lblDate = new JLabel(createdAT);
 		lblDate.setForeground(Constants.getTextColor());
 		sl_datePanel.putConstraint(SpringLayout.NORTH, lblDate, 0, SpringLayout.NORTH, datePanel);
 		sl_datePanel.putConstraint(SpringLayout.WEST, lblDate, 10, SpringLayout.WEST, datePanel);
@@ -122,11 +128,13 @@ public class MesurePanel extends JPanel {
 			
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				// TODO Auto-generated method stub
-				System.out.println("Hola soy una marmota");
+				
+				new PrintWindow(null).setVisible(true);
 				
 			}
 		});
 
 	}
+
+
 }

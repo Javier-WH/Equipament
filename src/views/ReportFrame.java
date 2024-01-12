@@ -3,11 +3,14 @@ package views;
 import java.awt.Dimension;
 import javax.swing.JPanel;
 import components.Constants;
+import dataBaseModels.ParamMesuresOperators;
 import java.awt.BorderLayout;
 import javax.swing.BoxLayout;
 import javax.swing.JLabel;
 import java.awt.Component;
 import java.awt.Font;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import javax.swing.JComboBox;
 import javax.swing.Box;
 import javax.swing.JScrollPane;
@@ -15,6 +18,9 @@ import javax.swing.ScrollPaneConstants;
 import net.miginfocom.swing.MigLayout;
 import reportPanels.MesurePanel;
 import javax.swing.SwingConstants;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
 
 
 
@@ -26,6 +32,7 @@ public class ReportFrame extends FrameModel {
 
 	public ReportFrame(JPanel parent) {
 		super(parent, "Reportes");
+		setAlwaysOnTop(false);
 		Dimension pSize = new  Dimension(700, 600);
 		setSize(pSize);
 		
@@ -54,6 +61,7 @@ public class ReportFrame extends FrameModel {
 		panel_1.add(verticalStrut);
 		
 		comboType = new JComboBox<String>();
+
 		comboType.setMaximumSize(new Dimension(300, 32767));
 		comboType.addItem("Medición de parámetros de funcionamiento");
 		comboType.addItem("Mantenimiento Preventivo");
@@ -109,23 +117,57 @@ public class ReportFrame extends FrameModel {
 		lblNewLabel_4.setHorizontalAlignment(SwingConstants.CENTER);
 		panel_3.add(lblNewLabel_4, "cell 3 0,grow");
 		
-		fillReportPanel();
+		try {
+			fillReportPanel();
+		} catch (ClassNotFoundException | SQLException e) {
+			e.printStackTrace();
+		}
 		
+		comboType.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					fillReportPanel();
+				} catch (ClassNotFoundException | SQLException es) {
+					es.printStackTrace();
+				}
+			}
+		});
+			
 	}
 
 	
-	private void fillReportPanel() {
-		//Dimension pz = new Dimension(reportPanel.getPreferredSize().width, 50 * 20);
-		//reportPanel.setPreferredSize(pz);
+	private void fillReportPanel() throws ClassNotFoundException, SQLException {
+		reportPanel.removeAll();
+		reportPanel.setPreferredSize(new Dimension(reportPanel.getPreferredSize().width, 50));
+		int index = comboType.getSelectedIndex();
 		
-		reportPanel.add(new MesurePanel());
-		reportPanel.add(new MesurePanel());
-		reportPanel.add(new MesurePanel());
-	
+		int size = 0;
 		
+		//el cero es la medición de parametros
+		if(index == 0) {
+			
+			ResultSet rs = new ParamMesuresOperators().findRecords();
+			
+			while(rs.next()) {
+				size++;
+				String reportID = rs.getString("reportID");
+				String type = "Medición de parametros";
+				String operator = rs.getString("operator");
+				String inspector = rs.getString("inspector");
+				String createdAT = rs.getString("createdAT");
+				reportPanel.add(new MesurePanel(reportID, type, operator, inspector, createdAT));
+			}
+		}else if (index == 1) {
+
+		}else if(index == 2) {
+			
+		}
+		
+		reportPanel.setPreferredSize(new Dimension(reportPanel.getPreferredSize().width, 50 * size));
+		reportPanel.revalidate();
+		reportPanel.repaint();
+
 	}
 	
-		
-		
-	
+
 }
