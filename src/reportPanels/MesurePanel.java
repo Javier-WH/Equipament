@@ -129,7 +129,7 @@ public class MesurePanel extends JPanel {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				
-				new PrintWindow(null).setVisible(true);
+				new PrintWindow(null,  type, reportID).setVisible(true);
 				
 			}
 		});
