@@ -11,14 +11,13 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 import javax.swing.border.EmptyBorder;
-
 import components.Constants;
 import utilitys.PanelPrinter;
 import views.FrameModel;
 import java.awt.event.MouseAdapter;
 import java.awt.Cursor;
 import javax.swing.SpringLayout;
-import javax.swing.ScrollPaneConstants;
+
 
 
 
@@ -95,6 +94,10 @@ public class PrintWindow extends FrameModel {
 	}
 	
 	private JPanel getPrintPanel(String type, String id) {
-		return new PrintMesuresPanel(id);
+		if(type.equals("Medición de parametros")) {
+			return new PrintMesuresPanel(id);			
+		}
+		
+		return null;
 	}
 }
