@@ -28,7 +28,7 @@ public class PrintWindow extends FrameModel {
 	private JPanel contentPane;
 
 	
-	public PrintWindow(JPanel parent, String type, String id) {
+	public PrintWindow(JPanel parent, String type, String id, String cat, String date) {
 		super(parent, "Ventana de Impresión");
 		setAlwaysOnTop(false);
 	
@@ -81,7 +81,7 @@ public class PrintWindow extends FrameModel {
 		lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		lblNewLabel_2.setBounds(85, 41, 215, 96);
 		
-		JPanel printPanel = getPrintPanel(type, id);
+		JPanel printPanel = getPrintPanel(cat, id, date);
 		scrollPane.setViewportView(printPanel);
 		
 		lblNewLabel.addMouseListener(new MouseAdapter() {
@@ -93,9 +93,14 @@ public class PrintWindow extends FrameModel {
 		});
 	}
 	
-	private JPanel getPrintPanel(String type, String id) {
-		if(type.equals("Medición de parametros")) {
+	private JPanel getPrintPanel(String cat, String id, String date) {
+		if(cat.equals("0")) {
 			return new PrintMesuresPanel(id);			
+		}else if(cat.equals("1")) {
+			return new PrintMantenanceRoutinesPanel(id, date, "1");
+		}else if(cat.equals("2")) {
+			return new PrintMantenanceRoutinesPanel(id, date, "2");
+		
 		}
 		
 		return null;

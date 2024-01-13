@@ -9,6 +9,7 @@ import dataBaseModels.DataBaseModel;
 import dataBaseModels.MaintenanceRegister;
 //import dataBaseModels.DateTest;
 import dataBaseModels.MaintenanceRoutines;
+import dataBaseModels.MaintenanceRoutinesOperators;
 import dataBaseModels.ParamMesuresData;
 import dataBaseModels.ParamMesuresDates;
 import dataBaseModels.ParamMesuresDescriptions;
@@ -30,6 +31,7 @@ public class DatabaseChecker {
 		TableList.add(new ParamMesuresData());
 		TableList.add(new ParamMesuresOperators());
 		TableList.add(new MaintenanceRegister());
+		TableList.add(new MaintenanceRoutinesOperators());
 	}
 
 	public boolean checkDatabaseList() throws SQLException {

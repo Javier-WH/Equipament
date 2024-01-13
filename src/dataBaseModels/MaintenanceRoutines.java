@@ -16,5 +16,5 @@ public class MaintenanceRoutines extends AbstractDataBaseModel{
 		return executeStatement(query);
 	
 	}
-
+	
 }

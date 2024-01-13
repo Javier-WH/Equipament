@@ -3,6 +3,7 @@ package views;
 import java.awt.Dimension;
 import javax.swing.JPanel;
 import components.Constants;
+import dataBaseModels.MaintenanceRoutinesOperators;
 import dataBaseModels.ParamMesuresOperators;
 import java.awt.BorderLayout;
 import javax.swing.BoxLayout;
@@ -11,6 +12,7 @@ import java.awt.Component;
 import java.awt.Font;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.HashMap;
 import javax.swing.JComboBox;
 import javax.swing.Box;
 import javax.swing.JScrollPane;
@@ -155,11 +157,40 @@ public class ReportFrame extends FrameModel {
 				String operator = rs.getString("operator");
 				String inspector = rs.getString("inspector");
 				String createdAT = rs.getString("createdAT");
-				reportPanel.add(new MesurePanel(reportID, type, operator, inspector, createdAT));
+				reportPanel.add(new MesurePanel(reportID, type, operator, inspector, createdAT, "0"));
 			}
 		}else if (index == 1) {
+			
+			HashMap<String, String> params = new HashMap<>();
+			params.put("type", "P");
+			ResultSet rs = new MaintenanceRoutinesOperators().findRowOperators("P");
+			
+			while(rs.next()) {
+				size++;
+				String secction = rs.getString("secction");
+				String operator = rs.getString("operator");
+				String inspector = rs.getString("inspector");
+				String lastUpdate = rs.getString("lastUpdate");
+				reportPanel.add(new MesurePanel(secction, secction, operator, inspector, lastUpdate, "1"));
+				
+			}
+			
 
 		}else if(index == 2) {
+			
+			HashMap<String, String> params = new HashMap<>();
+			params.put("type", "P");
+			ResultSet rs = new MaintenanceRoutinesOperators().findRowOperators("C");
+			
+			while(rs.next()) {
+				size++;
+				String secction = rs.getString("secction");
+				String operator = rs.getString("operator");
+				String inspector = rs.getString("inspector");
+				String lastUpdate = rs.getString("lastUpdate");
+				reportPanel.add(new MesurePanel(secction, secction, operator, inspector, lastUpdate, "2"));
+				
+			}
 			
 		}
 		

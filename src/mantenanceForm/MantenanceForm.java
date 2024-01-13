@@ -26,6 +26,7 @@ import javax.swing.border.TitledBorder;
 import components.Cmessage;
 import components.Constants;
 import dataBaseModels.MaintenanceRoutines;
+import dataBaseModels.MaintenanceRoutinesOperators;
 import main.AlterThread;
 
 import javax.swing.JScrollPane;
@@ -292,9 +293,22 @@ public class MantenanceForm extends FrameModel {
 
 					try {
 						MR.updateRecord(params);
+						//////nuevo 
+						
+						HashMap<String, String> paramsOperator = new HashMap<>();
+						paramsOperator.put("inspector", txtInspector.getText());
+						paramsOperator.put("operator", txtTencician.getText());
+						paramsOperator.put("observations", txtObservastions.getText());
+						paramsOperator.put("routineID", id);
+						paramsOperator.put("date", lastUpdate);
+						new MaintenanceRoutinesOperators().createRecord(paramsOperator);
+						
+					
+						/////
+						
 						AlterThread.refreshAlarms();
 						dispose();
-					} catch (SQLException e1) {
+					} catch (SQLException | ClassNotFoundException e1) {
 						e1.printStackTrace();
 					}
 				}

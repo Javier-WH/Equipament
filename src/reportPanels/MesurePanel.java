@@ -18,7 +18,7 @@ public class MesurePanel extends JPanel {
 	
 	private static final long serialVersionUID = 1L;
 
-	public MesurePanel(String reportID, String type,  String operator, String inspector, String createdAT) {
+	public MesurePanel(String reportID, String type,  String operator, String inspector, String createdAT, String cat) {
 		
 	
 		
@@ -129,7 +129,7 @@ public class MesurePanel extends JPanel {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 			
-				new PrintWindow(null,  type, reportID).setVisible(true);
+				new PrintWindow(null,  type, reportID, cat, createdAT).setVisible(true);
 				
 			}
 		});
