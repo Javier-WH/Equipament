@@ -1,7 +1,5 @@
 package printViews;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Component;
 import java.awt.Font;
 import java.awt.event.MouseEvent;
@@ -13,10 +11,14 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 import javax.swing.border.EmptyBorder;
+
+import components.Constants;
 import utilitys.PanelPrinter;
 import views.FrameModel;
 import java.awt.event.MouseAdapter;
 import java.awt.Cursor;
+import javax.swing.SpringLayout;
+import javax.swing.ScrollPaneConstants;
 
 
 
@@ -32,17 +34,24 @@ public class PrintWindow extends FrameModel {
 		setAlwaysOnTop(false);
 	
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 609, 473);
+		setBounds(100, 100, 653, 473);
 		contentPane = new JPanel();
+		contentPane.setBackground(Constants.getSurfaceColor());
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 10));
 
 		setContentPane(contentPane);
-		contentPane.setLayout(new BorderLayout(0, 0));
+		SpringLayout sl_contentPane = new SpringLayout();
+		contentPane.setLayout(sl_contentPane);
 		
 		JPanel panel = new JPanel();
-		contentPane.add(panel, BorderLayout.NORTH);
+		sl_contentPane.putConstraint(SpringLayout.NORTH, panel, 5, SpringLayout.NORTH, contentPane);
+		sl_contentPane.putConstraint(SpringLayout.WEST, panel, 5, SpringLayout.WEST, contentPane);
+		sl_contentPane.putConstraint(SpringLayout.EAST, panel, 604, SpringLayout.WEST, contentPane);
+		panel.setOpaque(false);
+		contentPane.add(panel);
 		
 		JLabel lblNewLabel_1 = new JLabel("Regresar");
+		lblNewLabel_1.setForeground(Constants.getTextColor());
 		lblNewLabel_1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		lblNewLabel_1.addMouseListener(new MouseAdapter() {
 			@Override
@@ -57,13 +66,16 @@ public class PrintWindow extends FrameModel {
 		panel.add(horizontalStrut);
 		
 		JLabel lblNewLabel = new JLabel("Imprimir");
+		lblNewLabel.setForeground(Constants.getTextColor());
 		lblNewLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 	
 		lblNewLabel.setIcon(new ImageIcon(PrintWindow.class.getResource("/assets/printIcon.png")));
 		panel.add(lblNewLabel);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		contentPane.add(scrollPane, BorderLayout.CENTER);
+		sl_contentPane.putConstraint(SpringLayout.NORTH, scrollPane, 63, SpringLayout.NORTH, contentPane);
+		sl_contentPane.putConstraint(SpringLayout.WEST, scrollPane, 5, SpringLayout.WEST, contentPane);
+		contentPane.add(scrollPane);
 		
 		
 		JLabel lblNewLabel_2 = new JLabel("Hola, esto es una prueba");

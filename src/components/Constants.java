@@ -17,10 +17,16 @@ public class Constants {
 	private static Color preventiveAlertColor = new Color(9, 54, 219);
 	private static Color correctiveAlertColor = new Color(194, 125, 6);
 	private static Color puestaAceroAlertColor = new Color(96, 181, 103);
+	private static Font printFont = new Font("Arial", Font.PLAIN, 8);
 	
 	
 	
 	
+	
+	public static Font getPrintFont() {
+		return printFont;
+	}
+
 	public static Color getPuestaAceroAlertColor() {
 		return puestaAceroAlertColor;
 	}

@@ -6,14 +6,13 @@ import java.awt.Dimension;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashMap;
-import javax.swing.JTable;
-import javax.swing.SpringLayout;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.table.JTableHeader;
+import components.Constants;
 import dataBaseModels.ParamMesuresData;
 import javax.swing.JLabel;
-import javax.swing.JScrollPane;
 import java.awt.Font;
+import net.miginfocom.swing.MigLayout;
+import javax.swing.border.MatteBorder;
+import javax.swing.SwingConstants;
 
 public class PrintMesuresPanel extends JPanel {
 
@@ -21,84 +20,158 @@ public class PrintMesuresPanel extends JPanel {
 	private JLabel lblOperador;
 	private JLabel lblInspector;
 	private JLabel lblDate;
+	private JLabel lblDate1;
+	private JLabel lblDate2;
+	private JLabel lblDate3;
+	private JLabel lblDate4;
+	private JLabel lblDate5;
+	private JLabel lblDate6;
+	private JLabel lblDate7;
+	private JPanel mesuresPanel;
 
 	public PrintMesuresPanel(String id) {
 		setPreferredSize(new Dimension(597, 717));
 
 		setBackground(Color.WHITE);
-		SpringLayout springLayout = new SpringLayout();
-		setLayout(springLayout);
-
-		JScrollPane scrollPane = new JScrollPane();
-		springLayout.putConstraint(SpringLayout.SOUTH, scrollPane, 707, SpringLayout.NORTH, this);
-		scrollPane.setBackground(Color.WHITE);
-		springLayout.putConstraint(SpringLayout.WEST, scrollPane, 10, SpringLayout.WEST, this);
-		scrollPane.setBorder(null);
-		add(scrollPane);
+		setLayout(null);
 
 		JLabel lblNewLabel = new JLabel("EQUIPO: Turbocompresor Solar Centauro 40 ");
-		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		springLayout.putConstraint(SpringLayout.NORTH, lblNewLabel, 10, SpringLayout.NORTH, this);
-		springLayout.putConstraint(SpringLayout.WEST, lblNewLabel, 10, SpringLayout.WEST, this);
+		lblNewLabel.setBounds(10, 10, 209, 13);
+		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 10));
 		add(lblNewLabel);
 
 		JLabel lblNewLabel_1 = new JLabel("OPERADOR:");
-		springLayout.putConstraint(SpringLayout.NORTH, lblNewLabel_1, 32, SpringLayout.NORTH, this);
-		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		springLayout.putConstraint(SpringLayout.WEST, lblNewLabel_1, 10, SpringLayout.WEST, this);
+		lblNewLabel_1.setBounds(10, 32, 58, 13);
+		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 10));
 		add(lblNewLabel_1);
 
 		JLabel lblNewLabel_2 = new JLabel("JEFE DE MANTENIMIETO:");
-		springLayout.putConstraint(SpringLayout.NORTH, scrollPane, 6, SpringLayout.SOUTH, lblNewLabel_2);
-		lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		springLayout.putConstraint(SpringLayout.WEST, lblNewLabel_2, 10, SpringLayout.WEST, this);
-		springLayout.putConstraint(SpringLayout.NORTH, lblNewLabel_2, 6, SpringLayout.SOUTH, lblNewLabel_1);
+		lblNewLabel_2.setBounds(10, 51, 122, 13);
+		lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 10));
 		add(lblNewLabel_2);
 
 		lblOperador = new JLabel("OPERADOR:");
-		springLayout.putConstraint(SpringLayout.NORTH, lblOperador, 6, SpringLayout.SOUTH, lblNewLabel);
-		springLayout.putConstraint(SpringLayout.WEST, lblOperador, 6, SpringLayout.EAST, lblNewLabel_1);
-		springLayout.putConstraint(SpringLayout.EAST, lblOperador, 504, SpringLayout.EAST, lblNewLabel_1);
-		lblOperador.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		lblOperador.setBounds(74, 29, 498, 13);
+		lblOperador.setFont(new Font("Tahoma", Font.PLAIN, 10));
 		add(lblOperador);
 
 		lblInspector = new JLabel("JEFE DE MANTENIMIETO:");
-		springLayout.putConstraint(SpringLayout.EAST, scrollPane, 0, SpringLayout.EAST, lblInspector);
-		springLayout.putConstraint(SpringLayout.NORTH, lblInspector, 0, SpringLayout.NORTH, lblNewLabel_2);
-		springLayout.putConstraint(SpringLayout.WEST, lblInspector, 6, SpringLayout.EAST, lblNewLabel_2);
-		springLayout.putConstraint(SpringLayout.EAST, lblInspector, -10, SpringLayout.EAST, this);
-		lblInspector.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		lblInspector.setBounds(138, 51, 449, 13);
+		lblInspector.setFont(new Font("Tahoma", Font.PLAIN, 10));
 		add(lblInspector);
 
 		JLabel lblNewLabel_3 = new JLabel("Fecha:");
-		springLayout.putConstraint(SpringLayout.NORTH, lblNewLabel_3, 2, SpringLayout.NORTH, lblNewLabel);
-		springLayout.putConstraint(SpringLayout.WEST, lblNewLabel_3, 176, SpringLayout.EAST, lblNewLabel);
-		springLayout.putConstraint(SpringLayout.EAST, lblNewLabel_3, -109, SpringLayout.EAST, this);
+		lblNewLabel_3.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		lblNewLabel_3.setBounds(391, 9, 93, 14);
 		add(lblNewLabel_3);
 
 		lblDate = new JLabel("date");
-		springLayout.putConstraint(SpringLayout.WEST, lblDate, 490, SpringLayout.WEST, this);
-		springLayout.putConstraint(SpringLayout.NORTH, lblDate, 2, SpringLayout.NORTH, lblNewLabel);
+		lblDate.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		lblDate.setBounds(428, 9, 116, 14);
 		add(lblDate);
-
-		JTable table = new JTable();
-		table.setBackground(Color.WHITE);
-		table.setModel(getTableData(id));
-	    Font tableFont = table.getFont();
-        Font newFont = tableFont.deriveFont(9f); // Tamaño de fuente deseado en puntos
-        table.setFont(newFont);
-        JTableHeader header = table.getTableHeader();
-        Font headerFont = header.getFont();
-        Font newFontHeader = headerFont.deriveFont(9f); // Tamaño de fuente deseado en puntos
-        header.setFont(newFontHeader);
-		table.getColumnModel().getColumn(0).setPreferredWidth(200);
-		scrollPane.setViewportView(table);
 		
-
+		mesuresPanel = new JPanel();
+		mesuresPanel.setOpaque(false);
+		mesuresPanel.setBounds(10, 76, 577, 630);
+		add(mesuresPanel);
+		mesuresPanel.setLayout(new MigLayout("insets 0, gap 0", "[grow 250,fill][grow,fill][grow,fill][grow,fill][grow,fill][grow,fill][grow,fill][grow,fill]", "[][]"));
+		
+		JLabel lblNewLabel_4 = new JLabel("DESCRIPCION");
+		lblNewLabel_4.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_4.setBorder(new MatteBorder(1, 1, 1, 1, (Color) Color.DARK_GRAY));
+		lblNewLabel_4.setFont(Constants.getPrintFont());
+		mesuresPanel.add(lblNewLabel_4, "cell 0 0,grow, spany 2");
+		
+		JLabel lblDate1_1 = new JLabel("FECHA");
+		lblDate1_1.setHorizontalAlignment(SwingConstants.CENTER);
+		lblDate1_1.setFont(new Font("Arial", Font.PLAIN, 7));
+		lblDate1_1.setBorder(new MatteBorder(1, 0, 0, 1, (Color) new Color(0, 0, 0)));
+		mesuresPanel.add(lblDate1_1, "cell 1 0");
+		
+		JLabel lblDate2_1 = new JLabel("FECHA");
+		lblDate2_1.setHorizontalAlignment(SwingConstants.CENTER);
+		lblDate2_1.setFont(new Font("Arial", Font.PLAIN, 7));
+		lblDate2_1.setBorder(new MatteBorder(1, 0, 0, 1, (Color) new Color(0, 0, 0)));
+		mesuresPanel.add(lblDate2_1, "cell 2 0");
+		
+		JLabel lblDate2_2 = new JLabel("FECHA");
+		lblDate2_2.setHorizontalAlignment(SwingConstants.CENTER);
+		lblDate2_2.setFont(new Font("Arial", Font.PLAIN, 7));
+		lblDate2_2.setBorder(new MatteBorder(1, 0, 0, 1, (Color) new Color(0, 0, 0)));
+		mesuresPanel.add(lblDate2_2, "cell 3 0");
+		
+		JLabel lblDate2_3 = new JLabel("FECHA");
+		lblDate2_3.setHorizontalAlignment(SwingConstants.CENTER);
+		lblDate2_3.setFont(new Font("Arial", Font.PLAIN, 7));
+		lblDate2_3.setBorder(new MatteBorder(1, 0, 0, 1, (Color) new Color(0, 0, 0)));
+		mesuresPanel.add(lblDate2_3, "cell 4 0");
+		
+		JLabel lblDate2_4 = new JLabel("FECHA");
+		lblDate2_4.setHorizontalAlignment(SwingConstants.CENTER);
+		lblDate2_4.setFont(new Font("Arial", Font.PLAIN, 7));
+		lblDate2_4.setBorder(new MatteBorder(1, 0, 0, 1, (Color) new Color(0, 0, 0)));
+		mesuresPanel.add(lblDate2_4, "cell 5 0");
+		
+		JLabel lblDate2_5 = new JLabel("FECHA");
+		lblDate2_5.setHorizontalAlignment(SwingConstants.CENTER);
+		lblDate2_5.setFont(new Font("Arial", Font.PLAIN, 7));
+		lblDate2_5.setBorder(new MatteBorder(1, 0, 0, 1, (Color) new Color(0, 0, 0)));
+		mesuresPanel.add(lblDate2_5, "cell 6 0");
+		
+		JLabel lblDate2_6 = new JLabel("FECHA");
+		lblDate2_6.setHorizontalAlignment(SwingConstants.CENTER);
+		lblDate2_6.setFont(new Font("Arial", Font.PLAIN, 7));
+		lblDate2_6.setBorder(new MatteBorder(1, 0, 0, 1, (Color) new Color(0, 0, 0)));
+		mesuresPanel.add(lblDate2_6, "cell 7 0");
+		
+		lblDate1 = new JLabel("FECHA");
+		lblDate1.setHorizontalAlignment(SwingConstants.CENTER);
+		lblDate1.setBorder(new MatteBorder(1, 0, 1, 1, (Color) new Color(64, 64, 64)));
+		lblDate1.setFont(Constants.getPrintFont());
+		mesuresPanel.add(lblDate1, "cell 1 1,grow");
+		
+		lblDate2 = new JLabel("FECHA");
+		lblDate2.setHorizontalAlignment(SwingConstants.CENTER);
+		lblDate2.setBorder(new MatteBorder(1, 0, 1, 1, (Color) new Color(0, 0, 0)));
+		lblDate2.setFont(Constants.getPrintFont());
+		mesuresPanel.add(lblDate2, "cell 2 1,grow");
+		
+		lblDate3 = new JLabel("FECHA");
+		lblDate3.setHorizontalAlignment(SwingConstants.CENTER);
+		lblDate3.setBorder(new MatteBorder(1, 0, 1, 1, (Color) new Color(0, 0, 0)));
+		lblDate3.setFont(Constants.getPrintFont());
+		mesuresPanel.add(lblDate3, "cell 3 1,grow");
+		
+		lblDate4 = new JLabel("FECHA");
+		lblDate4.setHorizontalAlignment(SwingConstants.CENTER);
+		lblDate4.setBorder(new MatteBorder(1, 0, 1, 1, (Color) new Color(0, 0, 0)));
+		lblDate4.setFont(Constants.getPrintFont());
+		mesuresPanel.add(lblDate4, "cell 4 1,grow");
+		
+		lblDate5 = new JLabel("FECHA");
+		lblDate5.setHorizontalAlignment(SwingConstants.CENTER);
+		lblDate5.setBorder(new MatteBorder(1, 0, 1, 1, (Color) new Color(0, 0, 0)));
+		lblDate5.setFont(Constants.getPrintFont());
+		mesuresPanel.add(lblDate5, "cell 5 1,grow");
+		
+		lblDate6 = new JLabel("FECHA");
+		lblDate6.setHorizontalAlignment(SwingConstants.CENTER);
+		lblDate6.setBorder(new MatteBorder(1, 0, 1, 1, (Color) new Color(0, 0, 0)));
+		lblDate6.setFont(Constants.getPrintFont());
+		mesuresPanel.add(lblDate6, "cell 6 1,grow");
+		
+		lblDate7 = new JLabel("FECHA");
+		lblDate7.setHorizontalAlignment(SwingConstants.CENTER);
+		lblDate7.setBorder(new MatteBorder(1, 0, 1, 1, (Color) new Color(0, 0, 0)));
+		lblDate7.setFont(Constants.getPrintFont());
+		mesuresPanel.add(lblDate7, "cell 7 1,grow");
+      
+		
+		getTableData(id);
 	}
 
-	public DefaultTableModel getTableData(String reportID) {
-		DefaultTableModel model = new DefaultTableModel();
+	public void getTableData(String reportID) {
+	
 		HashMap<String, String> params = new HashMap<>();
 		params.put("reportID", reportID);
 
@@ -106,20 +179,14 @@ public class PrintMesuresPanel extends JPanel {
 			ParamMesuresData MD = new ParamMesuresData();
 			ResultSet ParamMesuresData = MD.findRowsData(reportID);
 
-			model.addColumn("DESCRIPCION");
-//			model.addColumn("FECHA");
-//			model.addColumn("FECHA");
-//			model.addColumn("FECHA");
-//			model.addColumn("FECHA");
-//			model.addColumn("FECHA");
-//			model.addColumn("FECHA");
-//			model.addColumn("FECHA");
 
-			boolean columsAdded = false;
 			boolean operatorAdded = false;
+			boolean datesAdded = false;
 
+			int row = 3;
+			
 			while (ParamMesuresData.next()) {
-
+				
 				String description = ParamMesuresData.getString("description");
 				String data1 = ParamMesuresData.getString("data1");
 				String data2 = ParamMesuresData.getString("data2");
@@ -128,8 +195,18 @@ public class PrintMesuresPanel extends JPanel {
 				String data5 = ParamMesuresData.getString("data5");
 				String data6 = ParamMesuresData.getString("data6");
 				String data7 = ParamMesuresData.getString("data7");
-				model.addRow(new Object[] { description, data1, data2, data3, data4, data5, data6, data7 });
 				
+				String[] rowList = {description, data1, data2, data3, data4, data5, data6, data7};
+				
+				for(int i = 0 ; i < rowList.length ; i++) {
+					JLabel label = new JLabel(rowList[i] == null ? " " : rowList[i] );
+					label.setBorder(new MatteBorder( 0 , i== 0 ? 1 : 0, 1, 1, (Color) Color.DARK_GRAY));
+					label.setFont(Constants.getPrintFont());
+					mesuresPanel.add(label, "cell "+i+" "+ row);
+				}
+				
+				
+				///agregar operador
 				if(!operatorAdded) {
 					operatorAdded = true;
 					String operator = ParamMesuresData.getString("operator");
@@ -140,25 +217,21 @@ public class PrintMesuresPanel extends JPanel {
 					lblDate.setText(createdAT);
 				}
 				
-				if(!columsAdded) {
-					columsAdded = true;
-					String date1 = ParamMesuresData.getString("date1");
-					String date2 = ParamMesuresData.getString("date2");
-					String date3 = ParamMesuresData.getString("date3");
-					String date4 = ParamMesuresData.getString("date4");
-					String date5 = ParamMesuresData.getString("date5");
-					String date6 = ParamMesuresData.getString("date6");
-					String date7 = ParamMesuresData.getString("date7");
-					
-					model.addColumn(date1.equals("null") ? "" : date1);
-					model.addColumn(date2.equals("null") ? "" : date2);
-					model.addColumn(date3.equals("null") ? "" : date3);
-					model.addColumn(date4.equals("null") ? "" : date4);
-					model.addColumn(date5.equals("null") ? "" : date5);
-					model.addColumn(date6.equals("null") ? "" : date6);
-					model.addColumn(date7.equals("null") ? "" : date7);
-					
+				if(!datesAdded) {
+					datesAdded = true;
+					lblDate1.setText(ParamMesuresData.getString("date1").equals("null") ? " " : ParamMesuresData.getString("date1"));
+					lblDate2.setText(ParamMesuresData.getString("date2").equals("null") ? " " : ParamMesuresData.getString("date2"));
+					lblDate3.setText(ParamMesuresData.getString("date3").equals("null") ? " " : ParamMesuresData.getString("date3"));
+					lblDate4.setText(ParamMesuresData.getString("date4").equals("null") ? " " : ParamMesuresData.getString("date4"));
+					lblDate5.setText(ParamMesuresData.getString("date5").equals("null") ? " " : ParamMesuresData.getString("date5"));
+					lblDate6.setText(ParamMesuresData.getString("date6").equals("null") ? " " : ParamMesuresData.getString("date6"));
+					lblDate7.setText(ParamMesuresData.getString("date7").equals("null") ? " " : ParamMesuresData.getString("date7"));	
 				}
+				
+				
+				
+				row++;
+			
 
 			}
 
@@ -166,6 +239,6 @@ public class PrintMesuresPanel extends JPanel {
 			e.printStackTrace();
 		}
 
-		return model;
+	
 	}
 }
