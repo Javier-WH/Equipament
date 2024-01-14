@@ -23,6 +23,7 @@ import javax.swing.ScrollPaneConstants;
 
 public class StockFrame extends FrameModel {
 	private static final long serialVersionUID = 1L;
+	private JPanel panelStock;
 
 
 	public StockFrame(JPanel parent) {
@@ -65,7 +66,7 @@ public class StockFrame extends FrameModel {
 		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		panel.add(scrollPane, BorderLayout.CENTER);
 		
-		JPanel panelStock = new JPanel();
+		panelStock = new JPanel();
 		panelStock.setBackground(Constants.getSurfaceColor());
 		scrollPane.setViewportView(panelStock);
 		
@@ -74,10 +75,28 @@ public class StockFrame extends FrameModel {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.out.println(comboBox.getSelectedItem());
-				
+				fillPanelStock(comboBox.getSelectedItem().toString());
 			}
 		});
+		
+	}
+	
+	
+	private void fillPanelStock(String secction) {
+		
+		ResultSet rs;
+		try {
+			rs = new Stock().findSeccionParts(secction);
+			while(rs.next()) {
+				
+				////////////////////////////////////////////////////////aqui hay que actualizar
+				System.out.println(rs.getString("parts"));
+			}
+		} catch (ClassNotFoundException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		
 	}
 	

@@ -1,5 +1,6 @@
 package dataBaseModels;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -22,6 +23,13 @@ public class Stock extends AbstractDataBaseModel{
 		String query = "SELECT DISTINCT secction FROM stock";
 		Statement statement = connection.createStatement();
 		return statement.executeQuery(query);
+	}
+	
+	public ResultSet findSeccionParts(String Seccion) throws SQLException {
+	    String query = "SELECT * FROM stock where secction = ?;";
+	    PreparedStatement statement = connection.prepareStatement(query);
+	    statement.setString(1, Seccion);
+	    return statement.executeQuery();
 	}
 	
 	
