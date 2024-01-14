@@ -9,7 +9,6 @@ import components.Constants;
 import components.MaintenanceTypeSelector;
 import functions.Exit;
 import manteneceParamsForm.MantenanceParamsForm;
-
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import java.awt.BorderLayout;
@@ -235,6 +234,11 @@ public class MainWindow extends JFrame {
 		});
 		
 		JButton btnStock = new CButton("Stock de repuestos");
+		btnStock.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				new StockFrame(contentPane).setVisible(true);
+			}
+		});
 		menuPanel.add(btnStock, "cell 0 3,grow");
 
 		JButton btnHistorial = new CButton("Historial");

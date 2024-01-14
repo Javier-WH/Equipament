@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import dataFillers.DefaultCorrectiveDataFiller;
 import dataFillers.DefaultPreventiveDataFiller;
 import dataFillers.DefaultPuestaCeroDataFiller;
+import dataFillers.DefaultStockDataFiller;
 import dataFillers.IDataFiller;
 import dataFillers.ParamMesuresDescriptionDataFiller;
 
@@ -21,6 +22,7 @@ public class DataChecker {
 		datafiller.add(new DefaultCorrectiveDataFiller());
 		datafiller.add(new DefaultPuestaCeroDataFiller());
 		datafiller.add(new ParamMesuresDescriptionDataFiller());
+		datafiller.add(new DefaultStockDataFiller());
 
 	}
 
