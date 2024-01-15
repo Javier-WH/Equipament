@@ -18,6 +18,7 @@ import javax.swing.Box;
 import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
 import net.miginfocom.swing.MigLayout;
+import printViews.PrintWindow;
 import reportPanels.MesurePanel;
 import javax.swing.SwingConstants;
 import java.awt.event.ActionListener;
@@ -68,6 +69,7 @@ public class ReportFrame extends FrameModel {
 		comboType.addItem("Medición de parámetros de funcionamiento");
 		comboType.addItem("Mantenimiento Preventivo");
 		comboType.addItem("Mantenimiento Correctivo");
+		comboType.addItem("Orden de trabajo");
 		panel_1.add(comboType);
 		
 		Component verticalStrut_2 = Box.createVerticalStrut(10);
@@ -192,6 +194,8 @@ public class ReportFrame extends FrameModel {
 				
 			}
 			
+		}else if(index == 3) {
+			new PrintWindow(reportPanel, null, null, "3", null).setVisible(true);;
 		}
 		
 		reportPanel.setPreferredSize(new Dimension(reportPanel.getPreferredSize().width, 50 * size));

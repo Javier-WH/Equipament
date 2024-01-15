@@ -3,6 +3,8 @@ package printViews;
 import java.awt.Component;
 import java.awt.Font;
 import java.awt.event.MouseEvent;
+import java.util.HashMap;
+
 import javax.swing.Box;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -14,6 +16,8 @@ import javax.swing.border.EmptyBorder;
 import components.Constants;
 import utilitys.PanelPrinter;
 import views.FrameModel;
+import workOrder.WorkOrder;
+
 import java.awt.event.MouseAdapter;
 import java.awt.Cursor;
 import javax.swing.SpringLayout;
@@ -101,6 +105,18 @@ public class PrintWindow extends FrameModel {
 		}else if(cat.equals("2")) {
 			return new PrintMantenanceRoutinesPanel(id, date, "2");
 		
+		}else if(cat.equals("3")) {
+			HashMap<String, String> data = new HashMap<>();
+			data.put("codigoA", "codigo a");
+			data.put("codigoB", "codigo b");
+			data.put("codigo1", "codigo 1");
+			data.put("codigo2", "codigo 2");
+			data.put("codigo3", "codigo 3");
+			data.put("codigo4", "codigo 4");
+			data.put("codigo5", "codigo 5");
+			data.put("codigo6", "codigo 6");
+			
+			return new WorkOrder(data).getWorkOrderPanel();
 		}
 		
 		return null;

@@ -7,691 +7,1247 @@ import javax.swing.JTextField;
 import java.awt.Color;
 import net.miginfocom.swing.MigLayout;
 import javax.swing.border.MatteBorder;
+
+import components.Constants;
+
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
+import java.awt.Dimension;
+import java.util.HashMap;
 
 
 public class WorkOrder extends FrameModel {
 	private static final long serialVersionUID = 1L;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField txtDia;
-	private JTextField textField_4;
-	private JTextField textField_5;
-	private JTextField textField_6;
-	private JTextField textField_2;
-	private JTextField textField_7;
-	private JTextField txtResponsable;
-	private JLabel lblClase;
-	private JLabel lblNewLabel;
-	private JLabel lblFechaInicio;
-	private JLabel lblNewLabel_1;
-	private JLabel lblNewLabel_2;
-	private JLabel lblNewLabel_3;
-	private JLabel lblNewLabel_4;
-	private JLabel lblNewLabel_5;
-	private JLabel lblNewLabel_6;
-	private JLabel lblFechaDeCierre;
-	private JTextField textField_3;
-	private JTextField textField_9;
-	private JTextField textField_8;
-	private JTextField textField_10;
-	private JTextField textField_11;
-	private JLabel lblNewLabel_7;
-	private JLabel lblNewLabel_8;
-	private JLabel lblNewLabel_9;
-	private JLabel lblNewLabel_10;
-	private JLabel lblNewLabel_11;
-	private JLabel lblNewLabel_12;
-	private JTextField textField_12;
-	private JTextField textField_13;
-	private JTextField textField_14;
-	private JTextField textField_15;
-	private JTextField textField_16;
+	private JTextField txtPreventivo;
+	private JTextField txtCorrectivo;
+	private JTextField txtDia1;
+	private JTextField txtMes1;
+	private JTextField txtAno1;
+	private JTextField txtDia2;
+	private JTextField txtMes2;
+	private JTextField txtAno2;
+	private JTextField txtResponsableEjecucion;
+	private JTextField txtLubricacion;
+	private JTextField txtElectrico;
+	private JTextField txtMecanico;
+	private JTextField txtInstrumentacion;
+	private JTextField txtOtro;
+	private JTextField txtNumeroOrden;
+	private JTextField txtEquipo;
+	private JTextField txtCodigoB;
+	private JTextField txtFichaTecnica;
+	private JTextField txtHojaVida;
 	private JLabel lblNewLabel_13;
 	private JLabel lblNewLabel_14;
 	private JLabel lblNewLabel_15;
 	private JLabel lblNewLabel_16;
 	private JLabel lblNewLabel_17;
-	private JLabel lblNewLabel_18;
-	private JLabel lblNewLabel_19;
-	private JLabel lblNewLabel_20;
-	private JLabel lblNewLabel_21;
-	private JTextField textField_17;
+	private JTextField txtCodigoA;
 	private JTextField textField_18;
 	private JTextField textField_19;
 	private JTextField textField_20;
-	private JLabel lblNewLabel_22;
-	private JLabel lblNewLabel_23;
-	private JLabel lblNewLabel_24;
-	private JLabel lblNewLabel_25;
-	private JLabel lblNewLabel_26;
-	private JLabel lblNewLabel_27;
-	private JLabel lblNewLabel_28;
-	private JLabel lblNewLabel_29;
-	private JTextField textField_21;
-	private JTextField textField_22;
-	private JTextField textField_23;
-	private JTextField textField_24;
-	private JTextField textField_25;
-	private JTextField textField_26;
-	private JTextField textField_27;
-	private JTextField textField_28;
-	private JTextField textField_29;
-	private JTextField textField_30;
-	private JTextField textField_31;
-	private JTextField textField_32;
-	private JTextField textField_33;
-	private JTextField textField_34;
-	private JTextField textField_35;
-	private JTextField textField_36;
-	private JTextField textField_37;
-	private JTextField textField_38;
-	private JTextField textField_39;
-	private JTextField textField_40;
-	private JTextField textField_41;
-	private JTextField textField_42;
-	private JTextField textField_43;
-	private JTextField textField_44;
-	private JTextField textField_45;
-	private JTextField textField_46;
-	private JTextField textField_47;
-	private JTextField textField_48;
-	private JTextField textField_49;
-	private JTextField textField_50;
-	private JTextField textField_51;
-	private JTextField textField_52;
-	private JTextField textField_53;
-	private JTextField textField_54;
-	private JTextField textField_55;
-	private JTextField textField_56;
-	private JTextField textField_57;
-	private JTextField textField_58;
-	private JTextField textField_59;
-	private JTextField textField_60;
-	private JTextField textField_61;
-	private JTextField textField_62;
-	private JTextField textField_63;
-	private JTextField textField_64;
-	private JTextField textField_65;
-	private JTextField textField_66;
-	private JTextField textField_67;
-	private JTextField textField_68;
-	private JTextField textField_69;
+	private JTextField txtCodigo1;
+	private JTextField txtCodigo2;
+	private JTextField txtCodigo3;
+	private JTextField txtCodigo4;
+	private JTextField txtCodigo5;
+	private JTextField txtCodigo6;
+	private JTextField txtCodigo7;
+	private JTextField txtDescription1;
+	private JTextField txtDescription2;
+	private JTextField txtDescription3;
+	private JTextField txtDescription4;
+	private JTextField txtDescription5;
+	private JTextField txtDescription6;
+	private JTextField txtDescription7;
+	private JTextField txtHerramientas1;
+	private JTextField txtHerramientas2;
+	private JTextField txtHerramientas3;
+	private JTextField txtHerramientas4;
+	private JTextField txtHerramientas5;
+	private JTextField txtHerramientas6;
+	private JTextField txtHerramientas7;
+	private JTextField txtMateriales1;
+	private JTextField txtMateriales2;
+	private JTextField txtMateriales3;
+	private JTextField txtMateriales4;
+	private JTextField txtMateriales5;
+	private JTextField txtMateriales6;
+	private JTextField txtRepuestos1;
+	private JTextField txtRepuestos2;
+	private JTextField txtRepuestos3;
+	private JTextField txtRepuestos4;
+	private JTextField txtRepuestos5;
+	private JTextField txtRepuestos6;
+	private JTextField txtRepuestos7;
+	private JTextField txtHoras1;
+	private JTextField txtHoras2;
+	private JTextField txtHoras3;
+	private JTextField txtHoras4;
+	private JTextField txtHoras5;
+	private JTextField txtHoras6;
+	private JTextField txtHoras7;
+	private JTextField txtObservaciones1;
+	private JTextField txtObservaciones2;
+	private JTextField txtObservaciones3;
+	private JTextField txtObservaciones4;
+	private JTextField txtObservaciones5;
+	private JTextField txtObservaciones6;
+	private JTextField txtObservaciones7;
+	private JTextField txtEntregadoPor;
+	private JTextField txtRecibidoPor;
+	private JTextField txtAprobadoPorA;
+	private JPanel workOrderPanel;
+	private JTextField txtSupervisadoPor;
+	private JTextField txtElaboradoPor;
+	private JTextField txtRevisadoPor;
+	private JTextField txtAprobadoPorB;
+	private JTextField txtMateriales7;
 
+	
+	public WorkOrder(HashMap<String, String> data) {
+		this((JPanel)null);
+		
+		if(data.containsKey("codigoA")) {
+			txtCodigoA.setText(data.get("codigoA"));
+		}
+		if(data.containsKey("codigoB")) {
+			txtCodigoB.setText(data.get("codigoB"));
+		}
+		if(data.containsKey("codigo1")) {
+			txtCodigo1.setText(data.get("codigo1"));
+		}
+		if(data.containsKey("codigo2")) {
+			txtCodigo2.setText(data.get("codigo2"));
+		}
+		if(data.containsKey("codigo3")) {
+			txtCodigo3.setText(data.get("codigo3"));
+		}
+		if(data.containsKey("codigo4")) {
+			txtCodigo4.setText(data.get("codigo4"));
+		}
+		if(data.containsKey("codigo5")) {
+			txtCodigo5.setText(data.get("codigo5"));
+		}
+		if(data.containsKey("codigo6")) {
+			txtCodigo6.setText(data.get("codigo6"));
+		}
+		if(data.containsKey("codigo7")) {
+			txtCodigo6.setText(data.get("codigo7"));
+		}
+		if(data.containsKey("numeroOrden")) {
+			txtNumeroOrden.setText(data.get("numeroOrden"));
+		}
+		if(data.containsKey("equipo")) {
+			txtEquipo.setText(data.get("equipo"));
+		}
+		if(data.containsKey("fichaTecnica")) {
+			txtFichaTecnica.setText(data.get("fichaTecnica"));
+		}
+		if(data.containsKey("hojaVida")) {
+			txtHojaVida.setText(data.get("hojaVida"));
+		}
+		if(data.containsKey("lubricacion")) {
+			txtLubricacion.setText(data.get("libricacion"));
+		}
+		if(data.containsKey("electrico")) {
+			txtElectrico.setText(data.get("electrico"));
+		}
+		if(data.containsKey("mecanico")) {
+			txtMecanico.setText(data.get("mecanico"));
+		}
+		if(data.containsKey("instrumentacion")) {
+			txtInstrumentacion.setText(data.get("instrumentacion"));
+		}
+		if(data.containsKey("otro")) {
+			txtOtro.setText(data.get("otro"));
+		}
+		if(data.containsKey("preventivo")) {
+			txtPreventivo.setText(data.get("preventivo"));
+		}
+		if(data.containsKey("correctivo")) {
+			txtCorrectivo.setText(data.get("correctivo"));
+		}
+		if(data.containsKey("responsable")) {
+			txtResponsableEjecucion.setText(data.get("responsable"));
+		}
+		if(data.containsKey("dia1")) {
+			txtDia1.setText(data.get("dia1"));
+		}
+		if(data.containsKey("mes1")) {
+			txtMes1.setText(data.get("mes1"));
+		}
+		if(data.containsKey("ano1")) {
+			txtAno1.setText(data.get("ano1"));
+		}
+		if(data.containsKey("dia2")) {
+			txtDia2.setText(data.get("dia2"));
+		}
+		if(data.containsKey("mes2")) {
+			txtMes2.setText(data.get("mes2"));
+		}
+		if(data.containsKey("ano2")) {
+			txtAno2.setText(data.get("ano2"));
+		}
+		
+		if(data.containsKey("descripcion1")) {
+			txtDescription1.setText(data.get("descripcion1"));
+		}
+		if(data.containsKey("descripcion2")) {
+			txtDescription2.setText(data.get("descripcion2"));
+		}
+		if(data.containsKey("descripcion3")) {
+			txtDescription3.setText(data.get("descripcion3"));
+		}
+		if(data.containsKey("descripcion4")) {
+			txtDescription4.setText(data.get("descripcion4"));
+		}
+		if(data.containsKey("descripcion5")) {
+			txtDescription5.setText(data.get("descripcion5"));
+		}
+		if(data.containsKey("descripcion6")) {
+			txtDescription6.setText(data.get("descripcion6"));
+		}
+		if(data.containsKey("descripcion7")) {
+			txtDescription7.setText(data.get("descripcion7"));
+		}
+		
+		if(data.containsKey("herramientas1")) {
+			txtHerramientas1.setText(data.get("herramientas1"));
+		}
+		if(data.containsKey("herramientas2")) {
+			txtHerramientas2.setText(data.get("herramientas2"));
+		}
+		if(data.containsKey("herramientas3")) {
+			txtHerramientas3.setText(data.get("herramientas3"));
+		}
+		if(data.containsKey("herramientas4")) {
+			txtHerramientas4.setText(data.get("herramientas4"));
+		}
+		if(data.containsKey("herramientas5")) {
+			txtHerramientas5.setText(data.get("herramientas5"));
+		}
+		if(data.containsKey("herramientas6")) {
+			txtHerramientas6.setText(data.get("herramientas6"));
+		}
+		if(data.containsKey("herramientas7")) {
+			txtHerramientas7.setText(data.get("herramientas7"));
+		}
+		
+		if(data.containsKey("materiales1")) {
+			txtMateriales1.setText(data.get("materiales1"));
+		}
+		if(data.containsKey("materiales2")) {
+			txtMateriales2.setText(data.get("materiales2"));
+		}
+		if(data.containsKey("materiales3")) {
+			txtMateriales3.setText(data.get("materiales3"));
+		}
+		if(data.containsKey("materiales4")) {
+			txtMateriales4.setText(data.get("materiales4"));
+		}
+		if(data.containsKey("materiales5")) {
+			txtMateriales5.setText(data.get("materiales5"));
+		}
+		if(data.containsKey("materiales6")) {
+			txtMateriales6.setText(data.get("materiales6"));
+		}
+		if(data.containsKey("materiales7")) {
+			txtMateriales7.setText(data.get("materiales7"));
+		}
+		
+		if(data.containsKey("repuestos1")) {
+			txtRepuestos1.setText(data.get("repuestos1"));
+		}
+		if(data.containsKey("repuestos2")) {
+			txtRepuestos2.setText(data.get("repuestos2"));
+		}
+		if(data.containsKey("repuestos3")) {
+			txtRepuestos3.setText(data.get("repuestos3"));
+		}
+		if(data.containsKey("repuestos4")) {
+			txtRepuestos4.setText(data.get("repuestos4"));
+		}
+		if(data.containsKey("repuestos5")) {
+			txtRepuestos5.setText(data.get("repuestos5"));
+		}
+		if(data.containsKey("repuestos6")) {
+			txtRepuestos6.setText(data.get("repuestos6"));
+		}
+		if(data.containsKey("repuestos7")) {
+			txtRepuestos7.setText(data.get("repuestos7"));
+		}
+		
+		if(data.containsKey("horas1")) {
+			txtHoras1.setText(data.get("horas1"));
+		}
+		if(data.containsKey("horas2")) {
+			txtHoras2.setText(data.get("horas2"));
+		}
+		if(data.containsKey("horas3")) {
+			txtHoras3.setText(data.get("horas3"));
+		}
+		if(data.containsKey("horas4")) {
+			txtHoras4.setText(data.get("horas4"));
+		}
+		if(data.containsKey("horas5")) {
+			txtHoras5.setText(data.get("horas5"));
+		}
+		if(data.containsKey("horas6")) {
+			txtHoras6.setText(data.get("horas6"));
+		}
+		if(data.containsKey("horas7")) {
+			txtHoras7.setText(data.get("horas7"));
+		}
+		if(data.containsKey("observaciones1")) {
+			txtObservaciones1.setText(data.get("observaciones1"));
+		}
+		if(data.containsKey("observaciones2")) {
+			txtObservaciones2.setText(data.get("observaciones2"));
+		}
+		if(data.containsKey("observaciones3")) {
+			txtObservaciones3.setText(data.get("observaciones3"));
+		}
+		if(data.containsKey("observaciones4")) {
+			txtObservaciones4.setText(data.get("observaciones4"));
+		}
+		if(data.containsKey("observaciones5")) {
+			txtObservaciones5.setText(data.get("observaciones5"));
+		}
+		if(data.containsKey("observaciones6")) {
+			txtObservaciones6.setText(data.get("observaciones6"));
+		}
+		if(data.containsKey("observaciones7")) {
+			txtObservaciones7.setText(data.get("observaciones7"));
+		}
+		if(data.containsKey("entregadoPor")) {
+			txtEntregadoPor.setText(data.get("entregadoPor"));
+		}
+		if(data.containsKey("recibidoPor")) {
+			txtRecibidoPor.setText(data.get("recibidoPor"));
+		}
+		if(data.containsKey("supervisadoPor")) {
+			txtSupervisadoPor.setText(data.get("supervisadoPor"));
+		}
+		if(data.containsKey("aprobadoPorA")) {
+			txtAprobadoPorA.setText(data.get("aprobadoPorA"));
+		}
+		if(data.containsKey("aprobadoPorB")) {
+			txtAprobadoPorB.setText(data.get("aprobadoPorB"));
+		}
+		if(data.containsKey("elaboradoPor")) {
+			txtElaboradoPor.setText(data.get("elaboradoPor"));
+		}
+		if(data.containsKey("revisadoPor")) {
+			txtRevisadoPor.setText(data.get("revisadoPor"));
+		}
+		
+		
+		
+		 txtPreventivo.setEditable(false);
+		 txtCorrectivo.setEditable(false);
+		 txtDia1.setEditable(false);
+		 txtMes1.setEditable(false);
+		 txtAno1.setEditable(false);
+		 txtDia2.setEditable(false);
+		 txtMes2.setEditable(false);
+		 txtAno2.setEditable(false);
+		 txtResponsableEjecucion.setEditable(false);
+		 txtLubricacion.setEditable(false);
+		 txtElectrico.setEditable(false);
+		 txtMecanico.setEditable(false);
+		 txtInstrumentacion.setEditable(false);
+		 txtOtro.setEditable(false);
+		 txtNumeroOrden.setEditable(false);
+		 txtEquipo.setEditable(false);
+		 txtCodigoB.setEditable(false);
+		 txtFichaTecnica.setEditable(false);
+		 txtHojaVida.setEditable(false);
+		 txtCodigoA.setEditable(false);
+		 textField_18.setEditable(false);
+		 textField_19.setEditable(false);
+		 textField_20.setEditable(false);
+		 txtCodigo1.setEditable(false);
+		 txtCodigo2.setEditable(false);
+		 txtCodigo3.setEditable(false);
+		 txtCodigo4.setEditable(false);
+		 txtCodigo5.setEditable(false);
+		 txtCodigo6.setEditable(false);
+		 txtCodigo7.setEditable(false);
+		 txtDescription1.setEditable(false);
+		 txtDescription2.setEditable(false);
+		 txtDescription3.setEditable(false);
+		 txtDescription4.setEditable(false);
+		 txtDescription5.setEditable(false);
+		 txtDescription6.setEditable(false);
+		 txtDescription7.setEditable(false);
+		 txtHerramientas1.setEditable(false);
+		 txtHerramientas2.setEditable(false);
+		 txtHerramientas3.setEditable(false);
+		 txtHerramientas4.setEditable(false);
+		 txtHerramientas5.setEditable(false);
+		 txtHerramientas6.setEditable(false);
+		 txtHerramientas7.setEditable(false);
+		 txtMateriales1.setEditable(false);
+		 txtMateriales2.setEditable(false);
+		 txtMateriales3.setEditable(false);
+		 txtMateriales4.setEditable(false);
+		 txtMateriales5.setEditable(false);
+		 txtMateriales6.setEditable(false);
+		 txtRepuestos1.setEditable(false);
+		 txtRepuestos2.setEditable(false);
+		 txtRepuestos3.setEditable(false);
+		 txtRepuestos4.setEditable(false);
+		 txtRepuestos5.setEditable(false);
+		 txtRepuestos6.setEditable(false);
+		 txtRepuestos7.setEditable(false);
+		 txtHoras1.setEditable(false);
+		 txtHoras2.setEditable(false);
+		 txtHoras3.setEditable(false);
+		 txtHoras4.setEditable(false);
+		 txtHoras5.setEditable(false);
+		 txtHoras6.setEditable(false);
+		 txtHoras7.setEditable(false);
+		 txtObservaciones1.setEditable(false);
+		 txtObservaciones2.setEditable(false);
+		 txtObservaciones3.setEditable(false);
+		 txtObservaciones4.setEditable(false);
+		 txtObservaciones5.setEditable(false);
+		 txtObservaciones6.setEditable(false);
+		 txtObservaciones7.setEditable(false);
+		 txtEntregadoPor.setEditable(false);
+		 txtRecibidoPor.setEditable(false);
+		 txtAprobadoPorA.setEditable(false);
+		 txtSupervisadoPor.setEditable(false);
+		 txtElaboradoPor.setEditable(false);
+		 txtRevisadoPor.setEditable(false);
+		 txtAprobadoPorB.setEditable(false);
+		 txtMateriales7.setEditable(false);
+	
+	}
+
+
+	/**
+	 * @wbp.parser.constructor
+	 */
 	public WorkOrder(JPanel parent) {
 		super(parent, "ORDEN DE TRABAJO");
 		
-		JPanel tablePanel = new JPanel();
-		tablePanel.setBorder(new EmptyBorder(5, 5, 5, 5));
-		tablePanel.setBackground(Color.WHITE);
-		getContentPane().add(tablePanel, BorderLayout.CENTER);
-		tablePanel.setLayout(new MigLayout("insets 0, gap 0", "[grow][grow][grow][grow][grow][grow][grow][grow][grow][grow][grow]", "[][][][][][][][][][][][][][][][][][][][][]"));
+		workOrderPanel = new JPanel();
+		workOrderPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
+		workOrderPanel.setBackground(Color.WHITE);
+		getContentPane().add(workOrderPanel, BorderLayout.CENTER);
+		workOrderPanel.setLayout(new MigLayout("insets 0, gap 0", "[grow,fill][grow,fill][grow,fill][grow,fill][grow,fill][grow,fill][grow,fill][grow,fill][grow,fill][grow,fill][grow,fill]", "[][][][][][][][][][][][][][][][][][][][][][][][][]"));
 		
-		lblNewLabel_22 = new JLabel("ORDEN DE TRABAJO");
+		JLabel lblNewLabel_22 = new JLabel("ORDEN DE TRABAJO");
+		lblNewLabel_22.setForeground(Constants.getTextColor());
+		lblNewLabel_22.setOpaque(true);
+		lblNewLabel_22.setBackground(Constants.getSurfaceColorB());
+		lblNewLabel_22.setMaximumSize(new Dimension(3000, 3000));
+		lblNewLabel_22.setBorder(new MatteBorder(1, 1, 1, 1, (Color) Color.DARK_GRAY));
 		lblNewLabel_22.setHorizontalAlignment(SwingConstants.CENTER);
-		tablePanel.add(lblNewLabel_22, "cell 0 0 9 5,grow");
+		workOrderPanel.add(lblNewLabel_22, "cell 0 0 9 5,grow");
 		
-		lblNewLabel_21 = new JLabel("Código:");
-		lblNewLabel_21.setHorizontalAlignment(SwingConstants.CENTER);
-		tablePanel.add(lblNewLabel_21, "cell 9 1,alignx trailing");
+		JLabel lblNewLabel_21 = new JLabel("Código:");
+		lblNewLabel_21.setForeground(Constants.getTextColor());
+		lblNewLabel_21.setOpaque(true);
+		lblNewLabel_21.setBackground(Constants.getSurfaceColor());
+		lblNewLabel_21.setBorder(new MatteBorder(1, 0, 1, 1, (Color) Color.DARK_GRAY));
+		lblNewLabel_21.setHorizontalAlignment(SwingConstants.LEFT);
+		workOrderPanel.add(lblNewLabel_21, "cell 9 1,grow");
 		
-		textField_17 = new JTextField();
-		textField_17.setOpaque(false);
-		textField_17.setColumns(10);
-		textField_17.setBorder(new MatteBorder(1, 1, 1, 1, (Color) Color.DARK_GRAY));
-		tablePanel.add(textField_17, "cell 10 1,growx");
+		txtCodigoA = new JTextField();
+		txtCodigoA.setOpaque(false);
+		txtCodigoA.setColumns(10);
+		txtCodigoA.setBorder(new MatteBorder(1, 0, 1, 1, (Color) Color.DARK_GRAY));
+		workOrderPanel.add(txtCodigoA, "cell 10 1,growx");
 		
-		lblNewLabel_20 = new JLabel("Fecha:");
-		lblNewLabel_20.setHorizontalAlignment(SwingConstants.CENTER);
-		tablePanel.add(lblNewLabel_20, "cell 9 2,alignx trailing");
+		JLabel lblNewLabel_20 = new JLabel("Fecha:");
+		lblNewLabel_20.setForeground(Constants.getTextColor());
+		lblNewLabel_20.setOpaque(true);
+		lblNewLabel_20.setBackground(Constants.getSurfaceColor());
+		lblNewLabel_20.setBorder(new MatteBorder(0, 0, 1, 1, (Color) Color.DARK_GRAY));
+		lblNewLabel_20.setHorizontalAlignment(SwingConstants.LEFT);
+		workOrderPanel.add(lblNewLabel_20, "cell 9 2,grow");
 		
 		textField_18 = new JTextField();
 		textField_18.setOpaque(false);
 		textField_18.setColumns(10);
-		textField_18.setBorder(new MatteBorder(1, 1, 1, 1, (Color) Color.DARK_GRAY));
-		tablePanel.add(textField_18, "cell 10 2,growx");
+		textField_18.setBorder(new MatteBorder(0, 0, 1, 1, (Color) new Color(0, 0, 0)));
+		workOrderPanel.add(textField_18, "cell 10 2,growx");
 		
-		lblNewLabel_19 = new JLabel("Versión:");
-		lblNewLabel_19.setHorizontalAlignment(SwingConstants.CENTER);
-		tablePanel.add(lblNewLabel_19, "cell 9 3,alignx trailing");
+		JLabel lblNewLabel_19 = new JLabel("Versión:");
+		lblNewLabel_19.setForeground(Constants.getTextColor());
+		lblNewLabel_19.setOpaque(true);
+		lblNewLabel_19.setBackground(Constants.getSurfaceColor());
+		lblNewLabel_19.setBorder(new MatteBorder(0, 0, 1, 1, (Color) Color.DARK_GRAY));
+		lblNewLabel_19.setHorizontalAlignment(SwingConstants.LEFT);
+		workOrderPanel.add(lblNewLabel_19, "cell 9 3,grow");
 		
 		textField_19 = new JTextField();
 		textField_19.setOpaque(false);
 		textField_19.setColumns(10);
-		textField_19.setBorder(new MatteBorder(1, 1, 1, 1, (Color) Color.DARK_GRAY));
-		tablePanel.add(textField_19, "cell 10 3,growx");
+		textField_19.setBorder(new MatteBorder(0, 0, 1, 1, (Color) new Color(0, 0, 0)));
+		workOrderPanel.add(textField_19, "cell 10 3,growx");
 		
-		lblNewLabel_18 = new JLabel("Página:");
-		lblNewLabel_18.setHorizontalAlignment(SwingConstants.CENTER);
-		tablePanel.add(lblNewLabel_18, "cell 9 4,alignx trailing");
+		JLabel lblNewLabel_18 = new JLabel("Página:");
+		lblNewLabel_18.setForeground(Constants.getTextColor());
+		lblNewLabel_18.setOpaque(true);
+		lblNewLabel_18.setBackground(Constants.getSurfaceColor());
+		lblNewLabel_18.setBorder(new MatteBorder(0, 0, 1, 1, (Color) Color.DARK_GRAY));
+		lblNewLabel_18.setHorizontalAlignment(SwingConstants.LEFT);
+		workOrderPanel.add(lblNewLabel_18, "cell 9 4,grow");
 		
 		textField_20 = new JTextField();
 		textField_20.setOpaque(false);
 		textField_20.setColumns(10);
-		textField_20.setBorder(new MatteBorder(1, 1, 1, 1, (Color) Color.DARK_GRAY));
-		tablePanel.add(textField_20, "cell 10 4,growx");
+		textField_20.setBorder(new MatteBorder(0, 0, 1, 1, (Color) new Color(0, 0, 0)));
+		workOrderPanel.add(textField_20, "cell 10 4,growx");
 		
 		lblNewLabel_13 = new JLabel("N° Orden");
+		lblNewLabel_13.setForeground(Constants.getTextColor());
+		lblNewLabel_13.setOpaque(true);
+		lblNewLabel_13.setBackground(Constants.getSurfaceColor());
+		lblNewLabel_13.setBorder(new MatteBorder(0, 1, 1, 1, (Color) Color.DARK_GRAY));
 		lblNewLabel_13.setHorizontalAlignment(SwingConstants.CENTER);
-		tablePanel.add(lblNewLabel_13, "cell 0 5,grow");
+		workOrderPanel.add(lblNewLabel_13, "cell 0 5,grow");
 		
 		lblNewLabel_14 = new JLabel("Equipo");
+		lblNewLabel_14.setForeground(Constants.getTextColor());
+		lblNewLabel_14.setOpaque(true);
+		lblNewLabel_14.setBackground(Constants.getSurfaceColor());
+		lblNewLabel_14.setBorder(new MatteBorder(0, 0, 1, 1, (Color) Color.DARK_GRAY));
 		lblNewLabel_14.setHorizontalAlignment(SwingConstants.CENTER);
-		tablePanel.add(lblNewLabel_14, "cell 1 5 2 1,grow");
+		workOrderPanel.add(lblNewLabel_14, "cell 1 5 2 1,grow");
 		
 		lblNewLabel_15 = new JLabel("Código");
+		lblNewLabel_15.setForeground(Constants.getTextColor());
+		lblNewLabel_15.setOpaque(true);
+		lblNewLabel_15.setBackground(Constants.getSurfaceColor());
+		lblNewLabel_15.setBorder(new MatteBorder(0, 0, 1, 1, (Color) Color.DARK_GRAY));
 		lblNewLabel_15.setHorizontalAlignment(SwingConstants.CENTER);
-		tablePanel.add(lblNewLabel_15, "cell 3 5,grow");
+		workOrderPanel.add(lblNewLabel_15, "cell 3 5,grow");
 		
 		lblNewLabel_16 = new JLabel("Ficha Técnica");
+		lblNewLabel_16.setForeground(Constants.getTextColor());
+		lblNewLabel_16.setOpaque(true);
+		lblNewLabel_16.setBackground(Constants.getSurfaceColor());
+		lblNewLabel_16.setBorder(new MatteBorder(0, 0, 1, 1, (Color) Color.DARK_GRAY));
 		lblNewLabel_16.setHorizontalAlignment(SwingConstants.CENTER);
-		tablePanel.add(lblNewLabel_16, "cell 4 5,grow");
+		workOrderPanel.add(lblNewLabel_16, "cell 4 5,grow");
 		
 		lblNewLabel_17 = new JLabel("Hoja de Vida");
+		lblNewLabel_17.setForeground(Constants.getTextColor());
+		lblNewLabel_17.setOpaque(true);
+		lblNewLabel_17.setBackground(Constants.getSurfaceColor());
+		lblNewLabel_17.setBorder(new MatteBorder(0, 0, 1, 1, (Color) Color.DARK_GRAY));
 		lblNewLabel_17.setHorizontalAlignment(SwingConstants.CENTER);
-		tablePanel.add(lblNewLabel_17, "cell 5 5 6 1,grow");
+		workOrderPanel.add(lblNewLabel_17, "cell 5 5 6 1,grow");
 		
-		textField_12 = new JTextField();
-		textField_12.setOpaque(false);
-		textField_12.setColumns(10);
-		textField_12.setBorder(new MatteBorder(1, 1, 1, 1, (Color) Color.DARK_GRAY));
-		tablePanel.add(textField_12, "cell 0 6,growx");
+		txtNumeroOrden = new JTextField();
+		txtNumeroOrden.setOpaque(false);
+		txtNumeroOrden.setColumns(10);
+		txtNumeroOrden.setBorder(new MatteBorder(0, 1, 1, 1, (Color) new Color(64, 64, 64)));
+		workOrderPanel.add(txtNumeroOrden, "cell 0 6,growx");
 		
-		textField_13 = new JTextField();
-		textField_13.setOpaque(false);
-		textField_13.setColumns(10);
-		textField_13.setBorder(new MatteBorder(1, 1, 1, 1, (Color) Color.DARK_GRAY));
-		tablePanel.add(textField_13, "cell 1 6 2 1,growx");
+		txtEquipo = new JTextField();
+		txtEquipo.setOpaque(false);
+		txtEquipo.setColumns(10);
+		txtEquipo.setBorder(new MatteBorder(0, 0, 1, 1, (Color) Color.DARK_GRAY));
+		workOrderPanel.add(txtEquipo, "cell 1 6 2 1,growx");
 		
-		textField_14 = new JTextField();
-		textField_14.setOpaque(false);
-		textField_14.setColumns(10);
-		textField_14.setBorder(new MatteBorder(1, 1, 1, 1, (Color) Color.DARK_GRAY));
-		tablePanel.add(textField_14, "cell 3 6,growx");
+		txtCodigoB = new JTextField();
+		txtCodigoB.setOpaque(false);
+		txtCodigoB.setColumns(10);
+		txtCodigoB.setBorder(new MatteBorder(0, 0, 1, 1, (Color) Color.DARK_GRAY));
+		workOrderPanel.add(txtCodigoB, "cell 3 6,growx");
 		
-		textField_15 = new JTextField();
-		textField_15.setOpaque(false);
-		textField_15.setColumns(10);
-		textField_15.setBorder(new MatteBorder(1, 1, 1, 1, (Color) Color.DARK_GRAY));
-		tablePanel.add(textField_15, "cell 4 6,growx");
+		txtFichaTecnica = new JTextField();
+		txtFichaTecnica.setOpaque(false);
+		txtFichaTecnica.setColumns(10);
+		txtFichaTecnica.setBorder(new MatteBorder(0, 0, 1, 1, (Color) Color.DARK_GRAY));
+		workOrderPanel.add(txtFichaTecnica, "cell 4 6,growx,aligny top");
 		
-		textField_16 = new JTextField();
-		textField_16.setOpaque(false);
-		textField_16.setColumns(10);
-		textField_16.setBorder(new MatteBorder(1, 1, 1, 1, (Color) Color.DARK_GRAY));
-		tablePanel.add(textField_16, "cell 5 6 6 1,growx");
+		txtHojaVida = new JTextField();
+		txtHojaVida.setOpaque(false);
+		txtHojaVida.setColumns(10);
+		txtHojaVida.setBorder(new MatteBorder(0, 0, 1, 1, (Color) Color.DARK_GRAY));
+		workOrderPanel.add(txtHojaVida, "cell 5 6 6 1,growx");
 		
-		lblNewLabel_12 = new JLabel("Tipo de Mantenimiento");
+		JLabel lblNewLabel_12 = new JLabel("Tipo de Mantenimiento");
+		lblNewLabel_12.setForeground(Constants.getTextColor());
+		lblNewLabel_12.setOpaque(true);
+		lblNewLabel_12.setBackground(Constants.getSurfaceColor());
+		lblNewLabel_12.setBorder(new MatteBorder(0, 1, 1, 1, (Color) Color.DARK_GRAY));
 		lblNewLabel_12.setHorizontalAlignment(SwingConstants.CENTER);
-		tablePanel.add(lblNewLabel_12, "cell 0 7 11 1,grow");
+		workOrderPanel.add(lblNewLabel_12, "cell 0 7 11 1,grow");
 		
-		lblNewLabel_7 = new JLabel("Lubricación");
+		JLabel lblNewLabel_7 = new JLabel("Lubricación");
+		lblNewLabel_7.setForeground(Constants.getTextColor());
+		lblNewLabel_7.setBackground(Constants.getSurfaceColorB());
+		lblNewLabel_7.setOpaque(true);
+		lblNewLabel_7.setBorder(new MatteBorder(0, 1, 1, 1, (Color) Color.DARK_GRAY));
 		lblNewLabel_7.setHorizontalAlignment(SwingConstants.CENTER);
-		tablePanel.add(lblNewLabel_7, "cell 0 8 2 1,growx,aligny center");
+		workOrderPanel.add(lblNewLabel_7, "cell 0 8 2 1,growx,aligny center");
 		
-		lblNewLabel_8 = new JLabel("Eléctrico");
+		JLabel lblNewLabel_8 = new JLabel("Eléctrico");
+		lblNewLabel_8.setForeground(Constants.getTextColor());
+		lblNewLabel_8.setBackground(Constants.getSurfaceColorB());
+		lblNewLabel_8.setOpaque(true);
+		lblNewLabel_8.setBorder(new MatteBorder(0, 0, 1, 1, (Color) Color.DARK_GRAY));
 		lblNewLabel_8.setHorizontalAlignment(SwingConstants.CENTER);
-		tablePanel.add(lblNewLabel_8, "cell 2 8 2 1,grow");
+		workOrderPanel.add(lblNewLabel_8, "cell 2 8 2 1,grow");
 		
-		lblNewLabel_9 = new JLabel("Mecánico");
+		JLabel lblNewLabel_9 = new JLabel("Mecánico");
+		lblNewLabel_9.setForeground(Constants.getTextColor());
+		lblNewLabel_9.setBackground(Constants.getSurfaceColorB());
+		lblNewLabel_9.setOpaque(true);
+		lblNewLabel_9.setBorder(new MatteBorder(0, 0, 1, 1, (Color) Color.DARK_GRAY));
 		lblNewLabel_9.setHorizontalAlignment(SwingConstants.CENTER);
-		tablePanel.add(lblNewLabel_9, "cell 4 8 2 1,grow");
+		workOrderPanel.add(lblNewLabel_9, "cell 4 8 2 1,grow");
 		
-		lblNewLabel_10 = new JLabel("Instrumentación");
+		JLabel lblNewLabel_10 = new JLabel("Instrumentación");
+		lblNewLabel_10.setForeground(Constants.getTextColor());
+		lblNewLabel_10.setBackground(Constants.getSurfaceColorB());
+		lblNewLabel_10.setOpaque(true);
+		lblNewLabel_10.setBorder(new MatteBorder(0, 0, 1, 1, (Color) Color.DARK_GRAY));
 		lblNewLabel_10.setHorizontalAlignment(SwingConstants.CENTER);
-		tablePanel.add(lblNewLabel_10, "cell 6 8 2 1,growx");
+		workOrderPanel.add(lblNewLabel_10, "cell 6 8 2 1,growx");
 		
-		lblNewLabel_11 = new JLabel("Otro");
+		JLabel lblNewLabel_11 = new JLabel("Otro");
+		lblNewLabel_11.setForeground(Constants.getTextColor());
+		lblNewLabel_11.setBackground(Constants.getSurfaceColorB());
+		lblNewLabel_11.setOpaque(true);
+		lblNewLabel_11.setBorder(new MatteBorder(0, 0, 1, 1, (Color) Color.DARK_GRAY));
 		lblNewLabel_11.setHorizontalAlignment(SwingConstants.CENTER);
-		tablePanel.add(lblNewLabel_11, "cell 8 8 3 1,growx");
+		workOrderPanel.add(lblNewLabel_11, "cell 8 8 3 1,growx");
 		
-		textField_3 = new JTextField();
-		textField_3.setOpaque(false);
-		textField_3.setColumns(10);
-		textField_3.setBorder(new MatteBorder(1, 1, 1, 1, (Color) Color.DARK_GRAY));
-		tablePanel.add(textField_3, "cell 0 9 2 1,growx");
+		txtLubricacion = new JTextField();
+		txtLubricacion.setOpaque(false);
+		txtLubricacion.setColumns(10);
+		txtLubricacion.setBorder(new MatteBorder(0, 1, 1, 1, (Color) new Color(64, 64, 64)));
+		workOrderPanel.add(txtLubricacion, "cell 0 9 2 1,growx");
 		
-		textField_9 = new JTextField();
-		textField_9.setOpaque(false);
-		textField_9.setColumns(10);
-		textField_9.setBorder(new MatteBorder(1, 1, 1, 1, (Color) Color.DARK_GRAY));
-		tablePanel.add(textField_9, "cell 2 9 2 1,growx");
+		txtElectrico = new JTextField();
+		txtElectrico.setOpaque(false);
+		txtElectrico.setColumns(10);
+		txtElectrico.setBorder(new MatteBorder(0, 0, 1, 1, (Color) Color.DARK_GRAY));
+		workOrderPanel.add(txtElectrico, "cell 2 9 2 1,growx");
 		
-		textField_8 = new JTextField();
-		textField_8.setOpaque(false);
-		textField_8.setColumns(10);
-		textField_8.setBorder(new MatteBorder(1, 1, 1, 1, (Color) Color.DARK_GRAY));
-		tablePanel.add(textField_8, "cell 4 9 2 1,growx");
+		txtMecanico = new JTextField();
+		txtMecanico.setOpaque(false);
+		txtMecanico.setColumns(10);
+		txtMecanico.setBorder(new MatteBorder(0, 0, 1, 1, (Color) Color.DARK_GRAY));
+		workOrderPanel.add(txtMecanico, "cell 4 9 2 1,growx");
 		
-		textField_10 = new JTextField();
-		textField_10.setOpaque(false);
-		textField_10.setColumns(10);
-		textField_10.setBorder(new MatteBorder(1, 1, 1, 1, (Color) Color.DARK_GRAY));
-		tablePanel.add(textField_10, "cell 6 9 2 1,growx");
+		txtInstrumentacion = new JTextField();
+		txtInstrumentacion.setOpaque(false);
+		txtInstrumentacion.setColumns(10);
+		txtInstrumentacion.setBorder(new MatteBorder(0, 0, 1, 1, (Color) Color.DARK_GRAY));
+		workOrderPanel.add(txtInstrumentacion, "cell 6 9 2 1,growx");
 		
-		textField_11 = new JTextField();
-		textField_11.setOpaque(false);
-		textField_11.setColumns(10);
-		textField_11.setBorder(new MatteBorder(1, 1, 1, 1, (Color) Color.DARK_GRAY));
-		tablePanel.add(textField_11, "cell 8 9 3 1,growx");
+		txtOtro = new JTextField();
+		txtOtro.setOpaque(false);
+		txtOtro.setColumns(10);
+		txtOtro.setBorder(new MatteBorder(0, 0, 1, 1, (Color) Color.DARK_GRAY));
+		workOrderPanel.add(txtOtro, "cell 8 9 3 1,growx");
 		
-		lblClase = new JLabel("Clase");
+		JLabel lblClase = new JLabel("Clase");
+		lblClase.setForeground(Constants.getTextColor());
+		lblClase.setOpaque(true);
+		lblClase.setBackground(Constants.getSurfaceColor());
+		lblClase.setBorder(new MatteBorder(0, 1, 1, 1, (Color) Color.DARK_GRAY));
 		lblClase.setHorizontalAlignment(SwingConstants.CENTER);
-		tablePanel.add(lblClase, "cell 0 10 2 2,growx");
+		workOrderPanel.add(lblClase, "cell 0 10 2 1,grow");
 		
-		lblNewLabel = new JLabel("Responsable de ejecución ");
+		JLabel lblNewLabel = new JLabel("Responsable de ejecución ");
+		lblNewLabel.setForeground(Constants.getTextColor());
+		lblNewLabel.setOpaque(true);
+		lblNewLabel.setBackground(Constants.getSurfaceColor());
+		lblNewLabel.setBorder(new MatteBorder(0, 0, 1, 1, (Color) Color.DARK_GRAY));
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		tablePanel.add(lblNewLabel, "cell 2 10 3 2,grow");
+		workOrderPanel.add(lblNewLabel, "cell 2 10 3 2,grow");
 		
-		lblFechaInicio = new JLabel("Fecha de Inicio");
+		JLabel lblFechaInicio = new JLabel("Fecha de Inicio");
+		lblFechaInicio.setForeground(Constants.getTextColor());
+		lblFechaInicio.setOpaque(true);
+		lblFechaInicio.setBackground(Constants.getSurfaceColor());
+		lblFechaInicio.setBorder(new MatteBorder(0, 0, 1, 1, (Color) Color.DARK_GRAY));
 		lblFechaInicio.setHorizontalAlignment(SwingConstants.CENTER);
-		tablePanel.add(lblFechaInicio, "cell 5 10 3 1,growx,aligny center");
+		workOrderPanel.add(lblFechaInicio, "cell 5 10 3 1,growx,aligny center");
 		
-		lblFechaDeCierre = new JLabel("Fecha de Cierre o Culminacióm");
+		JLabel lblFechaDeCierre = new JLabel("Fecha de Cierre o Culminacióm");
+		lblFechaDeCierre.setForeground(Constants.getTextColor());
+		lblFechaDeCierre.setOpaque(true);
+		lblFechaDeCierre.setBackground(Constants.getSurfaceColor());
+		lblFechaDeCierre.setBorder(new MatteBorder(0, 0, 1, 1, (Color) Color.DARK_GRAY));
 		lblFechaDeCierre.setHorizontalAlignment(SwingConstants.CENTER);
-		tablePanel.add(lblFechaDeCierre, "cell 8 10 3 1,grow");
+		workOrderPanel.add(lblFechaDeCierre, "cell 8 10 3 1,grow");
 		
-		lblNewLabel_1 = new JLabel("Dia");
+		JLabel lblNewLabel_30 = new JLabel("Preventivo");
+		lblNewLabel_30.setForeground(Constants.getTextColor());
+		lblNewLabel_30.setBackground(Constants.getSurfaceColorB());
+		lblNewLabel_30.setOpaque(true);
+		lblNewLabel_30.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_30.setBorder(new MatteBorder(0, 1, 1, 1, (Color) new Color(64, 64, 64)));
+		workOrderPanel.add(lblNewLabel_30, "cell 0 11,grow");
+		
+		JLabel lblNewLabel_34 = new JLabel("Correctivo");
+		lblNewLabel_34.setForeground(Constants.getTextColor());
+		lblNewLabel_34.setBackground(Constants.getSurfaceColorB());
+		lblNewLabel_34.setOpaque(true);
+		lblNewLabel_34.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_34.setBorder(new MatteBorder(0, 0, 1, 1, (Color) new Color(64, 64, 64)));
+		workOrderPanel.add(lblNewLabel_34, "cell 1 11,grow");
+		
+		JLabel lblNewLabel_1 = new JLabel("Dia");
+		lblNewLabel_1.setForeground(Constants.getTextColor());
+		lblNewLabel_1.setBackground(Constants.getSurfaceColorB());
+		lblNewLabel_1.setOpaque(true);
+		lblNewLabel_1.setBorder(new MatteBorder(0, 0, 1, 1, (Color) Color.DARK_GRAY));
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
-		tablePanel.add(lblNewLabel_1, "cell 5 11,growx,aligny center");
+		workOrderPanel.add(lblNewLabel_1, "cell 5 11,growx,aligny center");
 		
-		lblNewLabel_2 = new JLabel("Mes");
+		JLabel lblNewLabel_2 = new JLabel("Mes");
+		lblNewLabel_2.setForeground(Constants.getTextColor());
+		lblNewLabel_2.setBackground(Constants.getSurfaceColorB());
+		lblNewLabel_2.setOpaque(true);
+		lblNewLabel_2.setBorder(new MatteBorder(0, 0, 1, 1, (Color) Color.DARK_GRAY));
 		lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
-		tablePanel.add(lblNewLabel_2, "cell 6 11,grow");
+		workOrderPanel.add(lblNewLabel_2, "cell 6 11,grow");
 		
-		lblNewLabel_3 = new JLabel("Año");
+		JLabel lblNewLabel_3 = new JLabel("Año");
+		lblNewLabel_3.setForeground(Constants.getTextColor());
+		lblNewLabel_3.setBackground(Constants.getSurfaceColorB());
+		lblNewLabel_3.setOpaque(true);
+		lblNewLabel_3.setBorder(new MatteBorder(0, 0, 1, 1, (Color) Color.DARK_GRAY));
 		lblNewLabel_3.setHorizontalAlignment(SwingConstants.CENTER);
-		tablePanel.add(lblNewLabel_3, "cell 7 11,grow");
+		workOrderPanel.add(lblNewLabel_3, "cell 7 11,grow");
 		
-		lblNewLabel_4 = new JLabel("Dia");
+		JLabel lblNewLabel_4 = new JLabel("Dia");
+		lblNewLabel_4.setForeground(Constants.getTextColor());
+		lblNewLabel_4.setBackground(Constants.getSurfaceColorB());
+		lblNewLabel_4.setOpaque(true);
+		lblNewLabel_4.setBorder(new MatteBorder(0, 0, 1, 1, (Color) Color.DARK_GRAY));
 		lblNewLabel_4.setHorizontalAlignment(SwingConstants.CENTER);
-		tablePanel.add(lblNewLabel_4, "cell 8 11,grow");
+		workOrderPanel.add(lblNewLabel_4, "cell 8 11,grow");
 		
-		lblNewLabel_5 = new JLabel("Mes");
+		JLabel lblNewLabel_5 = new JLabel("Mes");
+		lblNewLabel_5.setForeground(Constants.getTextColor());
+		lblNewLabel_5.setBackground(Constants.getSurfaceColorB());
+		lblNewLabel_5.setOpaque(true);
+		lblNewLabel_5.setBorder(new MatteBorder(0, 0, 1, 1, (Color) Color.DARK_GRAY));
 		lblNewLabel_5.setHorizontalAlignment(SwingConstants.CENTER);
-		tablePanel.add(lblNewLabel_5, "cell 9 11,growx,aligny center");
+		workOrderPanel.add(lblNewLabel_5, "cell 9 11,growx,aligny center");
 		
-		lblNewLabel_6 = new JLabel("Año");
+		JLabel lblNewLabel_6 = new JLabel("Año");
+		lblNewLabel_6.setForeground(Constants.getTextColor());
+		lblNewLabel_6.setBackground(Constants.getSurfaceColorB());
+		lblNewLabel_6.setOpaque(true);
+		lblNewLabel_6.setBorder(new MatteBorder(0, 0, 1, 1, (Color) Color.DARK_GRAY));
 		lblNewLabel_6.setHorizontalAlignment(SwingConstants.CENTER);
-		tablePanel.add(lblNewLabel_6, "cell 10 11,grow");
+		workOrderPanel.add(lblNewLabel_6, "cell 10 11,grow");
 		
-		textField = new JTextField();
-		textField.setBorder(new MatteBorder(1, 1, 1, 1, (Color) Color.DARK_GRAY));
-		textField.setOpaque(false);
-		tablePanel.add(textField, "cell 0 12,grow");
-		textField.setColumns(10);
+		txtPreventivo = new JTextField();
+		txtPreventivo.setBorder(new MatteBorder(0, 1, 1, 1, (Color) Color.DARK_GRAY));
+		txtPreventivo.setOpaque(false);
+		workOrderPanel.add(txtPreventivo, "cell 0 12,grow");
+		txtPreventivo.setColumns(10);
 		
-		textField_1 = new JTextField();
-		textField_1.setOpaque(false);
-		textField_1.setColumns(10);
-		textField_1.setBorder(new MatteBorder(1, 1, 1, 1, (Color) Color.DARK_GRAY));
-		tablePanel.add(textField_1, "cell 1 12,growx");
+		txtCorrectivo = new JTextField();
+		txtCorrectivo.setOpaque(false);
+		txtCorrectivo.setColumns(10);
+		txtCorrectivo.setBorder(new MatteBorder(0, 0, 1, 1, (Color) Color.DARK_GRAY));
+		workOrderPanel.add(txtCorrectivo, "cell 1 12,growx");
 		
-		txtResponsable = new JTextField();
-		txtResponsable.setOpaque(false);
-		txtResponsable.setColumns(10);
-		txtResponsable.setBorder(new MatteBorder(1, 1, 1, 1, (Color) Color.DARK_GRAY));
-		tablePanel.add(txtResponsable, "cell 2 12,growx, spanx 3");
+		txtResponsableEjecucion = new JTextField();
+		txtResponsableEjecucion.setOpaque(false);
+		txtResponsableEjecucion.setColumns(10);
+		txtResponsableEjecucion.setBorder(new MatteBorder(0, 0, 1, 1, (Color) Color.DARK_GRAY));
+		workOrderPanel.add(txtResponsableEjecucion, "cell 2 12,growx, spanx 3");
 		
-		txtDia = new JTextField();
-		txtDia.setOpaque(false);
-		txtDia.setColumns(10);
-		txtDia.setBorder(new MatteBorder(1, 1, 1, 1, (Color) Color.DARK_GRAY));
-		tablePanel.add(txtDia, "cell 5 12,growx");
+		txtDia1 = new JTextField();
+		txtDia1.setOpaque(false);
+		txtDia1.setColumns(10);
+		txtDia1.setBorder(new MatteBorder(0, 0, 1, 1, (Color) Color.DARK_GRAY));
+		workOrderPanel.add(txtDia1, "cell 5 12,growx");
 		
-		textField_4 = new JTextField();
-		textField_4.setOpaque(false);
-		textField_4.setColumns(10);
-		textField_4.setBorder(new MatteBorder(1, 1, 1, 1, (Color) Color.DARK_GRAY));
-		tablePanel.add(textField_4, "cell 6 12,growx");
+		txtMes1 = new JTextField();
+		txtMes1.setOpaque(false);
+		txtMes1.setColumns(10);
+		txtMes1.setBorder(new MatteBorder(0, 0, 1, 1, (Color) Color.DARK_GRAY));
+		workOrderPanel.add(txtMes1, "cell 6 12,growx");
 		
-		textField_5 = new JTextField();
-		textField_5.setOpaque(false);
-		textField_5.setColumns(10);
-		textField_5.setBorder(new MatteBorder(1, 1, 1, 1, (Color) Color.DARK_GRAY));
-		tablePanel.add(textField_5, "cell 7 12,growx");
+		txtAno1 = new JTextField();
+		txtAno1.setOpaque(false);
+		txtAno1.setColumns(10);
+		txtAno1.setBorder(new MatteBorder(0, 0, 1, 1, (Color) Color.DARK_GRAY));
+		workOrderPanel.add(txtAno1, "cell 7 12,growx");
 		
-		textField_6 = new JTextField();
-		textField_6.setOpaque(false);
-		textField_6.setColumns(10);
-		textField_6.setBorder(new MatteBorder(1, 1, 1, 1, (Color) Color.DARK_GRAY));
-		tablePanel.add(textField_6, "cell 8 12,growx");
+		txtDia2 = new JTextField();
+		txtDia2.setOpaque(false);
+		txtDia2.setColumns(10);
+		txtDia2.setBorder(new MatteBorder(0, 0, 1, 1, (Color) Color.DARK_GRAY));
+		workOrderPanel.add(txtDia2, "cell 8 12,growx");
 		
-		textField_2 = new JTextField();
-		textField_2.setOpaque(false);
-		textField_2.setColumns(10);
-		textField_2.setBorder(new MatteBorder(1, 1, 1, 1, (Color) Color.DARK_GRAY));
-		tablePanel.add(textField_2, "cell 9 12,growx");
+		txtMes2 = new JTextField();
+		txtMes2.setOpaque(false);
+		txtMes2.setColumns(10);
+		txtMes2.setBorder(new MatteBorder(0, 0, 1, 1, (Color) Color.DARK_GRAY));
+		workOrderPanel.add(txtMes2, "cell 9 12,growx");
 		
-		textField_7 = new JTextField();
-		textField_7.setOpaque(false);
-		textField_7.setColumns(10);
-		textField_7.setBorder(new MatteBorder(1, 1, 1, 1, (Color) Color.DARK_GRAY));
-		tablePanel.add(textField_7, "cell 10 12,growx");
+		txtAno2 = new JTextField();
+		txtAno2.setOpaque(false);
+		txtAno2.setColumns(10);
+		txtAno2.setBorder(new MatteBorder(0, 0, 1, 1, (Color) Color.DARK_GRAY));
+		workOrderPanel.add(txtAno2, "cell 10 12,growx");
 		
-		lblNewLabel_23 = new JLabel("Código de ");
+		JLabel lblNewLabel_23 = new JLabel("Código de ");
+		lblNewLabel_23.setForeground(Constants.getTextColor());
+		lblNewLabel_23.setOpaque(true);
+		lblNewLabel_23.setBackground(Constants.getSurfaceColor());
+		lblNewLabel_23.setBorder(new MatteBorder(0, 1, 1, 1, (Color) Color.DARK_GRAY));
 		lblNewLabel_23.setHorizontalAlignment(SwingConstants.CENTER);
-		tablePanel.add(lblNewLabel_23, "cell 0 13,grow");
+		workOrderPanel.add(lblNewLabel_23, "cell 0 13,grow");
 		
-		lblNewLabel_24 = new JLabel("Descripción");
+		JLabel lblNewLabel_24 = new JLabel("Descripción");
+		lblNewLabel_24.setForeground(Constants.getTextColor());
+		lblNewLabel_24.setOpaque(true);
+		lblNewLabel_24.setBackground(Constants.getSurfaceColor());
+		lblNewLabel_24.setBorder(new MatteBorder(0, 0, 1, 1, (Color) Color.DARK_GRAY));
 		lblNewLabel_24.setHorizontalAlignment(SwingConstants.CENTER);
-		tablePanel.add(lblNewLabel_24, "cell 1 13 2 1,grow");
+		workOrderPanel.add(lblNewLabel_24, "cell 1 13 2 1,grow");
 		
-		lblNewLabel_25 = new JLabel("Herramientas");
+		JLabel lblNewLabel_25 = new JLabel("Herramientas");
+		lblNewLabel_25.setForeground(Constants.getTextColor());
+		lblNewLabel_25.setOpaque(true);
+		lblNewLabel_25.setBackground(Constants.getSurfaceColor());
+		lblNewLabel_25.setBorder(new MatteBorder(0, 0, 1, 1, (Color) Color.DARK_GRAY));
 		lblNewLabel_25.setHorizontalAlignment(SwingConstants.CENTER);
-		tablePanel.add(lblNewLabel_25, "cell 3 13,grow");
+		workOrderPanel.add(lblNewLabel_25, "cell 3 13,grow");
 		
-		lblNewLabel_26 = new JLabel("Materiales");
+		JLabel lblNewLabel_26 = new JLabel("Materiales");
+		lblNewLabel_26.setForeground(Constants.getTextColor());
+		lblNewLabel_26.setOpaque(true);
+		lblNewLabel_26.setBackground(Constants.getSurfaceColor());
+		lblNewLabel_26.setBorder(new MatteBorder(0, 0, 1, 1, (Color) Color.DARK_GRAY));
 		lblNewLabel_26.setHorizontalAlignment(SwingConstants.CENTER);
-		tablePanel.add(lblNewLabel_26, "cell 4 13,grow");
+		workOrderPanel.add(lblNewLabel_26, "cell 4 13,grow");
 		
-		lblNewLabel_27 = new JLabel("Repuestos");
+		JLabel lblNewLabel_27 = new JLabel("Repuestos");
+		lblNewLabel_27.setForeground(Constants.getTextColor());
+		lblNewLabel_27.setOpaque(true);
+		lblNewLabel_27.setBackground(Constants.getSurfaceColor());
+		lblNewLabel_27.setBorder(new MatteBorder(0, 0, 1, 1, (Color) Color.DARK_GRAY));
 		lblNewLabel_27.setHorizontalAlignment(SwingConstants.CENTER);
-		tablePanel.add(lblNewLabel_27, "cell 5 13,grow");
+		workOrderPanel.add(lblNewLabel_27, "cell 5 13 2 1,grow");
 		
-		lblNewLabel_28 = new JLabel("Horas-Hombre");
+		JLabel lblNewLabel_28 = new JLabel("Horas-Hombre");
+		lblNewLabel_28.setForeground(Constants.getTextColor());
+		lblNewLabel_28.setOpaque(true);
+		lblNewLabel_28.setBackground(Constants.getSurfaceColor());
+		lblNewLabel_28.setBorder(new MatteBorder(0, 0, 1, 1, (Color) Color.DARK_GRAY));
 		lblNewLabel_28.setHorizontalAlignment(SwingConstants.CENTER);
-		tablePanel.add(lblNewLabel_28, "cell 7 13,grow");
+		workOrderPanel.add(lblNewLabel_28, "cell 7 13,grow");
 		
-		lblNewLabel_29 = new JLabel("Observaciones");
+		JLabel lblNewLabel_29 = new JLabel("Observaciones");
+		lblNewLabel_29.setForeground(Constants.getTextColor());
+		lblNewLabel_29.setOpaque(true);
+		lblNewLabel_29.setBackground(Constants.getSurfaceColor());
+		lblNewLabel_29.setBorder(new MatteBorder(0, 0, 1, 1, (Color) Color.DARK_GRAY));
 		lblNewLabel_29.setHorizontalAlignment(SwingConstants.CENTER);
-		tablePanel.add(lblNewLabel_29, "cell 8 13 3 1,grow");
+		workOrderPanel.add(lblNewLabel_29, "cell 8 13 3 1,grow");
 		
-		textField_21 = new JTextField();
-		textField_21.setOpaque(false);
-		textField_21.setColumns(10);
-		textField_21.setBorder(new MatteBorder(1, 1, 1, 1, (Color) Color.DARK_GRAY));
-		tablePanel.add(textField_21, "cell 0 14,growx");
+		txtCodigo1 = new JTextField();
+		txtCodigo1.setOpaque(false);
+		txtCodigo1.setColumns(10);
+		txtCodigo1.setBorder(new MatteBorder(0, 1, 1, 1, (Color) Color.DARK_GRAY));
+		workOrderPanel.add(txtCodigo1, "cell 0 14,grow");
 		
-		textField_28 = new JTextField();
-		textField_28.setOpaque(false);
-		textField_28.setColumns(10);
-		textField_28.setBorder(new MatteBorder(1, 1, 1, 1, (Color) Color.DARK_GRAY));
-		tablePanel.add(textField_28, "cell 1 14 2 1,growx");
+		txtDescription1 = new JTextField();
+		txtDescription1.setOpaque(false);
+		txtDescription1.setColumns(10);
+		txtDescription1.setBorder(new MatteBorder(0, 0, 1, 1, (Color) Color.DARK_GRAY));
+		workOrderPanel.add(txtDescription1, "cell 1 14 2 1,grow");
 		
-		textField_35 = new JTextField();
-		textField_35.setOpaque(false);
-		textField_35.setColumns(10);
-		textField_35.setBorder(new MatteBorder(1, 1, 1, 1, (Color) Color.DARK_GRAY));
-		tablePanel.add(textField_35, "cell 3 14,growx");
+		txtHerramientas1 = new JTextField();
+		txtHerramientas1.setOpaque(false);
+		txtHerramientas1.setColumns(10);
+		txtHerramientas1.setBorder(new MatteBorder(0, 0, 1, 1, (Color) Color.DARK_GRAY));
+		workOrderPanel.add(txtHerramientas1, "cell 3 14,grow");
 		
-		textField_42 = new JTextField();
-		textField_42.setOpaque(false);
-		textField_42.setColumns(10);
-		textField_42.setBorder(new MatteBorder(1, 1, 1, 1, (Color) Color.DARK_GRAY));
-		tablePanel.add(textField_42, "cell 4 14,growx");
+		txtMateriales1 = new JTextField();
+		txtMateriales1.setOpaque(false);
+		txtMateriales1.setColumns(10);
+		txtMateriales1.setBorder(new MatteBorder(0, 0, 1, 1, (Color) Color.DARK_GRAY));
+		workOrderPanel.add(txtMateriales1, "cell 4 14,grow");
 		
-		textField_49 = new JTextField();
-		textField_49.setOpaque(false);
-		textField_49.setColumns(10);
-		textField_49.setBorder(new MatteBorder(1, 1, 1, 1, (Color) Color.DARK_GRAY));
-		tablePanel.add(textField_49, "cell 5 14 2 1,growx");
+		txtRepuestos1 = new JTextField();
+		txtRepuestos1.setOpaque(false);
+		txtRepuestos1.setColumns(10);
+		txtRepuestos1.setBorder(new MatteBorder(0, 0, 1, 1, (Color) Color.DARK_GRAY));
+		workOrderPanel.add(txtRepuestos1, "cell 5 14 2 1,grow");
 		
-		textField_56 = new JTextField();
-		textField_56.setOpaque(false);
-		textField_56.setColumns(10);
-		textField_56.setBorder(new MatteBorder(1, 1, 1, 1, (Color) Color.DARK_GRAY));
-		tablePanel.add(textField_56, "cell 7 14,growx");
+		txtHoras1 = new JTextField();
+		txtHoras1.setOpaque(false);
+		txtHoras1.setColumns(10);
+		txtHoras1.setBorder(new MatteBorder(0, 0, 1, 1, (Color) Color.DARK_GRAY));
+		workOrderPanel.add(txtHoras1, "cell 7 14,grow");
 		
-		textField_63 = new JTextField();
-		textField_63.setOpaque(false);
-		textField_63.setColumns(10);
-		textField_63.setBorder(new MatteBorder(1, 1, 1, 1, (Color) Color.DARK_GRAY));
-		tablePanel.add(textField_63, "cell 8 14 3 1,growx");
+		txtObservaciones1 = new JTextField();
+		txtObservaciones1.setOpaque(false);
+		txtObservaciones1.setColumns(10);
+		txtObservaciones1.setBorder(new MatteBorder(0, 0, 1, 1, (Color) Color.DARK_GRAY));
+		workOrderPanel.add(txtObservaciones1, "cell 8 14 3 1,grow");
 		
-		textField_22 = new JTextField();
-		textField_22.setOpaque(false);
-		textField_22.setColumns(10);
-		textField_22.setBorder(new MatteBorder(1, 1, 1, 1, (Color) Color.DARK_GRAY));
-		tablePanel.add(textField_22, "cell 0 15,growx");
+		txtCodigo2 = new JTextField();
+		txtCodigo2.setOpaque(false);
+		txtCodigo2.setColumns(10);
+		txtCodigo2.setBorder(new MatteBorder(0, 1, 1, 1, (Color) Color.DARK_GRAY));
+		workOrderPanel.add(txtCodigo2, "cell 0 15,grow");
 		
-		textField_29 = new JTextField();
-		textField_29.setOpaque(false);
-		textField_29.setColumns(10);
-		textField_29.setBorder(new MatteBorder(1, 1, 1, 1, (Color) Color.DARK_GRAY));
-		tablePanel.add(textField_29, "cell 1 15 2 1,growx");
+		txtDescription2 = new JTextField();
+		txtDescription2.setOpaque(false);
+		txtDescription2.setColumns(10);
+		txtDescription2.setBorder(new MatteBorder(0, 0, 1, 1, (Color) Color.DARK_GRAY));
+		workOrderPanel.add(txtDescription2, "cell 1 15 2 1,grow");
 		
-		textField_36 = new JTextField();
-		textField_36.setOpaque(false);
-		textField_36.setColumns(10);
-		textField_36.setBorder(new MatteBorder(1, 1, 1, 1, (Color) Color.DARK_GRAY));
-		tablePanel.add(textField_36, "cell 3 15,growx");
+		txtHerramientas2 = new JTextField();
+		txtHerramientas2.setOpaque(false);
+		txtHerramientas2.setColumns(10);
+		txtHerramientas2.setBorder(new MatteBorder(0, 0, 1, 1, (Color) Color.DARK_GRAY));
+		workOrderPanel.add(txtHerramientas2, "cell 3 15,grow");
 		
-		textField_43 = new JTextField();
-		textField_43.setOpaque(false);
-		textField_43.setColumns(10);
-		textField_43.setBorder(new MatteBorder(1, 1, 1, 1, (Color) Color.DARK_GRAY));
-		tablePanel.add(textField_43, "cell 4 15,growx");
+		txtMateriales2 = new JTextField();
+		txtMateriales2.setOpaque(false);
+		txtMateriales2.setColumns(10);
+		txtMateriales2.setBorder(new MatteBorder(0, 0, 1, 1, (Color) Color.DARK_GRAY));
+		workOrderPanel.add(txtMateriales2, "cell 4 15,grow");
 		
-		textField_50 = new JTextField();
-		textField_50.setOpaque(false);
-		textField_50.setColumns(10);
-		textField_50.setBorder(new MatteBorder(1, 1, 1, 1, (Color) Color.DARK_GRAY));
-		tablePanel.add(textField_50, "cell 5 15 2 1,growx");
+		txtRepuestos2 = new JTextField();
+		txtRepuestos2.setOpaque(false);
+		txtRepuestos2.setColumns(10);
+		txtRepuestos2.setBorder(new MatteBorder(0, 0, 1, 1, (Color) Color.DARK_GRAY));
+		workOrderPanel.add(txtRepuestos2, "cell 5 15 2 1,grow");
 		
-		textField_57 = new JTextField();
-		textField_57.setOpaque(false);
-		textField_57.setColumns(10);
-		textField_57.setBorder(new MatteBorder(1, 1, 1, 1, (Color) Color.DARK_GRAY));
-		tablePanel.add(textField_57, "cell 7 15,growx");
+		txtHoras2 = new JTextField();
+		txtHoras2.setOpaque(false);
+		txtHoras2.setColumns(10);
+		txtHoras2.setBorder(new MatteBorder(0, 0, 1, 1, (Color) Color.DARK_GRAY));
+		workOrderPanel.add(txtHoras2, "cell 7 15,grow");
 		
-		textField_64 = new JTextField();
-		textField_64.setOpaque(false);
-		textField_64.setColumns(10);
-		textField_64.setBorder(new MatteBorder(1, 1, 1, 1, (Color) Color.DARK_GRAY));
-		tablePanel.add(textField_64, "cell 8 15 3 1,growx");
+		txtObservaciones2 = new JTextField();
+		txtObservaciones2.setOpaque(false);
+		txtObservaciones2.setColumns(10);
+		txtObservaciones2.setBorder(new MatteBorder(0, 0, 1, 1, (Color) Color.DARK_GRAY));
+		workOrderPanel.add(txtObservaciones2, "cell 8 15 3 1,grow");
 		
-		textField_23 = new JTextField();
-		textField_23.setOpaque(false);
-		textField_23.setColumns(10);
-		textField_23.setBorder(new MatteBorder(1, 1, 1, 1, (Color) Color.DARK_GRAY));
-		tablePanel.add(textField_23, "cell 0 16,growx");
+		txtCodigo3 = new JTextField();
+		txtCodigo3.setOpaque(false);
+		txtCodigo3.setColumns(10);
+		txtCodigo3.setBorder(new MatteBorder(0, 1, 1, 1, (Color) Color.DARK_GRAY));
+		workOrderPanel.add(txtCodigo3, "cell 0 16,grow");
 		
-		textField_30 = new JTextField();
-		textField_30.setOpaque(false);
-		textField_30.setColumns(10);
-		textField_30.setBorder(new MatteBorder(1, 1, 1, 1, (Color) Color.DARK_GRAY));
-		tablePanel.add(textField_30, "cell 1 16 2 1,growx");
+		txtDescription3 = new JTextField();
+		txtDescription3.setOpaque(false);
+		txtDescription3.setColumns(10);
+		txtDescription3.setBorder(new MatteBorder(0, 0, 1, 1, (Color) Color.DARK_GRAY));
+		workOrderPanel.add(txtDescription3, "cell 1 16 2 1,grow");
 		
-		textField_37 = new JTextField();
-		textField_37.setOpaque(false);
-		textField_37.setColumns(10);
-		textField_37.setBorder(new MatteBorder(1, 1, 1, 1, (Color) Color.DARK_GRAY));
-		tablePanel.add(textField_37, "cell 3 16,growx");
+		txtHerramientas3 = new JTextField();
+		txtHerramientas3.setOpaque(false);
+		txtHerramientas3.setColumns(10);
+		txtHerramientas3.setBorder(new MatteBorder(0, 0, 1, 1, (Color) Color.DARK_GRAY));
+		workOrderPanel.add(txtHerramientas3, "cell 3 16,grow");
 		
-		textField_44 = new JTextField();
-		textField_44.setOpaque(false);
-		textField_44.setColumns(10);
-		textField_44.setBorder(new MatteBorder(1, 1, 1, 1, (Color) Color.DARK_GRAY));
-		tablePanel.add(textField_44, "cell 4 16,growx");
+		txtMateriales3 = new JTextField();
+		txtMateriales3.setOpaque(false);
+		txtMateriales3.setColumns(10);
+		txtMateriales3.setBorder(new MatteBorder(0, 0, 1, 1, (Color) Color.DARK_GRAY));
+		workOrderPanel.add(txtMateriales3, "cell 4 16,grow");
 		
-		textField_51 = new JTextField();
-		textField_51.setOpaque(false);
-		textField_51.setColumns(10);
-		textField_51.setBorder(new MatteBorder(1, 1, 1, 1, (Color) Color.DARK_GRAY));
-		tablePanel.add(textField_51, "cell 5 16 2 1,growx");
+		txtRepuestos3 = new JTextField();
+		txtRepuestos3.setOpaque(false);
+		txtRepuestos3.setColumns(10);
+		txtRepuestos3.setBorder(new MatteBorder(0, 0, 1, 1, (Color) Color.DARK_GRAY));
+		workOrderPanel.add(txtRepuestos3, "cell 5 16 2 1,grow");
 		
-		textField_58 = new JTextField();
-		textField_58.setOpaque(false);
-		textField_58.setColumns(10);
-		textField_58.setBorder(new MatteBorder(1, 1, 1, 1, (Color) Color.DARK_GRAY));
-		tablePanel.add(textField_58, "cell 7 16,growx");
+		txtHoras3 = new JTextField();
+		txtHoras3.setOpaque(false);
+		txtHoras3.setColumns(10);
+		txtHoras3.setBorder(new MatteBorder(0, 0, 1, 1, (Color) Color.DARK_GRAY));
+		workOrderPanel.add(txtHoras3, "cell 7 16,grow");
 		
-		textField_65 = new JTextField();
-		textField_65.setOpaque(false);
-		textField_65.setColumns(10);
-		textField_65.setBorder(new MatteBorder(1, 1, 1, 1, (Color) Color.DARK_GRAY));
-		tablePanel.add(textField_65, "cell 8 16 3 1,growx");
+		txtObservaciones3 = new JTextField();
+		txtObservaciones3.setOpaque(false);
+		txtObservaciones3.setColumns(10);
+		txtObservaciones3.setBorder(new MatteBorder(0, 0, 1, 1, (Color) Color.DARK_GRAY));
+		workOrderPanel.add(txtObservaciones3, "cell 8 16 3 1,grow");
 		
-		textField_24 = new JTextField();
-		textField_24.setOpaque(false);
-		textField_24.setColumns(10);
-		textField_24.setBorder(new MatteBorder(1, 1, 1, 1, (Color) Color.DARK_GRAY));
-		tablePanel.add(textField_24, "cell 0 17,growx");
+		txtCodigo4 = new JTextField();
+		txtCodigo4.setOpaque(false);
+		txtCodigo4.setColumns(10);
+		txtCodigo4.setBorder(new MatteBorder(0, 1, 1, 1, (Color) Color.DARK_GRAY));
+		workOrderPanel.add(txtCodigo4, "cell 0 17,grow");
 		
-		textField_31 = new JTextField();
-		textField_31.setOpaque(false);
-		textField_31.setColumns(10);
-		textField_31.setBorder(new MatteBorder(1, 1, 1, 1, (Color) Color.DARK_GRAY));
-		tablePanel.add(textField_31, "cell 1 17 2 1,growx");
+		txtDescription4 = new JTextField();
+		txtDescription4.setOpaque(false);
+		txtDescription4.setColumns(10);
+		txtDescription4.setBorder(new MatteBorder(0, 0, 1, 1, (Color) Color.DARK_GRAY));
+		workOrderPanel.add(txtDescription4, "cell 1 17 2 1,grow");
 		
-		textField_38 = new JTextField();
-		textField_38.setOpaque(false);
-		textField_38.setColumns(10);
-		textField_38.setBorder(new MatteBorder(1, 1, 1, 1, (Color) Color.DARK_GRAY));
-		tablePanel.add(textField_38, "cell 3 17,growx");
+		txtHerramientas4 = new JTextField();
+		txtHerramientas4.setOpaque(false);
+		txtHerramientas4.setColumns(10);
+		txtHerramientas4.setBorder(new MatteBorder(0, 0, 1, 1, (Color) Color.DARK_GRAY));
+		workOrderPanel.add(txtHerramientas4, "cell 3 17,grow");
 		
-		textField_45 = new JTextField();
-		textField_45.setOpaque(false);
-		textField_45.setColumns(10);
-		textField_45.setBorder(new MatteBorder(1, 1, 1, 1, (Color) Color.DARK_GRAY));
-		tablePanel.add(textField_45, "cell 4 17,growx");
+		txtMateriales4 = new JTextField();
+		txtMateriales4.setOpaque(false);
+		txtMateriales4.setColumns(10);
+		txtMateriales4.setBorder(new MatteBorder(0, 0, 1, 1, (Color) Color.DARK_GRAY));
+		workOrderPanel.add(txtMateriales4, "cell 4 17,grow");
 		
-		textField_52 = new JTextField();
-		textField_52.setOpaque(false);
-		textField_52.setColumns(10);
-		textField_52.setBorder(new MatteBorder(1, 1, 1, 1, (Color) Color.DARK_GRAY));
-		tablePanel.add(textField_52, "cell 5 17 2 1,growx");
+		txtRepuestos4 = new JTextField();
+		txtRepuestos4.setOpaque(false);
+		txtRepuestos4.setColumns(10);
+		txtRepuestos4.setBorder(new MatteBorder(0, 0, 1, 1, (Color) new Color(64, 64, 64)));
+		workOrderPanel.add(txtRepuestos4, "cell 5 17 2 1,grow");
 		
-		textField_59 = new JTextField();
-		textField_59.setOpaque(false);
-		textField_59.setColumns(10);
-		textField_59.setBorder(new MatteBorder(1, 1, 1, 1, (Color) Color.DARK_GRAY));
-		tablePanel.add(textField_59, "cell 7 17,growx");
+		txtHoras4 = new JTextField();
+		txtHoras4.setOpaque(false);
+		txtHoras4.setColumns(10);
+		txtHoras4.setBorder(new MatteBorder(0, 0, 1, 1, (Color) Color.DARK_GRAY));
+		workOrderPanel.add(txtHoras4, "cell 7 17,grow");
 		
-		textField_66 = new JTextField();
-		textField_66.setOpaque(false);
-		textField_66.setColumns(10);
-		textField_66.setBorder(new MatteBorder(1, 1, 1, 1, (Color) Color.DARK_GRAY));
-		tablePanel.add(textField_66, "cell 8 17 3 1,growx");
+		txtObservaciones4 = new JTextField();
+		txtObservaciones4.setOpaque(false);
+		txtObservaciones4.setColumns(10);
+		txtObservaciones4.setBorder(new MatteBorder(0, 0, 1, 1, (Color) Color.DARK_GRAY));
+		workOrderPanel.add(txtObservaciones4, "cell 8 17 3 1,grow");
 		
-		textField_25 = new JTextField();
-		textField_25.setOpaque(false);
-		textField_25.setColumns(10);
-		textField_25.setBorder(new MatteBorder(1, 1, 1, 1, (Color) Color.DARK_GRAY));
-		tablePanel.add(textField_25, "cell 0 18,growx");
+		txtCodigo5 = new JTextField();
+		txtCodigo5.setOpaque(false);
+		txtCodigo5.setColumns(10);
+		txtCodigo5.setBorder(new MatteBorder(0, 1, 1, 1, (Color) Color.DARK_GRAY));
+		workOrderPanel.add(txtCodigo5, "cell 0 18,grow");
 		
-		textField_32 = new JTextField();
-		textField_32.setOpaque(false);
-		textField_32.setColumns(10);
-		textField_32.setBorder(new MatteBorder(1, 1, 1, 1, (Color) Color.DARK_GRAY));
-		tablePanel.add(textField_32, "cell 1 18 2 1,growx");
+		txtDescription5 = new JTextField();
+		txtDescription5.setOpaque(false);
+		txtDescription5.setColumns(10);
+		txtDescription5.setBorder(new MatteBorder(0, 0, 1, 1, (Color) new Color(64, 64, 64)));
+		workOrderPanel.add(txtDescription5, "cell 1 18 2 1,grow");
 		
-		textField_39 = new JTextField();
-		textField_39.setOpaque(false);
-		textField_39.setColumns(10);
-		textField_39.setBorder(new MatteBorder(1, 1, 1, 1, (Color) Color.DARK_GRAY));
-		tablePanel.add(textField_39, "cell 3 18,growx");
+		txtHerramientas5 = new JTextField();
+		txtHerramientas5.setOpaque(false);
+		txtHerramientas5.setColumns(10);
+		txtHerramientas5.setBorder(new MatteBorder(0, 0, 1, 1, (Color) Color.DARK_GRAY));
+		workOrderPanel.add(txtHerramientas5, "cell 3 18,grow");
 		
-		textField_46 = new JTextField();
-		textField_46.setOpaque(false);
-		textField_46.setColumns(10);
-		textField_46.setBorder(new MatteBorder(1, 1, 1, 1, (Color) Color.DARK_GRAY));
-		tablePanel.add(textField_46, "cell 4 18,growx");
+		txtMateriales5 = new JTextField();
+		txtMateriales5.setOpaque(false);
+		txtMateriales5.setColumns(10);
+		txtMateriales5.setBorder(new MatteBorder(0, 0, 1, 1, (Color) Color.DARK_GRAY));
+		workOrderPanel.add(txtMateriales5, "cell 4 18,grow");
 		
-		textField_53 = new JTextField();
-		textField_53.setOpaque(false);
-		textField_53.setColumns(10);
-		textField_53.setBorder(new MatteBorder(1, 1, 1, 1, (Color) Color.DARK_GRAY));
-		tablePanel.add(textField_53, "cell 5 18 2 1,growx");
+		txtRepuestos5 = new JTextField();
+		txtRepuestos5.setOpaque(false);
+		txtRepuestos5.setColumns(10);
+		txtRepuestos5.setBorder(new MatteBorder(0, 0, 1, 1, (Color) Color.DARK_GRAY));
+		workOrderPanel.add(txtRepuestos5, "cell 5 18 2 1,grow");
 		
-		textField_60 = new JTextField();
-		textField_60.setOpaque(false);
-		textField_60.setColumns(10);
-		textField_60.setBorder(new MatteBorder(1, 1, 1, 1, (Color) Color.DARK_GRAY));
-		tablePanel.add(textField_60, "cell 7 18,growx");
+		txtHoras5 = new JTextField();
+		txtHoras5.setOpaque(false);
+		txtHoras5.setColumns(10);
+		txtHoras5.setBorder(new MatteBorder(0, 0, 1, 1, (Color) Color.DARK_GRAY));
+		workOrderPanel.add(txtHoras5, "cell 7 18,grow");
 		
-		textField_67 = new JTextField();
-		textField_67.setOpaque(false);
-		textField_67.setColumns(10);
-		textField_67.setBorder(new MatteBorder(1, 1, 1, 1, (Color) Color.DARK_GRAY));
-		tablePanel.add(textField_67, "cell 8 18 3 1,growx");
+		txtObservaciones5 = new JTextField();
+		txtObservaciones5.setOpaque(false);
+		txtObservaciones5.setColumns(10);
+		txtObservaciones5.setBorder(new MatteBorder(0, 0, 1, 1, (Color) Color.DARK_GRAY));
+		workOrderPanel.add(txtObservaciones5, "cell 8 18 3 1,grow");
 		
-		textField_26 = new JTextField();
-		textField_26.setOpaque(false);
-		textField_26.setColumns(10);
-		textField_26.setBorder(new MatteBorder(1, 1, 1, 1, (Color) Color.DARK_GRAY));
-		tablePanel.add(textField_26, "cell 0 19,growx");
+		txtCodigo6 = new JTextField();
+		txtCodigo6.setOpaque(false);
+		txtCodigo6.setColumns(10);
+		txtCodigo6.setBorder(new MatteBorder(0, 1, 1, 1, (Color) Color.DARK_GRAY));
+		workOrderPanel.add(txtCodigo6, "cell 0 19,grow");
 		
-		textField_33 = new JTextField();
-		textField_33.setOpaque(false);
-		textField_33.setColumns(10);
-		textField_33.setBorder(new MatteBorder(1, 1, 1, 1, (Color) Color.DARK_GRAY));
-		tablePanel.add(textField_33, "cell 1 19 2 1,growx");
+		txtDescription6 = new JTextField();
+		txtDescription6.setOpaque(false);
+		txtDescription6.setColumns(10);
+		txtDescription6.setBorder(new MatteBorder(0, 0, 1, 1, (Color) Color.DARK_GRAY));
+		workOrderPanel.add(txtDescription6, "cell 1 19 2 1,grow");
 		
-		textField_40 = new JTextField();
-		textField_40.setOpaque(false);
-		textField_40.setColumns(10);
-		textField_40.setBorder(new MatteBorder(1, 1, 1, 1, (Color) Color.DARK_GRAY));
-		tablePanel.add(textField_40, "cell 3 19,growx");
+		txtHerramientas6 = new JTextField();
+		txtHerramientas6.setOpaque(false);
+		txtHerramientas6.setColumns(10);
+		txtHerramientas6.setBorder(new MatteBorder(0, 0, 1, 1, (Color) Color.DARK_GRAY));
+		workOrderPanel.add(txtHerramientas6, "cell 3 19,grow");
 		
-		textField_47 = new JTextField();
-		textField_47.setOpaque(false);
-		textField_47.setColumns(10);
-		textField_47.setBorder(new MatteBorder(1, 1, 1, 1, (Color) Color.DARK_GRAY));
-		tablePanel.add(textField_47, "cell 4 19,growx");
+		txtMateriales6 = new JTextField();
+		txtMateriales6.setOpaque(false);
+		txtMateriales6.setColumns(10);
+		txtMateriales6.setBorder(new MatteBorder(0, 0, 1, 1, (Color) Color.DARK_GRAY));
+		workOrderPanel.add(txtMateriales6, "cell 4 19,grow");
 		
-		textField_54 = new JTextField();
-		textField_54.setOpaque(false);
-		textField_54.setColumns(10);
-		textField_54.setBorder(new MatteBorder(1, 1, 1, 1, (Color) Color.DARK_GRAY));
-		tablePanel.add(textField_54, "cell 5 19 2 1,growx");
+		txtRepuestos6 = new JTextField();
+		txtRepuestos6.setOpaque(false);
+		txtRepuestos6.setColumns(10);
+		txtRepuestos6.setBorder(new MatteBorder(0, 0, 1, 1, (Color) Color.DARK_GRAY));
+		workOrderPanel.add(txtRepuestos6, "cell 5 19 2 1,grow");
 		
-		textField_61 = new JTextField();
-		textField_61.setOpaque(false);
-		textField_61.setColumns(10);
-		textField_61.setBorder(new MatteBorder(1, 1, 1, 1, (Color) Color.DARK_GRAY));
-		tablePanel.add(textField_61, "cell 7 19,growx");
+		txtHoras6 = new JTextField();
+		txtHoras6.setOpaque(false);
+		txtHoras6.setColumns(10);
+		txtHoras6.setBorder(new MatteBorder(0, 0, 1, 1, (Color) Color.DARK_GRAY));
+		workOrderPanel.add(txtHoras6, "cell 7 19,grow");
 		
-		textField_68 = new JTextField();
-		textField_68.setOpaque(false);
-		textField_68.setColumns(10);
-		textField_68.setBorder(new MatteBorder(1, 1, 1, 1, (Color) Color.DARK_GRAY));
-		tablePanel.add(textField_68, "cell 8 19 3 1,growx");
+		txtObservaciones6 = new JTextField();
+		txtObservaciones6.setOpaque(false);
+		txtObservaciones6.setColumns(10);
+		txtObservaciones6.setBorder(new MatteBorder(0, 0, 1, 1, (Color) Color.DARK_GRAY));
+		workOrderPanel.add(txtObservaciones6, "cell 8 19 3 1,grow");
 		
-		textField_27 = new JTextField();
-		textField_27.setOpaque(false);
-		textField_27.setColumns(10);
-		textField_27.setBorder(new MatteBorder(1, 1, 1, 1, (Color) Color.DARK_GRAY));
-		tablePanel.add(textField_27, "cell 0 20,growx");
+		txtCodigo7 = new JTextField();
+		txtCodigo7.setOpaque(false);
+		txtCodigo7.setColumns(10);
+		txtCodigo7.setBorder(new MatteBorder(0, 1, 1, 1, (Color) Color.DARK_GRAY));
+		workOrderPanel.add(txtCodigo7, "cell 0 20,grow");
 		
-		textField_34 = new JTextField();
-		textField_34.setOpaque(false);
-		textField_34.setColumns(10);
-		textField_34.setBorder(new MatteBorder(1, 1, 1, 1, (Color) Color.DARK_GRAY));
-		tablePanel.add(textField_34, "cell 1 20 2 1,growx");
+		txtDescription7 = new JTextField();
+		txtDescription7.setOpaque(false);
+		txtDescription7.setColumns(10);
+		txtDescription7.setBorder(new MatteBorder(0, 0, 1, 1, (Color) Color.DARK_GRAY));
+		workOrderPanel.add(txtDescription7, "cell 1 20 2 1,grow");
 		
-		textField_41 = new JTextField();
-		textField_41.setOpaque(false);
-		textField_41.setColumns(10);
-		textField_41.setBorder(new MatteBorder(1, 1, 1, 1, (Color) Color.DARK_GRAY));
-		tablePanel.add(textField_41, "cell 3 20,growx");
+		txtHerramientas7 = new JTextField();
+		txtHerramientas7.setOpaque(false);
+		txtHerramientas7.setColumns(10);
+		txtHerramientas7.setBorder(new MatteBorder(0, 0, 1, 1, (Color) Color.DARK_GRAY));
+		workOrderPanel.add(txtHerramientas7, "cell 3 20,grow");
 		
-		textField_48 = new JTextField();
-		textField_48.setOpaque(false);
-		textField_48.setColumns(10);
-		textField_48.setBorder(new MatteBorder(1, 1, 1, 1, (Color) Color.DARK_GRAY));
-		tablePanel.add(textField_48, "cell 4 20,growx");
+		txtMateriales7 = new JTextField();
+		txtMateriales7.setOpaque(false);
+		txtMateriales7.setColumns(10);
+		txtMateriales7.setBorder(new MatteBorder(0, 0, 1, 1, (Color) Color.DARK_GRAY));
+		workOrderPanel.add(txtMateriales7, "cell 4 20,grow");
 		
-		textField_55 = new JTextField();
-		textField_55.setOpaque(false);
-		textField_55.setColumns(10);
-		textField_55.setBorder(new MatteBorder(1, 1, 1, 1, (Color) Color.DARK_GRAY));
-		tablePanel.add(textField_55, "cell 5 20 2 1,growx");
+		txtRepuestos7 = new JTextField();
+		txtRepuestos7.setOpaque(false);
+		txtRepuestos7.setColumns(10);
+		txtRepuestos7.setBorder(new MatteBorder(0, 0, 1, 1, (Color) Color.DARK_GRAY));
+		workOrderPanel.add(txtRepuestos7, "cell 5 20 2 1,grow");
 		
-		textField_62 = new JTextField();
-		textField_62.setOpaque(false);
-		textField_62.setColumns(10);
-		textField_62.setBorder(new MatteBorder(1, 1, 1, 1, (Color) Color.DARK_GRAY));
-		tablePanel.add(textField_62, "cell 7 20,growx");
+		txtHoras7 = new JTextField();
+		txtHoras7.setOpaque(false);
+		txtHoras7.setColumns(10);
+		txtHoras7.setBorder(new MatteBorder(0, 0, 1, 1, (Color) Color.DARK_GRAY));
+		workOrderPanel.add(txtHoras7, "cell 7 20,grow");
 		
-		textField_69 = new JTextField();
-		textField_69.setOpaque(false);
-		textField_69.setColumns(10);
-		textField_69.setBorder(new MatteBorder(1, 1, 1, 1, (Color) Color.DARK_GRAY));
-		tablePanel.add(textField_69, "cell 8 20 3 1,growx");
+		txtObservaciones7 = new JTextField();
+		txtObservaciones7.setOpaque(false);
+		txtObservaciones7.setColumns(10);
+		txtObservaciones7.setBorder(new MatteBorder(0, 0, 1, 1, (Color) Color.DARK_GRAY));
+		workOrderPanel.add(txtObservaciones7, "cell 8 20 3 1,grow");
+		
+		JLabel lblNewLabel_31 = new JLabel("Entregado por:");
+		lblNewLabel_31.setForeground(Constants.getTextColor());
+		lblNewLabel_31.setOpaque(true);
+		lblNewLabel_31.setBackground(Constants.getSurfaceColor());
+		lblNewLabel_31.setBorder(new MatteBorder(0, 1, 1, 1, (Color) new Color(64, 64, 64)));
+		workOrderPanel.add(lblNewLabel_31, "cell 0 21 4 1,grow");
+		
+		JLabel lblNewLabel_32 = new JLabel("Recibido por:");
+		lblNewLabel_32.setForeground(Constants.getTextColor());
+		lblNewLabel_32.setOpaque(true);
+		lblNewLabel_32.setBackground(Constants.getSurfaceColor());
+		lblNewLabel_32.setBorder(new MatteBorder(0, 0, 1, 1, (Color) new Color(0, 0, 0)));
+		workOrderPanel.add(lblNewLabel_32, "cell 4 21 3 1,grow");
+		
+		JLabel lblNewLabel_35 = new JLabel("Supervisado por");
+		lblNewLabel_35.setOpaque(true);
+		lblNewLabel_35.setForeground(Color.WHITE);
+		lblNewLabel_35.setBorder(new MatteBorder(0, 0, 1, 1, (Color) new Color(0, 0, 0)));
+		lblNewLabel_35.setBackground(new Color(44, 62, 80));
+		workOrderPanel.add(lblNewLabel_35, "cell 7 21 2 1,grow");
+		
+		JLabel lblNewLabel_33 = new JLabel("Aprobado por:");
+		lblNewLabel_33.setForeground(Constants.getTextColor());
+		lblNewLabel_33.setOpaque(true);
+		lblNewLabel_33.setBackground(Constants.getSurfaceColor());
+		lblNewLabel_33.setBorder(new MatteBorder(0, 0, 1, 1, (Color) Color.DARK_GRAY));
+		workOrderPanel.add(lblNewLabel_33, "cell 9 21 2 1");
+		
+		txtEntregadoPor = new JTextField();
+		txtEntregadoPor.setOpaque(false);
+		txtEntregadoPor.setColumns(10);
+		txtEntregadoPor.setBorder(new MatteBorder(0, 1, 1, 1, (Color) Color.DARK_GRAY));
+		workOrderPanel.add(txtEntregadoPor, "cell 0 22 4 1,growx");
+		
+		txtRecibidoPor = new JTextField();
+		txtRecibidoPor.setOpaque(false);
+		txtRecibidoPor.setColumns(10);
+		txtRecibidoPor.setBorder(new MatteBorder(0, 0, 1, 1, (Color) new Color(64, 64, 64)));
+		workOrderPanel.add(txtRecibidoPor, "cell 4 22 3 1,growx");
+		
+		txtSupervisadoPor = new JTextField();
+		txtSupervisadoPor.setOpaque(false);
+		txtSupervisadoPor.setColumns(10);
+		txtSupervisadoPor.setBorder(new MatteBorder(0, 0, 1, 1, (Color) new Color(64, 64, 64)));
+		workOrderPanel.add(txtSupervisadoPor, "cell 7 22 2 1,growx");
+		
+		txtAprobadoPorA = new JTextField();
+		txtAprobadoPorA.setOpaque(false);
+		txtAprobadoPorA.setColumns(10);
+		txtAprobadoPorA.setBorder(new MatteBorder(0, 0, 1, 1, (Color) new Color(64, 64, 64)));
+		workOrderPanel.add(txtAprobadoPorA, "cell 9 22 2 1,growx");
+		
+		JLabel lblNewLabel_36 = new JLabel("Elaborado por: ");
+		lblNewLabel_36.setOpaque(true);
+		lblNewLabel_36.setForeground(Color.WHITE);
+		lblNewLabel_36.setBorder(new MatteBorder(0, 1, 1, 1, (Color) new Color(64, 64, 64)));
+		lblNewLabel_36.setBackground(new Color(44, 62, 80));
+		workOrderPanel.add(lblNewLabel_36, "cell 0 23 4 1");
+		
+		JLabel lblNewLabel_37 = new JLabel("Revisado por:");
+		lblNewLabel_37.setOpaque(true);
+		lblNewLabel_37.setForeground(Color.WHITE);
+		lblNewLabel_37.setBorder(new MatteBorder(0, 0, 1, 1, (Color) new Color(0, 0, 0)));
+		lblNewLabel_37.setBackground(new Color(44, 62, 80));
+		workOrderPanel.add(lblNewLabel_37, "cell 4 23 3 1");
+		
+		JLabel lblNewLabel_38 = new JLabel("Aprobado por:");
+		lblNewLabel_38.setOpaque(true);
+		lblNewLabel_38.setForeground(Color.WHITE);
+		lblNewLabel_38.setBorder(new MatteBorder(0, 0, 1, 1, (Color) Color.DARK_GRAY));
+		lblNewLabel_38.setBackground(new Color(44, 62, 80));
+		workOrderPanel.add(lblNewLabel_38, "cell 7 23 4 1");
+		
+		txtElaboradoPor = new JTextField();
+		txtElaboradoPor.setOpaque(false);
+		txtElaboradoPor.setColumns(10);
+		txtElaboradoPor.setBorder(new MatteBorder(0, 1, 1, 1, (Color) Color.DARK_GRAY));
+		workOrderPanel.add(txtElaboradoPor, "cell 0 24 4 1,growx");
+		
+		txtRevisadoPor = new JTextField();
+		txtRevisadoPor.setOpaque(false);
+		txtRevisadoPor.setColumns(10);
+		txtRevisadoPor.setBorder(new MatteBorder(0, 0, 1, 1, (Color) new Color(64, 64, 64)));
+		workOrderPanel.add(txtRevisadoPor, "cell 4 24 3 1,growx");
+		
+		txtAprobadoPorB = new JTextField();
+		txtAprobadoPorB.setOpaque(false);
+		txtAprobadoPorB.setColumns(10);
+		txtAprobadoPorB.setBorder(new MatteBorder(0, 0, 1, 1, (Color) new Color(64, 64, 64)));
+		workOrderPanel.add(txtAprobadoPorB, "cell 7 24 4 1,growx");
 				
 	}
+	
+	public JPanel getWorkOrderPanel() {
+		return workOrderPanel;
+	}
+	
 }
