@@ -129,18 +129,18 @@ public class MainWindow extends JFrame {
 		lblSistemaDeAlertas.setFont(new Font("Californian FB", Font.BOLD, 15));
 		panel.add(lblSistemaDeAlertas);
 
-		JLabel lblTurbocompresorMarcaSolar = new JLabel("Turbocompresor Marca Solar  ");
+		JLabel lblTurbocompresorMarcaSolar = new JLabel("Programa Integral de Mantenimiento a la Unidad #1 ");
 		panel.add(lblTurbocompresorMarcaSolar);
 		lblTurbocompresorMarcaSolar.setVerticalAlignment(SwingConstants.BOTTOM);
 		lblTurbocompresorMarcaSolar.setHorizontalTextPosition(SwingConstants.CENTER);
 		lblTurbocompresorMarcaSolar.setHorizontalAlignment(SwingConstants.LEFT);
 		lblTurbocompresorMarcaSolar.setForeground(Color.WHITE);
-		lblTurbocompresorMarcaSolar.setFont(new Font("Californian FB", Font.BOLD, 30));
+		lblTurbocompresorMarcaSolar.setFont(new Font("Californian FB", Font.BOLD, 27));
 
-		JLabel lblTitle = new JLabel("Modelo Centauro 40  ");
+		JLabel lblTitle = new JLabel("Turbo Compresora Solar, Centauro 40.");
 		panel.add(lblTitle);
 		lblTitle.setVerticalAlignment(SwingConstants.TOP);
-		lblTitle.setFont(new Font("Californian FB", Font.BOLD, 19));
+		lblTitle.setFont(new Font("Californian FB", Font.BOLD, 17));
 		lblTitle.setForeground(Constants.getTextColor());
 		lblTitle.setHorizontalAlignment(SwingConstants.LEFT);
 		lblTitle.setHorizontalTextPosition(SwingConstants.CENTER);

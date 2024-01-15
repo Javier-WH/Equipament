@@ -745,7 +745,31 @@ public class DefaultStockDataFiller extends AbstractDataFiller {
 			params.put("lastUpdate", date);
 			table.createRecord(params);
 			
+//////////////////////////////Consumibles////////////////////////////////////////////////////	
 			
+			params = new HashMap<>();
+			params.put("secction", "Consumibles");
+			params.put("parts","Aceite turbolub ISO 46");
+			params.put("number", "2.080");
+			params.put("quantity", "10");
+			params.put("lastUpdate", date);
+			table.createRecord(params);
+			
+			params = new HashMap<>();
+			params.put("secction", "Consumibles");
+			params.put("parts","Desengrasante zook");
+			params.put("number", "2496");
+			params.put("quantity", "12");
+			params.put("lastUpdate", date);
+			table.createRecord(params);
+			
+			params = new HashMap<>();
+			params.put("secction", "Consumibles");
+			params.put("parts","Desengrasante industrial");
+			params.put("number", "2496");
+			params.put("quantity", "12");
+			params.put("lastUpdate", date);
+			table.createRecord(params);
 			
 			System.out.println("Se han creado los datos puesta a cero por defecto de la tabla " + table.getTableName());
 
