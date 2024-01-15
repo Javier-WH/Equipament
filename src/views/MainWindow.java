@@ -20,6 +20,8 @@ import javax.swing.JLabel;
 import java.awt.ComponentOrientation;
 import java.awt.Dimension;
 import net.miginfocom.swing.MigLayout;
+import workOrder.WorkOrder;
+
 import javax.swing.SwingConstants;
 import java.awt.Image;
 import java.awt.Toolkit;
@@ -87,7 +89,7 @@ public class MainWindow extends JFrame {
 		lblStatusBar.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblStatusBar.setForeground(Constants.getTextColor());
 		contentPane.add(lblStatusBar, BorderLayout.SOUTH);
-		menuPanel.setLayout(new MigLayout("", "[100px]", "[40][40][40][40][40][grow][40][40]"));
+		menuPanel.setLayout(new MigLayout("", "[100px]", "[40][40][40][40][40][40][grow][40][40]"));
 
 		JPanel northPanel = new JPanel();
 		northPanel.setBackground(Constants.getSurfaceColor());
@@ -239,7 +241,7 @@ public class MainWindow extends JFrame {
 				new StockFrame(contentPane).setVisible(true);
 			}
 		});
-		menuPanel.add(btnStock, "cell 0 3,grow");
+		menuPanel.add(btnStock, "cell 0 4,grow");
 
 		JButton btnHistorial = new CButton("Historial");
 		btnHistorial.addActionListener(new ActionListener() {
@@ -248,17 +250,27 @@ public class MainWindow extends JFrame {
 			}
 		});
 		btnHistorial.setText("Reportes");
-		menuPanel.add(btnHistorial, "cell 0 4,grow");
+		menuPanel.add(btnHistorial, "cell 0 3,grow");
 		JButton btnInfo = new CButton("Información");
 		btnInfo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				new InfoPanel(contentPane).setVisible(true);
 			}
 		});
-		menuPanel.add(btnInfo, "cell 0 6,grow");
+		
+		CButton btnOrdenDeTrabajo = new CButton("Historial");
+		btnOrdenDeTrabajo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				new WorkOrder(contentPane).setVisible(true);
+			}
+		});
+		btnOrdenDeTrabajo.setPreferredSize(new Dimension(129, 14));
+		btnOrdenDeTrabajo.setText("Orden de Trabajo");
+		menuPanel.add(btnOrdenDeTrabajo, "cell 0 5,grow");
+		menuPanel.add(btnInfo, "cell 0 7,grow");
 
 		JButton btnSalir = new CButton("Salir");
-		menuPanel.add(btnSalir, "cell 0 7,grow");
+		menuPanel.add(btnSalir, "cell 0 8,grow");
 
 		JScrollPane centralScrollpane = new JScrollPane();
 		centralScrollpane.setBorder(null);
