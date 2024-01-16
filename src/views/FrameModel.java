@@ -69,7 +69,7 @@ public class FrameModel extends JDialog {
 	}
 	
 	protected void onAcept(ActionListener action) {
-		showAceeptButton = true;
+		this.showAceeptButton = true;
 		okButton.addActionListener(action);
 	}
 

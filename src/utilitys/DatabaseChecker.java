@@ -15,6 +15,7 @@ import dataBaseModels.ParamMesuresDates;
 import dataBaseModels.ParamMesuresDescriptions;
 import dataBaseModels.ParamMesuresOperators;
 import dataBaseModels.Stock;
+import dataBaseModels.WorkOrderDataBase;
 import dbConection.*;
 
 public class DatabaseChecker {
@@ -34,6 +35,7 @@ public class DatabaseChecker {
 		TableList.add(new MaintenanceRegister());
 		TableList.add(new MaintenanceRoutinesOperators());
 		TableList.add(new Stock());
+		TableList.add(new WorkOrderDataBase());
 	}
 
 	public boolean checkDatabaseList() throws SQLException {

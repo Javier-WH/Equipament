@@ -81,7 +81,7 @@ public abstract class AbstractDataBaseModel implements DataBaseModel {
 		
 		if(criteria.containsKey("id")) {
 			
-			queryBuilder.append(" WHERE id = ").append(criteria.get("id")).append(";");
+			queryBuilder.append(" WHERE id = '").append(criteria.get("id")).append("';");
 		}
 		
 		String query = queryBuilder.toString();
