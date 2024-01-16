@@ -63,7 +63,7 @@ public class SelectionMantenanceFrame extends FrameModel {
 		lblNewLabel.setForeground(Constants.getTextColor());
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		panel.add(lblNewLabel, "cell 2 0,growx,aligny center");
-		panel.add(lblLeft, "cell 1 2,grow");
+		panel.add(lblLeft, "cell 2 2,grow");
 
 		lblRight = new JLabel("");
 		lblRight.setOpaque(true);
@@ -95,19 +95,19 @@ public class SelectionMantenanceFrame extends FrameModel {
 		lblRunning.addMouseListener(mouseOver);
 		lblRunning.setIcon(scaledIconRunning);
 
-		panel.add(lblRunning, "cell 2 2,grow");
+		panel.add(lblRunning, "cell 1 2,grow");
 
 		JLabel lblTextLeft = new JLabel("Mantenimiento Preventivo");
 		lblTextLeft.setFont(new Font("Tahoma", Font.BOLD, 14));
 		lblTextLeft.setForeground(Constants.getTextColor());
 		lblTextLeft.setHorizontalAlignment(SwingConstants.CENTER);
-		panel.add(lblTextLeft, "cell 1 3,alignx center");
+		panel.add(lblTextLeft, "cell 2 3,alignx center");
 
-		JLabel lblTextRunning = new JLabel(" Puesta en Marcha");
+		JLabel lblTextRunning = new JLabel(" Puesta a Cero");
 		lblTextRunning.setHorizontalAlignment(SwingConstants.CENTER);
 		lblTextRunning.setForeground(Color.WHITE);
 		lblTextRunning.setFont(new Font("Tahoma", Font.BOLD, 14));
-		panel.add(lblTextRunning, "cell 2 3,grow");
+		panel.add(lblTextRunning, "cell 1 3,grow");
 
 		JLabel lblTextRight = new JLabel("Mantenimiento Correctivo");
 		lblTextRight.setHorizontalAlignment(SwingConstants.CENTER);

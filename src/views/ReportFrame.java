@@ -5,6 +5,7 @@ import javax.swing.JPanel;
 import components.Constants;
 import dataBaseModels.MaintenanceRoutinesOperators;
 import dataBaseModels.ParamMesuresOperators;
+import dataBaseModels.WorkOrderDataBase;
 import java.awt.BorderLayout;
 import javax.swing.BoxLayout;
 import javax.swing.JLabel;
@@ -18,7 +19,6 @@ import javax.swing.Box;
 import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
 import net.miginfocom.swing.MigLayout;
-import printViews.PrintWindow;
 import reportPanels.MesurePanel;
 import javax.swing.SwingConstants;
 import java.awt.event.ActionListener;
@@ -32,6 +32,10 @@ public class ReportFrame extends FrameModel {
 	private static final long serialVersionUID = 1L;
 	private JPanel reportPanel;
 	private JComboBox<String> comboType;
+	private JLabel lblDescription;
+	private JLabel lblOperator;
+	private JLabel lblInspector;
+	private JLabel lblFecha;
 
 	public ReportFrame(JPanel parent) {
 		super(parent, "Reportes");
@@ -96,30 +100,30 @@ public class ReportFrame extends FrameModel {
 		panel_2.add(panel_3, BorderLayout.NORTH);
 		panel_3.setLayout(new MigLayout("insets 0, gap 0", "[150px:n,grow 300,fill][grow,fill][grow,fill][grow,fill][17px:17px:17px]", "[]"));
 		
-		JLabel lblNewLabel_1 = new JLabel("Descripción");
-		lblNewLabel_1.setBorder(null);
-		lblNewLabel_1.setForeground(Constants.getTextColor());
-		lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 12));
-		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
-		panel_3.add(lblNewLabel_1, "cell 0 0,growx,aligny center");
+		lblDescription = new JLabel("Descripción");
+		lblDescription.setBorder(null);
+		lblDescription.setForeground(Constants.getTextColor());
+		lblDescription.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblDescription.setHorizontalAlignment(SwingConstants.CENTER);
+		panel_3.add(lblDescription, "cell 0 0,growx,aligny center");
 		
-		JLabel lblNewLabel_2 = new JLabel("Operador");
-		lblNewLabel_2.setForeground(Constants.getTextColor());
-		lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 12));
-		lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
-		panel_3.add(lblNewLabel_2, "cell 1 0,growx,aligny center");
+		lblOperator = new JLabel("Operador");
+		lblOperator.setForeground(Constants.getTextColor());
+		lblOperator.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblOperator.setHorizontalAlignment(SwingConstants.CENTER);
+		panel_3.add(lblOperator, "cell 1 0,growx,aligny center");
 		
-		JLabel lblNewLabel_3 = new JLabel("Inspector");
-		lblNewLabel_3.setForeground(Constants.getTextColor());
-		lblNewLabel_3.setFont(new Font("Tahoma", Font.BOLD, 12));
-		lblNewLabel_3.setHorizontalAlignment(SwingConstants.CENTER);
-		panel_3.add(lblNewLabel_3, "cell 2 0,grow");
+		lblInspector = new JLabel("Inspector");
+		lblInspector.setForeground(Constants.getTextColor());
+		lblInspector.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblInspector.setHorizontalAlignment(SwingConstants.CENTER);
+		panel_3.add(lblInspector, "cell 2 0,grow");
 		
-		JLabel lblNewLabel_4 = new JLabel("Fecha");
-		lblNewLabel_4.setForeground(Constants.getTextColor());
-		lblNewLabel_4.setFont(new Font("Tahoma", Font.BOLD, 12));
-		lblNewLabel_4.setHorizontalAlignment(SwingConstants.CENTER);
-		panel_3.add(lblNewLabel_4, "cell 3 0,grow");
+		lblFecha = new JLabel("Fecha");
+		lblFecha.setForeground(Constants.getTextColor());
+		lblFecha.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblFecha.setHorizontalAlignment(SwingConstants.CENTER);
+		panel_3.add(lblFecha, "cell 3 0,grow");
 		
 		try {
 			fillReportPanel();
@@ -141,6 +145,11 @@ public class ReportFrame extends FrameModel {
 
 	
 	private void fillReportPanel() throws ClassNotFoundException, SQLException {
+		lblDescription.setText("Descripción");
+		lblFecha.setText("Fecha");
+		lblOperator.setText("Operador");
+		lblInspector.setText("Inspector");
+		
 		reportPanel.removeAll();
 		reportPanel.setPreferredSize(new Dimension(reportPanel.getPreferredSize().width, 50));
 		int index = comboType.getSelectedIndex();
@@ -195,7 +204,23 @@ public class ReportFrame extends FrameModel {
 			}
 			
 		}else if(index == 3) {
-			new PrintWindow(reportPanel, null, null, "3", null).setVisible(true);;
+			
+			lblDescription.setText("entregadoPor");
+			lblOperator.setText("supervisadoPor");
+			lblInspector.setText("recibidoPor");
+			lblFecha.setText("Fecha");
+			
+			ResultSet rs = new WorkOrderDataBase().findRecords();
+			while(rs.next()) {
+				size++;
+				String id = rs.getString("id");
+				String entregadoPor = rs.getString("entregadoPor");
+				String supervisadoPor = rs.getString("supervisadoPor");
+				String recibidoPor = rs.getString("recibidoPor");
+				String lastUpdate = rs.getString("updatedAT");
+	
+				reportPanel.add(new MesurePanel(id, entregadoPor, recibidoPor, supervisadoPor, lastUpdate, "3"));
+			}
 		}
 		
 		reportPanel.setPreferredSize(new Dimension(reportPanel.getPreferredSize().width, 50 * size));
