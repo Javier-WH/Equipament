@@ -16,6 +16,8 @@ import mantenanceForm.MantenanceForm;
 import views.StockFrame;
 
 import java.awt.Dimension;
+import javax.swing.SwingConstants;
+import net.miginfocom.swing.MigLayout;
 
 
 public class Alarm extends JPanel implements AlarmSchema {
@@ -57,7 +59,7 @@ public class Alarm extends JPanel implements AlarmSchema {
 		lblSecction.setFont(new Font("Tahoma", Font.BOLD, 21));
 		lblSecction.setForeground(Color.WHITE);
 		lblSecction.setBackground(new Color(240, 240, 240));
-		lblSecction.setBounds(265, 0, 535, 26);
+		lblSecction.setBounds(258, -2, 535, 26);
 		add(lblSecction);
 
 		JLabel lblActivity = new JLabel(Activity);
@@ -75,27 +77,32 @@ public class Alarm extends JPanel implements AlarmSchema {
 		add(lblLastUpdate);
 		
 		JLabel lblUltimoMantenimiento = new JLabel("Ultimo mantenimiento:");
-		lblUltimoMantenimiento.setText(type.equals("stock") ? "N° de pieza" : "Ultimo mantenimiento:");
+		lblUltimoMantenimiento.setText(type.equals("stock") ? (Section.equals("Consumibles") ? "Litros" : "N° de pieza" ) : "Ultimo mantenimiento:");
 		lblUltimoMantenimiento.setForeground(Color.WHITE);
 		lblUltimoMantenimiento.setFont(new Font("Tahoma", Font.BOLD, 14));
 		lblUltimoMantenimiento.setBackground(UIManager.getColor("Button.background"));
 		lblUltimoMantenimiento.setBounds(265, 70, 183, 26);
 		add(lblUltimoMantenimiento);
 		
+		JPanel panel = new JPanel();
+		panel.setOpaque(false);
+		panel.setBounds(255, 23, 545, 33);
+		add(panel);
+		panel.setLayout(new MigLayout("", "[][grow,fill]", "[grow,fill]"));
+		
 		JLabel lblsdsds = new JLabel("Nivel:");
-		lblsdsds.setText(type.equals("stock") ? "Stock" : "Nivel:");
+		panel.add(lblsdsds, "flowx,cell 0 0,grow");
+		lblsdsds.setHorizontalAlignment(SwingConstants.LEFT);
+		lblsdsds.setText(type.equals("stock") ? "Quedan" : "Nivel:");
 		lblsdsds.setForeground(Color.WHITE);
 		lblsdsds.setFont(new Font("Tahoma", Font.BOLD, 18));
 		lblsdsds.setBackground(UIManager.getColor("Button.background"));
-		lblsdsds.setBounds(265, 27, 61, 26);
-		add(lblsdsds);
 		
 		JLabel lblNivel = new JLabel(Level);
+		panel.add(lblNivel, "cell 1 0,grow");
 		lblNivel.setForeground(Color.WHITE);
 		lblNivel.setFont(new Font("Tahoma", Font.BOLD, 18));
 		lblNivel.setBackground(UIManager.getColor("Button.background"));
-		lblNivel.setBounds(325, 27, 465, 26);
-		add(lblNivel);
 		
 		addMouseListener(new MouseAdapter() {
 			@Override

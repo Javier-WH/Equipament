@@ -6,12 +6,9 @@ import java.awt.BorderLayout;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import javax.swing.Timer;
-
 import components.Constants;
 import dataBaseModels.Stock;
 import main.AlterThread;
-import main.Main;
-
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -26,7 +23,6 @@ import javax.swing.JComboBox;
 import net.miginfocom.swing.MigLayout;
 import stockPanels.StockPanel;
 import stockPanels.StockPanelHeader;
-
 import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.BoxLayout;
