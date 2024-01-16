@@ -13,7 +13,7 @@ import views.MainWindow;
 
 public class Main {
 	
-	private static boolean isDevModeOn = false;
+	private static boolean isDevModeOn = true;
 	
 	public static void main(String[] args) {
 

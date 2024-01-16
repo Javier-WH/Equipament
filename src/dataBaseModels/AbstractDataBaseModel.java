@@ -58,6 +58,8 @@ public abstract class AbstractDataBaseModel implements DataBaseModel {
 
 	}
 
+
+	
 	@Override
 	public boolean updateRecord(HashMap<String, String> criteria) throws SQLException {
 		StringBuilder queryBuilder = new StringBuilder("UPDATE ").append(dataTableName).append(" SET ");

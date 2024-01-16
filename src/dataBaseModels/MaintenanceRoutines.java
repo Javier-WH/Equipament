@@ -1,6 +1,8 @@
 package dataBaseModels;
 
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 public class MaintenanceRoutines extends AbstractDataBaseModel{
 
@@ -15,6 +17,12 @@ public class MaintenanceRoutines extends AbstractDataBaseModel{
 		String query = queryBuilder.toString();
 		return executeStatement(query);
 	
+	}
+	
+	public ResultSet findExcludePC() throws SQLException {
+		String query = "SELECT * FROM maintenance_routines WHERE type = 'P' OR type = 'C'";
+		Statement statement = connection.createStatement();
+		return statement.executeQuery(query);
 	}
 	
 }

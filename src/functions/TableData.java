@@ -21,7 +21,9 @@ public class TableData {
 			ResultSet TCData = MR.findRecord(params);
 
 			model.addColumn("Actividad De Mantenimiento");
-			model.addColumn("Frecuencia");
+			if(!type.equals("PC")) {
+				model.addColumn("Frecuencia");				
+			}
 			model.addColumn("Nivel De Mantenimiento");
 			model.addColumn("Horas");
 			model.addColumn("Personal");
@@ -30,8 +32,10 @@ public class TableData {
 			if(type.equals("C") || type.equals("PC")) {
 				model.addColumn("N° Pieza");
 			}
+			if(!type.equals("PC")) {
+				model.addColumn("Fecha");				
+			}
 			 
-			model.addColumn("Fecha");
 
 			while (TCData.next()) {
 
@@ -45,8 +49,10 @@ public class TableData {
 				String piece =  TCData.getString("piece");
 				
 				
-				if(type.equals("C") || type.equals("PC")) {
+				if(type.equals("C")) {
 					model.addRow(new Object[] { activity, frequency, level, time, personal, total, piece, lastUpdate });
+				}else if(type.equals("PC")){
+					model.addRow(new Object[] { activity, level, time, personal, total, piece });
 				}else {
 					model.addRow(new Object[] { activity, frequency, level, time, personal, total, lastUpdate });
 				}

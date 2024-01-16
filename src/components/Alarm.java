@@ -13,6 +13,7 @@ import java.awt.Cursor;
 import javax.swing.UIManager;
 
 import mantenanceForm.MantenanceForm;
+import views.StockFrame;
 
 import java.awt.Dimension;
 
@@ -30,7 +31,7 @@ public class Alarm extends JPanel implements AlarmSchema {
 		setPreferredSize(new Dimension(800, 100));
 		setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		setLayout(null);
-		
+
 		if(type.equals("P")) {
 			setBackground(Constants.getPreventiveAlertColor());			
 		}else if(type.equals("C")) {
@@ -41,7 +42,8 @@ public class Alarm extends JPanel implements AlarmSchema {
 			setBackground(Color.RED);	
 		}
 		
-
+	
+		
 		JLabel lblLogo = new JLabel();
 		lblLogo.setPreferredSize(new Dimension(322, 147));
 		lblLogo.setBounds(0, -38, 268, 182);
@@ -73,6 +75,7 @@ public class Alarm extends JPanel implements AlarmSchema {
 		add(lblLastUpdate);
 		
 		JLabel lblUltimoMantenimiento = new JLabel("Ultimo mantenimiento:");
+		lblUltimoMantenimiento.setText(type.equals("stock") ? "N° de pieza" : "Ultimo mantenimiento:");
 		lblUltimoMantenimiento.setForeground(Color.WHITE);
 		lblUltimoMantenimiento.setFont(new Font("Tahoma", Font.BOLD, 14));
 		lblUltimoMantenimiento.setBackground(UIManager.getColor("Button.background"));
@@ -80,6 +83,7 @@ public class Alarm extends JPanel implements AlarmSchema {
 		add(lblUltimoMantenimiento);
 		
 		JLabel lblsdsds = new JLabel("Nivel:");
+		lblsdsds.setText(type.equals("stock") ? "Stock" : "Nivel:");
 		lblsdsds.setForeground(Color.WHITE);
 		lblsdsds.setFont(new Font("Tahoma", Font.BOLD, 18));
 		lblsdsds.setBackground(UIManager.getColor("Button.background"));
@@ -98,8 +102,12 @@ public class Alarm extends JPanel implements AlarmSchema {
 		    public void mouseClicked(MouseEvent e) {
 		
 				try {
-					MantenanceForm MF = new MantenanceForm(alarmID);
-					MF.setVisible(true);
+					if(type.equals("P") || type.equals("C") || type.equals("PC")) {
+						MantenanceForm MF = new MantenanceForm(alarmID);
+						MF.setVisible(true);						
+					}else if(type.equals("stock")) {
+						new StockFrame(null, Section).setVisible(true);
+					}
 				} catch (ClassNotFoundException | SQLException e1) {
 					e1.printStackTrace();
 				}

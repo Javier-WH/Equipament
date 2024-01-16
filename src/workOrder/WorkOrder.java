@@ -10,6 +10,8 @@ import utilitys.DateHandler;
 import utilitys.PanelPrinter;
 
 import javax.swing.border.MatteBorder;
+
+import components.Cmessage;
 import components.Constants;
 import dataBaseModels.WorkOrderDataBase;
 import javax.swing.JLabel;
@@ -32,6 +34,7 @@ import java.awt.Font;
 import java.util.Timer;
 import java.util.TimerTask;
 import javax.swing.BoxLayout;
+import java.awt.Cursor;
 
 public class WorkOrder extends FrameModel {
 	private static final long serialVersionUID = 1L;
@@ -1283,6 +1286,8 @@ public class WorkOrder extends FrameModel {
 		getContentPane().add(panel, BorderLayout.NORTH);
 
 		lblNewLabel_39 = new JLabel("");
+		lblNewLabel_39.setToolTipText("Guardar");
+		lblNewLabel_39.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		lblNewLabel_39.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -1300,11 +1305,13 @@ public class WorkOrder extends FrameModel {
 		panel.add(horizontalStrut);
 
 		lblNewLabel_40 = new JLabel("");
+		lblNewLabel_40.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		lblNewLabel_40.setToolTipText("Imprimir");
 		lblNewLabel_40.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 
-				new PanelPrinter(workOrderPanel).printPanel();
+				new PanelPrinter(workOrderPanel, 0.5).printPanel();
 				;
 
 			}
@@ -1316,6 +1323,8 @@ public class WorkOrder extends FrameModel {
 		panel.add(horizontalStrut_1);
 
 		lblNewLabel_41 = new JLabel("");
+		lblNewLabel_41.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		lblNewLabel_41.setToolTipText("Limpiar Formulario");
 		lblNewLabel_41.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -1346,12 +1355,20 @@ public class WorkOrder extends FrameModel {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
+			if(!isDataComplete()) {
+				new Cmessage("aceptar", null, "Los datos no están completos", null).setVisible(true);;
+				return;
+			}
 			saveData();
 			dispose();
 		}
 	};
 
 	private void saveData() {
+		if(!isDataComplete()) {
+			new Cmessage("aceptar", null, "Los datos no están completos", null).setVisible(true);;
+			return;
+		}
 		HashMap<String, String> params = new HashMap<>();
 		params.put("id", uuid);
 		params.put("codigoA", txtCodigoA.getText());
@@ -1541,4 +1558,44 @@ public class WorkOrder extends FrameModel {
 
 	}
 
+	
+	
+	private boolean isDataComplete() {
+
+		if(     txtPreventivo.getText().isEmpty() ||
+				txtCorrectivo.getText().isEmpty() ||
+				txtDia1.getText().isEmpty() ||
+				txtMes1.getText().isEmpty() ||
+				txtAno1.getText().isEmpty() ||
+				txtDia2.getText().isEmpty() ||
+				txtMes2.getText().isEmpty() ||
+				txtAno2.getText().isEmpty() ||
+				txtResponsableEjecucion.getText().isEmpty() ||
+				txtLubricacion.getText().isEmpty() ||
+				txtElectrico.getText().isEmpty() ||
+				txtMecanico.getText().isEmpty() ||
+				txtInstrumentacion.getText().isEmpty() ||
+				txtOtro.getText().isEmpty() ||
+				txtNumeroOrden.getText().isEmpty() ||
+				txtEquipo.getText().isEmpty() ||
+				txtCodigoB.getText().isEmpty() ||
+				txtFichaTecnica.getText().isEmpty() ||
+				txtHojaVida.getText().isEmpty() ||
+				txtCodigoA.getText().isEmpty() ||
+				txtFecha.getText().isEmpty() ||
+				txtVersion.getText().isEmpty() ||
+				txtPagina.getText().isEmpty() ||
+				txtEntregadoPor.getText().isEmpty() ||
+				txtRecibidoPor.getText().isEmpty() ||
+				txtAprobadoPorA.getText().isEmpty() ||
+				txtSupervisadoPor.getText().isEmpty() ||
+				txtElaboradoPor.getText().isEmpty() ||
+				txtRevisadoPor.getText().isEmpty() ||
+				txtAprobadoPorB.getText().isEmpty()) {
+			
+			return false;
+		}
+
+		return true;
+	}
 }

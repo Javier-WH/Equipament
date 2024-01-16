@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import components.Alarm;
 import dataBaseModels.MaintenanceRoutines;
+import dataBaseModels.Stock;
 import utilitys.DateHandler;
 import views.MainWindow;
 
@@ -28,8 +29,8 @@ public class AlterThread implements Runnable {
 		
 		try {
 			MainWindow.resetAlarms();
-			ResultSet rutinesList = rutines.findRecords();
-
+			//ResultSet rutinesList = rutines.findRecords();
+			ResultSet rutinesList = rutines.findExcludePC();
 			while (rutinesList.next()) {
 				String stringDate = rutinesList.getString("lastUpdate");
 				LocalDate lastUpdate = DateHandler.stringToDate(stringDate);
@@ -53,11 +54,36 @@ public class AlterThread implements Runnable {
 					}
 				}
 			}
+			checkStockAlarm();
 			MainWindow.upDateStatusBar();
-		} catch (SQLException e) {
+		} catch (SQLException | ClassNotFoundException e) {
 			e.printStackTrace();
 		}
 		
 	}
+	/////
+	
+	public static void checkStockAlarm() throws ClassNotFoundException, SQLException {
+		
+		ResultSet rs = new Stock().findRecords();
+		
+		while(rs.next()) {
+			int id = Integer.parseInt(rs.getString("id"));
+			String secction = rs.getString("secction");
+			String parts = rs.getString("parts");
+			String number = rs.getString("number");
+			int quantity = Integer.parseInt(rs.getString("quantity"));
+			
+			if(quantity <= 3) {
+				Alarm alarm = new Alarm(secction, parts, number, ""+quantity, "stock");
+				alarm.setAlarmID(id);
+				MainWindow.addAlert(alarm);
+			}
+			
+		}
+		
+		
+	}
+	
 
 }

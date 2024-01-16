@@ -9,6 +9,9 @@ import javax.swing.Timer;
 
 import components.Constants;
 import dataBaseModels.Stock;
+import main.AlterThread;
+import main.Main;
+
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -32,8 +35,17 @@ public class StockFrame extends FrameModel {
 	private static final long serialVersionUID = 1L;
 	private JPanel panelStock;
 	private JLabel lblMessage;
+	private JComboBox<String> comboBox_1;
 	ArrayList<StockPanel> list;
 
+	public StockFrame(JPanel parent, String section) {
+		this(parent);
+		comboBox_1.setSelectedItem(section);
+	}
+	
+	/**
+	 * @wbp.parser.constructor
+	 */
 	public StockFrame(JPanel parent) {
 		super(parent, "Panel de Stock", true);
 		setAlwaysOnTop(false);
@@ -176,6 +188,7 @@ public class StockFrame extends FrameModel {
 				try {
 					new Stock().updateRecord(params);
 					showMessage();
+					AlterThread.refreshAlarms();
 				} catch (ClassNotFoundException | SQLException e1) {
 					e1.printStackTrace();
 				}
@@ -183,6 +196,6 @@ public class StockFrame extends FrameModel {
 
 		}
 	};
-	private JComboBox<String> comboBox_1;
+
 
 }

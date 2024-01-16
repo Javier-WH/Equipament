@@ -15,6 +15,7 @@ public interface DataBaseModel {
 	ResultSet findRecords() throws SQLException;
 
 	ResultSet findRecord(HashMap<String, String> criteria) throws SQLException;
+	
 
 	boolean updateRecord(HashMap<String, String> criteria) throws SQLException;
 
