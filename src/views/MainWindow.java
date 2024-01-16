@@ -51,7 +51,7 @@ public class MainWindow extends JFrame {
 	private static JLabel lblStatusBar = new JLabel("");
 
 	public MainWindow() {
-		setExtendedState(JFrame.MAXIMIZED_BOTH);
+		//setExtendedState(JFrame.MAXIMIZED_BOTH);
 		alarmList = new ArrayList<AlarmSchema>();
 		setIconImage(Toolkit.getDefaultToolkit().getImage(MainWindow.class.getResource("/assets/logoF.png")));
 		setTitle("Mantenimiento de Equipos");
