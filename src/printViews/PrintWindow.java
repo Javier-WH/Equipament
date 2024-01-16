@@ -89,7 +89,12 @@ public class PrintWindow extends FrameModel {
 		lblNewLabel.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				PanelPrinter pp = new PanelPrinter(printPanel);
+				PanelPrinter pp = null;
+				if(cat.equals("3")) {
+					pp = new PanelPrinter(printPanel, 0.5);
+				}else {
+					pp = new PanelPrinter(printPanel);
+				}
 				pp.printPanel();
 			}
 		});
