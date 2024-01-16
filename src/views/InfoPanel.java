@@ -19,7 +19,7 @@ public class InfoPanel extends FrameModel {
 	public InfoPanel(JPanel parent) {
 		super(parent, "Información");
 		setResizable(false);
-		this.setSize(new Dimension(560, 383));
+		this.setSize(new Dimension(560, 387));
 		getContentPane().setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("");
@@ -53,7 +53,7 @@ public class InfoPanel extends FrameModel {
 		lblVersionBeta.setHorizontalAlignment(SwingConstants.CENTER);
 		lblVersionBeta.setForeground(Color.WHITE);
 		lblVersionBeta.setFont(new Font("Californian FB", Font.BOLD, 18));
-		lblVersionBeta.setBounds(0, 292, 668, 20);
+		lblVersionBeta.setBounds(0, 292, 544, 20);
 		getContentPane().add(lblVersionBeta);
 		
 		JLabel lblCreadoPor = new JLabel("Creado por:");
@@ -108,8 +108,17 @@ public class InfoPanel extends FrameModel {
 		lblDeEnero.setHorizontalAlignment(SwingConstants.CENTER);
 		lblDeEnero.setForeground(Color.WHITE);
 		lblDeEnero.setFont(new Font("Californian FB", Font.BOLD, 10));
-		lblDeEnero.setBounds(0, 313, 668, 20);
+		lblDeEnero.setBounds(0, 313, 544, 20);
 		getContentPane().add(lblDeEnero);
+		
+		JLabel lblLicenciaMit = new JLabel("Licencia MIT");
+		lblLicenciaMit.setVerticalAlignment(SwingConstants.TOP);
+		lblLicenciaMit.setHorizontalTextPosition(SwingConstants.CENTER);
+		lblLicenciaMit.setHorizontalAlignment(SwingConstants.CENTER);
+		lblLicenciaMit.setForeground(Color.WHITE);
+		lblLicenciaMit.setFont(new Font("Californian FB", Font.BOLD, 14));
+		lblLicenciaMit.setBounds(0, 329, 544, 20);
+		getContentPane().add(lblLicenciaMit);
 			
 	}
 }
