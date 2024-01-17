@@ -20,6 +20,7 @@ import javax.swing.JLabel;
 import java.awt.ComponentOrientation;
 import java.awt.Dimension;
 import net.miginfocom.swing.MigLayout;
+import registroFallaPanel.RegistroFallaFrame;
 import workOrder.WorkOrder;
 
 import javax.swing.SwingConstants;
@@ -56,7 +57,7 @@ public class MainWindow extends JFrame {
 		setIconImage(Toolkit.getDefaultToolkit().getImage(MainWindow.class.getResource("/assets/logoF.png")));
 		setTitle("Mantenimiento de Equipos");
 		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-		setBounds(100, 100, 885, 503);
+		setBounds(100, 100, 885, 583);
 		setLocationRelativeTo(null);
 		addWindowListener(new Exit());
 
@@ -89,7 +90,7 @@ public class MainWindow extends JFrame {
 		lblStatusBar.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblStatusBar.setForeground(Constants.getTextColor());
 		contentPane.add(lblStatusBar, BorderLayout.SOUTH);
-		menuPanel.setLayout(new MigLayout("", "[100px]", "[40][40][40][40][40][40][grow][40][40]"));
+		menuPanel.setLayout(new MigLayout("", "[100px]", "[40][40][40][40][40][40][40][grow][40][40]"));
 
 		JPanel northPanel = new JPanel();
 		northPanel.setBackground(Constants.getSurfaceColor());
@@ -267,10 +268,20 @@ public class MainWindow extends JFrame {
 		btnOrdenDeTrabajo.setPreferredSize(new Dimension(129, 14));
 		btnOrdenDeTrabajo.setText("Orden de Trabajo");
 		menuPanel.add(btnOrdenDeTrabajo, "cell 0 5,grow");
-		menuPanel.add(btnInfo, "cell 0 7,grow");
+		
+		CButton btnRegistroDeFalla = new CButton("Historial");
+		btnRegistroDeFalla.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				new RegistroFallaFrame(contentPane).setVisible(true);
+			}
+		});
+		btnRegistroDeFalla.setText("Registro de Falla");
+		btnRegistroDeFalla.setPreferredSize(new Dimension(129, 14));
+		menuPanel.add(btnRegistroDeFalla, "cell 0 6,grow");
+		menuPanel.add(btnInfo, "cell 0 8,grow");
 
 		JButton btnSalir = new CButton("Salir");
-		menuPanel.add(btnSalir, "cell 0 8,grow");
+		menuPanel.add(btnSalir, "cell 0 9,grow");
 
 		JScrollPane centralScrollpane = new JScrollPane();
 		centralScrollpane.setBorder(null);
