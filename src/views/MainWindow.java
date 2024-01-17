@@ -272,7 +272,7 @@ public class MainWindow extends JFrame {
 		CButton btnRegistroDeFalla = new CButton("Historial");
 		btnRegistroDeFalla.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new RegistroFallaFrame(contentPane).setVisible(true);
+				new RegistroFallaFrame((JPanel)contentPane).setVisible(true);
 			}
 		});
 		btnRegistroDeFalla.setText("Registro de Falla");

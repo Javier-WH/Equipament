@@ -3,6 +3,7 @@ package views;
 import java.awt.Dimension;
 import javax.swing.JPanel;
 import components.Constants;
+import dataBaseModels.FailureRegisterDataBase;
 import dataBaseModels.MaintenanceRoutinesOperators;
 import dataBaseModels.ParamMesuresOperators;
 import dataBaseModels.WorkOrderDataBase;
@@ -73,7 +74,8 @@ public class ReportFrame extends FrameModel {
 		comboType.addItem("Medición de parámetros de funcionamiento");
 		comboType.addItem("Mantenimiento Preventivo");
 		comboType.addItem("Mantenimiento Correctivo");
-		comboType.addItem("Orden de trabajo");
+		comboType.addItem("Ordenes de trabajo");
+		comboType.addItem("Registros de Fallas");
 		panel_1.add(comboType);
 		
 		Component verticalStrut_2 = Box.createVerticalStrut(10);
@@ -221,6 +223,26 @@ public class ReportFrame extends FrameModel {
 	
 				reportPanel.add(new MesurePanel(id, entregadoPor, recibidoPor, supervisadoPor, lastUpdate, "3"));
 			}
+		}else if(index == 4) {
+			
+			lblDescription.setText("Solicitante");
+			lblOperator.setText("Receptor");
+			lblInspector.setText("AprobadoPor");
+			lblFecha.setText("Fecha");
+			
+			ResultSet rs = new FailureRegisterDataBase().findRecords();
+			
+			while(rs.next()) {
+				size++;
+				String id = rs.getString("id");
+				String nombreSolicitante = rs.getString("nombreSolicitante");
+				String nombreReceptor = rs.getString("nombreReceptor");
+				String aprobadoPor = rs.getString("aprobadoPor");
+				String lastUpdate = rs.getString("updatedAT");
+				reportPanel.add(new MesurePanel(id, nombreSolicitante, nombreReceptor, aprobadoPor, lastUpdate, "4"));
+			}
+			
+			
 		}
 		
 		reportPanel.setPreferredSize(new Dimension(reportPanel.getPreferredSize().width, 50 * size));

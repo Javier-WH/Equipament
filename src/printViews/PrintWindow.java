@@ -16,7 +16,9 @@ import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 import javax.swing.border.EmptyBorder;
 import components.Constants;
+import dataBaseModels.FailureRegisterDataBase;
 import dataBaseModels.WorkOrderDataBase;
+import registroFallaPanel.RegistroFallaFrame;
 import utilitys.PanelPrinter;
 import views.FrameModel;
 import workOrder.WorkOrder;
@@ -90,7 +92,7 @@ public class PrintWindow extends FrameModel {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				PanelPrinter pp = null;
-				if(cat.equals("3")) {
+				if(cat.equals("3") || cat.equals("4")) {
 					pp = new PanelPrinter(printPanel, 0.5);
 				}else {
 					pp = new PanelPrinter(printPanel);
@@ -206,6 +208,61 @@ public class PrintWindow extends FrameModel {
 			} catch (ClassNotFoundException | SQLException e) {
 				e.printStackTrace();
 			}
+		}else if (cat.equals("4")) {
+			HashMap<String, String> params = new HashMap<>();
+			params.put("id", id);
+			
+			try {
+				ResultSet rs = new FailureRegisterDataBase().findRecord(params);
+				
+				HashMap<String, String> data = new HashMap<>();
+				
+				if(rs.next()) {
+					data.put("codigoA", rs.getString("codigoA"));
+					data.put("fecha", rs.getString("fecha"));
+					data.put("version", rs.getString("version"));
+					data.put("pagina", rs.getString("pagina"));
+					data.put("dia1", rs.getString("dia1"));
+					data.put("mes1", rs.getString("mes1"));
+					data.put("ano1", rs.getString("ano1"));
+					data.put("numeroSolicitud", rs.getString("numeroSolicitud"));
+					data.put("codigoB", rs.getString("codigoB"));
+					data.put("fichaTecnica", rs.getString("fichaTecnica"));
+					data.put("hojaVida", rs.getString("hojaVida"));
+					data.put("dano", rs.getString("dano"));
+					data.put("falla", rs.getString("falla"));
+					data.put("averia", rs.getString("averia"));
+					data.put("otra", rs.getString("otra"));
+					data.put("detalleMotivo", rs.getString("detalleMotivo"));
+					data.put("analisisCausas", rs.getString("analisisCausas"));
+					data.put("observaciones", rs.getString("observaciones"));
+					data.put("si", rs.getString("si"));
+					data.put("no", rs.getString("no"));
+					data.put("dia2", rs.getString("dia2"));
+					data.put("mes2", rs.getString("mes2"));
+					data.put("ano2", rs.getString("ano2"));
+					data.put("dia3", rs.getString("dia3"));
+					data.put("mes3", rs.getString("mes3"));
+					data.put("ano3", rs.getString("ano3"));
+					data.put("nombreSolicitante", rs.getString("nombreSolicitante"));
+					data.put("nombreReceptor", rs.getString("nombreReceptor"));
+					data.put("elaboradoPor", rs.getString("elaboradoPor"));
+					data.put("revisadoPor", rs.getString("revisadoPor"));
+					data.put("aprobadoPor", rs.getString("aprobadoPor"));
+					data.put("updatedAT", rs.getString("updatedAT"));
+					
+					return new RegistroFallaFrame(data).getPrintPanel();
+				}else {
+					return new RegistroFallaFrame((JPanel)null).getPrintPanel();
+				}
+				
+				
+			} catch (ClassNotFoundException | SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			
 		}
 
 		return null;

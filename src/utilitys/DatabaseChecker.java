@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import dataBaseModels.DataBaseModel;
+import dataBaseModels.FailureRegisterDataBase;
 import dataBaseModels.MaintenanceRegister;
 //import dataBaseModels.DateTest;
 import dataBaseModels.MaintenanceRoutines;
@@ -36,6 +37,7 @@ public class DatabaseChecker {
 		TableList.add(new MaintenanceRoutinesOperators());
 		TableList.add(new Stock());
 		TableList.add(new WorkOrderDataBase());
+		TableList.add(new FailureRegisterDataBase());
 	}
 
 	public boolean checkDatabaseList() throws SQLException {
