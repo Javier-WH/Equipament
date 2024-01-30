@@ -24,6 +24,10 @@ public class ParamMesuresDescriptionDataFiller extends AbstractDataFiller {
 		table.createRecord(params);
 		
 		params = new HashMap<>();
+		params.put("description", "Temperatura de escape");
+		table.createRecord(params);
+		
+		params = new HashMap<>();
 		params.put("description", "Temperatura en la descarga de compresor");
 		table.createRecord(params);
 		

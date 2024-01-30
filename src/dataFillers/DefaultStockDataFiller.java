@@ -446,7 +446,7 @@ public class DefaultStockDataFiller extends AbstractDataFiller {
 			params = new HashMap<>();
 			params.put("secction", "Compresor de Gas Natural Conjunto de rotor de compresor");
 			params.put("parts","Impulsor etapa 1");
-			params.put("number", "-");
+			params.put("number", "112746-103");
 			params.put("quantity", "5");
 			params.put("lastUpdate", date);
 			table.createRecord(params);
@@ -454,7 +454,7 @@ public class DefaultStockDataFiller extends AbstractDataFiller {
 			params = new HashMap<>();
 			params.put("secction", "Compresor de Gas Natural Conjunto de rotor de compresor");
 			params.put("parts","Impulsor etapa 2");
-			params.put("number", "-");
+			params.put("number", "112745-103");
 			params.put("quantity", "5");
 			params.put("lastUpdate", date);
 			table.createRecord(params);
@@ -462,7 +462,7 @@ public class DefaultStockDataFiller extends AbstractDataFiller {
 			params = new HashMap<>();
 			params.put("secction", "Compresor de Gas Natural Conjunto de rotor de compresor");
 			params.put("parts","Impulsor etapa 3");
-			params.put("number", "-");
+			params.put("number", "112744-103");
 			params.put("quantity", "5");
 			params.put("lastUpdate", date);
 			table.createRecord(params);
@@ -470,7 +470,7 @@ public class DefaultStockDataFiller extends AbstractDataFiller {
 			params = new HashMap<>();
 			params.put("secction", "Compresor de Gas Natural Conjunto de rotor de compresor");
 			params.put("parts","Impulsor etapa 4");
-			params.put("number", "-");
+			params.put("number", "112743-103");
 			params.put("quantity", "5");
 			params.put("lastUpdate", date);
 			table.createRecord(params);
@@ -478,7 +478,7 @@ public class DefaultStockDataFiller extends AbstractDataFiller {
 			params = new HashMap<>();
 			params.put("secction", "Compresor de Gas Natural Conjunto de rotor de compresor");
 			params.put("parts","Impulsor etapa 5");
-			params.put("number", "-");
+			params.put("number", "112742-103");
 			params.put("quantity", "5");
 			params.put("lastUpdate", date);
 			table.createRecord(params);
@@ -486,7 +486,7 @@ public class DefaultStockDataFiller extends AbstractDataFiller {
 			params = new HashMap<>();
 			params.put("secction", "Compresor de Gas Natural Conjunto de rotor de compresor");
 			params.put("parts","Impulsor etapa 6");
-			params.put("number", "-");
+			params.put("number", "112741-103");
 			params.put("quantity", "5");
 			params.put("lastUpdate", date);
 			table.createRecord(params);
@@ -494,7 +494,7 @@ public class DefaultStockDataFiller extends AbstractDataFiller {
 			params = new HashMap<>();
 			params.put("secction", "Compresor de Gas Natural Conjunto de rotor de compresor");
 			params.put("parts","Conjunto de eje corto de succión");
-			params.put("number", "-");
+			params.put("number", "113623-102");
 			params.put("quantity", "5");
 			params.put("lastUpdate", date);
 			table.createRecord(params);
@@ -502,7 +502,7 @@ public class DefaultStockDataFiller extends AbstractDataFiller {
 			params = new HashMap<>();
 			params.put("secction", "Compresor de Gas Natural Conjunto de rotor de compresor");
 			params.put("parts","Conjunto de eje corto de descarga");
-			params.put("number", "-");
+			params.put("number", "945601C2");
 			params.put("quantity", "5");
 			params.put("lastUpdate", date);
 			table.createRecord(params);
@@ -510,7 +510,7 @@ public class DefaultStockDataFiller extends AbstractDataFiller {
 			params = new HashMap<>();
 			params.put("secction", "Compresor de Gas Natural Conjunto de rotor de compresor");
 			params.put("parts","Sello “O2(SAE-129)");
-			params.put("number", "-");
+			params.put("number", "902224C1");
 			params.put("quantity", "10");
 			params.put("lastUpdate", date);
 			table.createRecord(params);

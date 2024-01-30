@@ -70,12 +70,12 @@ public class CorrectiveMantenancePlan extends FrameModel {
 		SistemaAdmisiónAireTable.setModel(TableData.getMaintenanceTableData("Sistema de control eléctrico", "C"));
 
 		JScrollPane SistemaCombustiblePanel = new JScrollPane();
-		tabbedPane.addTab("Sistema aceite sello", null, SistemaCombustiblePanel, null);
+		tabbedPane.addTab("Sistema lubricante sello", null, SistemaCombustiblePanel, null);
 
 		SistemaCombustibleTable = new JTable();
 		TableStyles.setTableStyles(SistemaCombustibleTable);
 		SistemaCombustiblePanel.setViewportView(SistemaCombustibleTable);
-		SistemaCombustibleTable.setModel(TableData.getMaintenanceTableData("Sistema aceite sello", "C"));
+		SistemaCombustibleTable.setModel(TableData.getMaintenanceTableData("Sistema lubricánte sello", "C"));
 
 		JScrollPane SistemaAceiteLubricacionPanel = new JScrollPane();
 		tabbedPane.addTab("Cabina", null, SistemaAceiteLubricacionPanel, null);

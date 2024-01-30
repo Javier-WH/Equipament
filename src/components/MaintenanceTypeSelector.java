@@ -89,6 +89,7 @@ public class MaintenanceTypeSelector extends JFrame {
 			Statement IDstatemen = connection.createStatement();
 			ResultSet IDrs = IDstatemen.executeQuery(IDquery);
 
+
 			if (IDrs.next()) {
 				String id = IDrs.getString("id");
 
@@ -97,7 +98,8 @@ public class MaintenanceTypeSelector extends JFrame {
 						@Override
 						public void actionPerformed(ActionEvent e) {
 							try {
-								new MantenanceForm(Integer.parseInt(id)).setVisible(true);
+								//System.out.println(type);
+								new MantenanceForm(Integer.parseInt(id), type).setVisible(true);
 								dispose();
 							} catch (NumberFormatException | ClassNotFoundException | SQLException e1) {
 								e1.printStackTrace();

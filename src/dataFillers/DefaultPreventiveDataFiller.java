@@ -37,7 +37,7 @@ public class DefaultPreventiveDataFiller extends AbstractDataFiller {
 			params = new HashMap<>();
 			params.put("secction", "Turbocompresor");
 			params.put("activity",
-					"Inspeccionar si los conductos  eléctricos están agrietados, desgastados o descoloridos; verificar si existen fugas de aceite, ruidos o vibraciones.");
+					"Inspeccionar si los conductos  eléctricos están agrietados, desgastados o descoloridos; verificar que no existan fugas de lubricante, ruidos o vibraciones.");
 			params.put("frequency", "1");
 			params.put("level", "1");
 			params.put("time", "1/2");
@@ -50,7 +50,7 @@ public class DefaultPreventiveDataFiller extends AbstractDataFiller {
 
 			params = new HashMap<>();
 			params.put("secction", "Turbocompresor");
-			params.put("activity", "Revisar si hay errajes de fijación sueltos.");
+			params.put("activity", "Revisar que no se encuentren errajes de fijación sueltos.");
 			params.put("frequency", "1");
 			params.put("level", "1");
 			params.put("time", "1/2");
@@ -314,6 +314,7 @@ public class DefaultPreventiveDataFiller extends AbstractDataFiller {
 			params.put("lastUpdate", date);
 			table.createRecord(params);
 
+			/*
 			params = new HashMap<>();
 			params.put("secction", "Sistema de admisión de aire");
 			params.put("activity",
@@ -327,6 +328,7 @@ public class DefaultPreventiveDataFiller extends AbstractDataFiller {
 			params.put("type", "P");
 			params.put("lastUpdate", date);
 			table.createRecord(params);
+			*/
 
 //////////////////////////////Sistema de combustible/////////////////////////////////////////////////////
 
@@ -356,6 +358,7 @@ public class DefaultPreventiveDataFiller extends AbstractDataFiller {
 			params.put("lastUpdate", date);
 			table.createRecord(params);
 
+			/*
 			params = new HashMap<>();
 			params.put("secction", "Sistema de combustible");
 			params.put("activity",
@@ -369,6 +372,7 @@ public class DefaultPreventiveDataFiller extends AbstractDataFiller {
 			params.put("type", "P");
 			params.put("lastUpdate", date);
 			table.createRecord(params);
+			*/
 
 			params = new HashMap<>();
 			params.put("secction", "Sistema de combustible");
@@ -383,12 +387,12 @@ public class DefaultPreventiveDataFiller extends AbstractDataFiller {
 			params.put("lastUpdate", date);
 			table.createRecord(params);
 
-//////////////////////////////Sistema de aceite de lubricación/////////////////////////////////////////////////////
+//////////////////////////////Sistemade lubricación/////////////////////////////////////////////////////
 
 			params = new HashMap<>();
-			params.put("secction", "Sistema de aceite de lubricación");
+			params.put("secction", "Sistema de lubricación");
 			params.put("activity",
-					"Revisar el tubo de vidrio de flujo de aceite lubricante para verificar que este fluye");
+					"Revisar el tubo de vidrio de flujo de lubricante para verificar que este fluye");
 			params.put("frequency", "1");
 			params.put("level", "1");
 			params.put("time", "5 minutos");
@@ -400,8 +404,8 @@ public class DefaultPreventiveDataFiller extends AbstractDataFiller {
 			table.createRecord(params);
 
 			params = new HashMap<>();
-			params.put("secction", "Sistema de aceite de lubricación");
-			params.put("activity", "Verificar si hay degradación del aceite lubricante");
+			params.put("secction", "Sistema de lubricación");
+			params.put("activity", "Verificar si hay degradación del lubricante");
 			params.put("frequency", "1");
 			params.put("level", "3");
 			params.put("time", "5 minutos");
@@ -413,8 +417,8 @@ public class DefaultPreventiveDataFiller extends AbstractDataFiller {
 			table.createRecord(params);
 
 			params = new HashMap<>();
-			params.put("secction", "Sistema de aceite de lubricación");
-			params.put("activity", "Inspección visual al indicador de nivel de aceite lubricante.");
+			params.put("secction", "Sistema de lubricación");
+			params.put("activity", "Inspección visual al indicador de nivel lubricante.");
 			params.put("frequency", "1");
 			params.put("level", "1");
 			params.put("time", "5 minutos");
@@ -426,9 +430,9 @@ public class DefaultPreventiveDataFiller extends AbstractDataFiller {
 			table.createRecord(params);
 
 			params = new HashMap<>();
-			params.put("secction", "Sistema de aceite de lubricación");
+			params.put("secction", "Sistema de lubricación");
 			params.put("activity",
-					"Realizar prueba de funcionamiento de bomba neumática de pre/post lubricación de aceite para verificar que no existan fugas de gas, fugas de aceite, vibraciones y ruidos extraños.");
+					"Realizar prueba de funcionamiento de bomba neumática de pre/post lubricación para verificar que no existan fugas de gas, fugas de lubricante, vibraciones y ruidos extraños.");
 			params.put("frequency", "14");
 			params.put("level", "1, 2, 3");
 			params.put("time", "1/2");
@@ -440,9 +444,9 @@ public class DefaultPreventiveDataFiller extends AbstractDataFiller {
 			table.createRecord(params);
 
 			params = new HashMap<>();
-			params.put("secction", "Sistema de aceite de lubricación");
+			params.put("secction", "Sistema de lubricación");
 			params.put("activity",
-					"Realizar prueba de funcionamiento de bomba de aceite lubricante auxiliar accionada por motor eléctrico para verificación adictiva de ruidos extraños, vibraciones y medición de voltaje.");
+					"Realizar prueba de funcionamiento de bomba lubricante auxiliar accionada por motor eléctrico para verificación adictiva de ruidos extraños, vibraciones y medición de voltaje.");
 			params.put("frequency", "30");
 			params.put("level", "1, 2, 3");
 			params.put("time", "1/2");
@@ -454,9 +458,9 @@ public class DefaultPreventiveDataFiller extends AbstractDataFiller {
 			table.createRecord(params);
 
 			params = new HashMap<>();
-			params.put("secction", "Sistema de aceite de lubricación");
+			params.put("secction", "Sistema de lubricación");
 			params.put("activity",
-					"Realizar prueba de funcionamiento de bomba principal  neumática de aceite sello lubricante para verificar que no existan fugas de gas, fugas de aceite, vibraciones y ruidos extraños.");
+					"Realizar prueba de funcionamiento de bomba principal de lubricante y sistema lubricante sello para verificar que no existan fugas de lubricante, vibraciones y ruidos extraños.");
 			params.put("frequency", "30");
 			params.put("level", "1, 2, 3");
 			params.put("time", "1/2");
@@ -467,12 +471,12 @@ public class DefaultPreventiveDataFiller extends AbstractDataFiller {
 			params.put("lastUpdate", date);
 			table.createRecord(params);
 
-//////////////////////////////Enfriador de aceite/////////////////////////////////////////////////////
+//////////////////////////////Enfriador de Lubricánte/////////////////////////////////////////////////////
 
 			params = new HashMap<>();
-			params.put("secction", "Enfriador de aceite");
+			params.put("secction", "Enfriador de Lubricánte");
 			params.put("activity",
-					"Realizar inspección visual al enfriador de aceite para verificar que no tenga pernos sueltos y verificar si el radiador está sucio o tapado.");
+					"Realizar inspección visual al Enfriador de Lubricánte para verificar que no tenga pernos sueltos y verificar si el radiador no esté sucio u obstruido.");
 			params.put("frequency", "30");
 			params.put("level", "3");
 			params.put("time", "1");
@@ -484,7 +488,7 @@ public class DefaultPreventiveDataFiller extends AbstractDataFiller {
 			table.createRecord(params);
 
 			params = new HashMap<>();
-			params.put("secction", "Enfriador de aceite");
+			params.put("secction", "Enfriador de Lubricánte");
 			params.put("activity", "Inspeccionar conexiones hidráulicas para verificar que estén bien afianzadas.");
 			params.put("frequency", "30");
 			params.put("level", "1");
@@ -496,8 +500,9 @@ public class DefaultPreventiveDataFiller extends AbstractDataFiller {
 			params.put("lastUpdate", date);
 			table.createRecord(params);
 
+			/*
 			params = new HashMap<>();
-			params.put("secction", "Enfriador de aceite");
+			params.put("secction", "Enfriador de Lubricánte");
 			params.put("activity",
 					"Quitar la tierra y polvo de la superficie de transferencia de calor cepillando los tubos y aletas y soplando la tierra suelta  con aire comprimido.");
 			params.put("frequency", "30");
@@ -509,6 +514,7 @@ public class DefaultPreventiveDataFiller extends AbstractDataFiller {
 			params.put("type", "P");
 			params.put("lastUpdate", date);
 			table.createRecord(params);
+			*/
 
 //////////////////////////////Consola de Control/////////////////////////////////////////////////////
 
@@ -610,7 +616,7 @@ public class DefaultPreventiveDataFiller extends AbstractDataFiller {
 
 			params = new HashMap<>();
 			params.put("secction", "Baterías");
-			params.put("activity", "Medir densidad utilizando densímetro  y voltaje");
+			params.put("activity", "Medir voltaje utilizando voltímetro y densidad utilizando densímetro");
 			params.put("frequency", "30");
 			params.put("level", "2");
 			params.put("time", "10 minutos");
@@ -853,7 +859,7 @@ public class DefaultPreventiveDataFiller extends AbstractDataFiller {
 			params = new HashMap<>();
 			params.put("secction", "Equipo accionado Compresor de gas C304 Solar");
 			params.put("activity",
-					"Verificaron visual al conjunto general externo del compresor, y constatar que no exista fugas de aceite y de gas");
+					"Verificaron visual al conjunto general externo del compresor, y constatar que no exista fugas de lubricante y de gas");
 			params.put("frequency", "1");
 			params.put("level", "1");
 			params.put("time", "5 minutos");

@@ -43,11 +43,12 @@ public class MantenanceForm extends FrameModel {
 	private JLabel lblSecction;
 	private JLabel lblTitle;
 	private MaintenanceRoutines MR = null;
-
+	private String type = null;
 	
 	
-	public MantenanceForm(int alarmID) throws ClassNotFoundException, SQLException {
+	public MantenanceForm(int alarmID, String type) throws ClassNotFoundException, SQLException {
 		super(null, "Formulario de Manteniniento", true);
+		this.type = type;
 		getContentPane().setBackground(Constants.getSurfaceColor());
 
 		this.alarmID = alarmID;
@@ -328,13 +329,15 @@ public class MantenanceForm extends FrameModel {
 			// obtener los datos de la fila
 			MaintenanceRoutines routinesTable = new MaintenanceRoutines();
 			ResultSet activityRow = routinesTable.findRecord(params);
-
+			
+			//System.out.println(type);
+			
 			String secction = null;
 			String type = null;
 
 			if (activityRow.next()) {
 				secction = activityRow.getString("secction");
-				type = activityRow.getString("type");
+				type = this.type == null ? activityRow.getString("type") : this.type;
 			}
 
 			if (secction == null || type == null) {
@@ -352,6 +355,9 @@ public class MantenanceForm extends FrameModel {
 			params = new HashMap<>();
 			params.put("secction", secction);
 			params.put("type", type);
+			
+	
+			
 			ResultSet activities = routinesTable.findRecord(params);
 
 			while (activities.next()) {

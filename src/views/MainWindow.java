@@ -203,7 +203,7 @@ public class MainWindow extends JFrame {
 		Component verticalStrut = Box.createVerticalStrut(10);
 		popupPanel.add(verticalStrut);
 		
-		CButton btnCorrectivo = new CButton("Manteniviento Correctivo");
+		CButton btnCorrectivo = new CButton("Mantenimiento Correctivo");
 		btnCorrectivo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				new MaintenanceTypeSelector("C").setVisible(true);

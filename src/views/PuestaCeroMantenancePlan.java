@@ -41,12 +41,11 @@ public class PuestaCeroMantenancePlan extends FrameModel {
 		TurbocompresorTable.setModel( TableData.getMaintenanceTableData("Sistema de admisión de aire", "PC"));
 
 		JScrollPane TurbinaPanel = new JScrollPane();
-		tabbedPane.addTab("Sistema aceite sello", null, TurbinaPanel, null);
 
 		TurbinaTable = new JTable();
 		TableStyles.setTableStyles(TurbinaTable);
 		TurbinaPanel.setViewportView(TurbinaTable);
-		TurbinaTable.setModel(TableData.getMaintenanceTableData("Sistema aceite sello", "PC"));
+		TurbinaTable.setModel(TableData.getMaintenanceTableData("Sistema lubricante sello", "PC"));
 
 		JScrollPane SensoresPanel = new JScrollPane();
 		tabbedPane.addTab("Sistema de gas combustible", null, SensoresPanel, null);

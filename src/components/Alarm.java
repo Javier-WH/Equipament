@@ -110,7 +110,7 @@ public class Alarm extends JPanel implements AlarmSchema {
 		
 				try {
 					if(type.equals("P") || type.equals("C") || type.equals("PC")) {
-						MantenanceForm MF = new MantenanceForm(alarmID);
+						MantenanceForm MF = new MantenanceForm(alarmID, null);
 						MF.setVisible(true);						
 					}else if(type.equals("stock")) {
 						new StockFrame(null, Section).setVisible(true);

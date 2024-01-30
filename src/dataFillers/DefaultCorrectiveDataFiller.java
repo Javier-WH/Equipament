@@ -90,7 +90,7 @@ public class DefaultCorrectiveDataFiller extends AbstractDataFiller {
 //////////////////////////////Compresor Axial/////////////////////////////////////////////////////
 		params = new HashMap<>();
 		params.put("secction", "Compresor Axial");
-		params.put("activity", "Limpieza  de compresor axial, con desengrasante ZOOK");
+		params.put("activity", "Limpieza  de compresor axial, con desengrasante ZOK");
 		params.put("frequency", "30");
 		params.put("level", "3");
 		params.put("time", "2");
@@ -116,7 +116,7 @@ public class DefaultCorrectiveDataFiller extends AbstractDataFiller {
 		
 		params = new HashMap<>();
 		params.put("secction", "Compresor Axial");
-		params.put("activity", "Calibración y ajuste de las paletas guías del compresor");
+		params.put("activity", "Calibración y ajuste de las alábes guías del compresor");
 		params.put("frequency", "365");
 		params.put("level", "4");
 		params.put("time", "3");
@@ -129,7 +129,7 @@ public class DefaultCorrectiveDataFiller extends AbstractDataFiller {
 		
 		params = new HashMap<>();
 		params.put("secction", "Compresor Axial");
-		params.put("activity", "Cambio de la válvula de aire pulga del compresor");
+		params.put("activity", "Cambio de la válvula de aire purga del compresor");
 		params.put("frequency", "1095");
 		params.put("level", "4");
 		params.put("time", "2");
@@ -196,7 +196,7 @@ public class DefaultCorrectiveDataFiller extends AbstractDataFiller {
 		
 		params = new HashMap<>();
 		params.put("secction", "Sistema de gas combustible");
-		params.put("activity", "Cambio de sello de válvula de alivio  piloto.");
+		params.put("activity", "Cambio de sello de válvula de alivio piloto.");
 		params.put("frequency", "30");
 		params.put("level", "4");
 		params.put("time", "1");
@@ -209,7 +209,7 @@ public class DefaultCorrectiveDataFiller extends AbstractDataFiller {
 		
 		params = new HashMap<>();
 		params.put("secction", "Sistema de gas combustible");
-		params.put("activity", "Cambio de  juego completo de sellos de válvula de dos vías.");
+		params.put("activity", "Cambio de juego completo de sellos de válvula de dos vías.");
 		params.put("frequency", "30");
 		params.put("level", "4");
 		params.put("time", "1");
@@ -274,10 +274,10 @@ public class DefaultCorrectiveDataFiller extends AbstractDataFiller {
 		params.put("lastUpdate", date);
 		table.createRecord(params);
 		
-//////////////////////////////Sistema aceite sello/////////////////////////////////////////////////////
+//////////////////////////////Sistema lubricánte sello/////////////////////////////////////////////////////
 		
 		params = new HashMap<>();
-		params.put("secction", "Sistema aceite sello");
+		params.put("secction", "Sistema lubricánte sello");
 		params.put("activity", "Limpieza de válvula de control de presión diferencial entre el gas sello y gas de succión");
 		params.put("frequency", "30");
 		params.put("level", "3");
@@ -290,8 +290,8 @@ public class DefaultCorrectiveDataFiller extends AbstractDataFiller {
 		table.createRecord(params);
 		
 		params = new HashMap<>();
-		params.put("secction", "Sistema aceite sello");
-		params.put("activity", "Limpieza de la línea aceite sello");
+		params.put("secction", "Sistema lubricánte sello");
+		params.put("activity", "Limpieza de la línea lubricante sello");
 		params.put("frequency", "90");
 		params.put("level", "3");
 		params.put("time", "3");
@@ -303,7 +303,7 @@ public class DefaultCorrectiveDataFiller extends AbstractDataFiller {
 		table.createRecord(params);
 		
 		params = new HashMap<>();
-		params.put("secction", "Sistema aceite sello");
+		params.put("secction", "Sistema lubricánte sello");
 		params.put("activity", "Cambio de sello de las conexiones de entrada y salida de las mangueras");
 		params.put("frequency", "360");
 		params.put("level", "4");
@@ -316,8 +316,8 @@ public class DefaultCorrectiveDataFiller extends AbstractDataFiller {
 		table.createRecord(params);
 		
 		params = new HashMap<>();
-		params.put("secction", "Sistema aceite sello");
-		params.put("activity", "Cambio de trampa aceite sello");
+		params.put("secction", "Sistema lubricánte sello");
+		params.put("activity", "Cambio de trampa lubricante sello");
 		params.put("frequency", "1095");
 		params.put("level", "4");
 		params.put("time", "2");
@@ -329,8 +329,8 @@ public class DefaultCorrectiveDataFiller extends AbstractDataFiller {
 		table.createRecord(params);
 		
 		params = new HashMap<>();
-		params.put("secction", "Sistema aceite sello");
-		params.put("activity", "Cambio de mangueras de suministro de aceite sello.");
+		params.put("secction", "Sistema lubricánte sello");
+		params.put("activity", "Cambio de mangueras de suministro de lubricante sello.");
 		params.put("frequency", "1825");
 		params.put("level", "4");
 		params.put("time", "3");
@@ -342,7 +342,7 @@ public class DefaultCorrectiveDataFiller extends AbstractDataFiller {
 		table.createRecord(params);
 		
 		params = new HashMap<>();
-		params.put("secction", "Sistema aceite sello");
+		params.put("secction", "Sistema lubricánte sello");
 		params.put("activity", "Cambio de engranajes de bomba(juego de reparación completo N/P 800787GR91)");
 		params.put("frequency", "1825");
 		params.put("level", "4");
@@ -440,7 +440,7 @@ public class DefaultCorrectiveDataFiller extends AbstractDataFiller {
 		
 		params = new HashMap<>();
 		params.put("secction", "Sistema de lubricación");
-		params.put("activity", "Cambio de sellos “O”  y de (REBORDES) de bomba de pre/post lubricación  accionada por motor neumático");
+		params.put("activity", "Cambio de sellos “O”  y de (REBORDES) de bombas de pre/post lubricación accionada por motor neumático");
 		params.put("frequency", "730");
 		params.put("level", "4");
 		params.put("time", "3");
@@ -466,7 +466,7 @@ public class DefaultCorrectiveDataFiller extends AbstractDataFiller {
 		
 		params = new HashMap<>();
 		params.put("secction", "Sistema de lubricación");
-		params.put("activity", "Cambio de sellos de motores, ventiladores, enfriadores de aceite");
+		params.put("activity", "Cambio de sellos de motores, ventiladores, enfriadores de lubricante");
 		params.put("frequency", "730");
 		params.put("level", "4");
 		params.put("time", "3");
@@ -505,7 +505,7 @@ public class DefaultCorrectiveDataFiller extends AbstractDataFiller {
 		
 		params = new HashMap<>();
 		params.put("secction", "Sistema de lubricación");
-		params.put("activity", "Cambio de cojinetes de bomba de pre y post lubricación  accionada por motor neumático");
+		params.put("activity", "Cambio de cojinetes de bombas de pre y post lubricación accionada por motor neumático");
 		params.put("frequency", "1825");
 		params.put("level", "4");
 		params.put("time", "3");
@@ -518,7 +518,7 @@ public class DefaultCorrectiveDataFiller extends AbstractDataFiller {
 		
 		params = new HashMap<>();
 		params.put("secction", "Sistema de lubricación");
-		params.put("activity", "Cambio de eje de la bomba de pre/post lubricación  accionada por motor neumático.");
+		params.put("activity", "Cambio de eje de la bombas de pre/post lubricación  accionada por motor neumático.");
 		params.put("frequency", "1825");
 		params.put("level", "4");
 		params.put("time", "3");
@@ -531,7 +531,7 @@ public class DefaultCorrectiveDataFiller extends AbstractDataFiller {
 		
 		params = new HashMap<>();
 		params.put("secction", "Sistema de lubricación");
-		params.put("activity", "Cambio de engranaje de bomba de pre y post lubricación  accionada por motor neumático.");
+		params.put("activity", "Cambio de engranaje de bombas de pre y post lubricación  accionada por motor neumático.");
 		params.put("frequency", "1825");
 		params.put("level", "4");
 		params.put("time", "2");
@@ -572,9 +572,23 @@ public class DefaultCorrectiveDataFiller extends AbstractDataFiller {
 		params.put("lastUpdate", date);
 		table.createRecord(params);
 		
+		
 		params = new HashMap<>();
 		params.put("secction", "Sistema de lubricación");
-		params.put("activity", "Cambio juegos  de sellos de bomba accionada por motor eléctrico.");
+		params.put("activity", "Cambio de lubricante.");
+		params.put("frequency", "360");
+		params.put("level", "1");
+		params.put("time", "3");
+		params.put("personal", "3");
+		params.put("total", "1");
+		params.put("piece", "-");
+		params.put("type", "C");
+		params.put("lastUpdate", date);
+		table.createRecord(params);
+		
+		params = new HashMap<>();
+		params.put("secction", "Sistema de lubricación");
+		params.put("activity", "Cambio juegos de sellos de bomba accionada por motor eléctrico.");
 		params.put("frequency", "730");
 		params.put("level", "4");
 		params.put("time", "3");
@@ -587,7 +601,7 @@ public class DefaultCorrectiveDataFiller extends AbstractDataFiller {
 		
 		params = new HashMap<>();
 		params.put("secction", "Sistema de lubricación");
-		params.put("activity", "Cambio de juego de reacondicionamiento de motor.");
+		params.put("activity", "Cambio de juego de reacondicionamiento de motor eléctrico.");
 		params.put("frequency", "1095");
 		params.put("level", "4");
 		params.put("time", "3");
@@ -600,8 +614,8 @@ public class DefaultCorrectiveDataFiller extends AbstractDataFiller {
 		
 		params = new HashMap<>();
 		params.put("secction", "Sistema de lubricación");
-		params.put("activity", "Cambio Bomba de reserva de pos lubricación accionada por motor eléctrico.");
-		params.put("frequency", "2555");
+		params.put("activity", "Cambio de conjinetes de bomba de reserva de pre / post libricación accionada por motor eléctrico.");
+		params.put("frequency", "1095");
 		params.put("level", "4");
 		params.put("time", "3");
 		params.put("personal", "2");
@@ -960,7 +974,7 @@ public class DefaultCorrectiveDataFiller extends AbstractDataFiller {
 		
 		params = new HashMap<>();
 		params.put("secction", "Compresor de Gas Natural: Conjunto de sello y de cojinete extremo de succión");
-		params.put("activity", "Cambio de sello de aceite de separación controlada");
+		params.put("activity", "Cambio de sello de lubricante de separación controlada");
 		params.put("frequency", "2555");
 		params.put("level", "5");
 		params.put("time", "2");
@@ -986,7 +1000,7 @@ public class DefaultCorrectiveDataFiller extends AbstractDataFiller {
 		
 		params = new HashMap<>();
 		params.put("secction", "Compresor de Gas Natural: Conjunto de sello y de cojinete extremo de succión");
-		params.put("activity", "Cambio de sello de aceite de separación controlada");
+		params.put("activity", "Cambio de sello de lubricante de separación controlada");
 		params.put("frequency", "2555");
 		params.put("level", "5");
 		params.put("time", "3");
@@ -1118,7 +1132,7 @@ public class DefaultCorrectiveDataFiller extends AbstractDataFiller {
 		
 		params = new HashMap<>();
 		params.put("secction", "Compresor de Gas Natural: Conjunto de Cojinete y sello de descarga");
-		params.put("activity", "Cambio de sello de aceite de separación controlada");
+		params.put("activity", "Cambio de sello de lubricante de separación controlada");
 		params.put("frequency", "2555");
 		params.put("level", "5");
 		params.put("time", "2");
@@ -1144,7 +1158,7 @@ public class DefaultCorrectiveDataFiller extends AbstractDataFiller {
 		
 		params = new HashMap<>();
 		params.put("secction", "Compresor de Gas Natural: Conjunto de Cojinete y sello de descarga");
-		params.put("activity", "Cambio de sello de aceite de separación controlada");
+		params.put("activity", "Cambio de sello de lubricante de separación controlada");
 		params.put("frequency", "2555");
 		params.put("level", "5");
 		params.put("time", "3");
@@ -1242,6 +1256,87 @@ public class DefaultCorrectiveDataFiller extends AbstractDataFiller {
 		params.put("personal", "3");
 		params.put("total", "-");
 		params.put("piece", "902228C2");
+		params.put("type", "C");
+		params.put("lastUpdate", date);
+		table.createRecord(params);
+		
+		
+//////////////////////////////Sistema de admisión de aire/////////////////////////////////////////////////////
+
+		params = new HashMap<>();
+		params.put("secction", "Sistema de admisión de aire");
+		params.put("activity", "Limpieza de compuertas y casetas de filtros");
+		params.put("frequency", "30");
+		params.put("level", "3");
+		params.put("time", "2");
+		params.put("personal", "3");
+		params.put("total", "12");
+		params.put("piece", "-");
+		params.put("type", "C");
+		params.put("lastUpdate", date);
+		table.createRecord(params);
+
+		params = new HashMap<>();
+		params.put("secction", "Sistema de admisión de aire");
+		params.put("activity", "Limpieza de la voluta de admisión mensual");
+		params.put("frequency", "30");
+		params.put("level", "3");
+		params.put("time", "2");
+		params.put("personal", "2");
+		params.put("total", "12");
+		params.put("piece", "130890-101");
+		params.put("type", "C");
+		params.put("lastUpdate", date);
+		table.createRecord(params);
+
+		params = new HashMap<>();
+		params.put("secction", "Sistema de admisión de aire");
+		params.put("activity", "Limpieza de compresor axial con desengrasante de ZOK");
+		params.put("frequency", "30");
+		params.put("level", "3");
+		params.put("time", "2");
+		params.put("personal", "2");
+		params.put("total", "12");
+		params.put("piece", "125157-100");
+		params.put("type", "C");
+		params.put("lastUpdate", date);
+		table.createRecord(params);
+		
+		params = new HashMap<>();
+		params.put("secction", "Sistema de admisión de aire");
+		params.put("activity", "Limpieza interna de la válvula purga del compresor");
+		params.put("frequency", "30");
+		params.put("level", "3");
+		params.put("time", "2");
+		params.put("personal", "2");
+		params.put("total", "12");
+		params.put("piece", "126157-100");
+		params.put("type", "C");
+		params.put("lastUpdate", date);
+		table.createRecord(params);
+
+		params = new HashMap<>();
+		params.put("secction", "Sistema de admisión de aire");
+		params.put("activity", "Limpieza de maya de retención de insectos");
+		params.put("frequency", "30");
+		params.put("level", "3");
+		params.put("time", "2");
+		params.put("personal", "3");
+		params.put("total", "12");
+		params.put("piece", "-");
+		params.put("type", "C");
+		params.put("lastUpdate", date);
+		table.createRecord(params);
+
+		params = new HashMap<>();
+		params.put("secction", "Sistema de admisión de aire");
+		params.put("activity", "Cambio de prefiltros y friltros");
+		params.put("frequency", "90");
+		params.put("level", "4");
+		params.put("time", "2");
+		params.put("personal", "3");
+		params.put("total", "4");
+		params.put("piece", "951339C17 / ax-4005");
 		params.put("type", "C");
 		params.put("lastUpdate", date);
 		table.createRecord(params);

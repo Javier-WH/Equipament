@@ -46,7 +46,7 @@ public class DefaultPuestaCeroDataFiller extends AbstractDataFiller {
 			table.createRecord(params);
 			
 			params.put("secction", "Sistema de admisión de aire");
-			params.put("activity","Limpieza  de compresor axial, con desengrasante ZOOK");
+			params.put("activity","Limpieza  de compresor axial, con desengrasante ZOK");
 			params.put("frequency", "30");
 			params.put("level", "3");
 			params.put("time", "2");
@@ -143,9 +143,9 @@ public class DefaultPuestaCeroDataFiller extends AbstractDataFiller {
 			params.put("lastUpdate", date);
 			table.createRecord(params);
 			
-//////////////////////////////Sistema aceite sello/////////////////////////////////////////////////////
+//////////////////////////////Sistema lubricante sello/////////////////////////////////////////////////////
 			
-			params.put("secction", "Sistema aceite sello");
+			params.put("secction", "Sistema lubricante sello");
 			params.put("activity","Limpieza de válvula de control de presión diferencial entre el gas sello y el gas de succión");
 			params.put("frequency", "30");
 			params.put("level", "3");
@@ -157,8 +157,8 @@ public class DefaultPuestaCeroDataFiller extends AbstractDataFiller {
 			params.put("lastUpdate", date);
 			table.createRecord(params);
 			
-			params.put("secction", "Sistema aceite sello");
-			params.put("activity","Limpieza de trampa aceite sello");
+			params.put("secction", "Sistema lubricante sello");
+			params.put("activity","Limpieza de trampa lubricante sello");
 			params.put("frequency", "30");
 			params.put("level", "3");
 			params.put("time", "-");
@@ -170,8 +170,8 @@ public class DefaultPuestaCeroDataFiller extends AbstractDataFiller {
 			table.createRecord(params);
 			
 			
-			params.put("secction", "Sistema aceite sello");
-			params.put("activity","Limpieza de las líneas de suministro  aceite sello");
+			params.put("secction", "Sistema lubricante sello");
+			params.put("activity","Limpieza de las líneas de suministro lubricante sello");
 			params.put("frequency", "90");
 			params.put("level", "3");
 			params.put("time", "3");
@@ -224,7 +224,7 @@ public class DefaultPuestaCeroDataFiller extends AbstractDataFiller {
 //////////////////////////////Sistema de Lubricación/////////////////////////////////////////////////////
 			
 			params.put("secction", "Sistema de Lubricación");
-			params.put("activity","Cambio de elemento Filtrante y junta de elemento filtrante de bomba de pre y post lubricación.");
+			params.put("activity","Cambio de elemento Filtrante y junta de elemento filtrante de bombas de pre y post lubricación.");
 			params.put("frequency", "30");
 			params.put("level", "4");
 			params.put("time", "2");
@@ -260,7 +260,7 @@ public class DefaultPuestaCeroDataFiller extends AbstractDataFiller {
 			table.createRecord(params);
 			
 			params.put("secction", "Sistema de Lubricación");
-			params.put("activity","Lavado tanque de aceite");
+			params.put("activity","Lavado tanque de lubricante");
 			params.put("frequency", "365");
 			params.put("level", "3");
 			params.put("time", "3");
@@ -272,7 +272,7 @@ public class DefaultPuestaCeroDataFiller extends AbstractDataFiller {
 			table.createRecord(params);
 			
 			params.put("secction", "Sistema de Lubricación");
-			params.put("activity","Cambio de aceite");
+			params.put("activity","Cambio de lubricante");
 			params.put("frequency", "365");
 			params.put("level", "1");
 			params.put("time", "3");
@@ -284,7 +284,7 @@ public class DefaultPuestaCeroDataFiller extends AbstractDataFiller {
 			table.createRecord(params);
 			
 			params.put("secction", "Sistema de Lubricación");
-			params.put("activity","Cambio de sellos de motores neumáticos de enfriadores de aceite");
+			params.put("activity","Cambio de sellos de motores hidráulicos de enfriadores de lubricante");
 			params.put("frequency", "730");
 			params.put("level", "4");
 			params.put("time", "3");

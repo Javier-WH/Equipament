@@ -79,20 +79,20 @@ public class PreventiveMantenancePlan extends FrameModel {
 		SistemaCombustibleTable.setModel(TableData.getMaintenanceTableData("Sistema de combustible", "P"));
 
 		JScrollPane SistemaAceiteLubricacionPanel = new JScrollPane();
-		tabbedPane.addTab("Sistema de aceite de lubricación", null, SistemaAceiteLubricacionPanel, null);
+		tabbedPane.addTab("Sistema de lubricación", null, SistemaAceiteLubricacionPanel, null);
 
 		SistemaAceiteLubricacionTable = new JTable();
 		TableStyles.setTableStyles(SistemaAceiteLubricacionTable);
 		SistemaAceiteLubricacionPanel.setViewportView(SistemaAceiteLubricacionTable);
-		SistemaAceiteLubricacionTable.setModel(TableData.getMaintenanceTableData("Sistema de aceite de lubricación", "P"));
+		SistemaAceiteLubricacionTable.setModel(TableData.getMaintenanceTableData("Sistema de lubricación", "P"));
 
 		JScrollPane EnfriadorAceitePanel = new JScrollPane();
-		tabbedPane.addTab("Enfriador de aceite", null, EnfriadorAceitePanel, null);
+		tabbedPane.addTab("Enfriador de Lubricánte", null, EnfriadorAceitePanel, null);
 
 		EnfriadorAceiteTable = new JTable();
 		TableStyles.setTableStyles(EnfriadorAceiteTable);
 		EnfriadorAceitePanel.setViewportView(EnfriadorAceiteTable);
-		EnfriadorAceiteTable.setModel(TableData.getMaintenanceTableData("Enfriador de aceite", "P"));
+		EnfriadorAceiteTable.setModel(TableData.getMaintenanceTableData("Enfriador de Lubricánte", "P"));
 
 		JScrollPane ConsolaControlPanel = new JScrollPane();
 		tabbedPane.addTab("Consola de Control", null, ConsolaControlPanel, null);
